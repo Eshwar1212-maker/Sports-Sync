@@ -6,6 +6,8 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import Button from './Button'
 import AuthSocialButton from './AuthSocialButton'
 import {BsGoogle} from 'react-icons/bs'
+import axios from 'axios'
+import { useMutation } from '@tanstack/react-query'
 
 type Variant = 'LOGIN' | 'REGISTER'
 
@@ -16,7 +18,6 @@ const AuthForm: FC<AuthFormProps> = ({
 
 }) => {
     const [variant, setVariant] = useState<Variant>('LOGIN')
-    const [isLoading, setIsLoading] = useState(false)
 
     const toggleVariant = useCallback(() => {
         if (variant === 'LOGIN') {
@@ -37,18 +38,22 @@ const AuthForm: FC<AuthFormProps> = ({
         }
     })
 
+    const registerMutation = useMutation((data: FieldValues) => axios.post('/api/register', data));
+    const loginMutation = useMutation((data: FieldValues) => axios.post('/api/login', data)); // replace this with your actual login api
+    
+
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        setIsLoading(true)
         if (variant === 'REGISTER') {
-            //register
+            registerMutation.mutate(data)
+            
         }
         if (variant === 'LOGIN') {
             //sign in
         }
+        
     }
 
     const socialAction = (action: string) => {
-        setIsLoading(true)
         //Next auth social sign in
     }
 
@@ -64,12 +69,12 @@ const AuthForm: FC<AuthFormProps> = ({
                     {
                         variant === 'REGISTER' && (
                             <Input
-                                label='Email'
+                                label='Name'
                                 register={register}
-                                id="email"
+                                id="name"
                                 errors={errors}
-                                disabled={isLoading}
-                            />
+                                disabled={registerMutation.isLoading || loginMutation.isLoading}
+                                />
                         )
                     }
                     <Input
@@ -78,7 +83,7 @@ const AuthForm: FC<AuthFormProps> = ({
                         register={register}
                         id="email"
                         errors={errors}
-                        disabled={isLoading}
+                        disabled={registerMutation.isLoading || loginMutation.isLoading}
 
                     />
                     <Input
@@ -87,13 +92,13 @@ const AuthForm: FC<AuthFormProps> = ({
                         id="password"
                         placeholder="password"
                         errors={errors}
-                        disabled={isLoading}
+                        disabled={registerMutation.isLoading || loginMutation.isLoading}
 
                     />
                     <div>
                         <Button
                          children={variant === 'LOGIN' ? 'Sign in' : "Register"}
-                         disabled={isLoading}
+                         disabled={registerMutation.isLoading || loginMutation.isLoading}
                          fullWidth
                          type='submit'
                          />
