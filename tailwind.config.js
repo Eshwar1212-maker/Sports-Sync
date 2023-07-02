@@ -7,7 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-
+      backgroundImage: {
+        'auth': 'https://images.template.net/114624/free-falling-basketball-background-ff026.jpeg'
+      }
     },
   },
   plugins: [

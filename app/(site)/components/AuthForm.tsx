@@ -56,7 +56,10 @@ const AuthForm: FC<AuthFormProps> = ({
         <div
             className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'
         >
+
             <div className='bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10'>
+            <h2 className='mb-4 text-center text-2xl font-bold tracking-tight text-gray-900'>Sign in to your account</h2>
+
                 <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
                     {
                         variant === 'REGISTER' && (
@@ -65,6 +68,7 @@ const AuthForm: FC<AuthFormProps> = ({
                                 register={register}
                                 id="email"
                                 errors={errors}
+                                disabled={isLoading}
                             />
                         )
                     }
@@ -74,6 +78,8 @@ const AuthForm: FC<AuthFormProps> = ({
                         register={register}
                         id="email"
                         errors={errors}
+                        disabled={isLoading}
+
                     />
                     <Input
                         label='Password'
@@ -81,6 +87,8 @@ const AuthForm: FC<AuthFormProps> = ({
                         id="password"
                         placeholder="password"
                         errors={errors}
+                        disabled={isLoading}
+
                     />
                     <div>
                         <Button
