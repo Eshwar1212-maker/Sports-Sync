@@ -1,4 +1,5 @@
 import Providers from './components/Providers'
+import ToasterContext from './context/ToasterContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -21,7 +22,7 @@ export default function RootLayout({
         <Providers>
            {children}
         </Providers>
-       
+       <ToasterContext />
       </body>
     </html>
   )

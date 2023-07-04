@@ -8,6 +8,7 @@ import AuthSocialButton from './AuthSocialButton'
 import {BsGoogle} from 'react-icons/bs'
 import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
+import { toast } from 'react-hot-toast'
 
 type Variant = 'LOGIN' | 'REGISTER'
 
@@ -38,13 +39,28 @@ const AuthForm: FC<AuthFormProps> = ({
         }
     })
 
-    const registerMutation = useMutation((data: FieldValues) => axios.post('/api/register', data));
-    const loginMutation = useMutation((data: FieldValues) => axios.post('/api/login', data)); // replace this with your actual login api
+    const registerMutation = useMutation(
+        (data: FieldValues) => axios.post('/api/register', data),
+        {
+          onError: () => {
+            toast.error("Registration failed"); 
+          },
+        },
+      );
+      
+    const loginMutation = useMutation(
+        (data: FieldValues) => axios.post('/api/login', data),
+        {
+        onError: () => {
+            toast.error("Login failed"); 
+            }, 
+        }
+        );
     
-
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         if (variant === 'REGISTER') {
             registerMutation.mutate(data)
+            
             
         }
         if (variant === 'LOGIN') {
@@ -63,7 +79,9 @@ const AuthForm: FC<AuthFormProps> = ({
         >
 
             <div className='bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10'>
-            <h2 className='mb-4 text-center text-2xl font-bold tracking-tight text-gray-900'>Sign in to your account</h2>
+            <h2 className='mb-4 text-center text-2xl font-bold tracking-tight text-gray-900'>
+                Sign in to your account
+            </h2>
 
                 <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
                     {
