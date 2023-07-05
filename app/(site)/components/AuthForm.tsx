@@ -1,7 +1,6 @@
 "use client"
-
 import Input from '@/app/components/inputs/Input'
-import { FC, useCallback, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import Button from './Button'
 import AuthSocialButton from './AuthSocialButton'
@@ -9,9 +8,11 @@ import {BsGoogle} from 'react-icons/bs'
 import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-hot-toast'
+import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+
 
 type Variant = 'LOGIN' | 'REGISTER'
-
 interface AuthFormProps {
 
 }
@@ -19,7 +20,16 @@ const AuthForm: FC<AuthFormProps> = ({
 
 }) => {
     const [variant, setVariant] = useState<Variant>('LOGIN')
+    const router = useRouter();
+    const session = useSession()
 
+    useEffect(() => {
+      if(session?.status === 'authenticated'){
+        console.log("authenticated");
+        router.push("/users")
+      }
+    }, [session?.status, router])
+    
     const toggleVariant = useCallback(() => {
         if (variant === 'LOGIN') {
             setVariant('REGISTER')
@@ -28,7 +38,6 @@ const AuthForm: FC<AuthFormProps> = ({
         }
 
     }, [variant])
-
     const {
         register, handleSubmit, formState: { errors }
     } = useForm<FieldValues>({
@@ -38,51 +47,72 @@ const AuthForm: FC<AuthFormProps> = ({
             password: ''
         }
     })
-
     const registerMutation = useMutation(
         (data: FieldValues) => axios.post('/api/register', data),
         {
           onError: () => {
             toast.error("Registration failed"); 
           },
+          onSuccess: () => {
+            toast.success("Created account succesfully!")
+          }
         },
       );
       
     const loginMutation = useMutation(
-        (data: FieldValues) => axios.post('/api/login', data),
+        (data: FieldValues) =>  signIn('credentials', {
+            ...data,
+            redirect: false
+        }),
         {
         onError: () => {
-            toast.error("Login failed"); 
+            toast.error("Login failed, please make sure you are using the right email and password."); 
             }, 
+        onSuccess: (callback) => {
+            if(callback?.error) toast.error("Login failed, please make sure you are using the right email and password."); 
+            if(callback?.ok && !callback?.error) toast.success("Succesfully logged in!")
         }
+        },
         );
-    
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         if (variant === 'REGISTER') {
             registerMutation.mutate(data)
-            
-            
         }
         if (variant === 'LOGIN') {
-            //sign in
+            signIn('credentials', {
+                ...data,
+                redirect: false
+            })
+            .then((callback) => {
+                if(callback?.error){
+                    toast.error("Invalid credentials")
+                }
+                if(callback?.ok && !callback?.error){
+                    toast.success("Succesfully logged in!")
+                }
+            })
         }
-        
     }
-
-    const socialAction = (action: string) => {
-        //Next auth social sign in
-    }
-
+    const socialAction = (action: string) => {    
+        signIn(action, { redirect: false })
+          .then((callback) => {
+            if (callback?.error) {
+              toast.error('Invalid credentials!');
+            }
+    
+            if (callback?.ok) {
+              router.push('/conversations')
+            }
+          })
+      } 
     return (
         <div
             className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'
         >
-
             <div className='bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10'>
             <h2 className='mb-4 text-center text-2xl font-bold tracking-tight text-gray-900'>
                 Sign in to your account
             </h2>
-
                 <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
                     {
                         variant === 'REGISTER' && (
@@ -134,7 +164,10 @@ const AuthForm: FC<AuthFormProps> = ({
                         </div>
                     </div>
                     <div className='mt-6 flex gap-2'>
-                        <AuthSocialButton icon={BsGoogle}  onClick={() => socialAction('google')}/>
+                        <AuthSocialButton
+                         icon={BsGoogle}  
+                         onClick={() => socialAction('google')}
+                         />
                     </div>
                 </div>
                 <div className='flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500'>
@@ -152,5 +185,4 @@ const AuthForm: FC<AuthFormProps> = ({
         </div>
     )
 }
-
-export default AuthForm
+export default AuthForm;

@@ -1,4 +1,5 @@
 import Providers from './components/Providers'
+import AuthContext from './context/AuthContext'
 import ToasterContext from './context/ToasterContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
@@ -19,10 +20,13 @@ export default function RootLayout({
     <html lang="en">
 
       <body className={inter.className}>
-        <Providers>
-           {children}
-        </Providers>
-       <ToasterContext />
+        <AuthContext>
+          <Providers>
+            {children}
+          </Providers>
+          <ToasterContext />
+        </AuthContext>
+
       </body>
     </html>
   )
