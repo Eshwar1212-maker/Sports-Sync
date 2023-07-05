@@ -55,6 +55,7 @@ const AuthForm: FC<AuthFormProps> = ({
           },
           onSuccess: () => {
             toast.success("Created account succesfully!")
+            router.push("/users")
           }
         },
       );
@@ -89,6 +90,7 @@ const AuthForm: FC<AuthFormProps> = ({
                 }
                 if(callback?.ok && !callback?.error){
                     toast.success("Succesfully logged in!")
+                    router.push("/users")
                 }
             })
         }
