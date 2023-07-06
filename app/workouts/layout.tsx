@@ -1,11 +1,17 @@
-export default async function UsersLayout({
+import Sidebar from "../components/sidebar/Sidebar"
+
+export default async function WorkoutsLayout({
     children
 }: {
     children: React.ReactNode
-}){
+}) {
     return (
-        <div>
-            {children}
-        </div>
+
+        <Sidebar>
+            <div className="h-full">
+                {children}
+            </div>
+        </Sidebar>
+
     )
 }
