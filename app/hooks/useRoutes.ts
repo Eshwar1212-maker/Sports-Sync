@@ -5,6 +5,7 @@ import {HiArrowLeftOnRectangle, HiUsers} from "react-icons/hi2"
 import useConversation from "./useConversation";
 import {CgGym} from 'react-icons/cg'
 import {FcNegativeDynamic} from 'react-icons/fc'
+import {IoIosNotificationsOutline} from 'react-icons/io'
 
 
 import { signOut } from "next-auth/react";
@@ -35,6 +36,12 @@ const useRoutes = () => {
           label: 'Users', 
           href: '/users', 
           icon: HiUsers, 
+          active: pathName === '/users'
+        },
+        { 
+          label: 'Notification', 
+          href: '/notification', 
+          icon: IoIosNotificationsOutline, 
           active: pathName === '/users'
         },
         {
