@@ -16,7 +16,7 @@ const useRoutes = () => {
     const routes = useMemo(() => [
        {
             label: "Tracker",
-            href: "/workouts",
+            href: "/tracker",
             icon: FcNegativeDynamic,
             active: pathName === "/conversation" || !!conversationId
         },

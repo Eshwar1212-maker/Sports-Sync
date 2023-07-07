@@ -6,7 +6,7 @@ import DesktopItem from "./DeskTopItem";
 import useRoutes from "@/app/hooks/useRoutes";
 
 interface DesktopSidebarProps {
-  currentUser: User
+  currentUser: any
 }
 
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
@@ -15,7 +15,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log({ currentUser, }, 'TEST')
+  console.log(currentUser);
+  
 
   return ( 
     <>

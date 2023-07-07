@@ -1,3 +1,4 @@
+import getCurrentUser from "@/app/actions/getCurrentUser"
 import DesktopSidebar from "./DesktopSidebar"
 import MobileFooter from "./MobileFooter"
 
@@ -5,10 +6,13 @@ import MobileFooter from "./MobileFooter"
 export default async function Sidebar({children}: {
   children: React.ReactNode
 }){
+  const currentUser = getCurrentUser()
+  console.log(currentUser);
+  
   return (
     <div className="h-full">
       <DesktopSidebar
-      
+        currentUser={currentUser}
       />
       <MobileFooter />
       <main className="lg:pl-20 h-full">
