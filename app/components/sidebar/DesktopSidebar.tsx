@@ -64,7 +64,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
         className="cursor-pointer hover:opacity-75 transition"
         >
           <Avatar
-          currentUser={currentUser}
+          user={currentUser}
            />
         </div>
       </nav>

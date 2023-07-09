@@ -5,11 +5,11 @@ import Image from 'next/image'
 import { FC } from 'react'
 
 interface AvatarProps {
-  currentUser: User
+  user: User
 
 }
 const Avatar: FC<AvatarProps> = ({
-    currentUser
+    user
 }) => {
   return (
     <div className='relative'>
@@ -18,7 +18,7 @@ const Avatar: FC<AvatarProps> = ({
       >
         <Image
         alt='Avatar'
-        src={currentUser?.image || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"}
+        src={user?.image || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"}
         fill
         />
       </div>
