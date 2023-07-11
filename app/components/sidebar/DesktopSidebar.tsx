@@ -5,6 +5,9 @@ import { User } from "@prisma/client";
 import DesktopItem from "./DeskTopItem";
 import useRoutes from "@/app/hooks/useRoutes";
 import Avatar from "../Avatar";
+import { BiLogOutCircle } from 'react-icons/bi'
+import { GrNotification } from 'react-icons/gr'
+import { signOut } from "next-auth/react";
 
 interface DesktopSidebarProps {
   currentUser: User
@@ -13,11 +16,12 @@ interface DesktopSidebarProps {
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   currentUser
 }) => {
-  const routes = useRoutes({notificationsNumber: 7});
+  const routes = useRoutes({ notificationsNumber: 7 });
   const [isOpen, setIsOpen] = useState(false);
 
+  
 
-  return ( 
+  return (
     <div>
       <div className="
         hidden 
@@ -37,7 +41,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
         justify-between
       ">
         <nav className="mt-4 flex flex-col justify-between">
-          <ul role="list" className="flex flex-col items-center space-y-1">
+          <ul role="list" className="flex flex-col items-center space-y-4">
             {routes.map((item) => (
               <DesktopItem
                 key={item.label}
@@ -45,36 +49,44 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
                 label={item.label}
                 icon={item.icon}
                 active={item.active}
-                onClick={item.onClick}
                 notificationNumber={4}
               />
-            
+
             ))}
-            
+            <li className="relative py-4 h-6 w-6 shrink-0 cursor-pointer">
+              <span className="absolute top-0 right-0 bg-blue-400 text-white text-[12px] w-5 h-5 rounded-full flex items-center justify-center">
+                5
+              </span>
+              <GrNotification size={24} />
+            </li>
+            <li onClick={() => signOut()} className="py-8 h-6 w-6 shrink-0 cursor-pointer">
+              <BiLogOutCircle size={23} />
+            </li>
+
           </ul>
         </nav>
         <nav className="mt-4 flex flex-col justify-between items-center">
-          <div 
-            onClick={() => setIsOpen(true)} 
+          <div
+            onClick={() => setIsOpen(true)}
             className="cursor-pointer hover:opacity-75 transition"
           >
           </div>
         </nav>
         <nav
-      className="mt-4 flex flex-col justify-between items-center"
-      >
-        <div
-        onClick={() => setIsOpen(true)}
-        className="cursor-pointer hover:opacity-75 transition"
+          className="mt-4 flex flex-col justify-between items-center"
         >
-          <Avatar
-          user={currentUser}
-           />
-        </div>
-      </nav>
+          <div
+            onClick={() => setIsOpen(true)}
+            className="cursor-pointer hover:opacity-75 transition"
+          >
+            <Avatar
+              user={currentUser}
+            />
+          </div>
+        </nav>
       </div>
     </div>
-   );
+  );
 }
- 
+
 export default DesktopSidebar;

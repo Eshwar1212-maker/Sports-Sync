@@ -41,19 +41,6 @@ const useRoutes = ({notificationsNumber}: useRoutesProps) => {
           href: '/users', 
           icon: HiUsers, 
           active: pathName === '/users'
-        },
-        { 
-          label: 'Notification', 
-          href: '/notification', 
-          icon: IoIosNotificationsOutline, 
-          active: pathName === '/users',
-          notificationsNumber: notificationsNumber
-        },
-        {
-          label: 'Logout', 
-          onClick: () => signOut(),
-          href: '#',
-          icon: HiArrowLeftOnRectangle, 
         }
     ], [pathName, conversationId])
     return routes;

@@ -1,9 +1,11 @@
 import clsx from 'clsx';
+import { IconType } from "react-icons";
+
 import Link from "next/link";
 
 interface DesktopItemProps {
     label: string;
-    icon: any;
+    icon: IconType;
     href: string;
     onClick?: () => void;
     active?: boolean;
@@ -26,7 +28,7 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
     };
 
     return (
-        <li onClick={handleClick} key={label}>
+        <li id='fucking' onClick={handleClick} key={label}>
             <Link
                 href={href}
                 className={clsx(`
@@ -46,11 +48,8 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
                     active && 'bg-gray-100 text-black'
                 )}
             >
-                <span className={label === "Notification" && notificationNumber ? "text-[10px] mt-1 mx-auto my-[-23px] text-red-900" :
-                 "text-[11px] mx-auto"}>
-                    {label === "Notification" && notificationNumber}
-                </span>
-                <Icon size={40} className={label === "Notification" ? "h-6 w-6 shrink-0" 
+              
+                <Icon size={70} className={label === "Notification" ? "h-6 w-6 shrink-0" 
                 : "h-6 w-6 shrink-0"} aria-hidden="true" />
                 <span className="sr-only"></span>
             </Link>

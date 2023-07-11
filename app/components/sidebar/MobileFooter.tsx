@@ -32,6 +32,7 @@ const MobileFooter = () => {
           onClick={route.onClick}
         />
       ))}
+      
     </div>
    );
 }
