@@ -10,7 +10,11 @@ import {IoIosNotificationsOutline} from 'react-icons/io'
 
 import { signOut } from "next-auth/react";
 
-const useRoutes = () => {
+interface useRoutesProps{
+  notificationsNumber?: number
+}
+
+const useRoutes = ({notificationsNumber}: useRoutesProps) => {
     const pathName = usePathname();
     const { conversationId } = useConversation()
     const routes = useMemo(() => [
@@ -42,7 +46,8 @@ const useRoutes = () => {
           label: 'Notification', 
           href: '/notification', 
           icon: IoIosNotificationsOutline, 
-          active: pathName === '/users'
+          active: pathName === '/users',
+          notificationsNumber: notificationsNumber
         },
         {
           label: 'Logout', 

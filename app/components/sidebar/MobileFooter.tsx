@@ -5,7 +5,7 @@ import useRoutes from "@/app/hooks/useRoutes";
 import MobileItem from "./MobileItem";
 
 const MobileFooter = () => {
-  const routes = useRoutes();
+  const routes = useRoutes({notificationsNumber: 7});
   const { isOpen } = useConversation();
 
   return ( 
