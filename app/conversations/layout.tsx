@@ -18,4 +18,4 @@ export default async function ConversationsLayout({
             </div>
         </Sidebar>
     )
-}
+} 
