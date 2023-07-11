@@ -14,7 +14,7 @@ export default async function UsersLayout({
 
         <Sidebar>
             <div className="h-full">
-                <UserList users ={users}/>
+                <UserList items ={users}/>
                 {children}
             </div>
         </Sidebar>

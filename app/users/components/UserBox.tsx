@@ -12,6 +12,7 @@ interface UserBoxProps {
 const UserBox: FC<UserBoxProps> = ({
     data
 }) => {
+    const router = useRouter()
     const { mutate: createConversation, isLoading, error } = useMutation(
         () =>
         axios.post('/api/conversations', {
@@ -26,7 +27,7 @@ const UserBox: FC<UserBoxProps> = ({
         }
         }
     )
-  const router = useRouter()
+    
 
   return (
     <div
