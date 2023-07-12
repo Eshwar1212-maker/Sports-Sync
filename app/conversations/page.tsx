@@ -1,12 +1,9 @@
 "use client"
-import { FC } from 'react'
+
 import EmptyState from '../components/EmptyState'
 import useConversation from '../hooks/useConversation'
 import clsx from 'clsx'
 
-interface PageProps {
-
-}
 const Home = () => {
   const { isOpen } = useConversation()
   return (
