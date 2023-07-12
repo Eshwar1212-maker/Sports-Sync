@@ -6,7 +6,6 @@ import { FC } from 'react'
 
 interface AvatarProps {
   user: User
-
 }
 const Avatar: FC<AvatarProps> = ({
     user
