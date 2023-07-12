@@ -5,7 +5,7 @@ import { User } from "@prisma/client";
 import DesktopItem from "./DeskTopItem";
 import useRoutes from "@/app/hooks/useRoutes";
 import Avatar from "../Avatar";
-import { BiLogOutCircle } from 'react-icons/bi'
+import {SlLogout} from "react-icons/sl"
 import { GrNotification } from 'react-icons/gr'
 import { signOut } from "next-auth/react";
 
@@ -60,7 +60,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
               <GrNotification size={24} />
             </li>
             <li onClick={() => signOut()} className="py-8 h-6 w-6 shrink-0 cursor-pointer">
-              <BiLogOutCircle size={23} />
+              <SlLogout size={23} />
             </li>
 
           </ul>

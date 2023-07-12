@@ -51,7 +51,7 @@ const ConversationBox: FC<ConversationBoxProps> = ({
   return (
     <div
      onClick={handleClick}
-     className={clsx(`w-full relative flex items-center space-x-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer`, 
+     className={clsx(`w-full relative flex items-center space-x-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer py-2`, 
      selected ? "bg-nuetral100" : "bg-white"
      )}
      >
