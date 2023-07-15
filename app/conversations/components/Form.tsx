@@ -10,6 +10,11 @@ import MessageInput from './MessageInput'
 import { useMutation } from '@tanstack/react-query'
 
 interface FormProps {}
+interface PostMessageData {
+  message: string;
+  conversationId: string;
+}
+
 
 const Form: FC<FormProps> = ({}) => {
   const {conversationId} = useConversation()
@@ -22,7 +27,7 @@ const Form: FC<FormProps> = ({}) => {
     defaultValues: { message: '' }
   });
 
-  const postMessage = useMutation<FieldValues>(
+  const {mutate: postMessage, isLoading, isError} = useMutation<FieldValues>(
     (data) => {
       return axios.post('/api/messages', {
         ...data as any,
@@ -42,7 +47,7 @@ const Form: FC<FormProps> = ({}) => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data: any) => {
     setValue('message', '', { shouldValidate: true });
-    postMessage.mutate(data);
+    postMessage(data);
   }
   
   return (
