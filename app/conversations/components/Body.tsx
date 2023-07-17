@@ -14,7 +14,8 @@ const Body: FC<BodyProps> = ({
   const [messages, setMessages] = useState(initialMessages)
   const bottomRef = useRef<HTMLDivElement>(null)
   const conversation = useConversation()
-
+  console.log(messages);
+  
   return (
 
     <div className='flex-1 overflow-y-auto'>
