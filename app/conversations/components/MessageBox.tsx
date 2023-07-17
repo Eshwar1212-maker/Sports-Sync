@@ -21,7 +21,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
 
 
   const isOwn = session.data?.user?.email === data?.sender?.email
-  const seenList = (data.seen || [])
+  const seenList = (data.seen)
     .filter((user) => user.email !== data?.sender?.email)
     .map((user) => user.name)
     .join(', ');
@@ -34,7 +34,8 @@ const MessageBox: React.FC<MessageBoxProps> = ({
     isOwn ? 'bg-sky-500 text-white' : 'bg-gray-100', 
     data.image ? 'rounded-md p-0' : 'rounded-full py-2 px-3'
   );
-
+  console.log(seenList, data.seen[0].name);
+  
   return ( 
     <div className={container}>
       <div className={avatar}>
@@ -77,7 +78,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
             text-gray-500
             "
           >
-            {`Seen by ${seenList}`}
+            {`Seen by ${data.seen[0].name}`}
           </div>
         )}
       </div>

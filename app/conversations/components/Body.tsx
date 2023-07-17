@@ -2,8 +2,10 @@
 
 import useConversation from '@/app/hooks/useConversation'
 import { FullMessageType } from '@/app/types'
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import MessageBox from './MessageBox'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 interface BodyProps {
   initialMessages: any
 }
@@ -13,8 +15,11 @@ const Body: FC<BodyProps> = ({
 
   const [messages, setMessages] = useState(initialMessages)
   const bottomRef = useRef<HTMLDivElement>(null)
-  const conversation = useConversation()
-  console.log(messages);
+  const conversationId = useConversation()
+
+  useEffect(() => {
+    axios.post(`/api/conversations/${conversationId}/seen`);
+  }, [conversationId]);
   
   return (
 
