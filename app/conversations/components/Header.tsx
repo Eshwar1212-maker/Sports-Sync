@@ -6,6 +6,7 @@ import { Conversation, User } from '@prisma/client'
 import Link from 'next/link'
 import { FC } from 'react'
 import { HiChevronLeft, HiEllipsisHorizontal } from 'react-icons/hi2'
+import ProfileDrawer from './ProfileDrawer'
 interface HeaderProps {
   conversation: Conversation & {
     users: User[]
@@ -25,9 +26,11 @@ const Header: FC<HeaderProps> = ({
 
   return (
     <>
-        <ProfileDrawer
-        
-         />
+        {/* <ProfileDrawer
+            data={conversation}
+            isOpen={drawerOpen}
+            onClose={() => setDrawerOpen(false)}
+         /> */}
         <div className='bg-white w-full flex border-b-[1px] sm:px-4 py-3 lg:px-6 justify-between items-center shadow-sm'> 
         <div className="flex gap-3 items-center">
           <Link className='lg:hidden block text-sky-700 hover:text-sky-800 transition cursor-pointer' href={"/conversations"}>
