@@ -8,6 +8,7 @@ import Avatar from "../Avatar";
 import {SlLogout} from "react-icons/sl"
 import { GrNotification } from 'react-icons/gr'
 import { signOut } from "next-auth/react";
+import SettingsModal from "./SettingsModal";
 
 interface DesktopSidebarProps {
   currentUser: User
@@ -23,7 +24,11 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
 
   return (
     <>
-      
+      <SettingsModal
+      currentUser={currentUser}
+      isOpen={isOpen}
+      onClose={() => setIsOpen(false)}
+       />
     <div>
       <div className="
         hidden 
