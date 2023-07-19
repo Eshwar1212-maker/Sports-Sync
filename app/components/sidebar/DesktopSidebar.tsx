@@ -22,6 +22,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   
 
   return (
+    <>
+      
     <div>
       <div className="
         hidden 
@@ -86,6 +88,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
         </nav>
       </div>
     </div>
+    </>
+ 
   );
 }
 
