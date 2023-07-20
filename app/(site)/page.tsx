@@ -14,7 +14,6 @@ const page: FC<pageProps> = ({
         <div>
 
             <div
-                style={{ backgroundImage: "url('https://media.istockphoto.com/id/1364816628/video/animation-of-sports-tactics-over-basketball-court-and-chalkboard-background.jpg?s=640x640&k=20&c=vakg-aSp69W--mflsXfetlVoRCv7l2IGjsSRZBuQJP8=')" }}
                 className='flex h-screen min-h-full flex-col py-[131px] sm:px-6 lg:px-8 bg-gray-100 bg-gradient-to-t bg-no-repeat bg-cover'>
                 <div className='sm:mx-auto sm:w-full sm:max-w-md'>
 
@@ -27,7 +26,6 @@ const page: FC<pageProps> = ({
                     />
 
                 </div>
-                <h2 className='mt-2 text-center text-[25px] font-bold tracking-tight text-white'>Let <span className=''>us</span> help you take your game to the next level.</h2>
 
                 {/*Auth Form*/}
                 <AuthForm />

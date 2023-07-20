@@ -10,6 +10,7 @@ import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-hot-toast'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import LoadingModal from '@/app/components/LoadingModal'
 
 
 type Variant = 'LOGIN' | 'REGISTER'
@@ -48,7 +49,9 @@ const AuthForm: FC<AuthFormProps> = ({
         }
     })
     const registerMutation = useMutation(
-        (data: FieldValues) => axios.post('/api/register', data),
+        (data: FieldValues) => {
+           return axios.post('/api/register', data)
+        },
         {
           onError: () => {
             toast.error("Registration failed"); 
@@ -59,54 +62,70 @@ const AuthForm: FC<AuthFormProps> = ({
           }
         },
       );
-      
+    
     const loginMutation = useMutation(
-        (data: FieldValues) =>  signIn('credentials', {
-            ...data,
-            redirect: false
-        }),
-        {
-        onError: () => {
-            toast.error("Login failed, please make sure you are using the right email and password."); 
-            }, 
-        onSuccess: (callback) => {
-            if(callback?.error) toast.error("Login failed, please make sure you are using the right email and password."); 
-            if(callback?.ok && !callback?.error) toast.success("Succesfully logged in!")
-        }
+        (data: FieldValues) => {
+            return signIn('credentials', {
+                ...data,
+                redirect: false
+            });
         },
-        );
+        {
+            onError: () => {
+                toast.error("Login failed, please make sure you are using the right email and password."); 
+            }, 
+            onSuccess: (callback) => {
+                if(callback?.error) toast.error("Login failed, please make sure you are using the right email and password."); 
+            }
+        },
+    );
+    
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         if (variant === 'REGISTER') {
             registerMutation.mutate(data)
         }
         if (variant === 'LOGIN') {
-            signIn('credentials', {
-                ...data,
-                redirect: false
-            })
-            .then((callback) => {
-                if(callback?.error){
-                    toast.error("Invalid credentials")
-                }
-                if(callback?.ok && !callback?.error){
-                    toast.success("Succesfully logged in!")
-                    router.push("/users")
-                }
-            })
+            toast((t) => (
+                <>
+                    <span className='text-sm'>Signing you in, please wait...</span> <LoadingModal />
+                </>
+            ));
+            loginMutation.mutate(data)
         }
     }
-    const socialAction = (action: string) => {    
-        signIn(action, { redirect: false })
-          .then((callback) => {
-            if (callback?.error) {
-              toast.error('Invalid credentials!');
+    const socialLoginMutation = useMutation(
+        (provider: string) => {
+            return signIn(provider, { redirect: false });
+        },
+        {
+            onError: () => {
+                toast.error("Social login failed. Please try again."); 
+            }, 
+            onSuccess: (callback) => {
+                if(callback?.error) toast.error("Social login failed. Please try again."); 
+                if(callback?.ok && !callback?.error) {
+                    toast.success("Successfully logged in!")
+                    router.push("/users")
+                }
             }
+        },
+    );
+    const socialAction = (action: string) => {
+        setTimeout(() => {
+            toast((t) => (
+                <>
+                    <span className='text-sm'>Logging in with google, please wait...</span> <LoadingModal />
+                </>
+            ));
+            socialLoginMutation.mutate(action);
+        }, 0);
+    }
     
-            if (callback?.ok) {
-              router.push('/conversations')
-            }
-          })
-      } 
+    //  console.log(socialLoginMutation.isLoading);
+    //   console.log(registerMutation.isLoading);
+    //   console.log(loginMutation.isLoading);
+      
+      
     return (
         <div
             className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'
