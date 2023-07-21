@@ -6,15 +6,14 @@ import { useSession } from "next-auth/react";
 import { useEffect, useMemo, useState } from "react";
 import { MdOutlineGroupAdd } from 'react-icons/md';
 import clsx from "clsx";
-
+import GroupChatModal from "./GroupChatModal";
 import useConversation from "@/app/hooks/useConversation";
-
 import ConversationBox from "./ConversationBox";
 import { FullConversationType } from "@/app/types";
 
 interface ConversationListProps {
-  initialItems: FullConversationType[];
-  users: User[];
+  initialItems: any;
+  users?: User[];
   title?: string;
 }
 
@@ -30,14 +29,13 @@ const ConversationList: React.FC<ConversationListProps> = ({
 
   const { conversationId, isOpen } = useConversation();
 
-  const pusherKey = useMemo(() => {
-    return session.data?.user?.email
-  }, [session.data?.user?.email])
-
- 
-
   return (
     <>
+      <GroupChatModal 
+        users={users} 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+      />
       <aside className={clsx(`
         fixed 
         inset-y-0 
@@ -53,7 +51,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
             <div className="text-2xl font-bold text-neutral-800">
-               Chats
+              Messages
             </div>
             <div 
               onClick={() => setIsModalOpen(true)} 
@@ -70,7 +68,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
               <MdOutlineGroupAdd size={20} />
             </div>
           </div>
-          {items.map((item) => (
+          {items.map((item: any) => (
             <ConversationBox
               key={item.id}
               data={item}

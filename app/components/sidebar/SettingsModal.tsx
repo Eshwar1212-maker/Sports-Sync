@@ -59,6 +59,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
             })
             .finally(() => {
                 setIsLoading(false)
+                toast.success("Profile settings updated")
             })
     }
     return (
