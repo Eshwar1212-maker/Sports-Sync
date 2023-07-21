@@ -1,108 +1,115 @@
-"use client"
+"use client";
 
-import Input from "@/app/components/inputs/Input"
-import { User } from "@prisma/client"
-import axios from "axios"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
-import { toast } from "react-hot-toast"
-import Button from "@/app/components/Button"
-import Modal from "@/app/components/Modal"
+import Modal from "@/app/components/Modal";
+import Input from "@/app/components/inputs/Input";
+import Select from "@/app/components/inputs/Select";
+import { User } from "@prisma/client";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { log } from "console";
+import { useRouter } from "next/navigation";
 
-interface GroupChatModalProps{
-    isOpen?: boolean
-    onClose: () => void
-    users: any
+import { FC } from "react";
+import { Field, FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+interface GroupChatModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  users: any;
 }
-
-
-const GroupChatModal: React.FC<GroupChatModalProps> = ({
-    isOpen,
-    onClose,
-    users
+const GroupChatModal: FC<GroupChatModalProps> = ({
+  isOpen,
+  onClose,
+  users,
 }) => {
-    const router = useRouter()
-    const [isLoading, setIsLoading] = useState(false)
-    const {
-        register, 
-        handleSubmit,
-        setValue,
-        watch,
-        formState: {
-            errors
-        }
-    } = useForm<FieldValues>({
-        defaultValues: {
-            name: '',
-            members: []
-        }
-    })
-    const members = watch('members')
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        setIsLoading(true)
-        axios.post('/api/conversations', {
-            ...data,
-            isGroup: true
-        })
-        .then(() => {
-            router.refresh()
-            onClose()
-        })
-        .catch(() => {
-            toast.error('Somethng went wrong')
-        })
-        .finally(() => {
-            setIsLoading(false)
-        })
-    }
-  return (
-    <Modal
-    isOpen={isOpen}
-    onClose={onClose}
-    >
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="space-y-12">
-                <div className="border-b border-gray-900/10 pb-12">
-                    <h2 className="text-base font-semibold leading-7 text-gray-900">
-                        Create a group chat
-                    </h2>
-                    <p
-                    className="mt-1 text-sm leading-6 text-gray-600"
-                    >
-                        Create a chat with more than 2 people
-                    </p>
-                    <div className="mt-10 flex flex-col gap-y-8">
-                        <Input 
-                            register={register}
-                            label="Name"
-                            id="name"
-                            disabled={isLoading}
-                            errors={errors}
-                            required
-                        />
-                  
-                    </div>
-                </div>
-            </div>
-            <div className="mt-6 flex items-center justify-end gap-x-6">
-                <Button
-                disabled={isLoading}
-                onClick={onClose}
-                type="button"
-                secondary
-                >
-                    Cancel
-                </Button>
-                <Button
-                disabled={isLoading}
-                type="submit"
-                >Create
-                </Button>
-            </div>  
-        </form>
-    </Modal>
-  )
-}
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm<FieldValues>({
+    defaultValues: {
+      name: "",
+      members: [],
+    },
+  });
 
-export default GroupChatModal
+  const members = watch("members");
+  console.log(members);
+  
+  const {
+    mutate: createGroupChatMutation,
+    isLoading,
+    isError,
+  } = useMutation(
+    (data: FieldValues) => {
+      return axios.post(`/api/conversations`, {
+        ...data,
+        isGroup: true,
+      });
+    },
+    {
+      onSuccess: () => {
+        router.refresh();
+      },
+      onError: () => {
+        toast.error(
+          "Something went wrong, please make sure you are adding at least 3 members to a group."
+        );
+      },
+    }
+  );
+
+  const loadUserOptions = (inputValue: string) => {
+    return new Promise<User[]>((resolve) => {
+      resolve(
+        users.filter((user: User) =>
+          user?.name?.toLowerCase().includes(inputValue.toLowerCase())
+        ).map((user: User) => ({ label: user.name, value: user.id }))
+      );
+    });
+  };
+  
+  console.log(users);
+  
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    createGroupChatMutation(data);
+  };
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="space-y-12">
+          <div className="border-b border-gray-900/10 pb-10">
+            <h2 className="text-base font-semibold leading-7 text-gray-900">
+              Create a group chat
+            </h2>
+            <p className="mt-1 text-sm leading-6 text-gray-600"></p>
+            <div className="mt-10 flex flex-col gap-y-8"></div>
+            <Input
+              register={register}
+              label="Name"
+              id="name"
+              disabled={isLoading}
+              errors={errors}
+            />
+            <Select
+              disabled={isLoading}
+              label="Members"
+              onChange={(value) =>
+                setValue("members", value, { shouldValidate: true })
+              }
+              value={members}
+              loadOptions={loadUserOptions}
+            />
+          </div>
+        </div>
+      </form>
+    </Modal>
+  );
+};
+
+export default GroupChatModal;
