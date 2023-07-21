@@ -67,10 +67,11 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
       resolve(
         users.filter((user: User) =>
           user?.name?.toLowerCase().includes(inputValue.toLowerCase())
-        ).map((user: User) => ({ label: user.name, value: user.id }))
+        ).map((user: User) => ({ label: user.name, value: user.id, image: user.image }))
       );
     });
   };
+  
   
   console.log(users);
   

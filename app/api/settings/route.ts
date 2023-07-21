@@ -12,6 +12,7 @@ export async function POST(
     const {
       name,
       image,
+      imageUrl
     } = body;
 
     if (!currentUser?.id) {
@@ -23,7 +24,7 @@ export async function POST(
         id: currentUser.id
       },
       data: {
-        image: image,
+        image: image || imageUrl,
         name: name
       },
     });

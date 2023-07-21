@@ -1,5 +1,17 @@
 import AsyncSelect from "react-select/async";
+import { components } from "react-select";
 import { FC } from "react";
+
+const CustomOption = (props: any) => {
+  return (
+    <components.Option {...props}>
+      <div className="flex justify-between">
+      <div style={{ marginLeft: 10 }}>{props.label}</div>
+        <img className="rounded-full" src={props.data.image} alt="User" width={46} height={46} />
+      </div>
+    </components.Option>
+  );
+};
 
 interface SelectProps {
   label: string;
@@ -30,6 +42,7 @@ const Select: FC<SelectProps> = ({
           menuPortalTarget={document.body}
           defaultOptions
           loadOptions={loadOptions}
+          components={{ Option: CustomOption }}
           styles={{
             menuPortal: (base) => ({
                 ...base,

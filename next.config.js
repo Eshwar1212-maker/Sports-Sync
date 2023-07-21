@@ -1,16 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
   },
   images: {
+    domains: [
+      "res.cloudinary.com",
+      "avatars.githubusercontent.com",
+      "lh3.googleusercontent.com",
+      "psmag.com",
+      "cdn.pixabay.com"
+    ],
     remotePatterns: [
-        {
-          protocol: "https",
-          hostname: "**",
-        },
-      ],
-  },
-}
+      {
+        protocol: "https",
+        hostname: "**",
 
-module.exports = nextConfig
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
