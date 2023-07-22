@@ -27,14 +27,19 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
 }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const otherUser = useOtherUser(data);
+
+  console.log("OTHER USER CREATED AT: " + otherUser?.createdAt);
+
+
   
   const joinedDate = useMemo(() => {
-    return format(new Date(otherUser.createdAt), 'PP');
-  }, [otherUser.createdAt]);
+    return otherUser?.createdAt
+  }, [otherUser?.createdAt]);
+
   
   const title = useMemo(() => {
-    return data.name || otherUser.name;
-  }, [data.name, otherUser.name]);
+    return data.name || otherUser?.name;
+  }, [data.name, otherUser?.name]);
 
 //   const { members } = useActiveList();
 //   const isActive = members.indexOf(otherUser?.email!) !== -1;
@@ -164,40 +169,11 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                   sm:col-span-2
                                 "
                               >
-                                {otherUser.email}
+                                {otherUser?.email}
                               </dd>
                             </div>
                           )}
-                          {!data.isGroup && (
-                            <>
-                              <hr />
-                              <div>
-                                <dt 
-                                  className="
-                                    text-sm 
-                                    font-medium 
-                                    text-gray-500 
-                                    sm:w-40 
-                                    sm:flex-shrink-0
-                                  "
-                                >
-                                  Joined
-                                </dt>
-                                <dd 
-                                  className="
-                                    mt-1 
-                                    text-sm 
-                                    text-gray-900 
-                                    sm:col-span-2
-                                  "
-                                >
-                                  <time dateTime={joinedDate}>
-                                    {joinedDate}
-                                  </time>
-                                </dd>
-                              </div>
-                            </>
-                          )}
+                    
                         </dl>
                       </div>
                         </div>

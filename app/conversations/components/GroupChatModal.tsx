@@ -1,8 +1,11 @@
 "use client";
 
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import Button from "@/app/components/Button";
 import Modal from "@/app/components/Modal";
 import Input from "@/app/components/inputs/Input";
 import Select from "@/app/components/inputs/Select";
+import useOtherUser from "@/app/hooks/useOtherUser";
 import { User } from "@prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
@@ -17,6 +20,8 @@ interface GroupChatModalProps {
   onClose: () => void;
   users: any;
 }
+
+
 const GroupChatModal: FC<GroupChatModalProps> = ({
   isOpen,
   onClose,
@@ -37,7 +42,8 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
   });
 
   const members = watch("members");
-  console.log(members);
+  
+  
   
   const {
     mutate: createGroupChatMutation,
@@ -45,6 +51,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
     isError,
   } = useMutation(
     (data: FieldValues) => {
+      console.log("FIELD VALUES DATA: " + data);
       return axios.post(`/api/conversations`, {
         ...data,
         isGroup: true,
@@ -53,6 +60,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
     {
       onSuccess: () => {
         router.refresh();
+        router.push(`/conversations`)
       },
       onError: () => {
         toast.error(
@@ -73,7 +81,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
   };
   
   
-  console.log(users);
+
   
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -107,6 +115,10 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
               loadOptions={loadUserOptions}
             />
           </div>
+        </div>
+        <div className="mt-6 flex items-center justify-end gap-x-6">
+            <Button disabled={isLoading} onClick={onClose} type="button" secondary>Cancel</Button>
+            <Button disabled={isLoading} type="submit">Create</Button>
         </div>
       </form>
     </Modal>

@@ -2,10 +2,8 @@
 
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-
 import useConversation from "@/app/hooks/useConversation";
 import MessageBox from "./MessageBox";
-import { FullMessageType } from "@/app/types";
 
 interface BodyProps {
   initialMessages: any;
