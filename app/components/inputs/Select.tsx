@@ -5,7 +5,7 @@ import { FC } from "react";
 const CustomOption = (props: any) => {
   return (
     <components.Option {...props}>
-      <div className="flex justify-between">
+      <div className="flex justify-between h-10 cursor-pointer">
       <div style={{ marginLeft: 10 }}>{props.label}</div>
         <img className="rounded-full" src={props.data.image} alt="User" width={46} height={46} />
       </div>
