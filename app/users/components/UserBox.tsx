@@ -8,8 +8,9 @@ import { FC } from "react";
 
 interface UserBoxProps {
   data: User;
+  input?: string
 }
-const UserBox: FC<UserBoxProps> = ({ data }) => {
+const UserBox: FC<UserBoxProps> = ({ data, input }) => {
   const router = useRouter();
   const {
     mutate: createConversation,
@@ -30,7 +31,7 @@ const UserBox: FC<UserBoxProps> = ({ data }) => {
     }
   );
 
-  console.log(isLoading);
+ 
 
   return (
     <>

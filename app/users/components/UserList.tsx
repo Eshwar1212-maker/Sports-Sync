@@ -1,4 +1,5 @@
 'use client';
+import { useState } from "react";
 import UserBox from "./UserBox";
 
 
@@ -7,13 +8,23 @@ import { User } from "@prisma/client";
 
 interface UserListProps {
   items: User[];
+  searchQuery?: string
 }
 
 const UserList: React.FC<UserListProps> = ({ 
   items, 
 }) => {
-  // console.log(items);
-  
+
+
+  const [input, setInput] = useState<any>("")
+
+
+  const filteredItems = items.filter((item: any) => item.name.toLowerCase().includes(input.toLowerCase()))
+
+
+  console.log("CURRENT USERS: " + items);
+  console.log("SEARCH QUERY INPUT: " + input);
+
   return ( 
     <aside 
       className="
@@ -30,6 +41,7 @@ const UserList: React.FC<UserListProps> = ({
         block w-full left-0
       "
     >
+
       <div className="px-5">
         <div className="flex-col">
           <div 
@@ -42,9 +54,11 @@ const UserList: React.FC<UserListProps> = ({
           >
             People
           </div>
+          <input onChange={(e) => setInput(e.target.value)} className="border-[1px] pb-2 my-1 rounded-lg p-1 w-full border-black" placeholder="Search users..."/>
+
         </div>
             {
-                items.map((item) => {
+                filteredItems.map((item) => {
                     return <UserBox
                     key={item.id}
                     data={item}

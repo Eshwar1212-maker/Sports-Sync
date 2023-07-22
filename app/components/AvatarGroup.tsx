@@ -1,7 +1,6 @@
-"use client"
 import { User } from "@prisma/client";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 interface AvatarGroupProps {
   users?: User[];
@@ -15,11 +14,13 @@ const getRandomUsers = (users: User[], num: number) => {
   return Array.from(indices).map((index: number) => users[index]);
 }
 
-
-
 const AvatarGroup: FC<AvatarGroupProps> = ({ users = [] }) => {
-  const numAvatars = Math.min(3, users.length);  // don't attempt to get more avatars than there are users
-  const randomUsers = getRandomUsers(users, numAvatars);
+  const [randomUsers, setRandomUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    const numAvatars = Math.min(3, users.length);  // don't attempt to get more avatars than there are users
+    setRandomUsers(getRandomUsers(users, numAvatars));
+  }, [users])
 
   const positionMap = {
     0: "top-0 left-[12px]",
@@ -29,13 +30,13 @@ const AvatarGroup: FC<AvatarGroupProps> = ({ users = [] }) => {
 
   return (
     <div className="relative h-11 w-11">
-        {
-          randomUsers.map((user, index) => (
-            <p key={user.id} className={`absolute inline-block rounded-full overflow-hidden h-[21px] w-[21px] ${positionMap[index as keyof typeof positionMap]}`}>
-                <Image alt="Avatar" fill src={user?.image || ""}/>
-            </p>
-          ))
-        }
+      {
+        randomUsers.map((user, index) => (
+          <p key={user.id} className={`absolute inline-block rounded-full overflow-hidden h-[21px] w-[21px] ${positionMap[index as keyof typeof positionMap]}`}>
+            <Image alt="Avatar" fill src={user?.image || ""}/>
+          </p>
+        ))
+      }
     </div>
   )
 };

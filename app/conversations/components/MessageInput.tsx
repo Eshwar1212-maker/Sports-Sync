@@ -7,7 +7,7 @@ interface MessageInputProps {
   type?: string
   placeholder?: string
   register: UseFormRegister<FieldValues>
-  errors: FieldErrors
+  errors?: FieldErrors
   required?: boolean
 }
 const MessageInput: FC<MessageInputProps> = ({
