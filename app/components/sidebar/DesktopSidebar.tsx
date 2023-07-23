@@ -9,6 +9,10 @@ import {SlLogout} from "react-icons/sl"
 import { GrNotification } from 'react-icons/gr'
 import { signOut } from "next-auth/react";
 import SettingsModal from "./SettingsModal";
+import { IoSettings, IoSettingsSharp } from "react-icons/io5";
+import { FcSettings } from "react-icons/fc";
+import { FiSettings } from "react-icons/fi";
+import { CiSettings } from "react-icons/ci";
 
 interface DesktopSidebarProps {
   currentUser: User
@@ -86,9 +90,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
             onClick={() => setIsOpen(true)}
             className="cursor-pointer hover:opacity-75 transition"
           >
-            <Avatar
-              user={currentUser}
-            />
+           <CiSettings size={35}/>
           </div>
         </nav>
       </div>

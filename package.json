@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "browser": {
+    "fs": false
+  },
   "dependencies": {
     "@emotion/css": "^11.11.2",
     "@headlessui/react": "^1.7.15",

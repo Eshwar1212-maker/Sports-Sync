@@ -8,22 +8,14 @@ import { User } from "@prisma/client";
 
 interface UserListProps {
   items: User[];
-  searchQuery?: string
 }
 
 const UserList: React.FC<UserListProps> = ({ 
-  items, 
+  items,
 }) => {
 
-
-  const [input, setInput] = useState<any>("")
-
-
-  const filteredItems = items.filter((item: any) => item.name.toLowerCase().includes(input.toLowerCase()))
-
-
-  console.log("CURRENT USERS: " + items);
-  console.log("SEARCH QUERY INPUT: " + input);
+  const [input, setInput] = useState<string>("")
+  const newList = items.filter((item: any) => item.name.toLowerCase().includes(input.toLowerCase()))
 
   return ( 
     <aside 
@@ -58,7 +50,7 @@ const UserList: React.FC<UserListProps> = ({
 
         </div>
             {
-                filteredItems.map((item) => {
+                newList.map((item) => {
                     return <UserBox
                     key={item.id}
                     data={item}
