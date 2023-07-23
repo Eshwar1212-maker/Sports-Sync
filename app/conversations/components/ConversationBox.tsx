@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
@@ -12,13 +12,13 @@ import { FullConversationType } from "@/app/types";
 import AvatarGroup from "@/app/components/AvatarGroup";
 
 interface ConversationBoxProps {
-  data: FullConversationType,
+  data: FullConversationType;
   selected?: boolean;
 }
 
-const ConversationBox: React.FC<ConversationBoxProps> = ({ 
-  data, 
-  selected 
+const ConversationBox: React.FC<ConversationBoxProps> = ({
+  data,
+  selected,
 }) => {
   const otherUser = useOtherUser(data);
   const session = useSession();
@@ -34,9 +34,11 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
     return messages[messages.length - 1];
   }, [data.messages]);
 
-  const userEmail = useMemo(() => session.data?.user?.email,
-  [session.data?.user?.email]);
-  
+  const userEmail = useMemo(
+    () => session.data?.user?.email,
+    [session.data?.user?.email]
+  );
+
   const hasSeen = useMemo(() => {
     if (!lastMessage) {
       return false;
@@ -48,49 +50,45 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
       return false;
     }
 
-    return seenArray
-      .filter((user) => user.email === userEmail).length !== 0;
+    return seenArray.filter((user) => user.email === userEmail).length !== 0;
   }, [userEmail, lastMessage]);
 
   const lastMessageText = useMemo(() => {
     if (lastMessage?.image) {
-      return 'Sent an image';
+      return "Sent an image";
     }
 
     if (lastMessage?.body) {
-      return lastMessage?.body
+      return lastMessage?.body;
     }
 
-    return 'Started a conversation';
+    return "Started a conversation";
   }, [lastMessage]);
 
-  return ( 
+  return (
     <div
       onClick={handleClick}
-      className={clsx(`
+      className={clsx(
+        `
         w-full 
-        relative 
         flex 
         items-center 
         space-x-3 
         p-3 
-        hover:bg-slate-500
         rounded-lg
         transition
         cursor-pointer
         `,
-        selected ? '' : ''
+
+        selected ? "" : ""
       )}
     >
-
-       {
-        data.isGroup ? 
-        <AvatarGroup users={data.users}/>
-        :
+      {data.isGroup ? (
+        <AvatarGroup users={data.users} />
+      ) : (
         <Avatar user={otherUser} />
+      )}
 
-       }
-      
       <div className="min-w-0 flex-1">
         <div className="focus:outline-none">
           <span className="absolute inset-0" aria-hidden="true" />
@@ -99,31 +97,33 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
               {data.name || otherUser?.name}
             </p>
             {lastMessage?.createdAt && (
-              <p 
+              <p
                 className="
                   text-xs 
                  
                   font-light
                 "
               >
-                {format(new Date(lastMessage.createdAt), 'p')}
+                {format(new Date(lastMessage.createdAt), "p")}
               </p>
             )}
           </div>
-          <p 
-            className={clsx(`
+          <p
+            className={clsx(
+              `
               truncate 
               text-sm
               hover:text-black
               `,
-              hasSeen ? '' : ' font-medium'
-            )}>
-              {lastMessageText}
-            </p>
+              hasSeen ? "" : " font-medium"
+            )}
+          >
+            {lastMessageText}
+          </p>
         </div>
       </div>
     </div>
   );
-}
- 
+};
+
 export default ConversationBox;

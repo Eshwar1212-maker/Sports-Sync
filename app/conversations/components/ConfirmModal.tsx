@@ -10,6 +10,8 @@ import useConversation from '@/app/hooks/useConversation';
 import { toast } from 'react-hot-toast';
 import Modal from '@/app/components/Modal';
 import Button from '@/app/components/Button';
+import clsx from 'clsx';
+import { useTheme } from 'next-themes';
 
 interface ConfirmModalProps {
   isOpen?: boolean;
@@ -36,7 +38,8 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
     .catch(() => toast.error('Something went wrong!'))
     .finally(() => setIsLoading(false))
   }, [router, conversationId, onClose]);
-
+  const { systemTheme, theme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="sm:flex sm:items-start">
@@ -77,7 +80,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
             Delete conversation
           </Dialog.Title>
           <div className="mt-2">
-            <p className="text-sm text-gray-500">
+          <p className={clsx(`text-sm`, currentTheme == "dark" ? "text-gray-300" : "text-gray-600")}>
               Are you sure you want to delete this conversation? This action cannot be undone.
             </p>
           </div>

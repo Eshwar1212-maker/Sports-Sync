@@ -13,11 +13,11 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
-  const { systemTheme, theme, setTheme } = useTheme();
+  const { systemTheme, theme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
   return (
     <Transition.Root show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-200" onClose={onClose}>
+      <Dialog as="div" className="relative z-50" onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -29,9 +29,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         >
           <div 
             className="
-              fixed 
-              inset-0 
-              transition-opacity
+            fixed 
+            inset-0 
+            bg-[#2f2f2f]
+            bg-opacity-80
+            transition-opacity
             "
           />
         </Transition.Child>
@@ -74,7 +76,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                 sm:w-full 
                 sm:max-w-lg 
                 sm:p-6
-              `, currentTheme == "dark" ? "bg-[#1f2937]" : "bg-white")}
+              `, currentTheme == "dark" ? "bg-[#1a1a1a]" : "bg-white")}
               >
                 <div 
                   className="
