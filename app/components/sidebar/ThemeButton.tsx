@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import {FaAffiliatetheme} from 'react-icons/fa'
-import { BsFillSunFill } from "react-icons/bs";
+import {FaAffiliatetheme, FaRegMoon} from 'react-icons/fa'
+import { BsFillSunFill, BsMoonStars } from "react-icons/bs";
 import { MdOutlineLightMode } from "react-icons/md";
+import { HiOutlineMoon } from "react-icons/hi";
+import { LiaAffiliatetheme, LiaMoon } from "react-icons/lia";
 
 const ThemeButton = () => {
   const [mounted, setMounted] = useState(false);
@@ -38,7 +40,7 @@ const ThemeButton = () => {
             setTheme("light");
           }}
         >
-          <MdOutlineLightMode size={19}/>
+          <LiaAffiliatetheme size={16}/>
         </button>
       )}
     </div>

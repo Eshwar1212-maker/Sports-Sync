@@ -7,12 +7,7 @@ module.exports = {
 	],
 	darkMode: "class",
 	theme: {
-		extend: {
-			fontFamily: {
-				oswald: "var(--font-oswald)",
-				popins: "var(--font-popins)",
-			},
-		},
+		
 	},
 	plugins: [],
 }

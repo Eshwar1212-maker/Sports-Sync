@@ -9,7 +9,9 @@ import useOtherUser from "@/app/hooks/useOtherUser";
 import { User } from "@prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import clsx from "clsx";
 import { log } from "console";
+import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 
 import { FC } from "react";
@@ -20,7 +22,6 @@ interface GroupChatModalProps {
   onClose: () => void;
   users: any;
 }
-
 
 const GroupChatModal: FC<GroupChatModalProps> = ({
   isOpen,
@@ -42,9 +43,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
   });
 
   const members = watch("members");
-  
-  
-  
+
   const {
     mutate: createGroupChatMutation,
     isLoading,
@@ -60,7 +59,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
     {
       onSuccess: () => {
         router.refresh();
-        router.push(`/conversations`)
+        router.push(`/conversations`);
       },
       onError: () => {
         toast.error(
@@ -73,16 +72,21 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
   const loadUserOptions = (inputValue: string) => {
     return new Promise<User[]>((resolve) => {
       resolve(
-        users.filter((user: User) =>
-          user?.name?.toLowerCase().includes(inputValue.toLowerCase())
-        ).map((user: User) => ({ label: user.name, value: user.id, image: user.image }))
+        users
+          .filter((user: User) =>
+            user?.name?.toLowerCase().includes(inputValue.toLowerCase())
+          )
+          .map((user: User) => ({
+            label: user.name,
+            value: user.id,
+            image: user.image,
+          }))
       );
     });
   };
-  
-  
 
-  
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     createGroupChatMutation(data);
@@ -93,7 +97,11 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-10">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
+            <h2
+              className={clsx(
+                `text-base font-semibold leading-7`, currentTheme === "dark" ? "text-white" : "text-gray-900"
+              )}
+            >
               Create a group chat
             </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600"></p>
@@ -117,8 +125,17 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
           </div>
         </div>
         <div className="mt-6 flex items-center justify-end gap-x-6">
-            <Button disabled={isLoading} onClick={onClose} type="button" secondary>Cancel</Button>
-            <Button disabled={isLoading} type="submit">Create</Button>
+          <Button
+            disabled={isLoading}
+            onClick={onClose}
+            type="button"
+            secondary
+          >
+            Cancel
+          </Button>
+          <Button disabled={isLoading} type="submit">
+            Create
+          </Button>
         </div>
       </form>
     </Modal>

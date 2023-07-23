@@ -1,13 +1,21 @@
 import AsyncSelect from "react-select/async";
 import { components } from "react-select";
 import { FC } from "react";
+import clsx from "clsx";
+import { useTheme } from "next-themes";
 
 const CustomOption = (props: any) => {
   return (
     <components.Option {...props}>
-      <div className="flex justify-between h-10 cursor-pointer">
-      <div style={{ marginLeft: 10 }}>{props.label}</div>
-        <img className="rounded-full" src={props.data.image} alt="User" width={46} height={46} />
+      <div className={clsx("flex justify-between h-10 cursor-pointer text-black")}>
+        <div style={{ marginLeft: 10 }}>{props.label}</div>
+        <img
+          className="rounded-full"
+          src={props.data.image}
+          alt="User"
+          width={46}
+          height={46}
+        />
       </div>
     </components.Option>
   );
@@ -28,9 +36,17 @@ const Select: FC<SelectProps> = ({
   disabled,
   loadOptions,
 }) => {
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  console.log(currentTheme);
   return (
     <div className="z-[100]">
-      <label className="block text-sm font-medium leading-6 text-gray-900">
+      <label
+        className={clsx(
+          `block text-sm font-medium leading-6 text-gray-900`,
+          currentTheme === "dark" ? "text-white" : "text-gray-900"
+        )}
+      >
         {label}
       </label>
       <div className="mt-2">
@@ -45,12 +61,12 @@ const Select: FC<SelectProps> = ({
           components={{ Option: CustomOption }}
           styles={{
             menuPortal: (base) => ({
-                ...base,
-                zIndex: 9999
+              ...base,
+              zIndex: 9999,
             }),
           }}
           classNames={{
-            control: () => "text-sm"
+            control: () => "text-sm",
           }}
         />
       </div>

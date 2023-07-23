@@ -3,6 +3,8 @@
 import React, { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { IoClose } from 'react-icons/io5'
+import clsx from 'clsx';
+import { useTheme } from 'next-themes';
 
 interface ModalProps {
   isOpen?: boolean;
@@ -11,9 +13,11 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
   return (
     <Transition.Root show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-100" onClose={onClose}>
+      <Dialog as="div" className="relative z-200" onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -27,7 +31,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
             className="
               fixed 
               inset-0 
-              bg-opacity-75 
               transition-opacity
             "
           />
@@ -55,24 +58,23 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel 
-                className="
-                  relative 
-                  transform
-                  overflow-hidden 
-                  rounded-lg 
-                
-                  px-4 
-                  pb-4
-                  pt-5 
-                  text-left 
-                  shadow-xl 
-                  transition-all
-                  w-full
-                  sm:my-8 
-                  sm:w-full 
-                  sm:max-w-lg 
-                  sm:p-6
-                "
+                className={clsx(`
+                relative 
+                transform
+                overflow-hidden 
+                rounded-lg 
+                px-4 
+                pb-4
+                pt-5 
+                text-left 
+                shadow-xl 
+                transition-all
+                w-full
+                sm:my-8 
+                sm:w-full 
+                sm:max-w-lg 
+                sm:p-6
+              `, currentTheme == "dark" ? "bg-[#1f2937]" : "bg-white")}
               >
                 <div 
                   className="
@@ -84,6 +86,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                     pt-4 
                     sm:block
                     z-10
+
                   "
                 >
                   <button

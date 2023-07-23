@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useTheme } from "next-themes";
 
 interface ButtonProps {
   type?: "button" | "submit" | "reset" | undefined;
@@ -19,6 +20,8 @@ const Button: React.FC<ButtonProps> = ({
   danger,
   disabled,
 }) => {
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
   return ( 
     <button
       onClick={onClick}
@@ -39,6 +42,7 @@ const Button: React.FC<ButtonProps> = ({
         disabled && 'opacity-50 cursor-default',
         fullWidth && 'w-full',
         secondary ? 'text-gray-900' : 'text-white',
+        currentTheme === "dark" ? "text-white" : "text-gray-900",
         danger && 'bg-rose-500 hover:bg-rose-600 focus-visible:outline-rose-600',
         !secondary && !danger && 'bg-sky-500 hover:bg-sky-600 focus-visible:outline-sky-600'
       )}
