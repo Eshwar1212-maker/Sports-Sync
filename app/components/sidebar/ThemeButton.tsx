@@ -38,7 +38,7 @@ const ThemeButton = () => {
             setTheme("light");
           }}
         >
-          <MdOutlineLightMode size={15}/>
+          <MdOutlineLightMode size={19}/>
         </button>
       )}
     </div>

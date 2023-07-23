@@ -14,6 +14,8 @@ import { FcSettings } from "react-icons/fc";
 import { FiSettings } from "react-icons/fi";
 import { CiSettings } from "react-icons/ci";
 import ThemeButton from "./ThemeButton";
+import { MdNotificationsNone } from "react-icons/md";
+import { IoIosNotificationsOutline, IoMdNotificationsOutline } from "react-icons/io";
 
 interface DesktopSidebarProps {
   currentUser: User
@@ -64,10 +66,10 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
 
             ))}
             <li className="relative py-4 h-6 w-6 shrink-0 cursor-pointer">
-              <span className="absolute top-0 right-0 bg-blue-400 text-[12px] w-5 h-5 rounded-full flex items-center justify-center">
+              <span className="absolute top-0 right-0 bg-blue-100 text-[12px] text-black w-5 h-5 rounded-full flex items-center justify-center">
                 5
               </span>
-              <GrNotification size={24} />
+              <IoIosNotificationsOutline size={29} />
             </li>
             <li onClick={() => signOut()} className="py-8 h-6 w-6 shrink-0 cursor-pointer">
               <SlLogout size={23} />
