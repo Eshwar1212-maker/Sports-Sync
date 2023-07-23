@@ -15,7 +15,7 @@ const AuthSocialButton: FC<AuthSocialButtonProps> = ({
     onClick={onClick}
     className='
     inline-flex
-    w-full justify-center rounded-md bg-white px-x py-2 text-gray-500
+    w-full justify-center rounded-md px-x py-2 text-gray-500
     shadow-sm ring-1 ring-inset ring-gray-500 hover:bg-gray-50 focus:outline-offset-0
     '
     >

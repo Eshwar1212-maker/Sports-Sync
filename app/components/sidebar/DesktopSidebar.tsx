@@ -13,6 +13,7 @@ import { IoSettings, IoSettingsSharp } from "react-icons/io5";
 import { FcSettings } from "react-icons/fc";
 import { FiSettings } from "react-icons/fi";
 import { CiSettings } from "react-icons/ci";
+import ThemeButton from "./ThemeButton";
 
 interface DesktopSidebarProps {
   currentUser: User
@@ -40,11 +41,9 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
         lg:inset-y-0 
         lg:left-0 
         lg:z-40 
-        
         lg:w-20 
         xl:px-6
         lg:overflow-y-auto 
-        lg:bg-white 
         lg:border-r-[1px]
         lg:pb-4
         lg:flex
@@ -65,7 +64,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
 
             ))}
             <li className="relative py-4 h-6 w-6 shrink-0 cursor-pointer">
-              <span className="absolute top-0 right-0 bg-blue-400 text-white text-[12px] w-5 h-5 rounded-full flex items-center justify-center">
+              <span className="absolute top-0 right-0 bg-blue-400 text-[12px] w-5 h-5 rounded-full flex items-center justify-center">
                 5
               </span>
               <GrNotification size={24} />
@@ -86,6 +85,10 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
         <nav
           className="mt-4 flex flex-col justify-between items-center"
         >
+          <div>
+          <ThemeButton/>
+          </div>
+
           <div
             onClick={() => setIsOpen(true)}
             className="cursor-pointer hover:opacity-75 transition"

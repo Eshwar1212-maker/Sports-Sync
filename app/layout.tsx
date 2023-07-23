@@ -1,8 +1,11 @@
+
+import { ThemeProvider } from 'next-themes'
 import Providers from './components/Providers'
 import AuthContext from './context/AuthContext'
 import ToasterContext from './context/ToasterContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import ThemeProviders from './context/ThemeProviders'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,12 +23,19 @@ export default function RootLayout({
     <html lang="en">
 
       <body className={inter.className}>
+
         <AuthContext>
+        <ThemeProviders>
           <Providers>
             {children}
           </Providers>
+          </ThemeProviders>
           <ToasterContext />
         </AuthContext>
+
+
+  
+   
 
       </body>
     </html>

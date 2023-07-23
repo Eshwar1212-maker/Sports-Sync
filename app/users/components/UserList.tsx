@@ -40,13 +40,12 @@ const UserList: React.FC<UserListProps> = ({
             className="
               text-2xl 
               font-bold 
-              text-neutral-800 
               py-4
             "
           >
             People
           </div>
-          <input onChange={(e) => setInput(e.target.value)} className="border-[1px] pb-2 my-1 rounded-lg p-1 w-full border-black" placeholder="Search users..."/>
+          <input onChange={(e) => setInput(e.target.value)} className="border-[1px] pb-2 my-1 rounded-lg py-1 px-1 w-full border-black" placeholder="Search users..."/>
 
         </div>
             {
