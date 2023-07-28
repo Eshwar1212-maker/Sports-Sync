@@ -1,4 +1,6 @@
 import Sidebar from "../components/sidebar/Sidebar"
+import Calender from "../teams/components/Calender"
+
 
 export default async function UsersLayout({
     children
@@ -8,7 +10,8 @@ export default async function UsersLayout({
     return (
 
         <Sidebar>
-            <div className="h-full">
+            <div className="h-full p-10">
+                <Calender />
                 {children}
             </div>
         </Sidebar>

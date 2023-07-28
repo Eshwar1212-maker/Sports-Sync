@@ -10,7 +10,7 @@ const page: FC<PageProps> = ({
   return (
     <div className='hidden lg:block h-full'>
         <EmptyState children={<></>} />
-        Workouts
+  
     </div>
   )
 }

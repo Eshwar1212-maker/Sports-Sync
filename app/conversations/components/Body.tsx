@@ -25,7 +25,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
 
     const messageHandler = (message: FullMessageType) => {
       setMessages((current: any) => {
-        if (find(current, { id: message.id })) return current;
+        if (find(current, { id: message?.id })) return current;
         return [...current, message];
       });
     };
@@ -41,7 +41,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
       {messages.map((message: any, i: any) => (
         <MessageBox
           isLast={i === messages.length - 1}
-          key={message.id}
+          key={message?.id}
           data={message}
         />
       ))}
