@@ -8,9 +8,8 @@ export default async function UsersLayout({
     children: React.ReactNode
 }) {
     return (
-
         <Sidebar>
-            <div className="h-[80vh] py-8 px-20 text-[12px]">
+            <div className="py-8 px-20 text-[12px]">
                 <Calender />
                 {children}
             </div>
