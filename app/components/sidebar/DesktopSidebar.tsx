@@ -62,6 +62,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
                 icon={item.icon}
                 active={item.active}
                 notificationNumber={4}
+                route={item.route}
               />
 
             ))}
