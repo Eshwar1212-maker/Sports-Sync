@@ -154,7 +154,6 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             />
           )}
           <Input
-            placeholder="email"
             label="Email address"
             register={register}
             id="email"
@@ -165,7 +164,6 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             label="Password"
             register={register}
             id="password"
-            placeholder="password"
             errors={errors}
             disabled={registerMutation.isLoading || loginMutation.isLoading}
           />

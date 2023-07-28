@@ -57,6 +57,11 @@ model Message {
   sender User @relation(fields: [senderId], references: [id], onDelete: Cascade)
 }
 
+model Event{
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    notes String?
+    title String
+}
 
 model Conversation {
   id String @id @default(auto()) @map("_id") @db.ObjectId

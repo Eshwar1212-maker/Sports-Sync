@@ -15,10 +15,47 @@ function Calendar() {
   const [date, setDate] = useState("")
   const [events, setEvents] = useState([
     {
-      title: 'Meeting with Bob',
-      date: '2023-07-01',
+      title: 'Skill Workout',
+      date: '2023-07-02',
+    },
+    {
+      title: 'Leg Workout',
+      date: '2023-07-10',
+    },
+    {
+      title: 'Upper Body Workout',
+      date: '2023-07-09',
+    },
+    {
+      title: 'Pickup Games',
+      date: '2023-07-18',
+    },
+    {
+      title: 'Shooting Workout',
+      date: '2023-07-16',
+    },
+    {
+      title: 'Skill Workout',
+      date: '2023-07-15',
+    },
+    {
+      title: 'Leg Workout',
+      date: '2023-07-03',
+    },
+    {
+      title: 'Upper Body Workout',
+      date: '2023-07-04',
+    },
+    {
+      title: 'Pickup Games',
+      date: '2023-07-9',
+    },
+    {
+      title: 'Shooting Workout',
+      date: '2023-07-11',
     },
   ]);
+  
 
   const handleDateClick = (arg: any) => {
     setIsOpen(true)
@@ -42,6 +79,7 @@ function Calendar() {
         events={events}
         dayCellContent={({ date, view }) => <DayCell date={date} />}
         dateClick={handleDateClick}
+        eventColor="#00BFFF" 
         dayCellClassNames="cursor-pointer"
       />
     </>
