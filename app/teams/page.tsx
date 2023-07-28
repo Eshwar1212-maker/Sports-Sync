@@ -1,13 +1,16 @@
 import { FC } from 'react'
-interface pageProps {
+import EmptyState from '../components/EmptyState'
+
+interface PageProps {
   
 }
-const page: FC<pageProps> = ({
+const page: FC<PageProps> = ({
   
 }) => {
   return (
-    <div>
-      page
+    <div className='hidden lg:block h-full'>
+        <EmptyState children={<></>} />
+        Teams
     </div>
   )
 }
