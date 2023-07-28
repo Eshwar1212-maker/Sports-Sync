@@ -1,5 +1,5 @@
 import Sidebar from "../components/sidebar/Sidebar"
-import Calender from "../teams/components/Calender"
+import Calender from "./components/Calender"
 
 
 export default async function UsersLayout({
@@ -10,7 +10,7 @@ export default async function UsersLayout({
     return (
 
         <Sidebar>
-            <div className="h-full p-10">
+            <div className="h-[80vh] py-8 px-20 text-[12px]">
                 <Calender />
                 {children}
             </div>

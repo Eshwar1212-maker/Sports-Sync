@@ -1,39 +1,29 @@
 "use client"
 
-import React, { useState } from "react";
-import { Calendar, momentLocalizer, View } from "react-big-calendar";
-import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import events from "../data/events";
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from "@fullcalendar/interaction"; 
+import "./calender.css"
 
-const localizer = momentLocalizer(moment);
+const events = [
+  { title: 'Event 1', date: '2023-08-01' },
 
-const allViews: View[] = ["month", "week", "day"];
+]
 
-const Calender = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedEvents, setSelectedEvents] = useState([]);
+function Calendar() {
+  const handleDateClick = (arg: any) => {
+    alert('date clicked ' + arg.dateStr)
 
-  const handleShowMore = (events: any, date: any) => {
-    setShowModal(true);
-    setSelectedEvents(events);
-  };
-  console.log(events);
-  
+  }
 
   return (
-    <div style={{ height: 700 }}>
-      <Calendar
-        localizer={localizer}
-        events={events}
-        step={60}
-        views={allViews}
-        defaultDate={new Date(2015, 3, 1)}
-        popup={false}
-        onShowMore={handleShowMore}
-      />
-    </div>
-  );
-};
+    <FullCalendar
+      plugins={[dayGridPlugin, interactionPlugin]}
+      initialView="dayGridMonth"
+      events={events}
+      dateClick={handleDateClick}
+    />
+  )
+}
 
-export default Calender
+export default Calendar

@@ -1,0 +1,17 @@
+/* custom-fullcalendar-styles.css */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.fc-daygrid-day {
+  @apply h-10; /* adjust as needed */
+}
+
+.fc-daygrid-day-number {
+  @apply text-xs; /* adjust as needed */
+}
+
+.fc-event-title {
+  @apply text-xs; /* adjust as needed */
+}

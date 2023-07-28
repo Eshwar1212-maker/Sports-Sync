@@ -1,91 +1,77 @@
 export default [
     {
-      'title': 'All Day Event very long title',
+      'title': 'Team Scrimmage',
       'allDay': true,
-      'start': new Date(2015, 3, 0),
-      'end': new Date(2015, 3, 1)
+      'start': new Date(2023, 6, 5),
+      'end': new Date(2023, 6, 5)
     },
     {
-      'title': 'Long Event',
-      'start': new Date(2015, 3, 7),
-      'end': new Date(2015, 3, 10)
-    },
-  
-    {
-      'title': 'DTS STARTS',
-      'start': new Date(2016, 2, 13, 0, 0, 0),
-      'end': new Date(2016, 2, 20, 0, 0, 0)
-    },
-  
-    {
-      'title': 'DTS ENDS',
-      'start': new Date(2016, 10, 6, 0, 0, 0),
-      'end': new Date(2016, 10, 13, 0, 0, 0)
-    },
-  
-    {
-      'title': 'Some Event',
-      'start': new Date(2015, 3, 9, 0, 0, 0),
-      'end': new Date(2015, 3, 9, 0, 0, 0)
+      'title': 'Strength and Conditioning',
+      'start': new Date(2023, 6, 6, 9, 0, 0),
+      'end': new Date(2023, 6, 6, 11, 0, 0)
     },
     {
-      'title': 'Conference',
-      'start': new Date(2015, 3, 11),
-      'end': new Date(2015, 3, 13),
-      desc: 'Big conference for important people'
+      'title': 'Away Game vs Rivals',
+      'start': new Date(2023, 6, 7, 19, 0, 0),
+      'end': new Date(2023, 6, 7, 21, 0, 0)
     },
     {
-      'title': 'Meeting',
-      'start': new Date(2015, 3, 12, 10, 30, 0, 0),
-      'end': new Date(2015, 3, 12, 12, 30, 0, 0),
-      desc: 'Pre-meeting meeting, to prepare for the meeting'
+      'title': 'Video Analysis Session',
+      'start': new Date(2023, 6, 9, 14, 0, 0),
+      'end': new Date(2023, 6, 9, 16, 0, 0)
     },
     {
-      'title': 'Lunch',
-      'start': new Date(2015, 3, 12, 12, 0, 0, 0),
-      'end': new Date(2015, 3, 12, 13, 0, 0, 0),
-      desc: 'Power lunch'
+      'title': 'Free Throw Practice',
+      'start': new Date(2023, 6, 10, 10, 0, 0),
+      'end': new Date(2023, 6, 10, 12, 0, 0)
     },
     {
-      'title': 'Meeting',
-      'start': new Date(2015, 3, 12, 14, 0, 0, 0),
-      'end': new Date(2015, 3, 12, 15, 0, 0, 0)
+      'title': 'Defensive Drills',
+      'start': new Date(2023, 6, 11, 10, 0, 0),
+      'end': new Date(2023, 6, 11, 12, 0, 0),
+      desc: 'Focus on man-to-man defense'
     },
     {
-      'title': 'Happy Hour',
-      'start': new Date(2015, 3, 12, 17, 0, 0, 0),
-      'end': new Date(2015, 3, 12, 17, 30, 0, 0),
-      desc: 'Most important meal of the day'
+      'title': 'Offensive Drills',
+      'start': new Date(2023, 6, 12, 10, 30, 0, 0),
+      'end': new Date(2023, 6, 12, 12, 30, 0, 0),
+      desc: 'Work on set plays and shooting'
     },
     {
-      'title': 'Dinner',
-      'start': new Date(2015, 3, 12, 20, 0, 0, 0),
-      'end': new Date(2015, 3, 12, 21, 0, 0, 0)
+      'title': 'Recovery and Stretching',
+      'start': new Date(2023, 6, 13, 15, 0, 0, 0),
+      'end': new Date(2023, 6, 13, 16, 0, 0, 0),
+      desc: 'Rest and recuperation'
     },
     {
-      'title': 'Birthday Party',
-      'start': new Date(2015, 3, 13, 7, 0, 0),
-      'end': new Date(2015, 3, 13, 10, 30, 0)
+      'title': 'Player Evaluations',
+      'start': new Date(2023, 6, 14, 14, 0, 0, 0),
+      'end': new Date(2023, 6, 14, 15, 0, 0, 0)
     },
     {
-      'title': 'Birthday Party 2',
-      'start': new Date(2015, 3, 13, 7, 0, 0),
-      'end': new Date(2015, 3, 13, 10, 30, 0)
+      'title': 'Team Dinner',
+      'start': new Date(2023, 6, 15, 19, 0, 0, 0),
+      'end': new Date(2023, 6, 15, 21, 0, 0, 0)
     },
     {
-      'title': 'Birthday Party 3',
-      'start': new Date(2015, 3, 13, 7, 0, 0),
-      'end': new Date(2015, 3, 13, 10, 30, 0)
+      'title': 'Home Game vs City Team',
+      'start': new Date(2023, 6, 16, 19, 30, 0),
+      'end': new Date(2023, 6, 16, 21, 30, 0)
     },
     {
-      'title': 'Late Night Event',
-      'start': new Date(2015, 3, 17, 19, 30, 0),
-      'end': new Date(2015, 3, 18, 2, 0, 0)
+      'title': 'Tactics Session',
+      'start': new Date(2023, 6, 18, 14, 0, 0),
+      'end': new Date(2023, 6, 18, 16, 0, 0)
     },
     {
-      'title': 'Multi-day Event',
-      'start': new Date(2015, 3, 20, 19, 30, 0),
-      'end': new Date(2015, 3, 22, 2, 0, 0)
+      'title': 'End of Season Party',
+      'start': new Date(2023, 6, 20, 19, 0, 0),
+      'end': new Date(2023, 6, 21, 1, 0, 0)
+    },
+    {
+      'title': 'Summer Training Camp Begins',
+      'start': new Date(2023, 7, 1, 9, 0, 0),
+      'end': new Date(2023, 7, 3, 17, 0, 0)
     }
-  ]
+  ];
   
