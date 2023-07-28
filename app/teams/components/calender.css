@@ -15,3 +15,17 @@
 .fc-event-title {
   @apply text-xs; /* adjust as needed */
 }
+.day-cell {
+  position: relative; /* So the button's absolute positioning is relative to this */
+}
+
+.add-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden; /* Initially hidden */
+}
+
+.day-cell:hover .add-button {
+  visibility: visible; /* Show on hover */
+}
