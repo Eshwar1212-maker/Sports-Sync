@@ -19,11 +19,17 @@ function Calendar() {
 
   const handleDateClick = (arg: any) => {
     setIsOpen(true)
-    setDate(arg.dateStr)
+    setDate(arg.dateStr)    
   };
   const handleSave = (event: any) => {
     setEvents((prevEvents: any) => [...prevEvents, event]);
   };
+
+  const getEvents = () => {
+    
+  }
+
+
   return (
     <>
       <AddEventModal

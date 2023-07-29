@@ -27,7 +27,7 @@ model User {
   messages Message[]
   teams Team[] @relation(fields: [conversationIds], references: [id])
   teamIds String[]       @db.ObjectId
-
+  events Event[]
 }
 
 model Account {
@@ -76,15 +76,18 @@ model Conversation {
 model Event{
     id String @id @default(auto()) @map("_id") @db.ObjectId
     notes String?
-    title String
-    teamId String @db.ObjectId
-    Team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+    title String?
+    date String?
+    teamId String? @db.ObjectId
+    Team Team? @relation(fields: [teamId], references: [id], onDelete: Cascade)
+    userId String @db.ObjectId
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 
 model Team{
     id String @id @default(auto()) @map("_id") @db.ObjectId
-    title String
+    title String?
     userIds String[] @db.ObjectId
     members User[] @relation(fields: [userIds], references: [id])
     events Event[]
