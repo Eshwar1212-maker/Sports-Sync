@@ -1,68 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 import "./calender.css";
 import AddEventModal from "./AddEventModal";
+import axios from "axios";
 
-const events = [{ title: "Event 1", date: "2023-08-01" }];
 
 function Calendar() {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState("")
-  const [events, setEvents] = useState([
-    {
-      title: 'Skill Workout',
-      date: '2023-07-02',
-    },
-    {
-      title: 'Leg Workout',
-      date: '2023-07-10',
-    },
-    {
-      title: 'Upper Body Workout',
-      date: '2023-07-09',
-    },
-    {
-      title: 'Pickup Games',
-      date: '2023-07-18',
-    },
-    {
-      title: 'Shooting Workout',
-      date: '2023-07-16',
-    },
-    {
-      title: 'Skill Workout',
-      date: '2023-07-15',
-    },
-    {
-      title: 'Leg Workout',
-      date: '2023-07-03',
-    },
-    {
-      title: 'Upper Body Workout',
-      date: '2023-07-04',
-    },
-    {
-      title: 'Pickup Games',
-      date: '2023-07-9',
-    },
-    {
-      title: 'Shooting Workout',
-      date: '2023-07-11',
-    },
-  ]);
-  
+  const [events, setEvents] = useState<any>([]);
 
   const handleDateClick = (arg: any) => {
     setIsOpen(true)
     setDate(arg.dateStr)
   };
   const handleSave = (event: any) => {
-    setEvents(prevEvents => [...prevEvents, event]);
+    setEvents((prevEvents: any) => [...prevEvents, event]);
   };
   return (
     <>
@@ -71,10 +31,14 @@ function Calendar() {
        isOpen={isOpen}
        onClose={() => setIsOpen(false)}
        onSave={handleSave}
-
        />
       <FullCalendar
-        plugins={[dayGridPlugin, interactionPlugin]}
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        headerToolbar={{
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        }}
         initialView="dayGridMonth"
         events={events}
         dayCellContent={({ date, view }) => <DayCell date={date} />}
@@ -87,7 +51,6 @@ function Calendar() {
 }
 
 export default Calendar;
-
 
 const DayCell = ({ date }: any) => {
   return (
