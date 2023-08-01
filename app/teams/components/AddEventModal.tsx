@@ -99,7 +99,7 @@ function AddEventModal({
         </div>
         <div className="flex gap-3 justify-end">
           <button onClick={onClose}>Cancel</button>
-          <Button type="submit" disabled={!eventTitle}>
+          <Button type="submit" disabled={selectedEvent ? !updateTitle : !eventTitle}>
             Save
           </Button>
         </div>

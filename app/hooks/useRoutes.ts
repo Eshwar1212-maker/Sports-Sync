@@ -11,6 +11,7 @@ import {IoIosNotificationsOutline} from 'react-icons/io'
 import { signOut } from "next-auth/react";
 import { GrGroup } from "react-icons/gr";
 import { BsMicrosoftTeams } from "react-icons/bs";
+import { SlCalender } from "react-icons/sl";
 
 interface useRoutesProps{
   notificationsNumber?: number
@@ -26,6 +27,13 @@ const useRoutes = ({notificationsNumber}: useRoutesProps) => {
           icon: BsMicrosoftTeams,
           active: pathName === "/conversation" || !!conversationId,
           route: "Teams"
+        },
+        {
+          label: "Calender",
+          href: "/calender",
+          icon: SlCalender,
+          active: pathName === "/conversation" || !!conversationId,
+          route: "Calender"
         },
        {
             label: "Tracker",
