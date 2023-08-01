@@ -78,7 +78,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
           .map((user: User) => ({
             label: user.name,
             value: user.id,
-            image: user.image,
+            image: user?.image,
           }))
       );
     });
