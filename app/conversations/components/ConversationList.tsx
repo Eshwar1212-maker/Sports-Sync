@@ -17,7 +17,7 @@ import GroupChatModal from "./GroupChatModal";
 interface ConversationListProps {
   initialItems: any;
   users: any;
-  title?: string;
+  title?: any;
 }
 
 const ConversationList: React.FC<ConversationListProps> = ({ 
