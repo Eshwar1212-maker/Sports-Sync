@@ -5,8 +5,12 @@ import useRoutes from "@/app/hooks/useRoutes";
 import MobileItem from "./MobileItem";
 
 const MobileFooter = () => {
-  const routes = useRoutes({notificationsNumber: 7});
+  const routes = useRoutes();
   const { isOpen } = useConversation();
+  
+  if (isOpen) {
+    return null;
+  }
 
   return ( 
     <div 
@@ -23,7 +27,7 @@ const MobileFooter = () => {
         lg:hidden
       "
     >
-      {routes.map((route) => (
+      {routes.map((route: any) => (
         <MobileItem 
           key={route.href} 
           href={route.href} 
@@ -32,7 +36,6 @@ const MobileFooter = () => {
           onClick={route.onClick}
         />
       ))}
-      
     </div>
    );
 }

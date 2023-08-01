@@ -1,46 +1,30 @@
 import {usePathname } from "next/navigation";
 import { useMemo } from "react";
 import {HiChat} from "react-icons/hi"
-import {HiArrowLeftOnRectangle, HiMiniUserGroup, HiUsers} from "react-icons/hi2"
+import {HiUsers} from "react-icons/hi2"
 import useConversation from "./useConversation";
 import {CgGym} from 'react-icons/cg'
 import {FcNegativeDynamic} from 'react-icons/fc'
-import {IoIosNotificationsOutline} from 'react-icons/io'
-
-
-import { signOut } from "next-auth/react";
-import { GrGroup } from "react-icons/gr";
-import { BsMicrosoftTeams } from "react-icons/bs";
 import { SlCalender } from "react-icons/sl";
 
-interface useRoutesProps{
-  notificationsNumber?: number
-}
 
-const useRoutes = ({notificationsNumber}: useRoutesProps) => {
+const useRoutes = () => {
     const pathName = usePathname();
     const { conversationId } = useConversation()
     const routes = useMemo(() => [
-        {
-          label: "Teams",
-          href: "/teams",
-          icon: BsMicrosoftTeams,
-          active: pathName === "/conversation" || !!conversationId,
-          route: "Teams"
-        },
+      {
+        label: "Dashboard",
+        href: "/tracker",
+        icon: FcNegativeDynamic,
+        active: pathName === "/conversation" || !!conversationId,
+        route: "Dashboard"
+    },
         {
           label: "Calender",
           href: "/calender",
           icon: SlCalender,
           active: pathName === "/conversation" || !!conversationId,
           route: "Calender"
-        },
-       {
-            label: "Tracker",
-            href: "/tracker",
-            icon: FcNegativeDynamic,
-            active: pathName === "/conversation" || !!conversationId,
-            route: "Tracker"
         },
        {
             label: "Workouts",

@@ -18,8 +18,6 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
   label,
   href,
   icon: Icon,
-  notificationNumber,
-  active,
   route,
   onClick,
 }) => {
