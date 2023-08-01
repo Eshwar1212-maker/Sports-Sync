@@ -16,7 +16,7 @@ import GroupChatModal from "./GroupChatModal";
 
 interface ConversationListProps {
   initialItems: any;
-  users: User[];
+  users: any;
   title?: string;
 }
 
