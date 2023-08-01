@@ -10,7 +10,7 @@ import { FullMessageType } from "@/app/types";
 import { find } from "lodash";
 
 interface BodyProps {
-  initialMessages: FullMessageType[];
+  initialMessages: any;
 }
 
 const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
@@ -30,7 +30,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
     const messageHandler = (message: FullMessageType) => {
       axios.post(`/api/conversations/${conversationId}/seen`);
 
-      setMessages((current) => {
+      setMessages((current: any) => {
         if (find(current, { id: message.id })) {
           return current;
         }
@@ -42,7 +42,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
     };
 
     const updateMessageHandler = (newMessage: FullMessageType) => {
-      setMessages((current) => current.map((currentMessage) => {
+      setMessages((current: any) => current.map((currentMessage: any) => {
         if (currentMessage.id === newMessage.id) {
           return newMessage;
         }
@@ -64,7 +64,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
 
   return ( 
     <div className="flex-1 overflow-y-auto">
-      {messages.map((message, i) => (
+      {messages.map((message: any, i: any) => (
         <MessageBox 
           isLast={i === messages.length - 1} 
           key={message.id} 
