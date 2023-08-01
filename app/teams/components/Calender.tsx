@@ -1,15 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { BiMessageSquareAdd } from "react-icons/bi";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
-import "./calender.css";
 import AddEventModal from "./AddEventModal";
-import axios from "axios";
 
 
 function Calendar() {
@@ -51,7 +47,7 @@ function Calendar() {
         dateClick={handleDateClick}
         eventColor="#00BFFF" 
         dayCellClassNames="cursor-pointer"
-      />
+      /> 
     </>
   );
 }
