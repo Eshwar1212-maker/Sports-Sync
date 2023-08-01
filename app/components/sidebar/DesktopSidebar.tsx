@@ -19,7 +19,7 @@ interface DesktopSidebarProps {
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   currentUser
 }) => {
-  const routes = useRoutes({ notificationsNumber: 7 });
+  const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
 
 
