@@ -11,9 +11,7 @@ const Home: FC<PageProps> = ({
   
   return (
     <div className='hidden lg:block h-full'>
-       <EmptyState>
           <Landing />
-      </EmptyState>
     </div>
   )
 }

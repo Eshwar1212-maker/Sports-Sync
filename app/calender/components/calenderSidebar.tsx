@@ -2,12 +2,12 @@
 import { useState } from "react";
 
 import { User } from "@prisma/client";
+import Link from "next/link";
 
 interface CalenderSidebarProps {}
 
 const CalenderSidebar: React.FC<CalenderSidebarProps> = ({}) => {
   const [input, setInput] = useState<string>("");
-
   return (
     <aside
       className="
@@ -39,12 +39,13 @@ const CalenderSidebar: React.FC<CalenderSidebarProps> = ({}) => {
           ></div>
         </div>
         <ul className="py-3 w-full">
-          <li 
+          <Link
+            href="/calender/userCalender"
             className='w-full text-lg
              relative flex items-center space-x-3 p-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer'
             >
             My Calender
-          </li>
+          </Link>
           <li className=""></li>
         </ul>
       </div>
