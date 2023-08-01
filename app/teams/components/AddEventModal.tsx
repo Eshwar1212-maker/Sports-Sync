@@ -8,14 +8,12 @@ interface EventsModaProps {
   isOpen?: boolean;
   onClose: () => void;
   date: string;
-  onSave: (event: { title: string; notes: string; date: string }) => void;
 }
 
 function AddEventModal ({
   isOpen,
   onClose,
   date,
-  onSave,
 }: EventsModaProps){
 
 

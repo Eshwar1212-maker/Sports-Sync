@@ -23,7 +23,6 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      console.log("authenticated");
       router.push("/users");
     }
   }, [session?.status, router]);

@@ -50,7 +50,6 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
     isError,
   } = useMutation(
     (data: FieldValues) => {
-      console.log("FIELD VALUES DATA: " + data);
       return axios.post(`/api/conversations`, {
         ...data,
         isGroup: true,

@@ -38,7 +38,6 @@ const Select: FC<SelectProps> = ({
 }) => {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
-  console.log(currentTheme);
   return (
     <div className="z-[100]">
       <label

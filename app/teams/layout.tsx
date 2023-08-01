@@ -16,7 +16,7 @@ export default async function UsersLayout({
     return (
         <Sidebar>
             <div className="py-8 px-20 text-[12px]">
-                <Calender/>
+                <Calender userEvents={userEvents}/>
                 {children}
             </div>
         </Sidebar>

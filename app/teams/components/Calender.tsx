@@ -8,7 +8,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import AddEventModal from "./AddEventModal";
 
 
-function Calendar() {
+function Calendar({userEvents}: {userEvents: string | undefined}) {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState("")
   const [events, setEvents] = useState<any>([]);
@@ -17,14 +17,9 @@ function Calendar() {
     setIsOpen(true)
     setDate(arg.dateStr)    
   };
-  const handleSave = (event: any) => {
-    setEvents((prevEvents: any) => [...prevEvents, event]);
-  };
 
-  const getEvents = () => {
-    
-  }
-
+  console.log(userEvents);
+  
 
   return (
     <>
@@ -32,7 +27,6 @@ function Calendar() {
        date={date}
        isOpen={isOpen}
        onClose={() => setIsOpen(false)}
-       onSave={handleSave}
        />
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

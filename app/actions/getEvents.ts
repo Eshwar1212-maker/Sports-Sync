@@ -7,12 +7,15 @@ const getEvents = async () => {
         return []
     }
     try{
-        const userWithEvents = await prisma.event.findUnique({
+        const userWithEvents = await prisma.user.findUnique({
             where: {
               id: currentUser.id,
             },
+            include: {
+              events: true
+            }
           });
-          return userWithEvents
+          return userWithEvents?.events 
     }
     catch(error){
         return []

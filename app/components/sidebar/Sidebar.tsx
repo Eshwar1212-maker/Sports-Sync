@@ -8,7 +8,6 @@ async function Sidebar({children}: {
 }){
     const currentUser = await getCurrentUser()
     const allUsers = await getUsers()
-    console.log(allUsers);
     
     return (
         <div className="h-full">
