@@ -12,10 +12,9 @@ interface UserBoxProps {
   data: User;
   input?: string
 }
-const UserBox: FC<UserBoxProps> = ({ data, input }) => {
 
+const UserBox: FC<UserBoxProps> = ({ data, input }) => {
   const router = useRouter();
-  
   const {
     mutate: createConversation,
     isLoading,

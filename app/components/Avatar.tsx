@@ -27,7 +27,7 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
       ">
         <Image
           fill
-          src={user?.image || '/images/placeholder.jpg'}
+          src={user?.image || 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010'}
           alt="Avatar"
         />
       </div>

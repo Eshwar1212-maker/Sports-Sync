@@ -55,7 +55,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
       },
       onSuccess: () => {
         toast.success("Created account succesfully!");
-        router.push("/users");
+        setVariant("LOGIN")
       },
     }
   );
@@ -78,6 +78,8 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
           toast.error(
             "Login failed, please make sure you are using the right email and password."
           );
+          router.push("/users");
+
       },
     }
   );

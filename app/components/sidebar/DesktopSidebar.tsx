@@ -22,7 +22,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   const routes = useRoutes({ notificationsNumber: 7 });
   const [isOpen, setIsOpen] = useState(false);
 
-  
+
 
   return (
     <>
@@ -67,8 +67,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
               </span>
               <IoIosNotificationsOutline size={29} />
             </li>
-            <li onClick={() => signOut()} className="py-8 h-6 w-6 shrink-0 cursor-pointer">
-              <SlLogout size={23} />
+            <li className="py-8 h-6 w-6 shrink-0 cursor-pointer">
+              <SlLogout onClick={() => signOut({ callbackUrl: 'http://localhost:3000' })} size={23} />
             </li>
 
           </ul>
