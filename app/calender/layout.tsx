@@ -1,25 +1,23 @@
-import getEvents from "../actions/getEvents"
-import Sidebar from "../components/sidebar/Sidebar"
-import Calender from "../teams/components/Calender"
-
+import getEvents from "../actions/getEvents";
+import getUsers from "../actions/getUsers";
+import Sidebar from "../components/sidebar/Sidebar";
+import Calender from "../teams/components/Calender";
+import UserList from "../users/components/UserList";
+import CalenderSidebar from "./components/calenderSidebar";
 
 export default async function CalenderLayout({
-    children
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode;
 }) {
+  const userEvents = await getEvents();
 
-    const userEvents = await getEvents()
-    console.log(userEvents);
-    
-
-    return (
-        <Sidebar>
-            <div className="py-8 px-20 text-[12px]">
-                <Calender userEvents={userEvents}/>
-                {children}
-            </div>
-        </Sidebar>
-
-    )
+  return (
+    <Sidebar>
+      <div className="py-8 px-20 text-[12px]">
+            <CalenderSidebar />
+        {children}
+      </div>
+    </Sidebar>
+  );
 }
