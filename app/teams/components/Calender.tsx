@@ -6,12 +6,16 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import AddEventModal from "./AddEventModal";
+import { FullEventType } from "@/app/types";
+import { Event } from "@prisma/client";
 
 
-function Calendar({userEvents}: {userEvents: string | undefined}) {
+
+
+function Calendar({userEvents}: {userEvents: any}) {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState("")
-  const [events, setEvents] = useState<any>([]);
+  const [events, setEvents] = useState<any>(userEvents);
 
   const handleDateClick = (arg: any) => {
     setIsOpen(true)
@@ -19,6 +23,10 @@ function Calendar({userEvents}: {userEvents: string | undefined}) {
   };
 
   console.log(userEvents);
+
+  const updateEvents = (event: any) => {
+    setEvents([...events, event])
+  }
   
 
   return (
@@ -27,6 +35,7 @@ function Calendar({userEvents}: {userEvents: string | undefined}) {
        date={date}
        isOpen={isOpen}
        onClose={() => setIsOpen(false)}
+       onSave={updateEvents}
        />
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

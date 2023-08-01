@@ -8,20 +8,18 @@ interface EventsModaProps {
   isOpen?: boolean;
   onClose: () => void;
   date: string;
+  onSave: any
 }
 
 function AddEventModal ({
   isOpen,
   onClose,
   date,
+  onSave
 }: EventsModaProps){
-
-
-  
   
   const [eventTitle, setEventTitle] = useState("");
   const [eventNotes, setEventNotes] = useState("");
-
 
   const {
     mutate: handleSave,
@@ -32,7 +30,10 @@ function AddEventModal ({
       return axios.post("/api/teamEvents", data);
     },
     {
-      onSuccess: () => {},
+      onSuccess: (response) => {
+        onSave(response.data);
+        onClose();
+    },
       onError: (error) => {
         console.log(error);
       },
@@ -75,7 +76,7 @@ function AddEventModal ({
         </div>
         <div className="flex gap-3 justify-end">
           <button onClick={onClose}>Cancel</button>
-          <button type="submit">Save</button>
+          <button onClick={onClose} type="submit">Save</button>
         </div>
       </form>
     </Modal>
