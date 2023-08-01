@@ -6,6 +6,7 @@ import ToasterContext from './context/ToasterContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import ThemeProviders from './context/ThemeProviders'
+import ActiveStatus from './calender/components/ActiveStatus'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         <AuthContext>
         <ThemeProviders>
           <Providers>
+            <ActiveStatus />
             {children}
           </Providers>
           </ThemeProviders>

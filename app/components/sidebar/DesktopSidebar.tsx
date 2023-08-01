@@ -4,18 +4,13 @@ import { useState } from "react";
 import { User } from "@prisma/client";
 import DesktopItem from "./DeskTopItem";
 import useRoutes from "@/app/hooks/useRoutes";
-import Avatar from "../Avatar";
 import {SlLogout} from "react-icons/sl"
-import { GrNotification } from 'react-icons/gr'
 import { signOut } from "next-auth/react";
 import SettingsModal from "./SettingsModal";
-import { IoSettings, IoSettingsSharp } from "react-icons/io5";
-import { FcSettings } from "react-icons/fc";
-import { FiSettings } from "react-icons/fi";
 import { CiSettings } from "react-icons/ci";
 import ThemeButton from "./ThemeButton";
-import { MdNotificationsNone } from "react-icons/md";
-import { IoIosNotificationsOutline, IoMdNotificationsOutline } from "react-icons/io";
+import { IoIosNotificationsOutline } from "react-icons/io";
+
 
 interface DesktopSidebarProps {
   currentUser: User

@@ -2,7 +2,6 @@
 
 import { useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Conversation, Message, User } from "@prisma/client";
 import { format } from "date-fns";
 import { useSession } from "next-auth/react";
 import clsx from "clsx";
@@ -11,7 +10,6 @@ import Avatar from "@/app/components/Avatar";
 import useOtherUser from "@/app/hooks/useOtherUser";
 import AvatarGroup from "@/app/components/AvatarGroup";
 import { FullConversationType } from "@/app/types";
-import { useTheme } from "next-themes";
 
 interface ConversationBoxProps {
   data: FullConversationType,
@@ -65,9 +63,6 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
 
     return 'Started a conversation';
   }, [lastMessage]);
-  const { systemTheme, theme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
-  console.log(currentTheme);
 
   return ( 
     <div
@@ -84,7 +79,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         transition
         cursor-pointer
         `,
-        (currentTheme !== "dark" ? selected ? 'bg-neutral-100' : 'bg-white' : "")
+        selected ? 'bg-neutral-100' : 'bg-white'
       )}
     >
       {data.isGroup ? (
@@ -96,12 +91,17 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         <div className="focus:outline-none">
           <span className="absolute inset-0" aria-hidden="true" />
           <div className="flex justify-between items-center mb-1">
-            <p className={clsx("text-md font-medium", currentTheme === "light" && "text-gray-900")}>
+            <p className="text-md font-medium text-gray-900">
               {data.name || otherUser.name}
             </p>
             {lastMessage?.createdAt && (
               <p 
-                className={clsx("text-xs", currentTheme === "light" && "text-gray-400 font-light")}>
+                className="
+                  text-xs 
+                  text-gray-400 
+                  font-light
+                "
+              >
                 {format(new Date(lastMessage.createdAt), 'p')}
               </p>
             )}
@@ -111,7 +111,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
               truncate 
               text-sm
               `,
-              currentTheme === "light"  ? hasSeen ? 'text-gray-500' : 'text-black font-medium' : ""
+              hasSeen ? 'text-gray-500' : 'text-black font-medium'
             )}>
               {lastMessageText}
             </p>

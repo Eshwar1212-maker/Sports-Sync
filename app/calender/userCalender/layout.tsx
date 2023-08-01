@@ -12,8 +12,7 @@ export default async function CalenderLayout({
 
   return (
     <Sidebar>
-      <div className="py-8 px-20 text-[12px]">
-
+      <div className="py-8 pr-20 text-[12px]">
         <Calender userEvents={userEvents} />
         {children}
       </div>
