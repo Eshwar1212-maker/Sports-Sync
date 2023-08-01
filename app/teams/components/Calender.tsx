@@ -16,18 +16,23 @@ function Calendar({userEvents}: {userEvents: any}) {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState("")
   const [events, setEvents] = useState<any>(userEvents);
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+
 
   const handleDateClick = (arg: any) => {
     setIsOpen(true)
-    setDate(arg.dateStr)    
+    setDate(arg.dateStr)  
+    setSelectedEvent(null)   
   };
-
-  console.log(userEvents);
 
   const updateEvents = (event: any) => {
     setEvents([...events, event])
   }
   
+  const handleEventClick = (info: any) => {
+    setIsOpen(true);
+    setSelectedEvent(info.event); 
+  }
 
   return (
     <>
@@ -36,6 +41,7 @@ function Calendar({userEvents}: {userEvents: any}) {
        isOpen={isOpen}
        onClose={() => setIsOpen(false)}
        onSave={updateEvents}
+       selectedEvent={selectedEvent}
        />
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -49,6 +55,7 @@ function Calendar({userEvents}: {userEvents: any}) {
         dayCellContent={({ date, view }) => <DayCell date={date} />}
         dateClick={handleDateClick}
         eventColor="#00BFFF" 
+        eventClick={handleEventClick}  
         dayCellClassNames="cursor-pointer"
       /> 
     </>
