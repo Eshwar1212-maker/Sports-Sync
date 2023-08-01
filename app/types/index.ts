@@ -1,9 +1,9 @@
 import {  Conversation, Event, Message, User } from "@prisma/client";
 
 export type FullMessageType = Message & {
-  sender: User, 
+  sender: any, 
   seen: any
-  image: string | null
+  image: any
 };
 
 export type FullConversationType = Conversation & { 
@@ -13,9 +13,8 @@ export type FullConversationType = Conversation & {
 
 
 export type FullEventType = Event & {
-  title: string | undefined
-  notes: string | undefined
-  user: User
-  | undefined
+  title: any
+  notes: any
+  user: any
 
 }
