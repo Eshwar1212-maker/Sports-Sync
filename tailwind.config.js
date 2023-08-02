@@ -3,9 +3,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['var(--font-inter)'],
-				mono: ['var(--font-roboto-mono)'],
-				mono: ['var(--font-cedar)'],
+
 			  },
 		},
 		screens: {

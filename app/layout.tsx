@@ -5,32 +5,11 @@ import ToasterContext from './context/ToasterContext'
 import './globals.css'
 import ThemeProviders from './context/ThemeProviders'
 import ActiveStatus from './calender/components/ActiveStatus'
-import { Inter, Roboto_Mono, PT_Sans, Josefin_Sans, Cedarville_Cursive} from 'next/font/google'
  
-const inter = PT_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-  weight: '700'
-
-})
- 
-const roboto_mono = Josefin_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-roboto-mono',
-  weight: '600'
-})
-const cedarville_cursive = Cedarville_Cursive({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-cedar',
-  weight: '400'
-})
 
 export const metadata = {
   title: 'BasketballFit',
-  description: 'Workout/productvity app for basketball players',
+  description: 'Workout/productvity app for athlets',
 }
 
 export default function RootLayout({
@@ -39,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${roboto_mono.variable}`}>
+    <html lang="en">
 
-      <body className={inter.className}>
+      <body>
 
         <AuthContext>
         <ThemeProviders>
@@ -52,11 +31,6 @@ export default function RootLayout({
           </ThemeProviders>
           <ToasterContext />
         </AuthContext>
-
-
-  
-   
-
       </body>
     </html>
   )
