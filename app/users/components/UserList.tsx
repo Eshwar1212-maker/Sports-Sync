@@ -15,7 +15,7 @@ const UserList: React.FC<UserListProps> = ({
 }) => {
 
   const [input, setInput] = useState<string>("")
-  const newList = items.filter((item: any) => item.name.toLowerCase().includes(input.toLowerCase()))
+  const newList = items.filter((item) => item?.name?.toLowerCase().includes(input.toLowerCase()))
 
   return ( 
     <aside 

@@ -7,9 +7,10 @@ import { pusherClient } from "@/app/libs/pusher";
 import useConversation from "@/app/hooks/useConversation";
 import MessageBox from "./MessageBox";
 import { find } from "lodash";
+import { FullMessageType } from "@/app/types";
 
 interface BodyProps {
-  initialMessages: any;
+  initialMessages: FullMessageType[];
 }
 
 const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
@@ -40,8 +41,8 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
       bottomRef?.current?.scrollIntoView();
     };
 
-    const updateMessageHandler = (newMessage: any) => {
-      setMessages((current: any) => current.map((currentMessage: any) => {
+    const updateMessageHandler = (newMessage: FullMessageType) => {
+      setMessages((current) => current.map((currentMessage) => {
         if (currentMessage.id === newMessage.id) {
           return newMessage;
         }
@@ -63,7 +64,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
 
   return ( 
     <div className="flex-1 overflow-y-auto">
-      {messages.map((message: any, i: number) => (
+      {messages.map((message, i) => (
         <MessageBox 
           isLast={i === messages.length - 1} 
           key={message.id} 

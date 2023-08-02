@@ -20,7 +20,7 @@ import { toast } from "react-hot-toast";
 interface GroupChatModalProps {
   isOpen: boolean;
   onClose: () => void;
-  users: any;
+  users: User[];
 }
 
 const GroupChatModal: FC<GroupChatModalProps> = ({
@@ -79,7 +79,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
             label: user.name,
             value: user.id,
             image: user?.image,
-          }))
+          })) as any
       );
     });
   };

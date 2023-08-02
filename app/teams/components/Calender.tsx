@@ -6,8 +6,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import AddEventModal from "./AddEventModal";
-import { FullEventType } from "@/app/types";
-import { Event } from "@prisma/client";
+
 
 
 

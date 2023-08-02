@@ -15,10 +15,11 @@ import { FullConversationType } from "@/app/types";
 import GroupChatModal from "./GroupChatModal";
 
 interface ConversationListProps {
-  initialItems: any;
-  users: any;
-  title?: any;
+  initialItems: FullConversationType[];
+  users: User[];
+  title?: string;
 }
+
 
 const ConversationList: React.FC<ConversationListProps> = ({ 
   initialItems, 
@@ -44,7 +45,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
     pusherClient.subscribe(pusherKey);
 
     const updateHandler = (conversation: FullConversationType) => {
-      setItems((current: any) => current.map((currentConversation: any) => {
+      setItems((current) => current.map((currentConversation) => {
         if (currentConversation.id === conversation.id) {
           return {
             ...currentConversation,
@@ -57,7 +58,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
     }
 
     const newHandler = (conversation: FullConversationType) => {
-      setItems((current: any) => {
+      setItems((current) => {
         if (find(current, { id: conversation.id })) {
           return current;
         }
@@ -67,8 +68,8 @@ const ConversationList: React.FC<ConversationListProps> = ({
     }
 
     const removeHandler = (conversation: FullConversationType) => {
-      setItems((current: any) => {
-        return [...current.filter((convo: any) => convo.id !== conversation.id)]
+      setItems((current) => {
+        return [...current.filter((convo) => convo.id !== conversation.id)]
       });
     }
 
@@ -116,7 +117,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
               <MdOutlineGroupAdd size={20} />
             </div>
           </div>
-          {items.map((item: any) => (
+          {items.map((item) => (
             <ConversationBox
               key={item.id}
               data={item}
