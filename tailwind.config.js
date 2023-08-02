@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	theme: {
-		extend: {}
-		,
+		extend: {
+			fontFamily: {
+				sans: ['var(--font-inter)'],
+				mono: ['var(--font-roboto-mono)'],
+				mono: ['var(--font-cedar)'],
+			  },
+		},
 		screens: {
 		  'sm': '640px',
 		  // => @media (min-width: 640px) { ... }
