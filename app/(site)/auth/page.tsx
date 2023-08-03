@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import { FC } from 'react'
 import AuthForm from '../components/AuthForm'
-import AboutOne from '../components/AboutOne'
-import AboutTwo from '../components/AboutTwo'
+
 
 interface pageProps {
 
@@ -19,8 +18,7 @@ const page: FC<pageProps> = ({
                 {/*Auth Form*/}
                 <AuthForm />
             </div>
-            <AboutOne />
-            <AboutTwo />
+
 
         </div>
     )

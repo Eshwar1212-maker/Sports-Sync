@@ -17,7 +17,7 @@ const Navbar: FC<NavbarProps> = ({
   
 }) => {
   return (
-    <div className='flex justify-between px-20 py-11'>
+    <div className='flex justify-between px-20 py-5'>
       <div style={cedarville_cursive.style} className='text-2xl'>
        SportsSync
       </div>
