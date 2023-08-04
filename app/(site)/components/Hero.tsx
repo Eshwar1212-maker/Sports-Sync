@@ -48,7 +48,7 @@ const Hero = () => {
           </p>
           </div>
           <div className="text-xl my-4 flex items-center justify-center lg:justify-start">
-          <button onClick={() => router.push("/auth")} className="bg-blue-900 text-xl p-3 text-white rounded-sm">
+          <button aria-label="Get Started, create your account" onClick={() => router.push("/auth")} className="bg-blue-900 text-xl p-3 text-white rounded-sm">
            Get Started
           </button>
           </div>
