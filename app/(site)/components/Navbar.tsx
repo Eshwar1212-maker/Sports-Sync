@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import {Sacramento, Pacifico} from 'next/font/google'
+import {Sacramento, Pacifico, PT_Sans, Bonheur_Royale} from 'next/font/google'
 import Image from 'next/image'
 
 
@@ -9,6 +9,18 @@ const cedarville_cursive = Pacifico({
     variable: '--font-cedarville-cursive',
     weight: '400'
   })
+  const inter = PT_Sans({
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-sans",
+    weight: "400",
+  });
+  const bon = Bonheur_Royale({
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-sans",
+    weight: "400",
+  });
 
 
 interface NavbarProps {
@@ -18,16 +30,11 @@ const Navbar: FC<NavbarProps> = ({
   
 }) => {
   return (
-    <div className='flex justify-between px-20 py-5'>
-      <div style={cedarville_cursive.style} className='text-2xl'>
-       <Image
-       alt='logo'
-       src="/../../../icon.jpeg"
-       width={150}
-       height={100}
-       />
+    <div className='flex justify-between px-20 py-4 bg-white text-black'>
+      <div style={inter.style} className='text-xl text-blue-800'>
+       SportsSync
       </div>
-      <div className='text-xl'>
+      <div className='text-md font-bold'>
         <button>Sign In</button>
       </div>
     </div>

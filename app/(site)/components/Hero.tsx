@@ -1,19 +1,21 @@
 "use client"
 
-import one from "../assets/one.jpg";
-import two from "../assets/two.jpg";
-import three from "../assets/three.jpg";
-import four from "../assets/four.jpg";
-import tracker from "../assets/tracker.png"
+import one from "../../assets/one.jpg";
+import two from "../../assets/two.jpg";
+import three from "../../assets/three.jpg";
+import four from "../../assets/four.jpg";
+import soccer from "../../assets/soccer.jpg"
 import AuthModal from "./AuthModal"
-import calender from "../assets/calender.png"
-import dashboard from "../assets/dashboard.png"
-import message from "../assets/message.png"
+import calendertwo from "../../assets/calendertwo.png"
+import dashboard from "../../assets/dashboard.png"
+import message from "../../assets/message.png"
 import Image from "next/image";
 
 import { PT_Sans, Bonheur_Royale } from "next/font/google";
-import Button from "@/app/components/Button";
-import { useState } from "react"
+import First from "./landing/First";
+import Second from "./landing/Second";
+import Third from "./landing/Third";
+
 
 
 const inter = PT_Sans({
@@ -31,84 +33,99 @@ const bon = Bonheur_Royale({
 
 const Hero = () => {
   return (
-    <div className="">  
-
-      <div className="flex flex-col sm:flex-row py-[100px] xl:px-[100px]">
-        <div className="sm:w-1/2 p-8 flex flex-col">
-          <div className="space-y-5">
-          <h1 style={inter.style} className="text-center lg:block text-4xl md:text-5xl font-bold">
-            The World's Best <br /> Platform for athletes and their team
+    <div className="bg-white text-black">  
+      <div className="flex flex-col justify-center sm:flex-row py-10 lg:py-24 h-[90vh] lg:h-[70vh] pb-11 mb-6">
+      <div className="sm:w-full lg:w-1/2 p-8 flex flex-col items-center lg:items-start">
+      <div className="space-y-5 text-center lg:text-left">
+      <h1 style={inter.style} className="text-4xl md:text-6xl font-bold">
+            The World's Best <br />Platform for athletes
           </h1>
-          <p style={inter.style} className="text-2xl font-thin text-center">
-            Use our app so you or your team can track your workouts, track your schedule in our calender and
-            message each other.
-
+          <p style={inter.style} className="text-2xl font-thin">
+              Manage everything with Sports Sync
           </p>
           </div>
-          <div className="text-xl my-4 pl-9 flex items-center justify-center">
-          <Button>
-            Join Sports Sync for free
-          </Button>
+          <div className="text-xl my-4 flex items-center justify-center lg:justify-start">
+          <button className="bg-blue-900 text-xl p-3 text-white rounded-sm">
+           Get Started
+          </button>
           </div>
-
-        </div>
-        <div className="flex justify-center">
+          <div className="md:hidden">
           <Image
             alt="landing page for team"
-            width={400}
-            height={400}
-            src={one}
+            width={700}
+            height={900}
+            src={four}
           />
+          </div>   
+        </div>
+
+        <div className="flex justify-center bg-[#FFFFFF] relative">
+          <div className="hidden md:block relative">
+          <Image
+            alt="landing page for team"
+            width={700}
+            height={900}
+            src={four}
+          />
+          </div>    
+        <div className="hidden md:block  absolute">
+          <Image
+            alt="landing page for team"
+            width={370}
+            height={500}
+            src={soccer}
+          />
+          </div> 
         </div>
       </div>
-      <div className="">
-        <h2 style={inter.style} className="text-3xl text-center">
-          Use our calender, workout tracker, messaging system, <br/> and fitness dashboard to keep track of your goals
+      <div className="bg-gray-100 py-10">
+        <h2 className="text-md md:text-2xl text-center font-bold">
+          Use our calender, workout tracker, messaging system, <br/> and fitness dashboard to reach your goals.
         </h2>
-        <div className="flex flex-col md:flex-row justify-center text-center items-center ">
+        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[200px]">
           <div className="flex flex-col py-10 space-x-4">
-            <div className="">
+            <div className="bg-green-50">
               <Image
               alt="fitness dashboard"
               src={dashboard}
-              width={340}
+              width={640}
               height={440}
               />
             </div>
             <div>
-              <h3>Set Goals</h3>
-              <p>
+              <h3 className="text-xl">Set Goals</h3>
+              <p className="text-sm">
                 Use our dashboard so you can <br />
                 monitor your goals and progress.
               </p>
             </div>
           </div>
             <div className="flex flex-col">
-            <div>
+            <div className="bg-green-100">
             <Image
               alt="fitness dashboard"
-              src={calender}
-              width={340}
+              src={calendertwo}
+              width={680}
               height={440}
               />
             </div>
-              <h3>Plan your life as an athlete</h3>
-              <p>
+              <h3 className="text-xl">Plan your life as an athlete</h3>
+              <p className="text-sm">
                 Your life can be very busy as an athlete,<br />
                 use our calender to track everything. 
               </p>
             </div>
             <div className="flex flex-col">
-            <div>
+            <div className="bg-orange-200">
             <Image
               alt="fitness dashboard"
               src={message}
-              width={340}
+              width={640}
               height={440}
               />
             </div>
-              <h3>Schedule games with your teammates</h3>
-              <p>
+              <h3 className="text-xl">Schedule games with your teammates</h3>
+              <p className="text-sm">
                 Use our messaging system to schedule games,<br />
                 or practices with your friends and teams.
               </p>
@@ -116,10 +133,11 @@ const Hero = () => {
 
         </div>
       </div>
+      <First />
+      <Second />
+      <Third />
     </div>
   );
 };
 
 export default Hero;
-
-// <p style={cedarville_cursive.style} className=' font-cedarville-cursive'>Hero section</p>
