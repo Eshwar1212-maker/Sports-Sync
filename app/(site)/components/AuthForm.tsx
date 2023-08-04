@@ -139,7 +139,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
         <h2
           className={clsx(
             "mb-4 text-center text-2xl font-bold tracking-tight text-gray-900",
-            currentTheme === "dark" ? "text-white" : "text-gray-500"
+            currentTheme === "dark" ? "text-gray-500" : "text-gray-500"
           )}
         >
           Sign in to your account
@@ -186,7 +186,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
               <span
                 className={clsx(
                   `px-2`,
-                  currentTheme === "dark" ? "text-white" : "text-gray-500"
+                  currentTheme === "dark" ? "text-gray-500" : "text-gray-500"
                 )}
               >
                 Or continue with

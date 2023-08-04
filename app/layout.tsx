@@ -1,18 +1,15 @@
 
-import { ThemeProvider } from 'next-themes'
 import Providers from './components/Providers'
 import AuthContext from './context/AuthContext'
 import ToasterContext from './context/ToasterContext'
 import './globals.css'
-import { Inter } from 'next/font/google'
 import ThemeProviders from './context/ThemeProviders'
 import ActiveStatus from './calender/components/ActiveStatus'
-
-const inter = Inter({ subsets: ['latin'] })
+ 
 
 export const metadata = {
   title: 'BasketballFit',
-  description: 'Workout/productvity app for basketball players',
+  description: 'Workout/productvity app for athlets',
 }
 
 export default function RootLayout({
@@ -22,9 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-
-      <body className={inter.className}>
-
+      <body>
         <AuthContext>
         <ThemeProviders>
           <Providers>
@@ -34,11 +29,6 @@ export default function RootLayout({
           </ThemeProviders>
           <ToasterContext />
         </AuthContext>
-
-
-  
-   
-
       </body>
     </html>
   )
