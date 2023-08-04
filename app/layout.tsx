@@ -8,7 +8,7 @@ import ActiveStatus from './calender/components/ActiveStatus'
  
 
 export const metadata = {
-  title: 'BasketballFit',
+  title: 'Sports Sync',
   description: 'Workout/productvity app for athlets',
 }
 
