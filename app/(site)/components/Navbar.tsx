@@ -38,8 +38,8 @@ const Navbar: FC<NavbarProps> = ({
       <div style={inter.style} className='text-xl text-blue-800'>
        SportsSync
       </div>
-      <div className='text-md font-bold'>
-        <button onClick={() => router.push("/auth")}>Sign In</button>
+      <div className='text-sm font-bold'>
+        <button onClick={() => router.push("/auth")}>SIGN UP</button>
       </div>
     </div>
   )
