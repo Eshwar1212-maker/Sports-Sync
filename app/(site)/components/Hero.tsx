@@ -37,7 +37,7 @@ const Hero = () => {
   const router = useRouter()
   return (
     <div className="bg-white text-black">  
-      <div className="flex flex-col justify-center sm:flex-row py-10 lg:py-24 h-[90vh] lg:h-[70vh] pb-11 mb-6">
+      <div className="flex flex-col justify-center sm:flex-row py-10 lg:py-24 h-[90vh] lg:h-[70vh] pb-11 mb-6 2xl:px-[290px]"> 
       <div className="sm:w-full lg:w-1/2 p-8 flex flex-col items-center lg:items-start">
       <div className="space-y-5 text-center lg:text-left">
       <h1 style={inter.style} className="text-4xl md:text-6xl font-bold">
