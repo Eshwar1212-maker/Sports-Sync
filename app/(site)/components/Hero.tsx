@@ -15,6 +15,8 @@ import { PT_Sans, Bonheur_Royale } from "next/font/google";
 import First from "./landing/First";
 import Second from "./landing/Second";
 import Third from "./landing/Third";
+import Footer from "./landing/Footer";
+import { useRouter } from "next/navigation";
 
 
 
@@ -32,6 +34,7 @@ const bon = Bonheur_Royale({
 });
 
 const Hero = () => {
+  const router = useRouter()
   return (
     <div className="bg-white text-black">  
       <div className="flex flex-col justify-center sm:flex-row py-10 lg:py-24 h-[90vh] lg:h-[70vh] pb-11 mb-6">
@@ -45,7 +48,7 @@ const Hero = () => {
           </p>
           </div>
           <div className="text-xl my-4 flex items-center justify-center lg:justify-start">
-          <button className="bg-blue-900 text-xl p-3 text-white rounded-sm">
+          <button onClick={() => router.push("/auth")} className="bg-blue-900 text-xl p-3 text-white rounded-sm">
            Get Started
           </button>
           </div>
@@ -136,6 +139,7 @@ const Hero = () => {
       <First />
       <Second />
       <Third />
+      <Footer />
     </div>
   );
 };
