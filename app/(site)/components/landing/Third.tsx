@@ -6,7 +6,7 @@ interface SecondProps {}
 
 const Second: FC<SecondProps> = ({}) => {
   return (
-    <div className="flex flex-col justify-center items-center lg:flex-row bg-green-50 py-[200px]">
+    <div className="flex flex-col justify-center items-center lg:flex-row bg-green-100 py-[200px]">
       <div>
 
 
