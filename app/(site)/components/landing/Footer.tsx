@@ -6,7 +6,7 @@ const Footer: FC<FooterProps> = ({
   
 }) => {
   return (
-<footer className="bg-gray-800 text-white py-10 px-6 sm:px-12">
+<footer className="py-6 sm:px-12">
     <div className="flex flex-wrap justify-between gap-6">
         <div>
             <h3 className="text-lg font-semibold">Sports Sync</h3>
