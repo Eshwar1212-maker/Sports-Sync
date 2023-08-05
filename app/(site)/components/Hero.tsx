@@ -125,11 +125,15 @@ const Hero = () => {
                 or practices with your friends and teams.
               </p>
             </div>       
+
         </div>
         <First />
         <Second />
         <Third />
       </div>
+
+ 
+
       <Footer />
     </div>
   );
