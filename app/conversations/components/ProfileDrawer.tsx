@@ -7,13 +7,11 @@ import { Conversation, User } from '@prisma/client';
 import { format } from 'date-fns';
 
 import useOtherUser from '@/app/hooks/useOtherUser';
-import Avatar from '@/app/components/Avatar';
-import Modal from '@/app/components/Modal';
-import ConfirmModal from './ConfirmModal';
-import { useTheme } from 'next-themes';
-import clsx from 'clsx';
-import AvatarGroup from '@/app/components/AvatarGroup';
+import useActiveList from '@/app/hooks/useActiveList';
 
+import Avatar from '@/app/components/Avatar';
+import AvatarGroup from '@/app/components/AvatarGroup';
+import ConfirmModal from './ConfirmModal';
 
 interface ProfileDrawerProps {
   isOpen: boolean;
@@ -30,25 +28,21 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
 }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const otherUser = useOtherUser(data);
-
-
-
   
-  const joinedDate = useMemo(() => {
-    return otherUser?.createdAt
-  }, [otherUser?.createdAt]);
 
   
   const title = useMemo(() => {
-    return data.name || otherUser?.name;
-  }, [data.name, otherUser?.name]);
+    return data.name || otherUser.name;
+  }, [data.name, otherUser.name]);
+
+  const { members } = useActiveList();
+  const isActive = members.indexOf(otherUser?.email!) !== -1;
 
 
-const { systemTheme, theme } = useTheme();
-const currentTheme = theme === "system" ? systemTheme : theme;
+
   return (
     <>
-        <ConfirmModal 
+      <ConfirmModal 
         isOpen={confirmOpen} 
         onClose={() => setConfirmOpen(false)}
       />
@@ -56,11 +50,11 @@ const currentTheme = theme === "system" ? systemTheme : theme;
         <Dialog as="div" className="relative z-50" onClose={onClose}>
           <Transition.Child
             as={Fragment}
-            enter=""
-            enterFrom="opacity-100"
-            enterTo="opacity-400"
-            leave=""
-            leaveFrom="opacity-400"
+            enter="ease-out duration-500"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-500"
+            leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
           <div className="fixed inset-0 bg-black bg-opacity-40" />
@@ -68,10 +62,7 @@ const currentTheme = theme === "system" ? systemTheme : theme;
 
           <div className="fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
-              <div 
-              className={clsx("pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10", 
-              currentTheme === "dark" ? "bg-neutral-900 text-white" : "bg-white"
-              )}>
+              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                 <Transition.Child
                   as={Fragment}
                   enter="transform transition ease-in-out duration-500"
@@ -82,13 +73,13 @@ const currentTheme = theme === "system" ? systemTheme : theme;
                   leaveTo="translate-x-full"
                 >
                   <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                    <div className="flex h-full flex-col overflow-y-scroll py-6 shadow-xl">
+                    <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                       <div className="px-4 sm:px-6">
                         <div className="flex items-start justify-end">
                           <div className="ml-3 flex h-7 items-center">
                             <button
                               type="button"
-                              className="rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                              className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                               onClick={onClose}
                             >
                               <span className="sr-only">Close panel</span>
@@ -102,19 +93,15 @@ const currentTheme = theme === "system" ? systemTheme : theme;
                           <div className="mb-2">
                             {data.isGroup ? <AvatarGroup users={data.users} /> : <Avatar user={otherUser} />}
                           </div>
-                          <div>
+                          <div className='text-black'>
                             {title}
-                          </div>
-                          <div className="text-sm ">
-                            {/* {statusText} */}
                           </div>
                           <div className="flex gap-10 my-8">
                             <div onClick={() => setConfirmOpen(true)} className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75">
-                              <div className={clsx("w-10 h-10 rounded-full flex items-center justify-center",
-                              currentTheme === "dark" ? "bg-neutral-800" : "bg-neutral-100")}>
-                                <IoTrash size={20} />
+                              <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
+                                <IoTrash color='black' size={20} />
                               </div>
-                              <div className={clsx("text-sm font-light", currentTheme === "light" ? "text-neutral-600" : "")}>
+                              <div className="text-sm font-light text-neutral-600">
                                 Delete
                               </div>
                             </div>
@@ -124,13 +111,24 @@ const currentTheme = theme === "system" ? systemTheme : theme;
                           {data.isGroup && (
                             <div>
                               <dt 
-                                className={clsx("text-sm font-medium sm:w-40  sm:flex-shrink-0",
-                                currentTheme == "dark" ? "text-gray-300" : "text-gray-700")}
+                                className="
+                                  text-sm 
+                                  font-medium 
+                                  text-gray-500 
+                                  sm:w-40 
+                                  sm:flex-shrink-0
+                                "
                               >
                                 Emails
                               </dt>
-                              <dd className={clsx("text-sm font-medium sm:w-40  sm:flex-shrink-0",
-                                 currentTheme == "dark" ? "text-white" : "text-gray-500")}>
+                              <dd 
+                                className="
+                                  mt-1 
+                                  text-sm 
+                                  text-gray-900 
+                                  sm:col-span-2
+                                "
+                              >
                                 {data.users.map((user) => user.email).join(', ')}
                               </dd>
                             </div>
@@ -138,17 +136,28 @@ const currentTheme = theme === "system" ? systemTheme : theme;
                           {!data.isGroup && (
                             <div>
                               <dt 
-                                className={clsx("text-sm font-medium sm:w-40  sm:flex-shrink-0",
-                                 currentTheme == "light" ? "text-gray-500" : "")}>
+                                className="
+                                  text-sm 
+                                  font-medium 
+                                  text-gray-500 
+                                  sm:w-40 
+                                  sm:flex-shrink-0
+                                "
+                              >
                                 Email
                               </dt>
-                              <dd className={clsx("text-sm font-medium sm:w-40  sm:flex-shrink-0",
-                                 currentTheme == "dark" ? "text-white" : "text-gray-500")}>
-                                {otherUser?.email}
+                              <dd 
+                                className="
+                                  mt-1 
+                                  text-sm 
+                                  text-gray-900 
+                                  sm:col-span-2
+                                "
+                              >
+                                {otherUser.email}
                               </dd>
                             </div>
                           )}
-                    
                         </dl>
                       </div>
                         </div>
