@@ -13,6 +13,7 @@ import { pusherClient } from "@/app/libs/pusher";
 import ConversationBox from "./ConversationBox";
 import { FullConversationType } from "@/app/types";
 import GroupChatModal from "./GroupChatModal";
+import { useTheme } from "next-themes";
 
 interface ConversationListProps {
   initialItems: FullConversationType[];
@@ -78,6 +79,8 @@ const ConversationList: React.FC<ConversationListProps> = ({
     pusherClient.bind('conversation:remove', removeHandler)
   }, [pusherKey, router]);
 
+  const {theme} = useTheme()
+
   return (
     <>
       <GroupChatModal
@@ -99,7 +102,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
       `, isOpen ? 'hidden' : 'block w-full left-0')}>
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
-            <div className="text-2xl font-bold text-neutral-800">
+            <div className={clsx(theme == "light" ? "text-2xl font-bold text-neutral-800" : "text-2xl font-bold text-neutral-100")}>
               Messages
             </div>
             <div 

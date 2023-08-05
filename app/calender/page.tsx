@@ -10,7 +10,7 @@ const Home: FC<PageProps> = ({
 }) => {
   
   return (
-    <div className='hidden lg:block h-full'>
+    <div className='h-full'>
           <Landing />
     </div>
   )

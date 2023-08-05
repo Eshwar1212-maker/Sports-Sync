@@ -10,6 +10,8 @@ import useActiveList from "@/app/hooks/useActiveList";
 import Avatar from "@/app/components/Avatar";
 import AvatarGroup from "@/app/components/AvatarGroup";
 import ProfileDrawer from "./ProfileDrawer";
+import { useTheme } from 'next-themes';
+import clsx from 'clsx';
 
 interface HeaderProps {
   conversation: Conversation & {
@@ -31,6 +33,8 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
     return isActive ? '' : ''
   }, [conversation, isActive]);
 
+  const {theme} = useTheme()
+
   return (
   <>
     <ProfileDrawer 
@@ -38,21 +42,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
       isOpen={drawerOpen} 
       onClose={() => setDrawerOpen(false)}
     />
-    <div 
-      className="
-        bg-white 
-        w-full 
-        flex 
-        border-b-[1px] 
-        sm:px-4 
-        py-3 
-        px-4 
-        lg:px-6 
-        justify-between 
-        items-center 
-        shadow-sm
-      "
-    >
+    <div className={clsx("w-full flex border-b-[1px] sm:px-4 py-3 px-4 lg:px-6 justify-between items-center shadow-sm", theme == "light" && "bg-white")}>
       <div className="flex gap-3 items-center">
         <Link
           href="/conversations" 
@@ -72,10 +62,8 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
         ) : (
           <Avatar user={otherUser} />
         )}
-        <div className="flex flex-col">
-          <div>{conversation.name || otherUser.name}</div>
-          <div className="text-sm font-light text-neutral-500">
-            {statusText}
+        <div className="flex flex-co">
+          <div>{conversation.name || otherUser.name}
           </div>
         </div>
       </div>

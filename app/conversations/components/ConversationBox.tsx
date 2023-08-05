@@ -10,6 +10,7 @@ import Avatar from "@/app/components/Avatar";
 import useOtherUser from "@/app/hooks/useOtherUser";
 import AvatarGroup from "@/app/components/AvatarGroup";
 import { FullConversationType } from "@/app/types";
+import { useTheme } from "next-themes";
 
 interface ConversationBoxProps {
   data: FullConversationType,
@@ -23,6 +24,9 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
   const otherUser = useOtherUser(data);
   const session = useSession();
   const router = useRouter();
+  const {theme} = useTheme()
+  console.log(theme);
+  
 
   const handleClick = useCallback(() => {
     router.push(`/conversations/${data.id}`);
@@ -74,12 +78,11 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         items-center 
         space-x-3 
         p-3 
-        hover:bg-neutral-100
         rounded-lg
         transition
         cursor-pointer
         `,
-        selected ? 'bg-neutral-100' : 'bg-white'
+        theme == "dark" ? "hover:bg-neutral-700" : "hover:bg-neutral-100"
       )}
     >
       {data.isGroup ? (
@@ -91,17 +94,11 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         <div className="focus:outline-none">
           <span className="absolute inset-0" aria-hidden="true" />
           <div className="flex justify-between items-center mb-1">
-            <p className="text-md font-medium text-gray-900">
+            <p className={clsx(theme === "light" ?  "text-md font-medium text-gray-900" : "text-md font-medium text-gray-200")}>
               {data.name || otherUser.name}
             </p>
             {lastMessage?.createdAt && (
-              <p 
-                className="
-                  text-xs 
-                  text-gray-400 
-                  font-light
-                "
-              >
+              <p className={clsx(theme === "light" ? "text-xs text-gray-400 font-light" : "text-xs font-light text-gray-300")}>
                 {format(new Date(lastMessage.createdAt), 'p')}
               </p>
             )}
@@ -111,7 +108,8 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
               truncate 
               text-sm
               `,
-              hasSeen ? 'text-gray-500' : 'text-black font-medium'
+              hasSeen ? 'text-gray-500' : 'text-black font-medium',
+              theme == "dark" ? "text-slate-200" : ""
             )}>
               {lastMessageText}
             </p>
