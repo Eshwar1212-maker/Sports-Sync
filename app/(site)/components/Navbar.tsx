@@ -34,11 +34,11 @@ const Navbar: FC<NavbarProps> = ({
 }) => {
   const router = useRouter()
   return (
-    <div className='flex justify-between px-20 py-4 bg-white text-black'>
+    <div className='flex justify-between px-5 sm:px-20 py-4 bg-white text-black'>
       <div style={inter.style} className='text-xl text-blue-800'>
        SportsSync
       </div>
-      <div className='text-sm font-bold'>
+      <div className='my-2 text-sm font-bold'>
         <button onClick={() => router.push("/auth")}>SIGN UP</button>
       </div>
     </div>
