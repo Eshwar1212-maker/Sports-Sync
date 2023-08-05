@@ -6,7 +6,11 @@ import { MdOutlineLightMode } from "react-icons/md";
 import { HiOutlineMoon } from "react-icons/hi";
 import { LiaAffiliatetheme, LiaMoon } from "react-icons/lia";
 
-const ThemeButton = () => {
+interface ThemeButtonProps{
+  size?: number
+}
+
+const ThemeButton = ({size}: ThemeButtonProps) => {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme()
 
@@ -23,7 +27,7 @@ const ThemeButton = () => {
 
 
   return (
-    <div className="mb-3 flex mx-auto ">
+    <div className="flex mx-auto ">
       {currentTheme === "light" ? (
         <button
           className=""
@@ -31,7 +35,7 @@ const ThemeButton = () => {
             setTheme("dark");
           }}
         >
-          <FaAffiliatetheme size={15}/>
+          <FaAffiliatetheme size={size}/>
         </button>
       ) : (
         <button
@@ -40,7 +44,7 @@ const ThemeButton = () => {
             setTheme("light");
           }}
         >
-          <LiaAffiliatetheme size={16}/>
+          <LiaAffiliatetheme size={size}/>
         </button>
       )}
     </div>
