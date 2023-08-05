@@ -19,8 +19,8 @@ const bon = Bonheur_Royale({
 const EmptyState: FC<EmptyStateProps> = ({ children }) => {
 
   return (
-    <div className="px-4 py-10 sm:px-6 lg:px-8 h-full flex justify-center items-center flex-col bg-gray-100">
-      <div style={inter.style} className="text-4xl text-gray-800 border-b-[1px] border-b-black">
+    <div className="px-4 py-10 sm:px-6 lg:px-8 h-full flex justify-center items-center flex-col">
+      <div style={inter.style} className="text-4xl  border-b-[1px] border-b-black">
         Sports Sync Web
       </div>
       <div>{children}</div>
