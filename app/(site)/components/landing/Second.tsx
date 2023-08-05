@@ -21,7 +21,7 @@ const Second: FC<SecondProps> = ({}) => {
         </p>
         <div className="bg-black hidden md:block">
             <Image
-              alt="fitness dashboard"
+              alt="calender tracker image"
               src={calenderTwo}
               width={600}
               height={100}
@@ -30,12 +30,12 @@ const Second: FC<SecondProps> = ({}) => {
       </div>
       </div>
       <div className="flex flex-col lg:py-10 w-full md:w-1/2 lg:w-2/5 xl:w-1/2 items-center">
-        <div className="h-[500px]">
+        <div className="">
           <Image
             width={450}
             height={300} // adjust this value to fit your needs
             src={one}
-            alt="basketball team image"
+            alt="Calender tracker image"
           />
         </div>
       </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import image from "../../../assets/basketballTeam.jpg";
+import image from "../../../assets/team.jpg";
 
 import { FC } from "react";
 interface FirstProps {}

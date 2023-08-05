@@ -43,12 +43,12 @@ const Hero = () => {
       <h1 style={inter.style} className="text-4xl md:text-6xl font-bold">
             The World's Best <br />Platform for athletes
           </h1>
-          <p style={inter.style} className="text-2xl font-thin">
+          <p style={inter.style} className="text-lg md:text-2xl font-thin">
               Manage everything with Sports Sync
           </p>
           </div>
           <div className="text-xl my-4 flex items-center justify-center lg:justify-start">
-          <button aria-label="Get Started, create your account" onClick={() => router.push("/auth")} className="bg-blue-900 text-xl p-3 text-white rounded-sm">
+          <button aria-label="Get Started, create your account" onClick={() => router.push("/auth")} className="bg-blue-900 text-sm md:text-xl p-3 text-white rounded-sm">
            Get Started
           </button>
           </div>
@@ -82,12 +82,12 @@ const Hero = () => {
         </div>
       </div>
       <div className="bg-gray-100 py-10">
-        <h2 className="text-md md:text-2xl text-center font-bold">
+        <h2 className="text-xl md:text-2xl text-center font-bold">
           Use our calender, workout tracker, messaging system, <br/> and fitness dashboard to reach your goals.
         </h2>
         <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[200px]">
           <div className="flex flex-col py-10 space-x-4">
-            <div className="bg-green-50">
+            <div className="bg-green-100">
               <Image
               alt="fitness dashboard"
               src={dashboard}
