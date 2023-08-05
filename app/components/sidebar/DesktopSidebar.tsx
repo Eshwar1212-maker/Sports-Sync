@@ -83,8 +83,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
         <nav
           className="mt-4 flex flex-col justify-between items-center"
         >
-          <div>
-          <ThemeButton/>
+          <div className="mb-3">
+          <ThemeButton size={13}/>
           </div>
 
           <div
