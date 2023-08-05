@@ -16,7 +16,7 @@ const Second: FC<SecondProps> = ({}) => {
           Use our calender to schedule all of your own events, such as practices, games, meetings, 
           or create a workspace with your team so all of you can stay connected. 
         </p>
-        <div className="bg-black hidden md:block">
+        <div className="bg-black hidden lg:block">
             <Image
               alt="calender tracker image"
               src={calenderTwo}

@@ -6,10 +6,10 @@ const Footer: FC<FooterProps> = ({
   
 }) => {
   return (
-<footer className="py-6 sm:px-12">
-    <div className="flex flex-wrap justify-between gap-6">
+<footer className="py-6 sm:px-20 text-sm sm:text-md bg-white text-black mx-0 px-0 w-full">
+    <div className="flex flex-wrap justify-between gap-6 px-5">
         <div>
-            <h3 className="text-lg font-semibold">Sports Sync</h3>
+            <h3 className="font-semibold text-lg">Sports Sync</h3>
             <p className="mt-2 text-sm">New York City</p>
             <p className="text-sm">sportssynchelp@gmail.com</p>
         </div>

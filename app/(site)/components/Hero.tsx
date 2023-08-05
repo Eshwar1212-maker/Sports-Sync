@@ -1,8 +1,6 @@
 "use client"
 
-import one from "../../assets/one.jpg";
-import two from "../../assets/two.jpg";
-import three from "../../assets/three.jpg";
+
 import four from "../../assets/four.jpg";
 import soccer from "../../assets/soccer.jpg"
 import AuthModal from "./AuthModal"
@@ -37,7 +35,7 @@ const Hero = () => {
   const router = useRouter()
   return (
     <div className="bg-white text-black">  
-      <div className="flex flex-col justify-center lg:flex-row py-10 lg:py-24 h-[50vh] sm:h-[90vh] lg:h-[70vh] pb-11 mb-6 lg:px-11 xl:px-[100px] 2xl:px-[290px]"> 
+<div className="flex flex-col justify-center py-10 h-[50vh] pb-11 mb-6 sm:h-[80vh] lg:flex-row lg:py-24 lg:h-[70vh] lg:px-11 xl:px-[100px] 2xl:px-[290px]">
       <div className="sm:w-full lg:w-1/2 p-8 flex flex-col lg:items-start">
       <div className="space-y-5 text-center lg:text-left">
       <h1 style={inter.style} className="text-3xl sm:text-4xl xl:text-6xl font-bold">
@@ -73,7 +71,7 @@ const Hero = () => {
           </div> 
         </div>
       </div>
-      <div className="my-[400px] md:my-0 bg-gray-100 py-10">
+      <div className="my-[400px] sm:my-20 bg-gray-100 py-10">
         <h2 className="text-xl md:text-2xl text-center font-bold">
           Use our calender, workout tracker, messaging system, <br/> and fitness dashboard to reach your goals.
         </h2>
@@ -130,7 +128,6 @@ const Hero = () => {
         <Second />
         <Third />
       </div>
-      <Footer />
     </div>
   );
 };

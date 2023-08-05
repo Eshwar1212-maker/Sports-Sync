@@ -1,12 +1,15 @@
 import one from "../../../assets/dash.jpg";
 import Image from "next/image";
 import { FC } from "react";
+import Footer from "./Footer";
 
 interface SecondProps {}
 
 const Second: FC<SecondProps> = ({}) => {
   return (
-    <div className="flex flex-col justify-center items-center lg:flex-row bg-green-100 mb-[-430px] sm:mb-[-38px]">
+    <div>
+
+    <div className="flex flex-col justify-center items-center lg:flex-row bg-green-100 sm:mb-[-37px] pb-11">
       <div className="w-[80%] lg:w-[500px] py-20 items-center text-center">
         <h3 className="text-gray-800 text-3xl md:text-3xl lg:text-4xl font-thin">
           It all starts with tracking
@@ -17,17 +20,21 @@ const Second: FC<SecondProps> = ({}) => {
          for you to judge your progress. 
         </p>
       </div>
-      <div className="flex flex-col lg:py-10 w-full md:w-1/2 lg:w-2/5 xl:w-1/2 items-center mb-[60px] sm:mb-[100px]">
-        <div className="h-[500px]">
+      <div className="flex flex-col lg:py-10 w-full md:w-1/2 lg:w-2/5 xl:w-1/2 items-center px-2 mx-2 my-9">
+        <div className="">
           <Image
             width={450}
-            height={300} // adjust this value to fit your needs
+            height={300} 
             src={one}
-            alt="basketball team image"
+            alt="tracker image"
           />
         </div>
       </div>
     </div>
+        <Footer />
+        </div>
+
+
   );
 };
 
