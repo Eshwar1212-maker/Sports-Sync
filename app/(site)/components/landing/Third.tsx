@@ -8,13 +8,12 @@ interface SecondProps {}
 const Second: FC<SecondProps> = ({}) => {
   return (
     <div>
-
     <div className="flex flex-col justify-center items-center lg:flex-row bg-green-100 sm:mb-[-37px] pb-11">
       <div className="w-[80%] lg:w-[500px] py-20 items-center text-center">
-        <h3 className="text-gray-800 text-3xl md:text-3xl lg:text-4xl font-thin">
+        <h3 className="text-gray-800 text-3xl md:text-3xl lg:text-5xl font-thin">
           It all starts with tracking
         </h3>
-        <p className="text-sm md:text-md py-4 text-gray-500">
+        <p className="text-sm md:text-xl py-4 text-gray-500">
          Visit your dashboard regularly to see how consistent and intense 
          you have been working out over the course of months, in order 
          for you to judge your progress. 
