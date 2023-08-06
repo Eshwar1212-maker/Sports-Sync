@@ -35,13 +35,13 @@ const Hero = () => {
   const router = useRouter()
   return (
     <div className="bg-white text-black">  
-<div className="flex flex-col justify-center py-10 h-[50vh] pb-11 mb-6 sm:h-[80vh] lg:flex-row lg:py-24 lg:h-[70vh] lg:px-11 xl:px-[100px] 2xl:px-[290px]">
-      <div className="sm:w-full lg:w-1/2 p-8 flex flex-col lg:items-start">
+<div className="flex flex-col justify-center py-0 h-[50vh] pb-11 mb-6 sm:h-[80vh] lg:flex-row lg:py-20 lg:h-[70vh] lg:px-11 xl:px-[100px] 2xl:px-[290px]">
+      <div className="sm:w-full lg:w-1/2 p-4 flex flex-col lg:items-start">
       <div className="space-y-5 text-center lg:text-left">
-      <h1 style={inter.style} className="text-3xl sm:text-4xl xl:text-6xl font-bold">
-            The World's Best <br />Platform for athletes
+      <h1 style={inter.style} className="text-3xl sm:text-4xl 2xl:text-6xl font-bold">
+            The world's best platform for athletes
           </h1>
-          <p style={inter.style} className="text-lg md:text-2xl font-thin">
+          <p style={inter.style} className="text-lg 2xl:text-3xl font-thin">
               Manage everything with Sports Sync
           </p>
           </div>
@@ -72,22 +72,22 @@ const Hero = () => {
         </div>
       </div>
       <div className="my-[400px] sm:my-20 bg-gray-100 py-10">
-        <h2 className="text-xl md:text-2xl text-center font-bold">
+        <h2 className="text-[25px] xl:text-3xl text-center font-bold px-4">
           Use our calender, workout tracker, messaging system, <br/> and fitness dashboard to reach your goals.
         </h2>
-        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[200px]">
+        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[200px] px-6">
           <div className="flex flex-col py-3 sm:py-10 space-x-4">
             <div className="bg-green-100">
               <Image
               alt="fitness dashboard"
               src={dashboard}
-              width={640}
+              width={600}
               height={440}
               />
             </div>
             <div>
-              <h3 className="text-xl">Set Goals</h3>
-              <p className="text-[12px] sm:text-sm">
+              <h3 className="text-2xl lg:text-3xl">Set Goals</h3>
+              <p className="text-[17px] sm:text-sm md:text-lg">
                 Use our dashboard so you can <br />
                 monitor your goals and progress.
               </p>
@@ -102,24 +102,24 @@ const Hero = () => {
               height={440}
               />
             </div>
-              <h3 className="text-xl">Plan your life as an athlete</h3>
-              <p className="text-[12px] sm:text-sm">
+              <h3 className="text-2xl lg:text-3xl">Plan your life as an athlete</h3>
+              <p className="text-[17px] sm:text-sm md:text-lg">
                 Your life can be very busy as an athlete,<br />
                 use our calender to track everything. 
               </p>
             </div>
             <div className="flex flex-col">
-            <div className="bg-orange-200">
+            <div className="bg-orange-200 lg:max-w-[380px]">
             <Image
               alt="fitness dashboard"
               src={message}
-              width={640}
+              width={680}
               height={440}
               />
             </div>
-              <h3 className="text-xl">Schedule games with your teammates</h3>
-              <p className="text-[12px] sm:text-sm">
-                Use our messaging system to schedule games,<br />
+              <h3 className="text-2xl lg:text-3xl">Schedule games</h3>
+              <p className="text-[17px] sm:text-sm md:text-lg">
+                Use our messaging system to schedule games,
                 or practices with your friends and teams.
               </p>
             </div>       
