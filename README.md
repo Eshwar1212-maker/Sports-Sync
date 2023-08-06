@@ -1,34 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sports Sync
 
-## Getting Started
+This is a workout/productivity app for teams and players. This app aims to make the lives of athletes easier with calender planning of events, a workout log tracker, a dashboard to show user consistency, and a messaging
+system so athletes can stay in touch with their teammates and friends. 
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Calender section for tracking athletic events, such as workouts, games, team meetings, etc
+- Workout log to track workouts for specific days in the gym
+- Messaging system, to contact your teammates, or friends, to schedule games.
+- A user dashboard to track workout consistency, intensity, and more over the course of a long period of time. 
+- ...
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Prerequisites
 
-## Learn More
+-Strong knowledge of React and Javascript is required
+-Basic knowledge of Nextjs is required
+-Knowledge of database management is required
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Clone the repository:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```ssh key```
+git clone git@github.com:Eshwar1212-maker/Sports-Sync.git
