@@ -12,7 +12,7 @@ system so athletes can stay in touch with their teammates and friends.
 - A user dashboard to track workout consistency, intensity, and more over the course of a long period of time. 
 - ...
 
-
+ 
 ## Prerequisites
 
 -Strong knowledge of React and Javascript is required
