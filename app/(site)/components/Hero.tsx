@@ -35,13 +35,13 @@ const Hero = () => {
   const router = useRouter()
   return (
     <div className="bg-white text-black">  
-<div className="flex flex-col justify-center py-0 h-[50vh] pb-11 mb-6 sm:h-[80vh] lg:flex-row lg:py-20 lg:h-[70vh] lg:px-11 xl:px-[100px] 2xl:px-[290px]">
+<div className="flex flex-col justify-center py-10 h-[50vh] pb-11 mb-6 sm:h-[80vh] lg:flex-row lg:py-20 lg:h-[70vh] lg:px-11 xl:px-[100px] 2xl:px-[290px]">
       <div className="sm:w-full lg:w-1/2 p-4 flex flex-col lg:items-start">
       <div className="space-y-5 text-center lg:text-left">
-      <h1 style={inter.style} className="text-3xl sm:text-4xl 2xl:text-6xl font-bold">
+      <h1 style={inter.style} className="text-3xl sm:text-5xl 2xl:text-6xl font-bold">
             The world's best platform for athletes
           </h1>
-          <p style={inter.style} className="text-lg 2xl:text-3xl font-thin">
+          <p style={inter.style} className="text-lg md:text-2xl 2xl:text-4xl font-thin">
               Manage everything with Sports Sync
           </p>
           </div>
@@ -53,7 +53,7 @@ const Hero = () => {
         </div>
 
         <div className="flex justify-center bg-[#FFFFFF] relative">
-          <div className="px-9 relative">
+          <div className="px-10 relative">
           <Image
             alt="landing page for team"
             width={700}
@@ -61,7 +61,7 @@ const Hero = () => {
             src={four}
           />
           </div>    
-        <div className="absolute">
+        <div className="absolute px-5 md:px-0">
           <Image
             alt="landing page for team"
             width={370}
