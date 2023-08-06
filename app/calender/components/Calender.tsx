@@ -8,14 +8,14 @@ import interactionPlugin from "@fullcalendar/interaction";
 import AddEventModal from "./AddEventModal";
 
 
-
-
-
 function Calendar({userEvents}: {userEvents: any}) {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState("")
   const [events, setEvents] = useState<any>(userEvents);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
+
+  console.log(date);
+  
 
 
   const handleDateClick = (arg: any) => {

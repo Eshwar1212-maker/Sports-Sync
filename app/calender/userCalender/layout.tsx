@@ -1,6 +1,6 @@
 import getEvents from "@/app/actions/getEvents";
 import Sidebar from "@/app/components/sidebar/Sidebar";
-import Calender from "../../teams/components/Calender"
+import Calender from "../components/Calender"
 import Link from "next/link";
 import { HiChevronLeft } from "react-icons/hi";
 

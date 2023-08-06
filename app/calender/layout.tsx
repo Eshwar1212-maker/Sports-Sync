@@ -1,9 +1,6 @@
 import getEvents from "../actions/getEvents";
-import getUsers from "../actions/getUsers";
 import Sidebar from "../components/sidebar/Sidebar";
-import Calender from "../teams/components/Calender";
-import UserList from "../users/components/UserList";
-import CalenderSidebar from "./components/calenderSidebar";
+
 
 export default async function CalenderLayout({
   children,
