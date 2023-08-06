@@ -39,7 +39,7 @@ const Navbar: FC<NavbarProps> = ({
        SportsSync
       </div>
       <div className='my-2 text-sm font-bold'>
-        <button onClick={() => router.push("/auth")}>SIGN UP</button>
+        <button onClick={() => router.push("/auth")}>SIGN IN</button>
       </div>
     </div>
   )

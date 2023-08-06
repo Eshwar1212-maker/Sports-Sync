@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sports Sync
 
-## Getting Started
+This is a workout/productivity app for teams and players. This app aims to make the lives of athletes easier with calender planning of events, a workout log tracker, a dashboard to show user consistency, and a messaging
+system so athletes can stay in touch with their teammates and friends.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Calender section for tracking athletic events, such as workouts, games, team meetings, etc
+- Workout log to track workouts for specific days in the gym
+- Messaging system, to contact your teammates, or friends, to schedule games.
+- A user dashboard to track workout consistency, intensity, and more over the course of a long period of time.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Prerequisites
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-Strong knowledge of React and Javascript is required
+-Basic knowledge of Nextjs is required
+-Knowledge of database management is required
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+    ```ssh key```
+    git clone git@github.com:Eshwar1212-maker/Sports-Sync.git
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Get your env variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    There is a .env-example file that has all of the variables you will need to run this locally:
+        For Mongodb atlast
+            DATABASE_URL=
+        For Google authentication
+            GOOGLE_CLIENT_ID=
+            GOOGLE_CLIENT_SECRET=
+        For Next-auth authentication
+            NEXTAUTH_SECRET=
+        A cloundary set up for image upload
+            NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+        Pusher client variables for web socket communication
+            PUSHER_APP_ID =
+            NEXT_PUBLIC_PUSHER_APP_KEY =
+            PUSHER_SECRET =
+            cluster =
