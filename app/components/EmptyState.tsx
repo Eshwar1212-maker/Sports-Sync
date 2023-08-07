@@ -26,6 +26,6 @@ const EmptyState: FC<EmptyStateProps> = ({ children }) => {
       <div>{children}</div>
     </div>
   );
-};
+}; 
 
 export default EmptyState;
