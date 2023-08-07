@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Modal from "@/app/components/Modal";
 import { useMutation } from "@tanstack/react-query";
 import Button from "@/app/components/Button";
+import { toast } from "react-hot-toast";
 
 interface EventsModaProps {
   isOpen?: boolean;
@@ -33,8 +34,8 @@ function AddEventModal({
     setUpdateNotes(selectedEvent?._def?.extendedProps?.notes || "");
 
   }, [selectedEvent]);
-   console.log("SELECTED EVENT: " , selectedEvent);
 
+  //ADD CALENDER EVENT MUTATION
   const {
     mutate: addEvent,
     isLoading,
@@ -49,22 +50,54 @@ function AddEventModal({
         onClose();
       },
       onError: (error) => {
-        console.log(error);
+        console.log("ADD EVENT ERROR: ", error);
       },
     }
   );
 
+  //UPDATE CALENDER EVENT MUTATION
+  const {mutate: updateEvent} = useMutation(
+    (data: {title: string; notes: string; eventId: string}) => {
+     return axios.patch("/api/teamEvents/update", data);
+    },
+    {
+      onSuccess: (response) => {
+        onClose()
+        onSave(response.data)
+        toast.success("Event updated")
+      }, 
+      onError: (error) => {
+        console.log("UPDATE EVENT ERROR: ", error);
+        
+      }
+    }
+  );
+ 
+  
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    addEvent({
-      title: eventTitle,
-      notes: eventNotes,
-      date,
-    });
+    if(selectedEvent){
+      updateEvent({
+        notes: updateNotes,
+        title: updateTitle,
+        eventId: selectedEvent?._def?.publicId
+      })
+      setUpdateNotes("");
+      setUpdateTitle("");
+      
+    }else{
+      addEvent({
+        title: eventTitle,
+        notes: eventNotes,
+        date,
+      });
+    }
+
     setEventTitle("");
     setEventNotes("");
   };
-
+  
+  
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit}>
@@ -81,8 +114,8 @@ function AddEventModal({
           }
         />
         <div className="py-4">
-          <h3 className="text-base font-semibold leading-7">Date</h3>
-          <p className="text-sm">{date}</p>
+           {!selectedEvent && <h3 className="text-base font-semibold leading-7">Date</h3>}
+          {!selectedEvent ? date.split("-")[1] + "/" + date.split("-")[2] + "/" + date.split("-")[0]: selectedEvent.date}
         </div>
         <div className="border-[1px] border-solid border-gray-900 w-full" />
         <div className="py-6">
@@ -99,8 +132,8 @@ function AddEventModal({
         </div>
         <div className="flex gap-3 justify-end">
           <button onClick={onClose}>Cancel</button>
-          <Button type="submit" disabled={selectedEvent ? !updateTitle : !eventTitle}>
-            Save
+          <Button type="submit" disabled={!selectedEvent ? !eventTitle : !updateTitle}>
+            {selectedEvent ? "Update" : "Save"}
           </Button>
         </div>
       </form>

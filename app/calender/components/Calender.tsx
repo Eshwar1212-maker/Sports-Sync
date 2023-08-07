@@ -14,10 +14,6 @@ function Calendar({userEvents}: {userEvents: any}) {
   const [events, setEvents] = useState<any>(userEvents);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
-  console.log(date);
-  
-
-
   const handleDateClick = (arg: any) => {
     setIsOpen(true)
     setDate(arg.dateStr)  
