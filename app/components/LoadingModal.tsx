@@ -11,11 +11,11 @@ const LoadingModal = () => {
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
+          enterFrom="opacity-800"
+          enterTo="opacity-800"
           leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+          leaveFrom="opacity-800"
+          leaveTo="opacity-800"
         >
           <div
             className="
