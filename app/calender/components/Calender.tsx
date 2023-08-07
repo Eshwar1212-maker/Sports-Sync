@@ -13,9 +13,8 @@ function Calendar({userEvents}: {userEvents: any}) {
   const [date, setDate] = useState("")
   const [events, setEvents] = useState<any>(userEvents);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
-
-  console.log(date);
   
+  console.log("PARENT: " , selectedEvent);
 
 
   const handleDateClick = (arg: any) => {
