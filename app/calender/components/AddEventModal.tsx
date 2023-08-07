@@ -28,14 +28,12 @@ function AddEventModal({
   );
 
   const [updateNotes, setUpdateNotes] = useState(selectedEvent?._def?.extendedProps?.notes || ""); 
-  
 
   useEffect(() => {
     setUpdateTitle(selectedEvent ? selectedEvent.title : "");
     setUpdateNotes(selectedEvent?._def?.extendedProps?.notes || "");
 
   }, [selectedEvent]);
-   console.log("SELECTED EVENT ID: ", selectedEvent?._def?.publicId);
 
   //ADD CALENDER EVENT MUTATION
   const {
@@ -74,7 +72,8 @@ function AddEventModal({
       }
     }
   );
-
+ 
+  
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     if(selectedEvent){
@@ -97,7 +96,7 @@ function AddEventModal({
     setEventTitle("");
     setEventNotes("");
   };
-  console.log("SELECTED EVENT: ", selectedEvent);
+  
   
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -115,8 +114,8 @@ function AddEventModal({
           }
         />
         <div className="py-4">
-          <h3 className="text-base font-semibold leading-7">Date</h3>
-          <p className="text-sm">{date}</p>
+           {!selectedEvent && <h3 className="text-base font-semibold leading-7">Date</h3>}
+          {!selectedEvent ? date.split("-")[1] + "/" + date.split("-")[2] + "/" + date.split("-")[0]: selectedEvent.date}
         </div>
         <div className="border-[1px] border-solid border-gray-900 w-full" />
         <div className="py-6">
@@ -134,7 +133,7 @@ function AddEventModal({
         <div className="flex gap-3 justify-end">
           <button onClick={onClose}>Cancel</button>
           <Button type="submit" disabled={!selectedEvent ? !eventTitle : !updateTitle}>
-            Save
+            {selectedEvent ? "Update" : "Save"}
           </Button>
         </div>
       </form>
