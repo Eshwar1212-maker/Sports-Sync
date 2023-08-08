@@ -11,84 +11,96 @@ datasource db {
 }
 
 model User {
-  id               String         @id @default(auto()) @map("_id") @db.ObjectId
-  name             String?
-  email            String?        @unique
-  emailVerified    DateTime?
-  image            String?
-  hashedPassword   String?
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
+  id              String         @id @default(auto()) @map("_id") @db.ObjectId
+  name            String?
+  email           String?        @unique
+  emailVerified   DateTime?
+  image           String?
+  hashedPassword  String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
   conversationIds String[]       @db.ObjectId
-  conversations    Conversation[] @relation(fields: [conversationIds], references: [id])
-  seenMessageIds String[] @db.ObjectId
-  seenMessages Message[] @relation("Seen", fields: [seenMessageIds], references: [id])
-  accounts Account[]
-  messages Message[]
-  teams Team[] @relation(fields: [conversationIds], references: [id])
-  teamIds String[]       @db.ObjectId
-  events Event[]
+  conversations   Conversation[] @relation(fields: [conversationIds], references: [id])
+  seenMessageIds  String[]       @db.ObjectId
+  seenMessages    Message[]      @relation("Seen", fields: [seenMessageIds], references: [id])
+  exerciseId      String[]       @db.ObjectId
+  accounts        Account[]
+  messages        Message[]
+  teams           Team[]         @relation(fields: [conversationIds], references: [id])
+  teamIds         String[]       @db.ObjectId
+  events          Event[]
+  exercise        Exercise[]
 }
 
 model Account {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @db.ObjectId
-  type String
-  provider String
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
   providerAccountId String
-  refresh_token String? @db.String
-  access_token String? @db.String
-  expires_at Int?
-  token_type String?
-  scope String?
-  id_token String? @db.String
-  session_state String?
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@unique([provider, providerAccountId])
 }
 
 model Message {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  body String?
-  image String?
-  createdAt DateTime @default(now())
-  seenIds String[] @db.ObjectId
-  seen User[] @relation("Seen", fields: [seenIds], references: [id])
-  conversationId String @db.ObjectId
-  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  senderId String @db.ObjectId
-  sender User @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  body           String?
+  image          String?
+  createdAt      DateTime     @default(now())
+  seenIds        String[]     @db.ObjectId
+  seen           User[]       @relation("Seen", fields: [seenIds], references: [id])
+  conversationId String       @db.ObjectId
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderId       String       @db.ObjectId
+  sender         User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
 }
 
 model Conversation {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt       DateTime @default(now())
-  lastMessageAt DateTime @default(now())
-  name String?
-  admin String?
-  isGroup Boolean?
-  messagesIds String[] @db.ObjectId
-  messages Message[]
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime  @default(now())
+  lastMessageAt DateTime  @default(now())
+  name          String?
+  admin         String?
+  isGroup       Boolean?
+  messagesIds   String[]  @db.ObjectId
+  messages      Message[]
+  userIds       String[]  @db.ObjectId
+  users         User[]    @relation(fields: [userIds], references: [id])
+  workoutsId    String?   @db.ObjectId
+}
+
+model Event {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  notes  String?
+  title  String?
+  date   String?
+  teamId String? @db.ObjectId
+  Team   Team?   @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  userId String  @db.ObjectId
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Team {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  title   String?
   userIds String[] @db.ObjectId
-  users User[] @relation(fields: [userIds], references: [id])
+  members User[]   @relation(fields: [userIds], references: [id])
+  events  Event[]
 }
 
-model Event{
-    id String @id @default(auto()) @map("_id") @db.ObjectId
-    notes String?
-    title String?
-    date String?
-    teamId String? @db.ObjectId
-    Team Team? @relation(fields: [teamId], references: [id], onDelete: Cascade)
-    userId String @db.ObjectId
-    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-
-model Team{
-    id String @id @default(auto()) @map("_id") @db.ObjectId
-    title String?
-    userIds String[] @db.ObjectId
-    members User[] @relation(fields: [userIds], references: [id])
-    events Event[]
+model Exercise {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  title  String?
+  reps   Int?
+  sets   Int?
+  userId String  @db.ObjectId
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

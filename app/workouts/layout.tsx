@@ -1,5 +1,5 @@
 import Sidebar from "../components/sidebar/Sidebar"
-import Main from "./components/Main"
+import Desktop from "./components/Desktop"
 
 export default async function WorkoutsLayout({
     children
@@ -10,7 +10,7 @@ export default async function WorkoutsLayout({
 
         <Sidebar>
             <div className="h-full">
-                <Main />
+                <Desktop />
                 {children}
             </div>
         </Sidebar>
