@@ -15,7 +15,7 @@ const AddWorkoutModal: FC<AddWorkoutModalProps> = ({ isOpen, onClose }) => {
         <h1 className="text-center text-xl">Add Workout</h1>
         <div className="">
           <div>
-            <WorkoutTab />
+            <WorkoutTab onClose={() => onClose}/>
           </div>
         </div>
       </div>

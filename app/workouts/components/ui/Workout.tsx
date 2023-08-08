@@ -10,15 +10,15 @@ const Workout: FC<WorkoutProps> = ({
 }) => {
   return (
     <div className='text-center flex flex-col justify-between'>
-      <div className='flex justify-between px-[640px]'>
-        <button>
-        <IoIosArrowBack />
+      <div className='flex justify-between mx-auto space-x-20 max-w-[500px] pl-20 sm:pl-0'>
+        <button className=''>
+        <IoIosArrowBack size={25}/>
         </button>
-      <h1 className='text-3xl font-bold'>
+      <h1 className='text-2xl font-bold'>
         Today
       </h1> 
-      <button>
-        <IoIosArrowForward />
+      <button className=''>
+        <IoIosArrowForward size={25}/>
       </button>
       </div>
 

@@ -14,14 +14,14 @@ const Header: FC<HeaderProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className='flex py-8 justify-between 2xl:px-[500px]'>
+    <div className='flex justify-between py-10 w-[500px] lg:w-[700px] max-w-[900px] mx-auto px-20 md:px-0'>
       <AddWorkoutModal isOpen={isOpen} onClose={() => setIsOpen(false)}/>
       <div>
         <button>
         <LiaCalendarDaySolid size={50}/>
         </button>
         </div>
-      <div onClick={() => setIsOpen(true)}>
+      <div className='text-sm md:text-md my-2 xl:text-lg sm:pr-0' onClick={() => setIsOpen(true)}>
          <Button>
             Add Workout
          </Button>
