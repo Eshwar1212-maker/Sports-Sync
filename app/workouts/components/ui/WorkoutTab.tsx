@@ -10,6 +10,7 @@ function classNames(...classes: string[]) {
 export default function WorkoutTab({onClose}: {onClose: () => {}}) {
   let [categories] = useState(initialCategories);
   const [category, setCategory] = useState("");
+  const [fullWorkout, setFullWorkout] = useState()
   const [selectedType, setSelectedType] = useState("");
   const [selectedExercise, setSelectedExercise] = useState("");
   const [selectedReps, setSelectedReps] = useState(0);
@@ -54,21 +55,24 @@ export default function WorkoutTab({onClose}: {onClose: () => {}}) {
               )}
             >
               <ul className="space-y-3">
-                {(category == "Sets" || category === "Reps") &&
+                {(category == "Sets" || category === "Reps") ?
                 category == "Sets" ? (
                   <input
-                    className=" border-s border-[1px] border-black rounded-md px-3 py-2 my-40 focus:outline-none focus:border-blue-500 mx-auto flex"
+                    className="border-s border-[1px] border-black rounded-md px-3 py-2 my-40 focus:outline-none focus:border-blue-500 mx-auto flex"
                     onChange={(e) => setSelectedSets(e.target.valueAsNumber)}
                     type="number"
+                    placeholder="Enter Sets"
                   />
                 ) : (
                   <input
                     className=" border-s border-[1px] border-black rounded-md px-3 py-2 my-40 focus:outline-none focus:border-blue-500 mx-auto flex"
                     onChange={(e) => setSelectedReps(e.target.valueAsNumber)}
                     type="number"
+                    placeholder="Enter Reps"
+
                   />
-                )}
-                {posts.map((post) => (
+                )
+                : posts.map((post) => (
                   <li
                     onClick={() => {
                       console.log(post);
