@@ -42,7 +42,7 @@ const Header: FC<HeaderProps> = ({}) => {
 
       {/* MOBILE MENU */}
       <div className="md:hidden">
-      <div className="flex justify-between py-1 w-[500px] sm:w-[700px] lg:w-[700px] max-w-[900px] mx-auto px-20 md:px-0 md:hidden bg-gray-800">
+      <div className="flex justify-between p-2 w-[500px] sm:w-[700px] lg:w-[700px] max-w-[900px] mx-auto px-20 md:px-0 md:hidden bg-gray-900">
       <AddWorkoutModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <div>
           <button>
@@ -57,15 +57,15 @@ const Header: FC<HeaderProps> = ({}) => {
         </div>
         </div>
         </div>
-        <div className='flex justify-between mx-auto space-x-20 sm:pl-0 bg-gray-900 text-white w-[500px] sm:w-[700px] lg:w-[700px] max-w-[900px] p-3'>
+        <div className='flex justify-between mx-auto space-x-20 sm:pl-0 bg-black text-white w-[500px] sm:w-[700px] lg:w-[700px] max-w-[900px] p-3'>
         <button className=''>
-        <IoIosArrowBack size={25}/>
+        <IoIosArrowBack size={22}/>
         </button>
-      <h1 className='text-xl md:text-2xl font-bold'>
+      <h1 className='text-[19px] md:text-2xl font-bold'>
         Today
       </h1> 
       <button className=''>
-        <IoIosArrowForward size={25}/>
+        <IoIosArrowForward size={22}/>
       </button>
       </div>
       </div>

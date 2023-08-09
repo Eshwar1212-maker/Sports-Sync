@@ -9,7 +9,7 @@ const page: FC<PageProps> = ({
   
 }) => {
   return (
-    <div className='h-full'>
+    <div className='h-full' style={{ transform: 'scale(1)' }}>
         <Desktop />
     </div>
   )
