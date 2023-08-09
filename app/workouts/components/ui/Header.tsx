@@ -59,15 +59,16 @@ const Header: FC<HeaderProps> = ({}) => {
         </div>
         <div className='flex justify-between mx-auto space-x-20 sm:pl-0 bg-black text-white w-[100%] p-3'>
         <button className=''>
-        <IoIosArrowBack size={22}/>
+        <IoIosArrowBack color="lightblue" size={22}/>
         </button>
       <h1 className='text-[19px] md:text-2xl font-bold'>
         Today
       </h1> 
       <button className=''>
-        <IoIosArrowForward size={22}/>
+        <IoIosArrowForward color="lightblue" size={22}/>
       </button>
       </div>
+      <div className="border-s border-blue-3200 border-2" />
       </div>
     </>
   );
