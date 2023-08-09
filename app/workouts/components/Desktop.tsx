@@ -8,7 +8,7 @@ const Desktop: FC<DesktopProps> = ({
   
 }) => {
   return (
-    <div className='items-center text-center w-full h-full'>
+    <div className=''>
         <Header />
         <Workout />
     </div>

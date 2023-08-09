@@ -9,8 +9,7 @@ export default async function WorkoutsLayout({
     return (
 
         <Sidebar>
-            <div className="">
-                <Desktop />
+            <div className="h-full">
                 {children}
             </div>
         </Sidebar>
