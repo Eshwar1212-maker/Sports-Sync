@@ -29,7 +29,7 @@ const MobileItem: React.FC<MobileItemProps> = ({
       onClick={handleClick} 
       href={href} 
       className={clsx(`group flex gap-x-3 text-sm leading-6 font-semibold w-full justify-center p-4 text-gray-500 hover:text-black`,
-        active && ' text-black', theme == "dark" ? "hover:bg-slate-900" : "bg-gray-100" ,
+        active && 'bg-gray-300', theme == "dark" ? "hover:bg-slate-900" : "bg-gray-900" ,
       )}>
       <Icon className="h-6 w-6" />
     </Link>
