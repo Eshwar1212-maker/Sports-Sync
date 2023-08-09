@@ -6,29 +6,23 @@ import MobileItem from "./MobileItem";
 import { SlLogout } from "react-icons/sl";
 import { signOut } from "next-auth/react";
 import ThemeButton from "./ThemeButton";
+import { useTheme } from "next-themes";
+import clsx from "clsx";
 
 const MobileFooter = () => {
   const routes = useRoutes();
   const { isOpen } = useConversation();
+
+  const {theme} = useTheme()
+  console.log(theme);
+  
 
   if (isOpen) {
     return null;
   }
 
   return (
-    <div
-      className="
-        fixed 
-        justify-between 
-        w-full 
-        bottom-0 
-        z-40 
-        flex 
-        items-center 
-        border-t-[1px] 
-        lg:hidden
-      "
-    >
+    <div className={clsx("fixed justify-between w-full bottom-0 z-40 flex items-centerbg-white border-t-[1px] lg:hidden", theme == "dark" ? "bg-[#111111]" : "bg-white")}>
       {routes.map((route: any) => (
         <MobileItem
           key={route.href}
