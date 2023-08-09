@@ -68,7 +68,7 @@ const Header: FC<HeaderProps> = ({}) => {
         <IoIosArrowForward color="lightblue" size={22}/>
       </button>
       </div>
-      <div className="border-s border-blue-3200 border-2" />
+      <div className="border-s border-blue-300 border-2" />
       </div>
     </>
   );
