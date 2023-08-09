@@ -11,8 +11,8 @@ interface AddWorkoutModalProps {
 const AddWorkoutModal: FC<AddWorkoutModalProps> = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="h-[600px]">
-        <h1 className="text-center text-xl">Add Workout</h1>
+      <div className="h-[600px] lg:h-[700px]">
+        <h1 className="text-center text-xl font-semibold">Add Workout</h1>
         <div className="">
           <div>
             <WorkoutTab onClose={() => onClose}/>

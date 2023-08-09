@@ -112,8 +112,32 @@
                 type: "exercise"
               },
               {
-                id: 10,
+                id: 11,
                 title: "Cable Flies",
+                date: "Jan 7",
+                commentCount: 29,
+                shareCount: 16,
+                type: "exercise"
+              },
+              {
+                id: 13,
+                title: "Decline Bench Press",
+                date: "Jan 7",
+                commentCount: 29,
+                shareCount: 16,
+                type: "exercise"
+              },
+              {
+                id: 12,
+                title: "Pushups",
+                date: "Jan 7",
+                commentCount: 29,
+                shareCount: 16,
+                type: "exercise"
+              },
+              {
+                id: 14,
+                title: "Dips",
                 date: "Jan 7",
                 commentCount: 29,
                 shareCount: 16,

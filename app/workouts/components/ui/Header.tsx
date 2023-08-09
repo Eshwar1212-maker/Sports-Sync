@@ -21,7 +21,7 @@ const Header: FC<HeaderProps> = ({
         <LiaCalendarDaySolid size={50}/>
         </button>
         </div>
-      <div className='text-sm md:text-md my-2 xl:text-lg sm:pr-0' onClick={() => setIsOpen(true)}>
+      <div className='text-md md:text-lg' onClick={() => setIsOpen(true)}>
          <Button>
             Add Workout
          </Button>

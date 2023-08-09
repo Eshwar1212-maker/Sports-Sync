@@ -22,7 +22,7 @@ const Workout: FC<WorkoutProps> = ({
       </button>
       </div>
 
-      <div className='text-gray-300 text-xl py-60'>
+      <div className='text-gray-300 text-xl py-60 hidden md:block'>
         Workout log empty
       </div>
     </div>
