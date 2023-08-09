@@ -1,33 +1,50 @@
-"use client"
+"use client";
 
-import Button from '@/app/components/Button'
-import { FC, useState } from 'react'
-import { HiOutlineCalendarDays } from 'react-icons/hi2'
-import { IoMdAdd } from 'react-icons/io'
-import { LiaCalendarDaySolid } from 'react-icons/lia'
-import AddWorkoutModal from './AddWorkoutModal'
-interface HeaderProps {
-  
-}
-const Header: FC<HeaderProps> = ({
-  
-}) => {
+import Button from "@/app/components/Button";
+import { FC, useState } from "react";
+import { HiOutlineCalendarDays } from "react-icons/hi2";
+import { IoMdAdd } from "react-icons/io";
+import { LiaCalendarDaySolid } from "react-icons/lia";
+import AddWorkoutModal from "./AddWorkoutModal";
+interface HeaderProps {}
+const Header: FC<HeaderProps> = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className='flex justify-between py-10 w-[500px] lg:w-[700px] max-w-[900px] mx-auto px-20 md:px-0'>
-      <AddWorkoutModal isOpen={isOpen} onClose={() => setIsOpen(false)}/>
-      <div>
-        <button>
-        <LiaCalendarDaySolid size={50}/>
-        </button>
+    <>
+      {/* DESKTOP MENU */}
+      <div className="hidden md:flex justify-between py-10 w-[500px] lg:w-[700px] max-w-[900px] mx-auto px-20 md:px-0">
+        <AddWorkoutModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <div>
+          <button>
+            <LiaCalendarDaySolid size={50} />
+          </button>
         </div>
-      <div className='text-md md:text-lg' onClick={() => setIsOpen(true)}>
+        <div className='text-md md:text-md lg:text-lg' onClick={() => setIsOpen(true)}>
          <Button>
             Add Workout
          </Button>
       </div>
-    </div>
-  )
-}
 
-export default Header
+      </div>
+      {/* MOBILE MENU */}
+      <div className="flex justify-between py-1 w-[500px] sm:w-[700px] lg:w-[700px] max-w-[900px] mx-auto px-20 md:px-0 md:hidden bg-gray-700">
+      <AddWorkoutModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <div>
+          <button>
+            <LiaCalendarDaySolid color="white" size={30} />
+          </button>
+        </div>
+        <div>
+        <div className="text-md md:text-lg" onClick={() => setIsOpen(true)}>
+          <button>
+            <IoMdAdd color="white" size={31}/>
+          </button>
+        </div>
+        </div>
+
+      </div>
+    </>
+  );
+};
+
+export default Header;
