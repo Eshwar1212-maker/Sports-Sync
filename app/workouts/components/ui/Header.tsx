@@ -3,7 +3,7 @@
 import Button from "@/app/components/Button";
 import { FC, useState } from "react";
 import { HiOutlineCalendarDays } from "react-icons/hi2";
-import { IoMdAdd } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward, IoMdAdd } from "react-icons/io";
 import { LiaCalendarDaySolid } from "react-icons/lia";
 import AddWorkoutModal from "./AddWorkoutModal";
 interface HeaderProps {}
@@ -12,7 +12,8 @@ const Header: FC<HeaderProps> = ({}) => {
   return (
     <>
       {/* DESKTOP MENU */}
-      <div className="hidden md:flex justify-between py-10 w-[500px] lg:w-[700px] max-w-[900px] mx-auto px-20 md:px-0">
+      <div className="hidden md:block">
+      <div className="flex justify-between py-10 w-[500px] lg:w-[700px] max-w-[900px] mx-auto px-20 md:px-0">
         <AddWorkoutModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
         <div>
           <button>
@@ -26,8 +27,22 @@ const Header: FC<HeaderProps> = ({}) => {
       </div>
 
       </div>
+      <div className='flex justify-between mx-auto space-x-20 max-w-[500px] pl-20 sm:pl-0'>
+        <button className=''>
+        <IoIosArrowBack size={25}/>
+        </button>
+      <h1 className='text-xl md:text-2xl font-bold'>
+        Today
+      </h1> 
+      <button className=''>
+        <IoIosArrowForward size={25}/>
+      </button>
+      </div>
+      </div>
+
       {/* MOBILE MENU */}
-      <div className="flex justify-between py-1 w-[500px] sm:w-[700px] lg:w-[700px] max-w-[900px] mx-auto px-20 md:px-0 md:hidden bg-gray-700">
+      <div className="md:hidden">
+      <div className="flex justify-between py-1 w-[500px] sm:w-[700px] lg:w-[700px] max-w-[900px] mx-auto px-20 md:px-0 md:hidden bg-gray-800">
       <AddWorkoutModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <div>
           <button>
@@ -36,12 +51,23 @@ const Header: FC<HeaderProps> = ({}) => {
         </div>
         <div>
         <div className="text-md md:text-lg" onClick={() => setIsOpen(true)}>
-          <button>
+          <button onClick={() => setIsOpen(true)}>
             <IoMdAdd color="white" size={31}/>
           </button>
         </div>
         </div>
-
+        </div>
+        <div className='flex justify-between mx-auto space-x-20 sm:pl-0 bg-gray-900 text-white w-[500px] sm:w-[700px] lg:w-[700px] max-w-[900px] p-3'>
+        <button className=''>
+        <IoIosArrowBack size={25}/>
+        </button>
+      <h1 className='text-xl md:text-2xl font-bold'>
+        Today
+      </h1> 
+      <button className=''>
+        <IoIosArrowForward size={25}/>
+      </button>
+      </div>
       </div>
     </>
   );
