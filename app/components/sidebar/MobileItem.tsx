@@ -1,6 +1,7 @@
 import Link from "next/link";
 import clsx from "clsx";
 import { IconType } from "react-icons";
+import { useTheme } from "next-themes";
 
 interface MobileItemProps {
   href: string;
@@ -16,6 +17,7 @@ const MobileItem: React.FC<MobileItemProps> = ({
   onClick
 }) => {
   
+  const {theme} = useTheme()
   const handleClick = () => {
     if (onClick) {
       return onClick();
@@ -26,21 +28,8 @@ const MobileItem: React.FC<MobileItemProps> = ({
     <Link 
       onClick={handleClick} 
       href={href} 
-      className={clsx(`
-        group 
-        flex 
-        gap-x-3 
-        text-sm 
-        leading-6 
-        font-semibold 
-        w-full 
-        justify-center 
-        p-4 
-        text-gray-500 
-        hover:text-black 
-        hover:bg-gray-100
-      `,
-        active && ' text-black',
+      className={clsx(`group flex gap-x-3 text-sm leading-6 font-semibold w-full justify-center p-4 text-gray-500 hover:text-black`,
+        active && ' text-black', theme == "dark" ? "hover:bg-slate-900" : "bg-gray-100" ,
       )}>
       <Icon className="h-6 w-6" />
     </Link>
