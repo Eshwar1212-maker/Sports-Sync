@@ -7,15 +7,16 @@ import { IoMdAdd } from 'react-icons/io'
 import { LiaCalendarDaySolid } from 'react-icons/lia'
 import AddWorkoutModal from './AddWorkoutModal'
 interface HeaderProps {
-  
+  addWorkout: any
 }
 const Header: FC<HeaderProps> = ({
-  
+  addWorkout
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <div className='flex justify-between py-10 max-w-[900px] mx-auto'>
-      <AddWorkoutModal isOpen={isOpen} onClose={() => setIsOpen(false)}/>
+      <AddWorkoutModal addWorkout={addWorkout} isOpen={isOpen} onClose={() => setIsOpen(false)}/>
       <div>
         <button>
         <LiaCalendarDaySolid size={50}/>
