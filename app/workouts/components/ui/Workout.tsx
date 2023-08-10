@@ -60,3 +60,4 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
 };
 
 export default Workout;
+ 
