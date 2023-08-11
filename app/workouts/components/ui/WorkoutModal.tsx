@@ -13,7 +13,7 @@ interface WorkoutModalProps {
 }
 
 const WorkoutModal: FC<WorkoutModalProps> = ({ isOpen, onClose }) => {
-
+    
     const [exercise, setExercise] = useState("")
     const [weight, setWeight] = useState(0)
     const [sets, setSets] = useState(0)
