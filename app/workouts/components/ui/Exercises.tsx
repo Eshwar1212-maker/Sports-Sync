@@ -15,6 +15,8 @@ const Exercises: FC<ExercisesProps> = ({ selectedExercise }) => {
     exercise.toLowerCase().includes(searchInput.toLowerCase())
   );
 
+
+
   return (
     <>
       <div className="pl-5">
@@ -24,10 +26,10 @@ const Exercises: FC<ExercisesProps> = ({ selectedExercise }) => {
           placeholder="Search Exercises..."
         />
       </div>
-      <ul className="text-xl pl-5 py-3 space-y-1 overflow-y-scroll max-h-[510px] w-[45vw] border-b-[2px] border-b-black">
+      <ul className="text-xl pl-5 py-3 space-y-1 overflow-y-scroll max-h-[510px] w-[100%] border-b-[2px] border-b-black">
         {searchedExercises.map((exercise) => {
           return (
-            <li className="border-b-[1px] border-blue-200 p-2 w-full">
+            <li className="border-b-[1px] border-blue-200 p-2 w-full hover:bg-gray-50 cursor-pointer">
               {exercise}
             </li>
           );

@@ -6,6 +6,7 @@ import { FC, useState } from "react";
 import Exercises from "./Exercises";
 import Button from "@/app/components/Button";
 import { IoIosAdd } from "react-icons/io";
+import ConfirmModal from "@/app/conversations/components/ConfirmModal";
 
 interface WorkoutModalProps {
   isOpen: boolean;
@@ -23,11 +24,11 @@ const WorkoutModal: FC<WorkoutModalProps> = ({ isOpen, onClose }) => {
   return (
     <Modal isFullWidth={true} isOpen={isOpen} onClose={onClose}>
       <Tabs defaultValue="exercises" className="w-full">
-        <TabsList className="gap-20">
+        <TabsList className="">
           <TabsTrigger className="text-md" value="exercises">
             My Exercises
           </TabsTrigger>
-          <TabsTrigger className="text-md" value="weight">
+          <TabsTrigger  className="text-md" value="weight">
             Intensity
           </TabsTrigger>
 
