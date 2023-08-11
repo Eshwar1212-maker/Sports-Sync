@@ -8,8 +8,7 @@ const page: FC<PageProps> = ({
   
 }) => {
   return (
-    <div className='hidden lg:block h-full'>
-        
+    <div className='h-full' style={{ transform: 'scale(1)' }}>
     </div>
   )
 }
