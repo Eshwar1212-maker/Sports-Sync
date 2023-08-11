@@ -1,8 +1,11 @@
+"use client"
+
 import Modal from "@/app/components/Modal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FC } from "react";
+import { FC, useState } from "react";
 import Exercises from "./Exercises";
 import Button from "@/app/components/Button";
+import { IoIosAdd } from "react-icons/io";
 
 interface WorkoutModalProps {
   isOpen: boolean;
@@ -10,34 +13,57 @@ interface WorkoutModalProps {
 }
 
 const WorkoutModal: FC<WorkoutModalProps> = ({ isOpen, onClose }) => {
+
+    const [exercise, setExercise] = useState("")
+    const [weight, setWeight] = useState(0)
+    const [sets, setSets] = useState(0)
+    const [reps, setReps] = useState(0)
+
+
   return (
     <Modal isFullWidth={true} isOpen={isOpen} onClose={onClose}>
-      <Tabs defaultValue="account" className="w-[400px]">
+      <Tabs defaultValue="exercises" className="w-full">
         <TabsList className="gap-20">
-          <TabsTrigger className="text-md" value="exercises">Your Exercises</TabsTrigger>
-          <TabsTrigger className="text-md" value="weight">Weight</TabsTrigger>
-          <TabsTrigger className="text-md" value="sets">Sets</TabsTrigger>
-          <TabsTrigger className="text-md" value="reps">Reps</TabsTrigger>
+          <TabsTrigger className="text-md" value="exercises">
+            My Exercises
+          </TabsTrigger>
+          <TabsTrigger className="text-md" value="weight">
+            Intensity
+          </TabsTrigger>
+
         </TabsList>
-        <TabsContent value="exercises">
-            <Exercises />
+
+        <TabsContent className="" value="exercises">
+          <Exercises />
         </TabsContent>
-        <TabsContent value="weight">
-            Weight
+        <TabsContent className="flex flex-col w-fit mx-auto py-[150px] gap-2 justify-center" value="weight">
+          <label>Enter weight</label>
+          <input
+            type="number"
+            className="border-[1px] border-s border-gray-500"
+          />
+                    <label>Enter sets</label>
+          <input
+            type="number"
+            className="border-[1px] border-s border-gray-500"
+          />
+                    <label>Enter reps</label>
+          <input
+            type="number"
+            className="border-[1px] border-s border-gray-500"
+          />
         </TabsContent>
-        <TabsContent value="sets">
-            Sets
-        </TabsContent>
-        <TabsContent value="reps">
-            Reps
-        </TabsContent>
+
       </Tabs>
       <div className="bottom-8 fixed flex gap-2 right-8">
         <Button secondary>
-            New Exercises +
+          New Exercises{" "}
+          <span className="my-auto">
+            <IoIosAdd size={22} />
+          </span>
         </Button>
-        <Button>
-            Add Workout
+        <Button disabled={!exercise} onClick={() => onClose()}>
+          Add Workout
         </Button>
       </div>
     </Modal>
