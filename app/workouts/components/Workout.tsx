@@ -13,17 +13,19 @@ import {
 } from "@/components/ui/popover"
 import { SlCalender } from "react-icons/sl";
 import clsx from "clsx";
+import { useTheme } from "next-themes";
 
 
 interface WorkoutProps {}
 const Workout: FC<WorkoutProps> = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState<any>(new Date())
+  const {theme} = useTheme()
   console.log(date);
   
 
   return (
-    <div className="lex flex-col py-11">
+    <div className="flex flex-col py-0 md:py-11 px-5">
       <div className="">
         <WorkoutModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
         {/* HEADER */}
@@ -52,14 +54,14 @@ const Workout: FC<WorkoutProps> = ({}) => {
     </Popover>
           </div>
           <div>
-            <h1 className="text-lg text-gray-800 py-1 font-semibold">{format(date, "PPP")}</h1>
+            <h1 className={clsx("text-lg font-semibold py-1 md:py-3", theme === "light" && "text-gray-800" )}>{format(date, "PPP")}</h1>
           </div>
-          <div className="text-sm">
-            <Button onClick={() => setIsOpen(true)}>Add Workout</Button>
+          <div className="">
+            <Button className={"text-[11px] md:text-[13px] py-1"} onClick={() => setIsOpen(true)}>Add Workout</Button>
           </div>
         </header>
         {/* BODY */}
-        <div className=" mx-auto flex justify-center pr-16 py-[270px]">
+        <div className=" mx-auto flex justify-center pr-7 md:pr-16 py-[270px]">
           <p className="text-xl text-gray-400">Workout log empty</p>
         </div>
       </div>
