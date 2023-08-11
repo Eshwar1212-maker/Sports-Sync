@@ -8,7 +8,7 @@ const page: FC<PageProps> = ({
 
 }) => {
   return (
-    <div className='hidden lg:block lg:pl-80 h-full'>
+    <div className='hidden lg:block lg:pl-80 h-full py-[370px]'>
       <EmptyState>
         <div className='text-center items-center flex flex-col'>
           <h3 className='mt-2 text-2xl font-semibold'>Select a chat or start a new conversation</h3>

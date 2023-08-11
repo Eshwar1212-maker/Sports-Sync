@@ -1,5 +1,4 @@
 import Sidebar from "../components/sidebar/Sidebar"
-import Desktop from "./components/Desktop"
 
 export default async function WorkoutsLayout({
     children
