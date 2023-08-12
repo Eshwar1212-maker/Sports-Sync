@@ -62,7 +62,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
 
 
   return (
-    <div className="flex flex-col py-0 md:py-7 px-5">
+    <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
       <div className="">
         <WorkoutModal
           date={date}
@@ -71,7 +71,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
           onClose={() => setIsOpen(false)}
         />
         {/* HEADER */}
-        <header className="flex justify-between max-w-[700px] py-11 mx-auto">
+        <header className="flex justify-between max-w-[670px] py-5 mx-auto">
           <div>
             <Popover>
               <PopoverTrigger asChild>
@@ -102,7 +102,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
           </div>
           <div className="">
             <Button
-              className={"text-[11px] md:text-[13px] py-1"}
+              className={"text-[11px] md:text-[13px] py-1 md:mr-16"}
               onClick={() => setIsOpen(true)}
             >
               Add Workout
@@ -110,16 +110,16 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
           </div>
         </header>
         {/* BODY */}
-        <div className="mx-auto flex justify-center pr-7 md:pr-16">
+        <div className="mx-auto flex justify-center pr-7 md:pr-16 h-[80vh]">
           {filteredWorkouts.length == 0 ? (
             <p className="text-xl text-gray-400 py-[270px]">
               Workout log empty
             </p>
           ) : (
             <div className="flex flex-col">
-              <ul className="">
+              <ul className="overflow-y-auto  border-b-[2px] border-b-black">
                 {filteredWorkouts.length > 0 && filteredWorkouts.map((exerciseData: any) => (
-                  <li className="p-3 text-lg flex flex-col gap-4 bg-gray-50 rounded-md border-[1px] border-gray-500 w-[340px] md:w-[600px] cursor-pointer ml-8 sm:ml-0">
+                  <li className="p-3 text-lg flex flex-col gap-4 rounded-md border-[1px] border-gray-500 w-[340px] md:w-[600px] cursor-pointer ml-8 sm:ml-0">
                     <div className="flex justify-between">
                       <div>
                         <h3 className="font-semibold text-lg">
