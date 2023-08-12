@@ -121,7 +121,7 @@ const Workout: FC<WorkoutProps> = ({}) => {
                           Weight
                         </dt>
                         <dd className="text-sm m-auto">
-                          {exerciseData.weight} kg
+                          {exerciseData.weight} lbs
                         </dd>
                         <dt className="font-semibold m-auto text-[16px]">
                           Sets
