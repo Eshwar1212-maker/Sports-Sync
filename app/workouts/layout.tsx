@@ -12,7 +12,7 @@ export default async function WorkoutsLayout({
     return (
 
         <Sidebar>
-            <div className="h-full">
+            <div className="h-[100vh]">
                 <Workout workouts={workouts}/>
             </div>
         </Sidebar>
