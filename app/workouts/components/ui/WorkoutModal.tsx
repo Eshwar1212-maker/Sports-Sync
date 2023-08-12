@@ -12,9 +12,10 @@ import { IoClose } from "react-icons/io5";
 interface WorkoutModalProps {
   isOpen: boolean;
   onClose: () => void;
+  handleCallbackExercises: any
 }
 
-const WorkoutModal: FC<WorkoutModalProps> = ({ isOpen, onClose }) => {
+const WorkoutModal: FC<WorkoutModalProps> = ({ isOpen, onClose, handleCallbackExercises }) => {
     
     const [exercise, setExercise] = useState("")
     const [weight, setWeight] = useState(0)
@@ -22,6 +23,9 @@ const WorkoutModal: FC<WorkoutModalProps> = ({ isOpen, onClose }) => {
     const [reps, setReps] = useState(0)
     const [addExercise, setAddExercise] = useState(false)
 
+
+    console.log(exercise);
+    
 
   return (
     <Modal isFullWidth={true} isOpen={isOpen} onClose={onClose}>
@@ -47,7 +51,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({ isOpen, onClose }) => {
             )
           }
         <TabsContent className="" value="exercises">
-          <Exercises />
+          <Exercises handleCallbackExercises={handleCallbackExercises}/>
         </TabsContent>
         <TabsContent className="flex flex-col w-fit mx-auto py-[150px] gap-2 justify-center" value="weight">
           <label>Enter weight</label>
