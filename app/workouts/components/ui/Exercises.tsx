@@ -27,17 +27,17 @@ const Exercises: FC<ExercisesProps> = ({ selectedExercise, handleCallbackExercis
 
   return (
     <>
-      <div className="pl-5">
+      <div className="">
         <input
           onChange={(e) => setSearchInput(e.target.value)}
           className="w-[290px] p-2 border-[1px] border-black rounded-md"
           placeholder="Search Exercises..."
         />
       </div>
-      <ul className="text-xl pl-5 py-3 space-y-1 overflow-y-scroll max-h-[510px] w-[100%] border-b-[2px] border-b-black">
+      <ul className="pl-5 space-y-1 overflow-y-scroll max-h-[510px] w-[100%] border-b-[2px] border-b-black my-2 py-2 border-t-[1px] border-t-black">
         {searchedExercises.map((exercise, index) => (
-          <div key={index} className="flex justify-between p-2">
-            <li className="border-b-[1px] border-blue-200 p-2 w-full hover:bg-gray-50 cursor-pointer">
+          <div key={index} className="flex justify-between py-1 my-auto">
+            <li className="border-b-[1px] border-blue-200 w-full hover:bg-gray-50 cursor-pointer text-lg pb-1 font-light">
               {exercise}
             </li>
             <button onClick={() => handleCallbackExercises(exercise)} className="pr-5 pb-2">
@@ -50,7 +50,11 @@ const Exercises: FC<ExercisesProps> = ({ selectedExercise, handleCallbackExercis
         <div className="flex gap-3 py-40 flex-col items-center">
           <p><span className="font-bold text-lg">{searchInput}</span> not found</p>
           <div className="flex gap-3">
-            <Button onClick={() => addExercise(searchInput)}>Add to my exercises</Button>
+            <Button onClick={() => {
+              addExercise(searchInput)
+              }}>
+                Add to my exercises
+              </Button>
           </div>
         </div>
       )}
