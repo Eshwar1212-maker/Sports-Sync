@@ -4,12 +4,11 @@ import AuthContext from './context/AuthContext'
 import ToasterContext from './context/ToasterContext'
 import './globals.css'
 import ThemeProviders from './context/ThemeProviders'
-import ActiveStatus from './calender/components/ActiveStatus'
  
 
 export const metadata = {
   title: 'Sports Sync',
-  description: 'Workout/productvity app for athlets',
+  description: 'Workout/productvity app for athletes',
 }
 
 export default function RootLayout({
@@ -23,7 +22,6 @@ export default function RootLayout({
         <AuthContext>
         <ThemeProviders>
           <Providers>
-            <ActiveStatus />
             {children}
           </Providers>
           </ThemeProviders>
