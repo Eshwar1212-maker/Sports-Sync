@@ -2,7 +2,7 @@
     export const exercises = [
         "Push-Ups",
         "Sit-Ups",
-        "Squats",
+        "Barbell Back Squats",
         "Lunges",
         "Planks",
         "Jumping Jacks",
@@ -27,6 +27,7 @@
         "Calf Raises",
         "Hammer Curls",
         "Front Raises",
+        "Front Squats",
         "Lateral Raises",
         "Dumbbell Pullovers",
         "Face Pulls",
