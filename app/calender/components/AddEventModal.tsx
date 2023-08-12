@@ -27,12 +27,13 @@ function AddEventModal({
     selectedEvent && selectedEvent.title
   );
 
-  const [updateNotes, setUpdateNotes] = useState(selectedEvent?._def?.extendedProps?.notes || ""); 
+  const [updateNotes, setUpdateNotes] = useState(
+    selectedEvent?._def?.extendedProps?.notes || ""
+  );
 
   useEffect(() => {
     setUpdateTitle(selectedEvent ? selectedEvent.title : "");
     setUpdateNotes(selectedEvent?._def?.extendedProps?.notes || "");
-
   }, [selectedEvent]);
 
   //ADD CALENDER EVENT MUTATION
@@ -56,36 +57,33 @@ function AddEventModal({
   );
 
   //UPDATE CALENDER EVENT MUTATION
-  const {mutate: updateEvent} = useMutation(
-    (data: {title: string; notes: string; eventId: string}) => {
-     return axios.patch("/api/teamEvents/update", data);
+  const { mutate: updateEvent } = useMutation(
+    (data: { title: string; notes: string; eventId: string }) => {
+      return axios.patch("/api/teamEvents/update", data);
     },
     {
       onSuccess: (response) => {
-        onClose()
-        onSave(response.data)
-        toast.success("Event updated")
-      }, 
+        onClose();
+        onSave(response.data);
+        toast.success("Event updated");
+      },
       onError: (error) => {
         console.log("UPDATE EVENT ERROR: ", error);
-        
-      }
+      },
     }
   );
- 
-  
+
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    if(selectedEvent){
+    if (selectedEvent) {
       updateEvent({
         notes: updateNotes,
         title: updateTitle,
-        eventId: selectedEvent?._def?.publicId
-      })
+        eventId: selectedEvent?._def?.publicId,
+      });
       setUpdateNotes("");
       setUpdateTitle("");
-      
-    }else{
+    } else {
       addEvent({
         title: eventTitle,
         notes: eventNotes,
@@ -96,8 +94,7 @@ function AddEventModal({
     setEventTitle("");
     setEventNotes("");
   };
-  
-  
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit}>
@@ -114,8 +111,16 @@ function AddEventModal({
           }
         />
         <div className="py-4">
-           {!selectedEvent && <h3 className="text-base font-semibold leading-7">Date</h3>}
-          {!selectedEvent ? date.split("-")[1] + "/" + date.split("-")[2] + "/" + date.split("-")[0]: selectedEvent.date}
+          {!selectedEvent && (
+            <h3 className="text-base font-semibold leading-7">Date</h3>
+          )}
+          {!selectedEvent
+            ? date.split("-")[1] +
+              "/" +
+              date.split("-")[2] +
+              "/" +
+              date.split("-")[0]
+            : selectedEvent.date}
         </div>
         <div className="border-[1px] border-solid border-gray-900 w-full" />
         <div className="py-6">
@@ -132,7 +137,10 @@ function AddEventModal({
         </div>
         <div className="flex gap-3 justify-end">
           <button onClick={onClose}>Cancel</button>
-          <Button type="submit" disabled={!selectedEvent ? !eventTitle : !updateTitle}>
+          <Button
+            type="submit"
+            disabled={!selectedEvent ? !eventTitle : !updateTitle}
+          >
             {selectedEvent ? "Update" : "Save"}
           </Button>
         </div>

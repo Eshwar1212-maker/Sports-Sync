@@ -99,7 +99,7 @@ model Team {
 
 model Workout {
   id     String  @id @default(auto()) @map("_id") @db.ObjectId
-  title  String?
+  title  String
   reps   Int?
   sets   Int?
   weight   Int?

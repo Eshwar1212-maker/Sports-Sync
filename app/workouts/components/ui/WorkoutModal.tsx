@@ -7,19 +7,23 @@ import Exercises from "./Exercises";
 import Button from "@/app/components/Button";
 import { IoIosAdd } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 interface WorkoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   handleCallbackExercises: (exerciseData: any) => void;
+  date: string
 }
 
 const WorkoutModal: FC<WorkoutModalProps> = ({
   isOpen,
   onClose,
   handleCallbackExercises,
+  date
 }) => {
-  const [exercise, setExercise] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
   const [weight, setWeight] = useState<number | null>(null);
   const [sets, setSets] = useState<number | null>(null);
   const [reps, setReps] = useState<number | null>(null);
@@ -27,25 +31,45 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const [activeTab, setActiveTab] = useState<string>("exercises");
 
   const handleExerciseSelected = (selectedExercise: string) => {
-    setExercise(selectedExercise);
+    setTitle(selectedExercise);
     setActiveTab("weight");
   };
 
+
+  const { mutate: addWorkout, isLoading, isError } = useMutation(
+    (data: {title: string, weight: number | null, sets: number | null, reps: number | null, date: string}) => {
+      return axios.post("/api/workouts", data)
+    }, 
+    {
+      onSuccess: () => {
+  
+      },
+      onError: () => {
+  
+      }
+    }
+  );
+  
+
   const handleWorkoutAddition = () => {
     const exerciseData = {
-      exercise,
+      title,
       weight,
       sets,
       reps,
+      date
     };
+
+    addWorkout(exerciseData);
     handleCallbackExercises(exerciseData);
     onClose();
     setActiveTab("exercises");
-    setExercise("")
+    setTitle("")
     setWeight(null)
     setReps(null)
     setSets(null)
-  };
+};
+
 
   return (
     <Modal isFullWidth isOpen={isOpen} onClose={onClose}>
@@ -73,12 +97,11 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
         <TabsContent value="exercises">
           <Exercises handleCallbackExercises={handleExerciseSelected} />
         </TabsContent>
-        ...
         <TabsContent
           className="flex flex-col w-fit mx-auto py-[70px] gap-2 justify-center"
           value="weight"
         >
-          <h3 className="text-xl pb-6">{exercise}</h3>
+          <h3 className="text-xl pb-6">{title}</h3>
 
           <label>Weight:</label>
           <input
@@ -86,7 +109,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
             value={weight ? weight.toString() : ""}
             onChange={(e) => setWeight(Number(e.target.value))}
             placeholder="Enter weight (in kg)"
-            className="border-[1px] border-gray-500"
+            className="border-[1px] border-gray-500 p-2"
           />
 
           <label>Sets:</label>
@@ -95,7 +118,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
             value={sets ? sets.toString() : ''}
             onChange={(e) => setSets(Number(e.target.value))}
             placeholder="Enter number of sets"
-            className="border-[1px] border-gray-500"
+            className="border-[1px] border-gray-500 p-2"
           />
 
           <label>Reps:</label>
@@ -104,7 +127,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
             value={reps ? reps.toString() : ''} 
             onChange={(e) => setReps(Number(e.target.value))}
             placeholder="Enter number of reps"
-            className="border-[1px] border-gray-500"
+            className="border-[1px] border-gray-500 p-2"
           />
         </TabsContent>
       </Tabs>
@@ -112,7 +135,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
         <Button onClick={() => setAddExercise(!addExercise)} secondary>
           New Exercises <IoIosAdd size={22} />
         </Button>
-        <Button disabled={!exercise} onClick={handleWorkoutAddition}>
+        <Button disabled={!title} onClick={handleWorkoutAddition}>
           Add Workout
         </Button>
       </div>

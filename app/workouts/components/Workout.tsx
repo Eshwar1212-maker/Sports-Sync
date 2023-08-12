@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import WorkoutModal from "./ui/WorkoutModal";
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
@@ -18,33 +18,54 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { toast } from "react-hot-toast";
 
 type exercise = {
-  name?: string;
+  title?: string;
   reps?: number | null;
   sets?: number | null;
   exercise?: string;
   weight?: number | null;
 };
 
-interface WorkoutProps {}
-const Workout: FC<WorkoutProps> = ({}) => {
+interface WorkoutProps {
+    workouts: any
+}
+
+const Workout: FC<WorkoutProps> = ({workouts}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState<any>(new Date());
   const [workout, setWorkout] = useState<exercise[]>([]);
+  const [filteredWorkouts, setFilteredWorkouts] = useState<exercise[]>([]);
+
   const { theme } = useTheme();
 
   const handleCallbackExercises = ({
-    exercise,
+    title,
     weight,
     reps,
     sets,
   }: exercise) => {
-    setWorkout([...workout, { name: exercise, weight, reps, sets }]);
+    setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets}]);
   };
+
+  useEffect(() => {
+    const workoutsForSelectedDate = workouts.filter(
+      (workout: any) => format(new Date(workout.date), 'PPP') === format(date, 'PPP')
+    );
+    setFilteredWorkouts(workoutsForSelectedDate);
+    console.log(workoutsForSelectedDate);
+  }, [date, workouts]);
+  
+
+  console.log("FILTERED WORKOUTS: "  , filteredWorkouts.length, filteredWorkouts);
+  
+  
+
+
 
   return (
     <div className="flex flex-col py-0 md:py-7 px-5">
       <div className="">
         <WorkoutModal
+          date={date}
           handleCallbackExercises={handleCallbackExercises}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
@@ -75,7 +96,8 @@ const Workout: FC<WorkoutProps> = ({}) => {
                 theme === "light" && "text-gray-800"
               )}
             >
-              {format(date, "PPP")}
+             {format(date, "MM/dd/yyyy")}
+
             </h1>
           </div>
           <div className="">
@@ -89,19 +111,19 @@ const Workout: FC<WorkoutProps> = ({}) => {
         </header>
         {/* BODY */}
         <div className="mx-auto flex justify-center pr-7 md:pr-16">
-          {workout.length == 0 ? (
+          {filteredWorkouts.length == 0 ? (
             <p className="text-xl text-gray-400 py-[270px]">
               Workout log empty
             </p>
           ) : (
             <div className="flex flex-col">
               <ul className="">
-                {workout.map((exerciseData) => (
+                {filteredWorkouts.length > 0 && filteredWorkouts.map((exerciseData: any) => (
                   <li className="p-3 text-lg flex flex-col gap-4 bg-gray-50 rounded-md border-[1px] border-gray-500 w-[340px] md:w-[600px] cursor-pointer ml-8 sm:ml-0">
                     <div className="flex justify-between">
                       <div>
                         <h3 className="font-semibold text-lg">
-                          {exerciseData.name}
+                          {exerciseData.title}
                         </h3>
                       </div>
                       <div className="flex gap-3">
