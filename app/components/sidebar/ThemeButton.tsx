@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import {FaAffiliatetheme, FaRegMoon} from 'react-icons/fa'
-import { BsFillSunFill, BsMoonStars } from "react-icons/bs";
-import { MdOutlineLightMode } from "react-icons/md";
-import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
-import { LiaAffiliatetheme, LiaMoon } from "react-icons/lia";
+import {FaAffiliatetheme} from 'react-icons/fa'
+import { HiOutlineSun } from "react-icons/hi";
 
-interface ThemeButtonProps{
-}
+
 
 const ThemeButton = () => {
   const [mounted, setMounted] = useState(false);

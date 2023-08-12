@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth}) 
                 shadow-xl 
                 transition-all
               `, currentTheme == "dark" ? "bg-[#1a1a1a]" : "bg-white",
-              !isFullWidth ? "sm:my-8 sm:w-full sm:max-w-lg sm:p-6" : "w-[900px] h-[700px]"
+              !isFullWidth ? "sm:my-8 sm:w-full sm:max-w-lg sm:p-6" : "w-full md:w-[900px] h-[700px]"
               
               )}
               >
