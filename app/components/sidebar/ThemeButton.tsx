@@ -3,14 +3,13 @@ import { useTheme } from "next-themes";
 import {FaAffiliatetheme, FaRegMoon} from 'react-icons/fa'
 import { BsFillSunFill, BsMoonStars } from "react-icons/bs";
 import { MdOutlineLightMode } from "react-icons/md";
-import { HiOutlineMoon } from "react-icons/hi";
+import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
 import { LiaAffiliatetheme, LiaMoon } from "react-icons/lia";
 
 interface ThemeButtonProps{
-  size?: number
 }
 
-const ThemeButton = ({size}: ThemeButtonProps) => {
+const ThemeButton = () => {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme()
 
@@ -35,7 +34,7 @@ const ThemeButton = ({size}: ThemeButtonProps) => {
             setTheme("dark");
           }}
         >
-          <FaAffiliatetheme size={size}/>
+          <FaAffiliatetheme size={11}/>
         </button>
       ) : (
         <button
@@ -44,7 +43,7 @@ const ThemeButton = ({size}: ThemeButtonProps) => {
             setTheme("light");
           }}
         >
-          <LiaAffiliatetheme size={size}/>
+          <HiOutlineSun size={15}/>
         </button>
       )}
     </div>
