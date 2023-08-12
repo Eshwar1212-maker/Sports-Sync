@@ -41,6 +41,10 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     handleCallbackExercises(exerciseData);
     onClose();
     setActiveTab("exercises");
+    setExercise("")
+    setWeight(null)
+    setReps(null)
+    setSets(null)
   };
 
   return (
