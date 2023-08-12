@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { exercises } from "@/lib/exercises";
 import { FC, useState } from "react";
 
@@ -14,8 +15,6 @@ const Exercises: FC<ExercisesProps> = ({ selectedExercise }) => {
   const searchedExercises = userExercises.filter((exercise) =>
     exercise.toLowerCase().includes(searchInput.toLowerCase())
   );
-
-
 
   return (
     <>
@@ -35,6 +34,19 @@ const Exercises: FC<ExercisesProps> = ({ selectedExercise }) => {
           );
         })}
       </ul>
+      {searchedExercises.length == 0 && (
+          <div className="flex gap-3 py-40 flex-col items-center">
+          <p className="font-semibold">{searchInput} not found</p>
+
+          <div className="flex gap-3">
+            <input
+              placeholder="Enter new exercise name..."
+              className="w-[290px] p-2 border-[1px] border-black rounded-md"
+            />
+            <Button>Add to my exercises</Button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

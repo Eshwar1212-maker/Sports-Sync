@@ -20,6 +20,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({ isOpen, onClose }) => {
     const [weight, setWeight] = useState(0)
     const [sets, setSets] = useState(0)
     const [reps, setReps] = useState(0)
+    const [addExercise, setAddExercise] = useState(false)
 
 
   return (
@@ -38,6 +39,13 @@ const WorkoutModal: FC<WorkoutModalProps> = ({ isOpen, onClose }) => {
         <span className="sr-only">Close</span>
         <IoClose size={20} className="" />
         </button>
+        {
+            addExercise && (
+              <>
+                <input placeholder="Enter new exercise name..." className="w-[200px] border-[1px] border-gray-500 p-1"/>
+              </>
+            )
+          }
         <TabsContent className="" value="exercises">
           <Exercises />
         </TabsContent>
@@ -61,7 +69,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({ isOpen, onClose }) => {
 
       </Tabs>
       <div className="bottom-8 fixed flex gap-2 right-8">
-        <Button secondary>
+        <Button onClick={() => setAddExercise(!addExercise)} secondary>
           New Exercises{" "}
           <span className="my-auto">
             <IoIosAdd size={22} />
