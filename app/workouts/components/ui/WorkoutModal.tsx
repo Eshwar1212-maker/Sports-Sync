@@ -107,9 +107,8 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
             className="border-[1px] border-gray-500"
           />
         </TabsContent>
-        ...
       </Tabs>
-      <div className="bottom-8 fixed flex gap-2 right-8">
+      <div className="bottom-4 fixed flex gap-2 right-8">
         <Button onClick={() => setAddExercise(!addExercise)} secondary>
           New Exercises <IoIosAdd size={22} />
         </Button>

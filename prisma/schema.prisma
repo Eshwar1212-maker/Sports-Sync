@@ -29,8 +29,8 @@ model User {
   teams           Team[]         @relation(fields: [conversationIds], references: [id])
   teamIds         String[]       @db.ObjectId
   events          Event[]
-  exercise        Exercise[]
-  workouts String[]
+  workouts        Workout[]
+  exercises String[]
 }
 
 model Account {
@@ -97,11 +97,13 @@ model Team {
   events  Event[]
 }
 
-model Exercise {
+model Workout {
   id     String  @id @default(auto()) @map("_id") @db.ObjectId
   title  String?
   reps   Int?
   sets   Int?
+  weight   Int?
+  date DateTime
   userId String  @db.ObjectId
   user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

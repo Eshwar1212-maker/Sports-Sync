@@ -42,7 +42,7 @@ const Workout: FC<WorkoutProps> = ({}) => {
   };
 
   return (
-    <div className="flex flex-col py-0 md:py-11 px-5">
+    <div className="flex flex-col py-0 md:py-7 px-5">
       <div className="">
         <WorkoutModal
           handleCallbackExercises={handleCallbackExercises}
@@ -88,14 +88,13 @@ const Workout: FC<WorkoutProps> = ({}) => {
           </div>
         </header>
         {/* BODY */}
-        <div className=" mx-auto flex justify-center pr-7 md:pr-16">
+        <div className="mx-auto flex justify-center pr-7 md:pr-16">
           {workout.length == 0 ? (
             <p className="text-xl text-gray-400 py-[270px]">
               Workout log empty
             </p>
           ) : (
             <div className="flex flex-col">
-              ...
               <ul className="">
                 {workout.map((exerciseData) => (
                   <li className="p-3 text-lg flex flex-col gap-4 bg-gray-50 rounded-md border-[1px] border-gray-500 w-[340px] md:w-[600px] cursor-pointer ml-8 sm:ml-0">
