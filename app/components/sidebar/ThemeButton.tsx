@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import {FaAffiliatetheme} from 'react-icons/fa'
-import { HiOutlineSun } from "react-icons/hi";
+import { BsFillSunFill } from "react-icons/bs";
 
 
 
@@ -39,7 +39,7 @@ const ThemeButton = () => {
             setTheme("light");
           }}
         >
-          <HiOutlineSun size={15}/>
+          <BsFillSunFill color="lightgray" size={13}/>
         </button>
       )}
     </div>
