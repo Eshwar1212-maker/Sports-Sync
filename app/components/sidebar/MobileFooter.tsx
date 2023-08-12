@@ -34,7 +34,7 @@ const MobileFooter = () => {
       ))}
       <span className={clsx("group flex gap-x-3 text-sm leading-6 font-semibold w-full justify-center p-4 bg-[#020c15] hover:text-black", 
       theme == "dark" ? "bg-[#020c15]" : "bg-white")}>
-      <ThemeButton size={21}/>
+      <ThemeButton/>
 
       </span>
 
