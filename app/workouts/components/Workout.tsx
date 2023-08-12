@@ -18,9 +18,11 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { toast } from "react-hot-toast";
 
 type exercise = {
-  name: string;
-  reps?: number;
-  sets: number;
+  name?: string;
+  reps?: number | null;
+  sets?: number | null;
+  exercise?: string;
+  weight?: number | null;
 };
 
 interface WorkoutProps {}
@@ -30,12 +32,13 @@ const Workout: FC<WorkoutProps> = ({}) => {
   const [workout, setWorkout] = useState<exercise[]>([]);
   const { theme } = useTheme();
 
-  const handleCallbackExercises = (
-    exercise: string,
-    reps: number = 0,
-    sets: number = 0
-  ) => {
-    setWorkout([...workout, { name: exercise, reps: reps, sets: sets }]);
+  const handleCallbackExercises = ({
+    exercise,
+    weight,
+    reps,
+    sets,
+  }: exercise) => {
+    setWorkout([...workout, { name: exercise, weight, reps, sets }]);
   };
 
   return (
@@ -92,41 +95,46 @@ const Workout: FC<WorkoutProps> = ({}) => {
             </p>
           ) : (
             <div className="flex flex-col">
+              ...
               <ul className="">
-                {workout.map((exercise) => {
-                  return (
-                    <li className="p-3 text-lg flex flex-col gap-4 bg-gray-50 rounded-md border-[1px] border-gray-500 w-[600px]">
-                      <div className="flex justify-between">
-                        <div>
-                          <h3 className="font-semibold text-lg">
-                            {" "}
-                            {exercise.name}
-                          </h3>
-                        </div>
-                        <div className="flex gap-3">
-                          <button>
-                            <AiOutlineEdit size={25} />
-                          </button>
-                          <button>
-                            <BsTrash size={23} />
-                          </button>
-                        </div>
+                {workout.map((exerciseData) => (
+                  <li className="p-3 text-lg flex flex-col gap-4 bg-gray-50 rounded-md border-[1px] border-gray-500 w-[340px] md:w-[600px] cursor-pointer ml-8 sm:ml-0">
+                    <div className="flex justify-between">
+                      <div>
+                        <h3 className="font-semibold text-lg">
+                          {exerciseData.name}
+                        </h3>
                       </div>
-                      <div className="flex">
-                        <dl className="flex gap-3">
-                          <dt className="font-semibold m-auto text-[16px]">
-                            Sets
-                          </dt>
-                          <dd className="text-sm m-auto">3</dd>
-                          <dt className="font-semibold m-auto text-[16px]">
-                            Reps
-                          </dt>
-                          <dd className="text-sm m-auto">12</dd>
-                        </dl>
+                      <div className="flex gap-3">
+                        <button>
+                          <AiOutlineEdit size={25} />
+                        </button>
+                        <button>
+                          <BsTrash size={23} />
+                        </button>
                       </div>
-                    </li>
-                  );
-                })}
+                    </div>
+                    <div className="flex">
+                      
+                      <dl className="flex gap-3">
+                        <dt className="font-semibold m-auto text-[16px]">
+                          Weight
+                        </dt>
+                        <dd className="text-sm m-auto">
+                          {exerciseData.weight} kg
+                        </dd>
+                        <dt className="font-semibold m-auto text-[16px]">
+                          Sets
+                        </dt>
+                        <dd className="text-sm m-auto">{exerciseData.sets}</dd>
+                        <dt className="font-semibold m-auto text-[16px]">
+                          Reps
+                        </dt>
+                        <dd className="text-sm m-auto">{exerciseData.reps}</dd>
+                      </dl>
+                    </div>
+                  </li>
+                ))}
               </ul>
               <p
                 onClick={() => toast.success("Workout added to calender!")}
