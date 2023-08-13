@@ -30,7 +30,7 @@ function Calendar({userEvents}: {userEvents: any}) {
   }
 
   return (
-    <>
+    <div className="">
       <AddEventModal
        date={date}
        isOpen={isOpen}
@@ -53,7 +53,7 @@ function Calendar({userEvents}: {userEvents: any}) {
         eventClick={handleEventClick}  
         dayCellClassNames="cursor-pointer"
       /> 
-    </>
+    </div>
   );
 }
 

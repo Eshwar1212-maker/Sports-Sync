@@ -4,12 +4,11 @@ import prisma from "@/app/libs/prismadb";
 
 
 
-export async function DELETE(request: Request) {
+export async function DELETE(req: any, res: any) {
     try {
       const currentUser = await getCurrentUser();
-      const body = await request.json();
-      const { eventId, notes, title, date } = body;
-  
+      const eventId = req?.params
+
       if (!currentUser?.id || !currentUser?.email) {
         return new NextResponse("Unauthorized", { status: 400 });
       }
@@ -19,7 +18,8 @@ export async function DELETE(request: Request) {
       }
   
       const deletedEvent = await prisma.event.delete({
-        where: { id: eventId },
+        where: { id: eventId }
+        
       });
   
       return NextResponse.json(deletedEvent);
