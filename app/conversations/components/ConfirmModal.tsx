@@ -28,7 +28,6 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
   
   const onDelete = useCallback(() => {
     setIsLoading(true);
-
     axios.delete(`/api/conversations/${conversationId}`)
     .then(() => {
       onClose();
@@ -38,8 +37,10 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
     .catch(() => toast.error('Something went wrong!'))
     .finally(() => setIsLoading(false))
   }, [router, conversationId, onClose]);
+
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
+  
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="sm:flex sm:items-start">

@@ -24,9 +24,9 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   date
 }) => {
   const [title, setTitle] = useState<string>("");
-  const [weight, setWeight] = useState<number | null>(null);
-  const [sets, setSets] = useState<number | null>(null);
-  const [reps, setReps] = useState<number | null>(null);
+  const [weight, setWeight] = useState<number | null>(0);
+  const [sets, setSets] = useState<number | null>(0);
+  const [reps, setReps] = useState<number | null>(0);
   const [addExercise, setAddExercise] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>("exercises");
 

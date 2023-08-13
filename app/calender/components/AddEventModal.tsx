@@ -5,6 +5,7 @@ import Modal from "@/app/components/Modal";
 import { useMutation } from "@tanstack/react-query";
 import Button from "@/app/components/Button";
 import { toast } from "react-hot-toast";
+import {BiSolidTrash} from "react-icons/bi"
 
 interface EventsModaProps {
   isOpen?: boolean;
@@ -56,6 +57,7 @@ function AddEventModal({
     }
   );
 
+
   //UPDATE CALENDER EVENT MUTATION
   const { mutate: updateEvent } = useMutation(
     (data: { title: string; notes: string; eventId: string }) => {
@@ -73,6 +75,15 @@ function AddEventModal({
     }
   );
 
+  const handleDelete = () => {
+    try {
+      return axios.delete(`/api/teamEvents/delete/${selectedEvent?._def?.publicId}`)
+    } catch (error) {
+      console.error("Error deleting event:", error);
+      toast.error("Error deleting the event");
+    }
+  }
+  
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     if (selectedEvent) {
@@ -94,6 +105,8 @@ function AddEventModal({
     setEventTitle("");
     setEventNotes("");
   };
+
+
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -135,6 +148,13 @@ function AddEventModal({
             }
           />
         </div>
+        <button
+         type="button"
+         onClick={handleDelete}
+         className="bottom-8 fixed"
+         >
+        <BiSolidTrash size={24}/>
+        </button>
         <div className="flex gap-3 justify-end">
           <button onClick={onClose}>Cancel</button>
           <Button

@@ -51,15 +51,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
       (workout: any) => format(new Date(workout.date), 'PPP') === format(date, 'PPP')
     );
     setFilteredWorkouts(workoutsForSelectedDate);
-    console.log(workoutsForSelectedDate);
   }, [date, workouts]);
-  
-
-  console.log("FILTERED WORKOUTS: "  , filteredWorkouts.length, filteredWorkouts);
-  
-  
-
-
 
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
@@ -112,7 +104,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
         {/* BODY */}
         <div className="mx-auto flex justify-center pr-7 md:pr-16 h-[80vh]">
           {filteredWorkouts.length == 0 ? (
-            <p className="text-xl text-gray-400 py-[270px]">
+            <p className="text-2xl text-gray-300 py-[270px] md:pr-14">
               Workout log empty
             </p>
           ) : (
@@ -136,7 +128,6 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
                       </div>
                     </div>
                     <div className="flex">
-                      
                       <dl className="flex gap-3">
                         <dt className="font-semibold m-auto text-[16px]">
                           Weight
@@ -158,7 +149,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
                 ))}
               </ul>
               <p
-                onClick={() => toast.success("Workout added to calender!")}
+                onClick={() => toast.success(`Workout added to calender!`)}
                 className="underline text-center py-3 cursor-pointer"
               >
                 Add todays workout to your calender?

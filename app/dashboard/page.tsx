@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import EmptyState from '../components/EmptyState'
+import Dashboard from './components/Dashboard';
 
 interface PageProps {
   
@@ -8,9 +8,8 @@ const page: FC<PageProps> = ({
   
 }) => {
   return (
-    <div className='hidden lg:block h-full'>
-        <EmptyState children={<></>} />
-  
+    <div className='h-full p-8'>  
+      <Dashboard />
     </div>
   )
 }
