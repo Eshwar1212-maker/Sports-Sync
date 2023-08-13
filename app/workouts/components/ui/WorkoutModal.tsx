@@ -78,6 +78,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           <TabsTrigger
             onClick={() => setActiveTab("exercises")}
             value="exercises"
+            className=""
           >
             My Exercises
           </TabsTrigger>
