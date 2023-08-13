@@ -10,6 +10,7 @@ import SettingsModal from "./SettingsModal";
 import { CiSettings } from "react-icons/ci";
 import ThemeButton from "./ThemeButton";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import Avatar from "../Avatar";
 
 
 interface DesktopSidebarProps {

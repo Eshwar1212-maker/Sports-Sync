@@ -67,9 +67,9 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
           <div>
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant={"outline"} className={clsx("", !date && "")}>
+                <button>
                   <SlCalender size={20} className="" />
-                </Button>
+                </button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0">
                 <Calendar
