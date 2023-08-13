@@ -67,7 +67,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
           <div>
             <Popover>
               <PopoverTrigger asChild>
-                <Button>
+                <Button variant={"primary"}>
                   <SlCalender size={20} className="" />
                 </Button>
               </PopoverTrigger>
