@@ -67,9 +67,9 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
           <div>
             <Popover>
               <PopoverTrigger asChild>
-                <button>
+                <Button>
                   <SlCalender size={20} className="" />
-                </button>
+                </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0">
                 <Calendar
@@ -94,6 +94,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
           </div>
           <div className="">
             <Button
+              variant={"default"}
               className={"text-[11px] md:text-[13px] py-1 md:mr-16"}
               onClick={() => setIsOpen(true)}
             >
