@@ -2,7 +2,7 @@
 
 import { HiChevronLeft } from 'react-icons/hi'
 import { HiEllipsisHorizontal } from 'react-icons/hi2';
-import { useMemo, useState } from "react";
+import {  useState } from "react";
 import Link from "next/link";
 import { Conversation, User } from "@prisma/client";
 import useOtherUser from "@/app/hooks/useOtherUser";
