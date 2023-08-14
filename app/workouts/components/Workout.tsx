@@ -3,7 +3,6 @@
 import { FC, useEffect, useState } from "react";
 import WorkoutModal from "./ui/WorkoutModal";
 import { format } from "date-fns";
-import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -16,6 +15,8 @@ import { useTheme } from "next-themes";
 import { BsTrash } from "react-icons/bs";
 import { AiOutlineEdit } from "react-icons/ai";
 import { toast } from "react-hot-toast";
+import { DropdownMenuDemo } from "./WorkoutDrawer";
+import { Calendar } from "@/components/ui/calendar";
 
 type exercise = {
   title?: string;
@@ -67,7 +68,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
           <div>
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant={"primary"}>
+                <Button>
                   <SlCalender size={20} className="" />
                 </Button>
               </PopoverTrigger>
@@ -120,12 +121,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
                         </h3>
                       </div>
                       <div className="flex gap-3">
-                        <button>
-                          <AiOutlineEdit size={25} />
-                        </button>
-                        <button>
-                          <BsTrash size={23} />
-                        </button>
+                        <DropdownMenuDemo />
                       </div>
                     </div>
                     <div className="flex">
