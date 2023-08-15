@@ -42,6 +42,9 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
   const [selectedExercise, setSelectedExercise] = useState(false);
   const [selectedExerciseId, setSelectedExerciseId] = useState("");
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
+  const [formattedDate, setFormattedDate] = useState(format(date!, "yyyy-MM-dd"))
+
+
   const [workout, setWorkout] = useState("");
 
   const { theme } = useTheme();
@@ -92,6 +95,8 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
           isOpen={isSecondOpen}
           onClose={() => setIsSecondOpen(false)}
           workout={workout}
+          date={date}
+          formattedDate={formattedDate}
         />
         <WorkoutModal
           date={date}
@@ -135,7 +140,7 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
                 theme === "light" && "text-gray-800"
               )}
             >
-              {format(date, "MM/dd/yyyy")}
+              {format(date!, "MM/dd/yyyy")}
             </h1>
           </div>
           <div className="">
