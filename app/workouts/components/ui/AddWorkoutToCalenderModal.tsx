@@ -14,6 +14,7 @@ interface WorkoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   workout: string;
+  formattedDate: string
   date: string;
 }
 
@@ -21,12 +22,13 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
   isOpen,
   onClose,
   workout,
-  date,
+  formattedDate,
+  date
 }) => {
   const [workoutTitle, setWorkoutTitle] = useState("");
 
 
-  console.log("WORKOUT: " + workout);
+  
   
 
   const {
@@ -45,13 +47,7 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
       onSuccess: (response) => {
         onClose();
         toast.success(
-          `Event added to calender for ${
-            date.toString().split(" ")[0] +
-            "        " +
-            date.toString().split(" ")[1] +
-            "      " +
-            date.toString().split(" ")[2]
-          }`
+          `Event added to calender for ${formattedDate}`
         );
       },
       onError: (error) => {
