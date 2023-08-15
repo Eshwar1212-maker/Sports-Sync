@@ -19,26 +19,31 @@ import { DropdownMenuDemo } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 
 type exercise = {
-  title?: string;
+  title: string;
   reps?: number | null;
   sets?: number | null;
   exercise?: string;
   weight?: number | null;
+  id?: string
 };
 
 interface WorkoutProps {
     workouts: any
+    
 }
 
 const Workout: FC<WorkoutProps> = ({workouts}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState<any>(new Date());
   const [filteredWorkouts, setFilteredWorkouts] = useState<exercise[]>([]);
-  const [edidtedExerciseName, setEdidtedExerciseName] = useState("")
+  const [edidtedExerciseName, setEditedExerciseName] = useState("")
   const [editedExerciseWeight, setEditedExerciseWeight] = useState()
   const [editedExerciseSets, setEditedExerciseSets] = useState()
   const [editedExerciseReps, setEditedExerciseReps] = useState()
   const [selectedExercise, setSelectedExercise] = useState(false)
+  const [selectedExerciseId, setSelectedExerciseId] = useState("")
+  const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
+
 
   const { theme } = useTheme();
 
@@ -60,13 +65,31 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
 
   const handleEdit = (exerciseData: any) => {
     setSelectedExercise(true);
-    setEdidtedExerciseName(exerciseData.title);
+    setEditedExerciseName(exerciseData.title);
     setEditedExerciseReps(exerciseData.reps);
     setEditedExerciseSets(exerciseData.sets);
     setEditedExerciseWeight(exerciseData.weight);
     setIsOpen(true);
   };
+
+  console.log(selectedExercise);
   
+  useEffect(() => {
+    const workoutsForSelectedDate = allWorkouts.filter(
+      (workout: any) => format(new Date(workout.date), 'PPP') === format(date, 'PPP')
+    );
+    setFilteredWorkouts(workoutsForSelectedDate);
+ }, [date, allWorkouts]);
+
+ const updateWorkoutInState = (updatedWorkout: exercise) => {
+  setAllWorkouts((prevWorkout: any) => {
+     return prevWorkout.map((workout: any) => 
+        workout.id === updatedWorkout.id ? updatedWorkout : workout
+     );
+  });
+}
+
+ 
 
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
@@ -81,6 +104,12 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
           editedSets={editedExerciseSets}
           editedWeight={editedExerciseWeight}
           selectedExercise={selectedExercise}
+          setEditedExerciseWeight={setEditedExerciseWeight}
+          setEditedExerciseSets={setEditedExerciseSets}
+          setEditedExerciseReps={setEditedExerciseReps}
+          workoutId={selectedExerciseId}
+          updateWorkoutInState={updateWorkoutInState}
+
         />
         {/* HEADER */}
         <header className="flex justify-between max-w-[670px] py-5 mx-auto">
@@ -136,6 +165,10 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
               <ul className="overflow-y-auto  border-b-[2px] border-b-black">
                 {filteredWorkouts.length > 0 && filteredWorkouts.map((exerciseData: any) => (
                   <li 
+                  onClick={() => {
+                    console.log(exerciseData.id);
+                    setSelectedExerciseId(exerciseData.id)
+                  }}
                   className="p-3 text-lg flex flex-col gap-4 rounded-md border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0"
                   >
                     <div className="flex justify-between">
