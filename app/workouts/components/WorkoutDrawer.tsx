@@ -22,7 +22,7 @@ export function DropdownMenuDemo({exerciseData, onEdit}: any) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="link"><HiEllipsisVertical color={theme === "light" ? "black" : "white"} size={27}/></Button>
+        <Button variant="link"><HiEllipsisVertical color={theme === "light" ? "black" : "white"} size={25}/></Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuSeparator />

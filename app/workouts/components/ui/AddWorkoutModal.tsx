@@ -60,7 +60,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const [reps, setReps] = useState<number | null>(0);
   const [addExercise, setAddExercise] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>();
-  console.log(selectedExercise, activeTab, workoutId);
 
   const handleExerciseSelected = (selectedExercise: string) => {
     setTitle(selectedExercise);
@@ -97,7 +96,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     {
       onSuccess: (response) => {
         onClose();
-        console.log(response.data);
         
         updateWorkoutInState(response.data); 
         toast.success("Workout updated");
