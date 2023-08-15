@@ -92,6 +92,7 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
           isOpen={isSecondOpen}
           onClose={() => setIsSecondOpen(false)}
           workout={workout}
+          date={date}
         />
         <WorkoutModal
           date={date}
