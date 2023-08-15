@@ -1,19 +1,15 @@
 "use client"
 
-
 import four from "../../assets/four.jpg";
 import soccer from "../../assets/soccer.jpg"
-import AuthModal from "./AuthModal"
 import calendertwo from "../../assets/calendertwo.png"
 import dashboard from "../../assets/dashboard.png"
 import message from "../../assets/message.png"
 import Image from "next/image";
-
 import { PT_Sans, Bonheur_Royale } from "next/font/google";
 import First from "./landing/First";
 import Second from "./landing/Second";
 import Third from "./landing/Third";
-import Footer from "./landing/Footer";
 import { useRouter } from "next/navigation";
 
 
@@ -36,7 +32,7 @@ const Hero = () => {
   return (
     <div className="bg-white text-black">  
 <div className="flex flex-col justify-center py-10 h-[50vh] pb-11 mb-6 sm:h-[80vh] lg:flex-row lg:py-20 lg:h-[70vh] lg:px-11 xl:px-[100px] 2xl:px-[290px]">
-      <div className="sm:w-full lg:w-1/2 p-4 flex flex-col lg:items-start">
+      <div className="sm:w-full lg:w-1/2 p-4 flex flex-col lg:items-start lg:space-y-6">
       <div className="space-y-5 text-center lg:text-left">
       <h1 style={inter.style} className="text-3xl sm:text-5xl 2xl:text-6xl font-bold">
             The world's best platform for athletes
@@ -46,9 +42,14 @@ const Hero = () => {
           </p>
           </div>
           <div className="text-xl my-4 flex justify-center lg:justify-start">
-          <button aria-label="Get Started, create your account" onClick={() => router.push("/auth")} className="bg-blue-900 text-sm md:text-xl p-3 text-white rounded-sm">
+          <button
+           aria-label="Get Started, create your account"
+            onClick={() => router.push("/auth")}
+           className="bg-blue-600 hover:bg-blue-800 transition ease-in-out duration-200 text-sm md:text-xl p-5 text-white rounded-sm"
+           >
            Get Started
           </button>
+          
           </div> 
         </div>
 

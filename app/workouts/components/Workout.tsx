@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import WorkoutModal from "./ui/WorkoutModal";
+import WorkoutModal from "./ui/AddWorkoutModal";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import {
@@ -33,8 +33,12 @@ interface WorkoutProps {
 const Workout: FC<WorkoutProps> = ({workouts}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState<any>(new Date());
-  const [workout, setWorkout] = useState<exercise[]>([]);
   const [filteredWorkouts, setFilteredWorkouts] = useState<exercise[]>([]);
+  const [edidtedExerciseName, setEdidtedExerciseName] = useState("")
+  const [editedExerciseWeight, setEditedExerciseWeight] = useState()
+  const [editedExerciseSets, setEditedExerciseSets] = useState()
+  const [editedExerciseReps, setEditedExerciseReps] = useState()
+  const [selectedExercise, setSelectedExercise] = useState(false)
 
   const { theme } = useTheme();
 
@@ -54,6 +58,16 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
     setFilteredWorkouts(workoutsForSelectedDate);
   }, [date, workouts]);
 
+  const handleEdit = (exerciseData: any) => {
+    setSelectedExercise(true);
+    setEdidtedExerciseName(exerciseData.title);
+    setEditedExerciseReps(exerciseData.reps);
+    setEditedExerciseSets(exerciseData.sets);
+    setEditedExerciseWeight(exerciseData.weight);
+    setIsOpen(true);
+  };
+  
+
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
       <div className="">
@@ -62,6 +76,11 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
           handleCallbackExercises={handleCallbackExercises}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
+          editedName={edidtedExerciseName}
+          editedReps={editedExerciseReps}
+          editedSets={editedExerciseSets}
+          editedWeight={editedExerciseWeight}
+          selectedExercise={selectedExercise}
         />
         {/* HEADER */}
         <header className="flex justify-between max-w-[670px] py-5 mx-auto">
@@ -97,7 +116,10 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
             <Button
               variant={"default"}
               className={"text-[11px] md:text-[13px] py-1 md:mr-16"}
-              onClick={() => setIsOpen(true)}
+              onClick={() => {
+                setSelectedExercise(false)
+                setIsOpen(true)
+              }}
             >
               Add Workout
             </Button>
@@ -113,7 +135,9 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
             <div className="flex flex-col">
               <ul className="overflow-y-auto  border-b-[2px] border-b-black">
                 {filteredWorkouts.length > 0 && filteredWorkouts.map((exerciseData: any) => (
-                  <li className="p-3 text-lg flex flex-col gap-4 rounded-md border-[1px] border-gray-500 w-[340px] md:w-[600px] cursor-pointer ml-8 sm:ml-0">
+                  <li 
+                  className="p-3 text-lg flex flex-col gap-4 rounded-md border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0"
+                  >
                     <div className="flex justify-between">
                       <div>
                         <h3 className="font-semibold text-lg">
@@ -121,7 +145,7 @@ const Workout: FC<WorkoutProps> = ({workouts}) => {
                         </h3>
                       </div>
                       <div className="flex gap-3">
-                        <DropdownMenuDemo />
+                      <DropdownMenuDemo onEdit={() => handleEdit(exerciseData)} />
                       </div>
                     </div>
                     <div className="flex">

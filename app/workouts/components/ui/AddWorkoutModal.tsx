@@ -15,13 +15,16 @@ interface WorkoutModalProps {
   onClose: () => void;
   handleCallbackExercises: (exerciseData: any) => void;
   date: string
+  editedName?: string
+  editedWeight?: any
+  editedSets?: any
+  editedReps?: any
+  selectedExercise: boolean
 }
 
 const WorkoutModal: FC<WorkoutModalProps> = ({
-  isOpen,
-  onClose,
-  handleCallbackExercises,
-  date
+  isOpen, onClose, handleCallbackExercises, date, editedName, editedWeight, editedReps, editedSets, selectedExercise
+
 }) => {
   const [title, setTitle] = useState<string>("");
   const [weight, setWeight] = useState<number | null>(0);
@@ -29,6 +32,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const [reps, setReps] = useState<number | null>(0);
   const [addExercise, setAddExercise] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>("exercises");
+
 
   const handleExerciseSelected = (selectedExercise: string) => {
     setTitle(selectedExercise);
@@ -44,8 +48,9 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       onSuccess: () => {
   
       },
-      onError: () => {
-  
+      onError: (error) => {
+        console.log(error);
+        
       }
     }
   );
@@ -69,6 +74,10 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     setReps(null)
     setSets(null)
 };
+
+
+console.log(selectedExercise, editedName);
+
 
 
   return (
@@ -102,21 +111,21 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           className="flex flex-col w-fit mx-auto py-[70px] gap-2 justify-center"
           value="weight"
         >
-          <h3 className="text-xl pb-6">{title}</h3>
+          <h3 className="text-xl pb-6">{!selectedExercise ? title : editedName}</h3>
 
           <label>Weight:</label>
           <input
             type="number"
-            value={weight ? weight.toString() : ""}
+            value={!selectedExercise ? weight?.toString() : editedWeight}
             onChange={(e) => setWeight(Number(e.target.value))}
             placeholder="Enter weight (in kg)"
             className="border-[1px] border-gray-500 p-2"
           />
-
+ 
           <label>Sets:</label>
           <input
             type="number"
-            value={sets ? sets.toString() : ''}
+            value={!selectedExercise ? sets?.toString() : editedSets}
             onChange={(e) => setSets(Number(e.target.value))}
             placeholder="Enter number of sets"
             className="border-[1px] border-gray-500 p-2"
@@ -125,7 +134,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           <label>Reps:</label>
           <input
             type="number"
-            value={reps ? reps.toString() : ''} 
+            value={!selectedExercise ? reps?.toString() : editedReps} 
             onChange={(e) => setReps(Number(e.target.value))}
             placeholder="Enter number of reps"
             className="border-[1px] border-gray-500 p-2"
@@ -137,7 +146,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           New Exercises <IoIosAdd size={22} />
         </Button>
         <Button disabled={!title} onClick={handleWorkoutAddition}>
-          Add Workout
+          {selectedExercise ? "Update" : "Add Workout"}
         </Button>
       </div>
     </Modal>

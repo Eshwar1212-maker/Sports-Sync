@@ -12,7 +12,7 @@ function Calendar({userEvents}: {userEvents: any}) {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState("")
   const [events, setEvents] = useState<any>(userEvents);
-  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const handleDateClick = (arg: any) => {
     setIsOpen(true)

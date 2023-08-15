@@ -17,7 +17,7 @@ import { useTheme } from "next-themes"
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai"
 import { HiEllipsisVertical } from "react-icons/hi2"
 
-export function DropdownMenuDemo() {
+export function DropdownMenuDemo({exerciseData, onEdit}: any) {
   const {theme} = useTheme()
   return (
     <DropdownMenu>
@@ -26,13 +26,13 @@ export function DropdownMenuDemo() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuSeparator />
-          <DropdownMenuItem className="cursor-pointer">
+          <DropdownMenuItem onClick={onEdit} className="cursor-pointer">
             Edit
-            <DropdownMenuShortcut><AiOutlineEdit size={23} /></DropdownMenuShortcut>
+            <DropdownMenuShortcut><AiOutlineEdit color="black" size={23} /></DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer">
           Delete
-          <DropdownMenuShortcut><AiOutlineDelete size={23}/></DropdownMenuShortcut>
+          <DropdownMenuShortcut><AiOutlineDelete color="black" size={23}/></DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

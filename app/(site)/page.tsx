@@ -14,10 +14,6 @@ const page: FC<pageProps> = ({
 }) => {
   return (
     <div className=''>
-      {/* <AuthModal
-      isOpen
-      onClose={() => setIsOpen(false)}
-       /> */}
       <Navbar />
       <Hero />
     </div>
