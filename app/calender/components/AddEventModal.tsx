@@ -44,7 +44,7 @@ function AddEventModal({
     error,
   } = useMutation(
     (data: { title: string; notes: string; date: string }) => {
-      return axios.post("/api/teamEvents", data);
+      return axios.post("/api/events", data);
     },
     {
       onSuccess: (response) => {
@@ -61,7 +61,7 @@ function AddEventModal({
   //UPDATE CALENDER EVENT MUTATION
   const { mutate: updateEvent } = useMutation(
     (data: { title: string; notes: string; eventId: string }) => {
-      return axios.patch("/api/teamEvents/update", data);
+      return axios.patch("/api/events/update", data);
     },
     {
       onSuccess: (response) => {
@@ -77,7 +77,11 @@ function AddEventModal({
 
   const handleDelete = () => {
     try {
-      return axios.delete(`/api/teamEvents/delete/${selectedEvent?._def?.publicId}`)
+      if(!selectedEvent?._def?.publicId){
+        return
+      }
+      const eventId = selectedEvent?._def?.publicId
+      return axios.delete(`/api/events/delete/${eventId}`)
     } catch (error) {
       console.error("Error deleting event:", error);
       toast.error("Error deleting the event");
