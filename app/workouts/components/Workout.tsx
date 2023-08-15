@@ -43,8 +43,6 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
   const [selectedExerciseId, setSelectedExerciseId] = useState("");
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
   const [formattedDate, setFormattedDate] = useState(format(date!, "yyyy-MM-dd"))
-
-
   const [workout, setWorkout] = useState("");
 
   const { theme } = useTheme();
