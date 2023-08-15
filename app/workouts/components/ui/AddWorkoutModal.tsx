@@ -2,59 +2,111 @@
 
 import Modal from "@/app/components/Modal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Exercises from "./Exercises";
 import Button from "@/app/components/Button";
 import { IoIosAdd } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { toast } from "react-hot-toast";
+
+type exercise = {
+  title: string;
+  reps?: number | null;
+  sets?: number | null;
+  exercise?: string;
+  weight?: number | null;
+  id?: string
+};
 
 interface WorkoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   handleCallbackExercises: (exerciseData: any) => void;
-  date: string
-  editedName?: string
-  editedWeight?: any
-  editedSets?: any
-  editedReps?: any
-  selectedExercise: boolean
+  date: string;
+  editedName?: string;
+  editedWeight?: any;
+  editedSets?: any;
+  editedReps?: any;
+  selectedExercise: boolean;
+  setEditedExerciseWeight: any;
+  setEditedExerciseSets: any;
+  setEditedExerciseReps: any;
+  workoutId: string
+  updateWorkoutInState: any
 }
 
-const WorkoutModal: FC<WorkoutModalProps> = ({
-  isOpen, onClose, handleCallbackExercises, date, editedName, editedWeight, editedReps, editedSets, selectedExercise
 
+const WorkoutModal: FC<WorkoutModalProps> = ({
+  isOpen,
+  onClose,
+  handleCallbackExercises,
+  date,
+  editedName,
+  editedWeight,
+  editedReps,
+  editedSets,
+  selectedExercise,
+  setEditedExerciseReps,
+  setEditedExerciseWeight,
+  setEditedExerciseSets,
+  workoutId,
+  updateWorkoutInState
 }) => {
   const [title, setTitle] = useState<string>("");
   const [weight, setWeight] = useState<number | null>(0);
   const [sets, setSets] = useState<number | null>(0);
   const [reps, setReps] = useState<number | null>(0);
   const [addExercise, setAddExercise] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string>("exercises");
-
+  const [activeTab, setActiveTab] = useState<string>();
+  console.log(selectedExercise, activeTab, workoutId);
 
   const handleExerciseSelected = (selectedExercise: string) => {
     setTitle(selectedExercise);
     setActiveTab("weight");
   };
 
-
-  const { mutate: addWorkout, isLoading, isError } = useMutation(
-    (data: {title: string, weight: number | null, sets: number | null, reps: number | null, date: string}) => {
-      return axios.post("/api/workouts", data)
-    }, 
+  //ADD WORKOUT
+  const {
+    mutate: addWorkout,
+    isLoading,
+    isError,
+  } = useMutation(
+    (data: {
+      title: string;
+      weight: number | null;
+      sets: number | null;
+      reps: number | null;
+      date: string;
+    }) => {
+      return axios.post("/api/workouts", data);
+    },
     {
-      onSuccess: () => {
-  
-      },
+      onSuccess: () => {},
       onError: (error) => {
         console.log(error);
-        
-      }
+      },
     }
   );
-  
+  //UPDATE WORKOUT
+  const { mutate: updateWorkout } = useMutation(
+    (data: { weight: number; sets: number; reps: number, workoutId: string }) => {
+      return axios.patch("/api/workouts/update", data);
+    },
+    {
+      onSuccess: (response) => {
+        onClose();
+        console.log(response.data);
+        
+        updateWorkoutInState(response.data); 
+        toast.success("Workout updated");
+      },
+      onError: (error) => {
+        console.log("UPDATE EVENT ERROR: ", error);
+      },
+    }
+  );
 
   const handleWorkoutAddition = () => {
     const exerciseData = {
@@ -62,23 +114,35 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       weight,
       sets,
       reps,
-      date
+      date,
     };
+    const updatedExerciseData = {
+      weight: editedWeight,
+      sets: editedSets,
+      reps: editedReps,
+      workoutId: workoutId
+    };
+    if (selectedExercise) {
+      updateWorkout(updatedExerciseData);
+    } else {
+      addWorkout(exerciseData);
+      handleCallbackExercises(exerciseData);
+      onClose();
+      setActiveTab("exercises");
+      setTitle("");
+      setWeight(null);
+      setReps(null);
+      setSets(null);
+    }
+  };
 
-    addWorkout(exerciseData);
-    handleCallbackExercises(exerciseData);
-    onClose();
-    setActiveTab("exercises");
-    setTitle("")
-    setWeight(null)
-    setReps(null)
-    setSets(null)
-};
-
-
-console.log(selectedExercise, editedName);
-
-
+  useEffect(() => {
+    if (selectedExercise) {
+      setActiveTab("weight");
+    } else {
+      setActiveTab("exercises");
+    }
+  }, [selectedExercise]);
 
   return (
     <Modal isFullWidth isOpen={isOpen} onClose={onClose}>
@@ -98,12 +162,6 @@ console.log(selectedExercise, editedName);
         <button onClick={onClose} className="sm:hidden fixed right-3">
           <IoClose size={20} />
         </button>
-        {addExercise && (
-          <input
-            placeholder="Enter new exercise name..."
-            className="w-[200px] border-[1px] border-gray-500 p-1"
-          />
-        )}
         <TabsContent value="exercises">
           <Exercises handleCallbackExercises={handleExerciseSelected} />
         </TabsContent>
@@ -111,22 +169,35 @@ console.log(selectedExercise, editedName);
           className="flex flex-col w-fit mx-auto py-[70px] gap-2 justify-center"
           value="weight"
         >
-          <h3 className="text-xl pb-6">{!selectedExercise ? title : editedName}</h3>
-
+          <h3 className="text-xl pb-6">
+            {!selectedExercise ? title : editedName}
+          </h3>
           <label>Weight:</label>
           <input
             type="number"
             value={!selectedExercise ? weight?.toString() : editedWeight}
-            onChange={(e) => setWeight(Number(e.target.value))}
+            onChange={(e) => {
+              if (selectedExercise) {
+                setEditedExerciseWeight(Number(e.target.value));
+              } else {
+                setWeight(Number(e.target.value));
+              }
+            }}
             placeholder="Enter weight (in kg)"
             className="border-[1px] border-gray-500 p-2"
           />
- 
+
           <label>Sets:</label>
           <input
             type="number"
             value={!selectedExercise ? sets?.toString() : editedSets}
-            onChange={(e) => setSets(Number(e.target.value))}
+            onChange={(e) => {
+              if (selectedExercise) {
+                setEditedExerciseSets(Number(e.target.value));
+              } else {
+                setSets(Number(e.target.value));
+              }
+            }}
             placeholder="Enter number of sets"
             className="border-[1px] border-gray-500 p-2"
           />
@@ -134,8 +205,14 @@ console.log(selectedExercise, editedName);
           <label>Reps:</label>
           <input
             type="number"
-            value={!selectedExercise ? reps?.toString() : editedReps} 
-            onChange={(e) => setReps(Number(e.target.value))}
+            value={!selectedExercise ? reps?.toString() : editedReps}
+            onChange={(e) => {
+              if (selectedExercise) {
+                setEditedExerciseReps(Number(e.target.value));
+              } else {
+                setReps(Number(e.target.value));
+              }
+            }}
             placeholder="Enter number of reps"
             className="border-[1px] border-gray-500 p-2"
           />
@@ -145,7 +222,10 @@ console.log(selectedExercise, editedName);
         <Button onClick={() => setAddExercise(!addExercise)} secondary>
           New Exercises <IoIosAdd size={22} />
         </Button>
-        <Button disabled={!title} onClick={handleWorkoutAddition}>
+        <Button
+          disabled={!title && !selectedExercise}
+          onClick={handleWorkoutAddition}
+        >
           {selectedExercise ? "Update" : "Add Workout"}
         </Button>
       </div>
