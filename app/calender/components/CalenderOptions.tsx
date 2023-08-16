@@ -20,7 +20,7 @@ export default function CalenderOptions() {
   const [selected, setSelected] = useState()
   const router = useRouter()
   return (
-    <div className="w-full px-4 py-16">
+    <div className="w-full px-4">
       <div className="mx-auto w-full max-w-md">
         <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
@@ -44,9 +44,9 @@ export default function CalenderOptions() {
               >
                 {({ active, checked }) => (
                   <>
-                    <div className="flex w-full items-center justify-between">
+                    <div className="flex w-full items-center justify-between space-y-5">
                       <div className="flex items-center">
-                        <div className="text-sm">
+                        <div className="text-[15px]">
      
                             <RadioGroup.Label
                             as="p"
@@ -60,17 +60,17 @@ export default function CalenderOptions() {
                           <RadioGroup.Description
                             as="span"
                             className={`inline ${
-                              checked ? 'text-sky-100' : 'text-gray-500'
+                              checked ? 'text-sky-50' : 'text-gray-500'
                             }`}
                           >
-                            <span className='text-[12px]'>
+                            <span className='text-[14px]'>
                               {plan.description}
                             </span>{' '}
                           </RadioGroup.Description>
                         </div>
                       </div>
                       {checked && (
-                        <div className="shrink-0 text-white">
+                        <div className="shrink-0 text-sky-50">
                           <CheckIcon className="h-6 w-6" />
                         </div>
                       )}
