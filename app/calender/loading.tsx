@@ -4,6 +4,7 @@ interface Props {}
 
 const loading = () => {
   return (
+    
     <LoadingModal />
   );
 };

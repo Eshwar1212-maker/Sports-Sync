@@ -9,7 +9,7 @@ import AddEventModal from "./AddEventModal";
 import { Event } from "@prisma/client";
 
 
-function Calendar({userEvents}: {userEvents: Event[]}) {
+function Calendar({userEvents}: {userEvents: any}) {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState("")
   const [events, setEvents] = useState<any>(userEvents);
@@ -21,7 +21,7 @@ function Calendar({userEvents}: {userEvents: Event[]}) {
     setSelectedEvent(null)   
   };
 
-  const updateEvents = (event: Event) => {
+  const updateEvents = (event: any) => {
     setEvents([...events, event])
   }
   

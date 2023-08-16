@@ -22,7 +22,7 @@ const Landing: FC<landingProps> = ({}) => {
             <h1 className={clsx(theme == "dark" ? "text-5xl font-bold text-gray-300" : "text-5xl font-bold text-black")}>
               Use our Calenders to visualize your routine
             </h1>
-            <p className={clsx(theme == "light" ? "text-lg font-light text-black" : "text-[16px] text-gray-300")}>
+            <p className={clsx(theme == "light" ? "text-[15px] font-light text-black py-2  max-w-[520px]" : "text-[15px] text-gray-300 py-2 max-w-[520px]")}>
               Use our Calender feature to either schedule your own practices and
               workouts, or collaborate with your team so you guys can schedule
               games, practices, events, etc.
