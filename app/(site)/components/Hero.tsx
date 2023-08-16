@@ -45,7 +45,7 @@ const Hero = () => {
           <button
            aria-label="Get Started, create your account"
             onClick={() => router.push("/auth")}
-           className="bg-blue-600 hover:bg-blue-800 transition ease-in-out duration-200 text-sm md:text-xl p-5 text-white rounded-sm"
+           className="bg-blue-900 hover:bg-blue-800 transition ease-in-out duration-200 text-sm md:text-xl p-5 text-white rounded-sm"
            >
            Get Started
           </button>
