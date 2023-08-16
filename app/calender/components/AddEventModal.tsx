@@ -140,7 +140,7 @@ function AddEventModal({
             : selectedEvent.date}
         </div>
         <div className="border-[1px] border-solid border-gray-900 w-full" />
-        <div className="py-6">
+        <div className="py-6  ">
           <textarea
             className="bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px] text-md"
             placeholder="Add notes over here..."
@@ -152,14 +152,14 @@ function AddEventModal({
             }
           />
         </div>
-        <button
+{ selectedEvent &&   <button
          type="button"
          onClick={handleDelete}
-         className="bottom-8 fixed"
+         className="bottom-8 fixed py-2"
          >
         <BiSolidTrash size={24}/>
-        </button>
-        <div className="flex gap-3 justify-end">
+        </button>}
+        <div className="flex gap-3 justify-end py-1">
           <button onClick={onClose}>Cancel</button>
           <Button
             type="submit"
