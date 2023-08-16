@@ -28,9 +28,11 @@ type exercise = {
 
 interface WorkoutProps {
   workouts: any;
+  workoutRecord: any
+
 }
 
-const Workout: FC<WorkoutProps> = ({ workouts }) => {
+const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSecondOpen, setIsSecondOpen] = useState(false);
   const [date, setDate] = useState<any>(new Date());
@@ -44,9 +46,9 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
   const [formattedDate, setFormattedDate] = useState(format(date!, "yyyy-MM-dd"))
   const [workout, setWorkout] = useState("");
-
+ 
+  
   const { theme } = useTheme();
-
   const handleCallbackExercises = ({ title, weight, reps, sets }: exercise) => {
     setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets }]);
   };
@@ -81,8 +83,6 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
       .join(`\n\n`);
 
     setWorkout(workoutsToNotes);
-    console.log(workoutsToNotes); 
-
     setFilteredWorkouts(workoutsForSelectedDate);
   }, [date, allWorkouts]);
 
@@ -111,6 +111,7 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
           setEditedExerciseReps={setEditedExerciseReps}
           workoutId={selectedExerciseId}
           updateWorkoutInState={updateWorkoutInState}
+          workoutRecord={workoutRecord}
         />
         {/* HEADER */}
         <header className="flex justify-between max-w-[670px] py-5 mx-auto">

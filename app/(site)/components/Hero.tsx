@@ -47,12 +47,10 @@ const Hero = () => {
             onClick={() => router.push("/auth")}
            className="bg-blue-700 md:bg-blue-900 hover:bg-blue-800 transition ease-in-out duration-200 text-sm md:text-md lg:text-xl p-3 md:p-5 text-white rounded-sm"
            >
-           Get Started
+           Get Started 
           </button>
-          
           </div> 
         </div>
-
         <div className="flex justify-center bg-[#FFFFFF] relative max-w-[360px] mx-auto">
           <div className="px-10 relative">
           <Image
