@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import {FaAffiliatetheme} from 'react-icons/fa'
-import { BsFillSunFill } from "react-icons/bs";
+import {PiSunDimLight} from 'react-icons/pi'
+import { BsCloudSun, BsFillCircleFill, BsFillSunFill } from "react-icons/bs";
 
 
 
@@ -30,7 +31,7 @@ const ThemeButton = () => {
             setTheme("dark");
           }}
         >
-          <FaAffiliatetheme size={11}/>
+          <FaAffiliatetheme size={9}/>
         </button>
       ) : (
         <button
@@ -39,7 +40,7 @@ const ThemeButton = () => {
             setTheme("light");
           }}
         >
-          <BsFillSunFill color="lightgray" size={13}/>
+          <BsFillCircleFill color="white" size={6}/>
         </button>
       )}
     </div>

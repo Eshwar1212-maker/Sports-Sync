@@ -110,7 +110,7 @@ const Hero = () => {
               </p>
             </div>
             <div className="flex flex-col">
-            <div className="bg-orange-200 lg:max-w-[380px]">
+            <div className="bg-orange-200 max-w-[600px]">
             <Image
               alt="fitness dashboard"
               src={message}
@@ -120,7 +120,7 @@ const Hero = () => {
             </div>
               <h3 className="text-2xl lg:text-3xl">Schedule games</h3>
               <p className="text-[17px] sm:text-sm md:text-lg">
-                Use our messaging system to schedule games,
+                Use our messaging system to schedule games,<br />
                 or practices with your friends and teams.
               </p>
             </div>       
