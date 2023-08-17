@@ -38,6 +38,7 @@ interface WorkoutModalProps {
   workoutId: string
   updateWorkoutInState: any
   workoutRecord: any
+  showConfetti: any
 }
 
 
@@ -57,6 +58,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   workoutId,
   updateWorkoutInState,
   workoutRecord,
+  showConfetti
 }) => {
   const [title, setTitle] = useState<string>("");
   const [weight, setWeight] = useState<any>(0);
@@ -65,30 +67,29 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const [addExercise, setAddExercise] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>();
   const [personalRecord, setPersonalRecord] = useState(false)
+  const [showingConfetti, setShowingConfetti] = useState<boolean>(false);
+
 
 
 
   const findWorkoutRecord = () => {
     const titleRecord = workoutRecord.filter((workout: Workout) => workout.title === title);
-    
     const isPersonalRecord = titleRecord.every((workout: Workout) => weight >= workout?.weight!);
-
     setPersonalRecord(isPersonalRecord);
+}
 
-    console.log(titleRecord);
-    console.log(personalRecord);
+useEffect(() => {
+    if (personalRecord) {
+        setShowingConfetti(true);
+        showConfetti(true); 
+        setTimeout(() => {
+            setShowingConfetti(false);
+        }, 3000);
     }
+    findWorkoutRecord();
+}, [personalRecord, weight]);
 
-    useEffect(() => {
-        findWorkoutRecord()
-    }, [title, weight]);
-
-    useEffect(() => {
-        console.log(personalRecord);
-    }, [personalRecord, weight]);
-
-  
-
+    
 
   const handleExerciseSelected = (selectedExercise: string) => {
     setTitle(selectedExercise);
@@ -111,7 +112,9 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       return axios.post("/api/workouts", data);
     },
     {
-      onSuccess: () => {},
+      onSuccess: () => {
+        findWorkoutRecord()
+      },
       onError: (error) => {
         console.log(error);
       },
@@ -125,9 +128,9 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     {
       onSuccess: (response) => {
         onClose();
-        
         updateWorkoutInState(response.data); 
         toast.success("Workout updated");
+        findWorkoutRecord()
       },
       onError: (error) => {
         console.log("UPDATE EVENT ERROR: ", error);
@@ -196,15 +199,16 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           className="flex flex-col w-fit mx-auto py-[70px] gap-2 justify-center"
           value="weight"
         >
-          <div className="flex justify-between">
-            <div>
-            <h3 className="text-xl pb-6">
+   
+            <h3 className="text-2xl mb-3 font-semibold">
             {!selectedExercise ? title : editedName}
           </h3>
-            </div>
-          {personalRecord &&  <div className="pb-4"><AiOutlineTrophy color="lightblue" size={36} /></div>}
-          </div>
-
+          {(personalRecord && title) &&
+              <div className="flex flex-row gap-3 mb-3">
+                <AiOutlineTrophy color="lightblue" size={46} /> 
+                <span className="m-auto text-[14px] font-light">Person Record!</span>
+               </div>  
+            }
           <label>Weight:</label>
           <input
             type="number"

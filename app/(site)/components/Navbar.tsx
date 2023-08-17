@@ -36,7 +36,7 @@ const Navbar: FC<NavbarProps> = ({
   return (
     <div className='flex justify-between px-5 sm:px-20 py-4 bg-white text-black'>
       <div style={inter.style} className='text-xl text-blue-800'>
-       SportsSync
+        Synced
       </div>
       <div className='my-2 text-sm font-bold'>
         <button onClick={() => router.push("/auth")}>SIGN IN</button>

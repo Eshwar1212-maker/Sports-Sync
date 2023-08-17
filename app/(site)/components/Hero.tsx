@@ -38,7 +38,7 @@ const Hero = () => {
             The world's best platform for athletes
           </h1>
           <p style={inter.style} className="text-lg md:text-2xl 2xl:text-4xl font-thin">
-              Manage everything with Sports Sync
+              Manage everything with Synced
           </p>
           </div>
           <div className="text-xl my-4 flex justify-center lg:justify-start">

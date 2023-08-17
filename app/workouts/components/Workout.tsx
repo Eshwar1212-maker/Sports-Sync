@@ -12,7 +12,7 @@ import {
 import { SlCalender } from "react-icons/sl";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
-import { toast } from "react-hot-toast";
+import Confetti from 'react-confetti';
 import { DropdownMenuDemo } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
@@ -46,7 +46,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
   const [formattedDate, setFormattedDate] = useState(format(date!, "yyyy-MM-dd"))
   const [workout, setWorkout] = useState("");
- 
+  const [showConfetti, setShowConfetti] = useState<boolean>(false)
   
   const { theme } = useTheme();
   const handleCallbackExercises = ({ title, weight, reps, sets }: exercise) => {
@@ -68,7 +68,11 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
         workout.id === updatedWorkout.id ? updatedWorkout : workout
       );
     });
-  };
+  };  
+  
+
+  console.log(showConfetti);
+  
 
   useEffect(() => {
     const workoutsForSelectedDate = allWorkouts.filter(
@@ -86,8 +90,18 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
     setFilteredWorkouts(workoutsForSelectedDate);
   }, [date, allWorkouts]);
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowConfetti(false);
+  }, 3000);
+  }, [showConfetti])
+  
+
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
+          {/* {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />} */}
+
       <div className="">
         <AddWorkoutToCalenderModal
           isOpen={isSecondOpen}
@@ -112,6 +126,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
           workoutId={selectedExerciseId}
           updateWorkoutInState={updateWorkoutInState}
           workoutRecord={workoutRecord}
+          showConfetti={setShowConfetti}
         />
         {/* HEADER */}
         <header className="flex justify-between max-w-[670px] py-5 mx-auto">

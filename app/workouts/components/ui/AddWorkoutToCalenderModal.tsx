@@ -64,17 +64,17 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
 
   return (
     <Modal isFullWidth isOpen={isOpen} onClose={onClose}>
-      <h1 className="text-center">
+      <h1 className="text-center pb-2">
         {date.toString().split(" ")[0] +
           "        " +
           date.toString().split(" ")[1] +
           "      " +
           date.toString().split(" ")[2]}
       </h1>
-      <div className="flex flex-col gap-3 mb-3 h-[8%]">
+      <div className="flex flex-col gap-3 mb-3 h-[6%]">
         <ListBox onSelectedChange={handleSelect} />
       </div>
-      <div className="h-[92%] max-h-[530px] overflow-y-scroll border-b-black border-b-[1px]">
+      <div className="h-[94%] max-h-[530px] overflow-y-scroll border-b-black border-b-[1px]">
         <p className="px-5 py-4 whitespace-pre-line ">{workout}</p>
       </div>
       <div className="bottom-4 fixed flex gap-2 right-8">
