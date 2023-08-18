@@ -105,5 +105,6 @@ model Workout {
   weight   Int?
   date DateTime
   userId String  @db.ObjectId
+  isPersonalRecord Boolean?
   user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
