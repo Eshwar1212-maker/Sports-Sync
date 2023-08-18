@@ -46,8 +46,8 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
           relative
           text-gray-400
       `,
-      (active && theme === "dark") && "text-white", 
-      (active && theme === "light") && "text-black" 
+      (active && theme === "dark" && href !== "/users") && "text-white bg-slate-800", 
+      (active && theme === "light" && href !== "/users") && "text-black font-bold bg-slate-200" 
 
       )
     }

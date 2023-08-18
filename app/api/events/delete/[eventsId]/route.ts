@@ -2,11 +2,16 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 
-export async function DELETE(req: any, res: any) {
+
+interface IParams {
+  eventId?: string;
+}
+
+export async function DELETE(  req: Request,
+  { params }: { params: IParams }) {
   try {
     const currentUser = await getCurrentUser();
-    const eventId = req.query
-    console.log("Full Query:", req?.query);
+    const {eventId} = params
 
     if (!currentUser?.id || !currentUser?.email) {
       return new NextResponse("Unauthorized", { status: 400 });
