@@ -4,7 +4,7 @@ import { CgSelect } from 'react-icons/cg'
 import { AiOutlineCheck } from 'react-icons/ai'
 
 const people = [
-  { name: 'Select Workout' },
+  { name: 'Select Workout Name' },
   { name: 'Chest Workout' },
   { name: 'Back Workout' },
   { name: 'Leg Workout' },
@@ -24,7 +24,7 @@ export default function ListBox({onSelectedChange}: any) {
   };
 
   return (
-    <div className="fixed top-10 w-[90%]">
+    <div className="fixed top-13 w-[93%] border-gray-900 border-[1px]">
       <Listbox value={selected} onChange={handleOnChange}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-200 sm:text-sm">

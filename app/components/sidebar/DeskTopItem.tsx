@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { IconType } from "react-icons";
 
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 interface DesktopItemProps {
   label: string;
@@ -19,6 +20,7 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
   href,
   icon: Icon,
   route,
+  active,
   onClick,
 }) => {
   const handleClick = () => {
@@ -26,6 +28,8 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
       return onClick();
     }
   };
+
+  const {theme} = useTheme()
 
   return (
     <Link href={href}>
@@ -37,12 +41,16 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
           items-center 
           gap-x-3 
           rounded-md 
-          p-3 
+          p-2
           leading-6 
-          font-semibold 
-          text-gray-500 
           relative
-      `)}
+          text-gray-400
+      `,
+      (active && theme === "dark") && "text-white", 
+      (active && theme === "light") && "text-black" 
+
+      )
+    }
     >
       <div>
         <Icon size={70} className={label === "Notification" ? "h-6 w-6 shrink-0" 
@@ -55,6 +63,7 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
         <p className='text-[11px]'>{route}</p>
       </div>
     </div>
+    
   </Link>
   
   );

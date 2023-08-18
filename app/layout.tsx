@@ -7,7 +7,7 @@ import ThemeProviders from './context/ThemeProviders'
  
 
 export const metadata = {
-  title: 'Sports Sync',
+  title: 'Synced',
   description: 'Workout/productvity app for athletes',
 }
 

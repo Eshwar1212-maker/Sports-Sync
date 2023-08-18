@@ -16,36 +16,36 @@ const useRoutes = () => {
         label: "Dashboard",
         href: "/dashboard",
         icon: FcNegativeDynamic,
-        active: pathName === "/conversation" || !!conversationId,
+        active: pathName === "/dashboard" || !!conversationId,
         route: "Dashboard"
     },
         {
           label: "Calender",
           href: "/calender",
           icon: SlCalender,
-          active: pathName === "/conversation" || !!conversationId,
+          active: pathName === "/calender" || !!conversationId,
           route: "Calender"
         },
        {
             label: "Workouts",
             href: "/workouts",
             icon: CgGym,
-            active: pathName === "/conversation" || !!conversationId,
+            active: pathName === "/workouts" || !!conversationId,
             route: "Workouts"
         },
        {
             label: "Chat",
             href: "/conversations",
             icon: HiChat,
-            active: pathName === "/conversation" || !!conversationId,
+            active: pathName === "/conversations" || !!conversationId,
             route: "Messages"
         },
         { 
-          label: 'Users', 
+          label: 'People', 
           href: '/users', 
           icon: HiUsers, 
           active: pathName === '/users',
-          route: "Users"
+          route: "People"
         }
     ], [pathName, conversationId])
     return routes;

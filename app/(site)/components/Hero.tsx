@@ -38,7 +38,7 @@ const Hero = () => {
             The world's best platform for athletes
           </h1>
           <p style={inter.style} className="text-lg md:text-2xl 2xl:text-4xl font-thin">
-              Manage everything with Sports Sync
+              Manage everything with Synced
           </p>
           </div>
           <div className="text-xl my-4 flex justify-center lg:justify-start">
@@ -47,14 +47,12 @@ const Hero = () => {
             onClick={() => router.push("/auth")}
            className="bg-blue-700 md:bg-blue-900 hover:bg-blue-800 transition ease-in-out duration-200 text-sm md:text-md lg:text-xl p-3 md:p-5 text-white rounded-sm"
            >
-           Get Started
+           Get Started 
           </button>
-          
           </div> 
         </div>
-
-        <div className="flex justify-center bg-[#FFFFFF] relative max-w-[360px] mx-auto">
-          <div className="px-10 relative">
+        <div className="flex justify-center bg-[#FFFFFF] relative  mx-auto mb-11">
+          <div className="px-10 relative my-14">
           <Image
             alt="landing page for team"
             width={700}
@@ -65,7 +63,7 @@ const Hero = () => {
         <div className="absolute px-5 md:px-0">
           <Image
             alt="landing page for team"
-            width={370}
+            width={400}
             height={500}
             src={soccer}
           />

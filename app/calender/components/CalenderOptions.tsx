@@ -11,7 +11,7 @@ const plans = [
     href: "userCalender"
   },
   {
-    name: 'Team',
+    name: 'Team Workspace',
     description: "Create a calender for either your team or workout partners, so you can schedule your games and practices.",
     href: "team"
   }

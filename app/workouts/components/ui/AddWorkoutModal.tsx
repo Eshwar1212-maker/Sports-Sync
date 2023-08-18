@@ -10,6 +10,8 @@ import { IoClose } from "react-icons/io5";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { Workout } from "@prisma/client";
+import { AiOutlineTrophy } from "react-icons/ai";
 
 type exercise = {
   title: string;
@@ -35,6 +37,8 @@ interface WorkoutModalProps {
   setEditedExerciseReps: any;
   workoutId: string
   updateWorkoutInState: any
+  workoutRecord: any
+  showConfetti: any
 }
 
 
@@ -52,14 +56,39 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   setEditedExerciseWeight,
   setEditedExerciseSets,
   workoutId,
-  updateWorkoutInState
+  updateWorkoutInState,
+  workoutRecord,
+  showConfetti
 }) => {
   const [title, setTitle] = useState<string>("");
-  const [weight, setWeight] = useState<number | null>(0);
+  const [weight, setWeight] = useState<any>(0);
   const [sets, setSets] = useState<number | null>(0);
   const [reps, setReps] = useState<number | null>(0);
   const [addExercise, setAddExercise] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>();
+  const [personalRecord, setPersonalRecord] = useState(false)
+  const [showingConfetti, setShowingConfetti] = useState<boolean>(false);
+
+
+
+
+  const findWorkoutRecord = () => {
+    const titleRecord = workoutRecord.filter((workout: Workout) => workout.title === title);
+    const isPersonalRecord = titleRecord.every((workout: Workout) => {
+      console.log(weight, workout?.weight);
+      return weight < (1 + workout?.weight!)
+    });
+    console.log( "IS PERSONAL RECORD: ", isPersonalRecord);
+    setPersonalRecord(!isPersonalRecord);
+}
+
+useEffect(() => {
+    findWorkoutRecord()
+    console.log("PERSONAL RECORD: ", personalRecord);
+}, [personalRecord, weight]);
+
+  
+  
 
   const handleExerciseSelected = (selectedExercise: string) => {
     setTitle(selectedExercise);
@@ -82,7 +111,9 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       return axios.post("/api/workouts", data);
     },
     {
-      onSuccess: () => {},
+      onSuccess: () => {
+        findWorkoutRecord()
+      },
       onError: (error) => {
         console.log(error);
       },
@@ -96,9 +127,9 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     {
       onSuccess: (response) => {
         onClose();
-        
         updateWorkoutInState(response.data); 
         toast.success("Workout updated");
+        findWorkoutRecord()
       },
       onError: (error) => {
         console.log("UPDATE EVENT ERROR: ", error);
@@ -167,9 +198,16 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           className="flex flex-col w-fit mx-auto py-[70px] gap-2 justify-center"
           value="weight"
         >
-          <h3 className="text-xl pb-6">
+   
+            <h3 className="text-2xl mb-3 font-semibold">
             {!selectedExercise ? title : editedName}
           </h3>
+          {(personalRecord && title) &&
+              <div className="flex flex-row gap-3 mb-3">
+                <AiOutlineTrophy color="lightblue" size={46} /> 
+                <span className="m-auto text-[14px] font-light">Person Record!</span>
+               </div>  
+            }
           <label>Weight:</label>
           <input
             type="number"

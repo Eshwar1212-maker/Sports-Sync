@@ -12,7 +12,7 @@ import {
 import { SlCalender } from "react-icons/sl";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
-import { toast } from "react-hot-toast";
+import Confetti from 'react-confetti';
 import { DropdownMenuDemo } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
@@ -28,9 +28,11 @@ type exercise = {
 
 interface WorkoutProps {
   workouts: any;
+  workoutRecord: any
+
 }
 
-const Workout: FC<WorkoutProps> = ({ workouts }) => {
+const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSecondOpen, setIsSecondOpen] = useState(false);
   const [date, setDate] = useState<any>(new Date());
@@ -44,9 +46,9 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
   const [formattedDate, setFormattedDate] = useState(format(date!, "yyyy-MM-dd"))
   const [workout, setWorkout] = useState("");
-
+  const [showConfetti, setShowConfetti] = useState<boolean>(false)
+  
   const { theme } = useTheme();
-
   const handleCallbackExercises = ({ title, weight, reps, sets }: exercise) => {
     setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets }]);
   };
@@ -66,7 +68,10 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
         workout.id === updatedWorkout.id ? updatedWorkout : workout
       );
     });
-  };
+  };  
+  
+
+  
 
   useEffect(() => {
     const workoutsForSelectedDate = allWorkouts.filter(
@@ -81,13 +86,21 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
       .join(`\n\n`);
 
     setWorkout(workoutsToNotes);
-    console.log(workoutsToNotes); 
-
     setFilteredWorkouts(workoutsForSelectedDate);
   }, [date, allWorkouts]);
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowConfetti(false);
+  }, 3000);
+  }, [showConfetti])
+  
+
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
+          {/* {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />} */}
+
       <div className="">
         <AddWorkoutToCalenderModal
           isOpen={isSecondOpen}
@@ -111,6 +124,8 @@ const Workout: FC<WorkoutProps> = ({ workouts }) => {
           setEditedExerciseReps={setEditedExerciseReps}
           workoutId={selectedExerciseId}
           updateWorkoutInState={updateWorkoutInState}
+          workoutRecord={workoutRecord}
+          showConfetti={setShowConfetti}
         />
         {/* HEADER */}
         <header className="flex justify-between max-w-[670px] py-5 mx-auto">
