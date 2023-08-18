@@ -9,9 +9,7 @@ import { signOut } from "next-auth/react";
 import SettingsModal from "./SettingsModal";
 import { CiSettings } from "react-icons/ci";
 import ThemeButton from "./ThemeButton";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import Avatar from "../Avatar";
-import {SheetSide } from "./NotificationsSheet";
+import { NotificationsSheet } from "./NotificationsSheet";
 
 interface DesktopSidebarProps {
   currentUser: User;
@@ -47,7 +45,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
       "
         >
           <nav className="mt-4 flex flex-col justify-between">
-            <ul role="list" className="flex flex-col items-center space-y-4 w-6">
+            <ul role="list" className="flex flex-col items-center space-y-4">
               {routes.map((item) => (
                 <DesktopItem
                   key={item.label}
@@ -61,25 +59,30 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
               ))}
 
               <li
-                className=" h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md leading-6 font-semibold relative">
+                className=" h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md leading-6 font-semibold relative mr-2">
                 <div>
-                  <SheetSide />
+                  <NotificationsSheet />
                 </div>
               </li>
               <li
-                className="py-6 h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md p-2 leading-6 font-semibold relative">
-                <div className="">
+                className="py-8 h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md p-2 leading-6 font-semibold relative">
+                <div>
                   <SlLogout
-                    color="lightgray"
+                    color="gray"
                     onClick={() =>
                       signOut({ callbackUrl: "http://localhost:3000" })
                     }
                     size={23}
-                    className="ml-1"
                   />
                 </div>
               </li>
             </ul>
+          </nav>
+          <nav className="mt-4 flex flex-col justify-between items-center">
+            <div
+              onClick={() => setIsOpen(true)}
+              className="cursor-pointer hover:opacity-75 transition"
+            ></div>
           </nav>
           <nav className="mt-4 flex flex-col justify-between items-center">
             <div className="mb-3">

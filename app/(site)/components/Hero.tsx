@@ -51,8 +51,8 @@ const Hero = () => {
           </button>
           </div> 
         </div>
-        <div className="flex justify-center bg-[#FFFFFF] relative max-w-[360px] mx-auto">
-          <div className="px-10 relative">
+        <div className="flex justify-center bg-[#FFFFFF] relative  mx-auto mb-11">
+          <div className="px-10 relative my-14">
           <Image
             alt="landing page for team"
             width={700}
@@ -63,7 +63,7 @@ const Hero = () => {
         <div className="absolute px-5 md:px-0">
           <Image
             alt="landing page for team"
-            width={370}
+            width={400}
             height={500}
             src={soccer}
           />

@@ -18,7 +18,7 @@ const MobileFooter = () => {
   }
 
   return (
-    <div className={clsx("fixed justify-between w-full bottom-0 z-40 flex items-center border-t-[1px] lg:hidden")}>
+    <div className={clsx("fixed justify-between w-full bottom-0 z-40 bg-gray-100 flex items-center border-t-[1px] lg:hidden")}>
       {routes.map((route: any) => (
         <MobileItem
           key={route.href}

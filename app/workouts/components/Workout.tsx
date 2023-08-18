@@ -71,7 +71,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   };  
   
 
-  console.log(showConfetti);
   
 
   useEffect(() => {

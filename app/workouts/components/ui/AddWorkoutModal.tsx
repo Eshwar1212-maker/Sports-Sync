@@ -74,22 +74,21 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
 
   const findWorkoutRecord = () => {
     const titleRecord = workoutRecord.filter((workout: Workout) => workout.title === title);
-    const isPersonalRecord = titleRecord.every((workout: Workout) => weight >= workout?.weight!);
-    setPersonalRecord(isPersonalRecord);
+    const isPersonalRecord = titleRecord.every((workout: Workout) => {
+      console.log(weight, workout?.weight);
+      return weight < (1 + workout?.weight!)
+    });
+    console.log( "IS PERSONAL RECORD: ", isPersonalRecord);
+    setPersonalRecord(!isPersonalRecord);
 }
 
 useEffect(() => {
-    if (personalRecord) {
-        setShowingConfetti(true);
-        showConfetti(true); 
-        setTimeout(() => {
-            setShowingConfetti(false);
-        }, 3000);
-    }
-    findWorkoutRecord();
+    findWorkoutRecord()
+    console.log("PERSONAL RECORD: ", personalRecord);
 }, [personalRecord, weight]);
 
-    
+  
+  
 
   const handleExerciseSelected = (selectedExercise: string) => {
     setTitle(selectedExercise);

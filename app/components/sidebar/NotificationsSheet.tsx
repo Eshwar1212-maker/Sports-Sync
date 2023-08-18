@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetClose,
@@ -10,38 +9,30 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { IoIosNotificationsOutline, IoMdClose } from "react-icons/io";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 
-const SHEET_SIDES = ["left"] as const;
 
-type SheetSide = (typeof SHEET_SIDES)[number];
 
-export function SheetSide() {
+export function NotificationsSheet() {
   return (
     <div className="grid grid-cols-2 relative">
-      {SHEET_SIDES.map((side) => (
-        <Sheet key={"left"}>
+        <Sheet>
           <SheetTrigger asChild>
-            <li className="cursor-pointer w-6">
-{  false &&   <span className="absolute top-0 right-0 bg-gray-500 text-[12px] text-gray-300 w-5 h-5 rounded-full flex items-center justify-center">
+            <div className="cursor-pointer w-6 mx-auto">
+{  false &&   <span className=" mr-2 pr-2">
                 5
               </span>}
-              <IoIosNotificationsOutline className="pr-2 mr-4" color="lightgray" size={39} />
-            </li>
+              <IoIosNotificationsOutline className="" color="gray" size={35} />
+            </div>
           </SheetTrigger>
-          <SheetContent className="" side={side}>
-          <SheetClose className="top-2 right-0 absolute" asChild>
-                  <Button variant={"link"} type="submit">
-                    <AiOutlineCloseCircle size={32}/>
-                  </Button>
-                </SheetClose>
+          <SheetContent className="" side={"left"}>
             <SheetHeader className="">
-              <div>
                 <SheetTitle>Notifications</SheetTitle>
-              </div>
-
             </SheetHeader>
+            <SheetClose className="absolute top-1 right-2">
+              <AiOutlineCloseCircle size={33} color="white"/>
+            </SheetClose>
             <SheetDescription className="items-center text-center flex justify-center py-[350px]">
                 <p className="text-2xl">No new notifications</p>
             </SheetDescription>
@@ -49,7 +40,6 @@ export function SheetSide() {
             </SheetFooter>
           </SheetContent>
         </Sheet>
-      ))}
     </div>
   );
 }
