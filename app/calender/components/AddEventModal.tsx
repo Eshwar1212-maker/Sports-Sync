@@ -80,8 +80,7 @@ function AddEventModal({
       if(!selectedEvent?._def?.publicId){
         return
       }
-      const eventId = selectedEvent?._def?.publicId
-      return axios.delete(`/api/events/delete/${eventId}`)
+      return axios.delete(`/api/events/delete/${selectedEvent?._def?.publicId}`)
     } catch (error) {
       console.error("Error deleting event:", error);
       toast.error("Error deleting the event");
