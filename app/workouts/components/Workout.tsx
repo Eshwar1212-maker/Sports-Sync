@@ -51,7 +51,11 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const { theme } = useTheme();
   const handleCallbackExercises = ({ title, weight, reps, sets }: exercise) => {
     setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets }]);
+    setWorkout(workout + `\n\n - ${title}    \n         ${weight} lbs | ${sets} sets | ${reps} reps`)
   };
+
+  console.log(workout);
+  
 
   const handleEdit = (exerciseData: any) => {
     setSelectedExercise(true);
