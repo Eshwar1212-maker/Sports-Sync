@@ -27,7 +27,7 @@ const solutions = [
 
 export default function DashBoardSelect() {
   return (
-    <div className="z-40 flex justify-end">
+    <div className="z-40 flex justify-end mb-1">
       <Popover className="relative">
         {({ open }) => (
           <>

@@ -17,12 +17,12 @@ const Landing: FC<landingProps> = ({}) => {
       {/*DESKTOP MENU*/}
 
       <div className="hidden lg:block py-[100px] sm:px-6 md:pl-60 container">
-        <div className="flex flex-col md:flex-row space-x-9">
-          <div className="space-y-8 w-full md:w-1/2">
-            <h1 className={clsx(theme == "dark" ? "text-5xl font-bold text-gray-300" : "text-5xl font-bold text-black")}>
+        <div className="flex flex-col md:flex-row space-x-9 pb-11">
+          <div className="space-y-4 w-[90vw] md:w-1/2">
+            <h1 className={clsx(theme == "dark" ? "text-3xl xl:text-5xl font-bold text-gray-300" : "text-4xl xl:text-5xl font-bold text-black")}>
               Use our Calenders to visualize your routine
             </h1>
-            <p className={clsx(theme == "light" ? "text-[15px] font-light text-black py-2  max-w-[520px]" : "text-[15px] text-gray-300 py-2 max-w-[520px]")}>
+            <p className={clsx(theme == "light" ? "text-[15px] font-light py-2 text-gray-500 max-w-[620px]" : "text-[15px] text-gray-300 py-2 max-w-[620px]")}>
               Use our Calender feature to either schedule your own practices and
               workouts, or collaborate with your team so you guys can schedule
               games, practices, events, etc.
@@ -67,7 +67,7 @@ const Landing: FC<landingProps> = ({}) => {
             />
           </div>
         </div>
-        <div className="">
+        <div className="my-5">
           <div className="">
             <CalenderOptions />
           </div>
