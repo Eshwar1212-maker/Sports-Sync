@@ -47,7 +47,7 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
       onSuccess: (response) => {
         onClose();
         toast.success(
-          `Event added to calender for ${formattedDate}`
+          `${workoutTitle} added for ${formattedDate}`
         );
       },
       onError: (error) => {

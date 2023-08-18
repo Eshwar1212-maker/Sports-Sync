@@ -2,6 +2,7 @@
 import { LineChart, Card, Title, Text, Metric } from "@tremor/react";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
+import DashboardSelect from "./DashboardSelect";
 
 const chartdata = [
   {
@@ -49,8 +50,10 @@ const Dashboard = () => {
   const { theme } = useTheme();
 
   return (
-    <>
+    <div className="relative">
+      <div>
       <Card className="">
+
         <h1 className="text-lg font-semibold">
           Your consistency and intensity the past 12 months
         </h1>
@@ -96,8 +99,10 @@ const Dashboard = () => {
             <li>14 workouts in March</li>
           </ul>
         </Card>
+        </div>
+
       </div>
-    </>
+    </div>
   );
 };
 export default Dashboard;
