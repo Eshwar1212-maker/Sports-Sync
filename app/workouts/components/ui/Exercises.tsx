@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { exercises } from "@/lib/exercises";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
@@ -17,13 +17,25 @@ const Exercises: FC<ExercisesProps> = ({ selectedExercise, handleCallbackExercis
 
   const searchedExercises = userExercises.filter((exercise) =>
     exercise.toLowerCase().includes(searchInput.toLowerCase())
+    
   );
 
   const addExercise = (exercise: string) => {
-    setUserExercises([...userExercises, exercise]);
+    const updatedExercises = [...userExercises, exercise];
+    setUserExercises(updatedExercises);
+    localStorage.setItem('userExercises', JSON.stringify(updatedExercises)); 
     toast.success(`${searchInput} added to your list!`);
     setSearchInput("");
-  };
+};
+
+useEffect(() => {
+  const savedExercises = localStorage.getItem('userExercises');
+  if (savedExercises) {
+      setUserExercises(JSON.parse(savedExercises));
+  }
+}, []);
+
+
 
   return (
     <>
