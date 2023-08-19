@@ -10,6 +10,7 @@ import SettingsModal from "./SettingsModal";
 import { CiSettings } from "react-icons/ci";
 import ThemeButton from "./ThemeButton";
 import { NotificationsSheet } from "./NotificationsSheet";
+import { useTheme } from "next-themes";
 
 interface DesktopSidebarProps {
   currentUser: User;
@@ -18,7 +19,7 @@ interface DesktopSidebarProps {
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
-
+  const {theme} = useTheme()
   return (
     <>
       <SettingsModal
@@ -68,7 +69,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
                 className="py-8 h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md p-2 leading-6 font-semibold relative">
                 <div>
                   <SlLogout
-                    color="gray"
+                    color={theme === "light" ? "gray" : "white"}
                     onClick={() =>
                       signOut({ callbackUrl: "http://localhost:3000" })
                     }
