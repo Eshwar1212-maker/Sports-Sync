@@ -2,6 +2,8 @@ import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CgSelect } from 'react-icons/cg'
 import { AiOutlineCheck } from 'react-icons/ai'
+import clsx from 'clsx'
+import { useTheme } from 'next-themes'
 
 const people = [
   { name: 'Select Workout Name' },
@@ -23,11 +25,16 @@ export default function ListBox({onSelectedChange}: any) {
     onSelectedChange(value);
   };
 
+  const {theme} = useTheme()
+
   return (
     <div className="fixed top-13 w-[93%] border-gray-900 border-[1px]">
       <Listbox value={selected} onChange={handleOnChange}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-200 sm:text-sm">
+          <Listbox.Button
+           className={clsx("relative w-full cursor-default rounded-sm py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-200 sm:text-sm",
+            theme === "dark" ? "bg-slate-900 text-white border-slate-300 border-[1px]" : "")}
+            >
             <span className="block truncate text-lg">{selected.name}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
        
@@ -43,7 +50,10 @@ export default function ListBox({onSelectedChange}: any) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Listbox.Options
+             className={clsx("absolute mt-1 max-h-60 w-full overflow-auto rounded-md py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm",
+                  theme === "light" ? "bg-white" : "bg-slate-300"
+                                  )}>
               {people.map((person, personIdx) => (
                 <Listbox.Option
                   key={personIdx}

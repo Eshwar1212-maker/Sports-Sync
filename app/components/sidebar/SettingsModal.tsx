@@ -11,6 +11,8 @@ import Input from "../inputs/Input";
 import Image from "next/image";
 import { CldUploadButton } from "next-cloudinary";
 import Modal from "../Modal";
+import { useTheme } from "next-themes";
+import clsx from "clsx";
 
 interface SettingsModal {
   isOpen?: boolean;
@@ -44,6 +46,8 @@ const SettingsModal: React.FC<SettingsModal> = ({
       shouldValidate: true,
     });
   };
+
+  const {theme} = useTheme()
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -105,7 +109,8 @@ const SettingsModal: React.FC<SettingsModal> = ({
                 </div>
                 <div className="">
                   <input
-                    className="text-[12px] p-1 my-2 border-[1px] rounded-md border-gray-900/50 w-fit"
+                    className={clsx("text-[12px] p-1 my-2 border-[1px] bg-white",
+                     theme == "dark" && "bg-slate-400 text-black p-1 border-[1px] border-black w-[160px] px-2")}
                     placeholder="Or enter image address"
                     onChange={(e) => setImageUrl(e.target.value)}
                   />
