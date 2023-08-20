@@ -30,7 +30,7 @@ const solutions = [
 export default function DashBoardSelect() {
   const {theme} = useTheme()
   return (
-    <div className="z-40 flex justify-end mb-1 my-5">
+    <div className="z-40 flex justify-end">
       <Popover className="relative">
         {({ open }) => (
           <>
@@ -57,9 +57,9 @@ export default function DashBoardSelect() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-10 mt-3 w-[300px] max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
+              <Popover.Panel className="absolute z-10 mt-3 w-[260px] max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="relative flex flex-col bg-slate-200 p-7 gap-10">
+                  <div className="relative flex flex-col bg-blue-100 p-7 gap-10">
                     {solutions.map((item) => (
                       <a
                         key={item.name}

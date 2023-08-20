@@ -14,7 +14,6 @@ export default async function UsersLayout({
   return (
     <Sidebar>
       <div className="h-full">
-        <DashBoardSelect />
         <Dashboard workouts={workouts}/>
       </div>
     </Sidebar>

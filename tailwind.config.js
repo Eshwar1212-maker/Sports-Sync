@@ -23,10 +23,10 @@ module.exports = {
             inverted: "#ffffff", // white
           },
           background: {
-            muted: "#f9fafb", // gray-50
-            subtle: "#f3f4f6", // gray-100
-            DEFAULT: "#ffffff", // white
-            emphasis: "#374151", // gray-700
+            muted: "white", // gray-50
+            subtle: "white", // gray-100
+            DEFAULT: "white", // white
+            emphasis: "white", // gray-700
           },
           border: {
             DEFAULT: "#e5e7eb", // gray-200

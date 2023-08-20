@@ -1,35 +1,47 @@
 "use client";
-import { LineChart, Card, AreaChart} from "@tremor/react";
+import { LineChart, Card, AreaChart, Title } from "@tremor/react";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
-
+import DashBoardSelect from "./DashboardSelect";
 
 const dataFormatter = (number: number) => {
   return `${Intl.NumberFormat("us").format(number).toString()}`;
 };
 
-const Dashboard = ({workouts}: any) => {
-
+const Dashboard = ({ workouts }: any) => {
   //Helper function to return days worked out for each month
 
   const getDaysWorkedOutByMonth = (month: string) => {
-       const unique = new Set()
-       workouts.forEach((workout: any) => {
-          if(workout.date.toString().includes(month)){
-            unique.add(workout.date.toString().split(" ")[2])
-          }
-       })
-
-       return unique.size
-  }
+    const unique = new Set();
+    workouts.forEach((workout: any) => {
+      if (workout.date.toString().includes(month)) {
+        unique.add(workout.date.toString().split(" ")[2]);
+      }
+    });
+    return unique.size;
+  };
 
   console.log(getDaysWorkedOutByMonth("Aug"));
 
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const unique: any = {}
-    months.map((month) => {
-        unique[month] = getDaysWorkedOutByMonth(month)
-    })
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const unique: any = {};
+  months.map((month) => {
+    unique[month] = getDaysWorkedOutByMonth(month);
+  });
+  const exercisesPerMonth: any = {};
   const chartdata = [
     {
       year: "Jan",
@@ -65,7 +77,7 @@ const Dashboard = ({workouts}: any) => {
     },
     {
       year: "Sep",
-      Consistency: unique["Sept"],
+      Consistency: unique["Sep"],
     },
     {
       year: "Oct",
@@ -78,97 +90,90 @@ const Dashboard = ({workouts}: any) => {
     {
       year: "Dec",
       Consistency: unique["Dec"],
-    }
+    },
   ];
-  
+
   const exercisesData = [
     {
       year: "Jan",
-      exercises: 0,
+      Intensity: 0,
     },
     {
       year: "Feb",
-      Consistency: 10
+      Consistency: 10,
     },
     {
       year: "Mar",
-      Consistency: 50,
+      Intensity: 50,
     },
     {
       year: "Apr",
-      Consistency: 60,
+      Intensity: 60,
     },
     {
       year: "May",
-      Consistency: 90,
+      Intensity: 90,
     },
     {
       year: "Jun",
-      Consistency: 20,
+      Intensity: 20,
     },
     {
       year: "Jul",
-      Consistency: 30,
+      Intensity: 30,
     },
     {
       year: "Aug",
-      Consistency: 45,
+      Intensity: 45,
     },
     {
       year: "Sep",
-      Consistency: 55,
+      Intensity: 55,
     },
     {
       year: "Oct",
-      Consistency: 44,
+      Intensity: 44,
     },
     {
       year: "Nov",
-      Consistency: 56,
+      Intensity: 56,
     },
     {
       year: "Dec",
-      Consistency: 64,
-    }
+      Intensity: 64,
+    },
   ];
-  
 
+  //const { theme } = useTheme();
 
-  const { theme } = useTheme();
-  
   return (
-    <div className="px-6">
+    <div className="px-6 py-4">
+      <DashBoardSelect />
       <div>
-      <Card className="">
-
-        <h1 className="text-lg font-semibold text-black">
-          Days you worked out each month
-        </h1>
-        <AreaChart
-          className="mt-46"
-          data={chartdata}
-          index="year"
-          categories={["Consistency", "Intensity"]}
-          colors={["sky", "red"]}
-          valueFormatter={dataFormatter}
-          yAxisWidth={40}
-        />
-      </Card>
-      <Card className="">
-
-        <h1 className="text-lg font-semibold text-black">
-          Number of exercises completed each month
-        </h1>
-        <AreaChart
-          className="mt-46"
-          data={exercisesData}
-          index="year"
-          categories={["Consistency"]}
-          colors={["red"]}
-          valueFormatter={dataFormatter}
-          yAxisWidth={40}
-        />
-      </Card>
+        <Card className="">
+          <Title className="">Days you worked out each month</Title>
+          <AreaChart
+            className="mt-46"
+            data={chartdata}
+            index="year"
+            categories={["Consistency"]}
+            colors={["sky", "red"]}
+            valueFormatter={dataFormatter}
+            yAxisWidth={40}
+          />
+        </Card>
+        <Card className="">
+          <Title className="">Number of exercises completed each month</Title>
+          <AreaChart
+            className="mt-46"
+            data={exercisesData}
+            index="year"
+            categories={["Intensity"]}
+            colors={["red"]}
+            valueFormatter={dataFormatter}
+            yAxisWidth={40}
+          />
+        </Card>
       </div>
     </div>
   );
