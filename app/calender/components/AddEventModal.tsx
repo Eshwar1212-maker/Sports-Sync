@@ -159,7 +159,7 @@ function AddEventModal({
         <BiSolidTrash size={24}/>
         </button>}
         <div className="flex gap-3 justify-end py-1">
-          <button onClick={onClose}>Cancel</button>
+          <button type="button" onClick={onClose}>Cancel</button>
           <Button
             type="submit"
             disabled={!selectedEvent ? !eventTitle : !updateTitle}
