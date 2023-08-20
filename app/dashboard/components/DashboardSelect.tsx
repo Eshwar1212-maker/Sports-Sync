@@ -30,22 +30,21 @@ const solutions = [
 export default function DashBoardSelect() {
   const {theme} = useTheme()
   return (
-    <div className="z-40 flex justify-end">
+    <div className="z-40 flex justify-end ml-10">
       <Popover className="relative">
         {({ open }) => (
           <>
             <Popover.Button
               className={clsx(`
                 ${open ? '' : 'text-opacity-90'}
-                group inline-flex items-center rounded-md border-[1px] mr-9 border-black px-3 py-2 text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`,
-                theme === "light" ? "bg-white" : "bg-slate-700")}
+                group inline-flex items-center rounded-md border-[1px] mr-9 border-black px-3 py-2 text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 ml-20 focus-visible:ring-white focus-visible:ring-opacity-75 bg-slate-500`)}
             >
-              <span>General</span>
+              <span className='text-white'>General</span>
               <CgSelect
                 className={`${open ? '' : 'text-opacity-70'}
                   ml-2 h-5 w-5 text-blue-300 transition duration-150 ease-in-out group-hover:text-opacity-80`}
                 aria-hidden="true"
-                color={theme === "light" ? 'black' : "white"}
+                color={"white"}
               />
             </Popover.Button>
             <Transition
