@@ -13,6 +13,8 @@ import { CldUploadButton } from "next-cloudinary";
 import Modal from "../Modal";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
+import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
 
 interface SettingsModal {
   isOpen?: boolean;
@@ -124,16 +126,23 @@ const SettingsModal: React.FC<SettingsModal> = ({
             mt-6 
             flex 
             items-center 
-            justify-end 
+            justify-between 
             gap-x-6
+            relative bottom-0
           "
         >
-          <button disabled={isLoading} onClick={onClose}>
+          <div>
+
+          </div>
+         <div className="gap-4 flex">
+         <button disabled={isLoading} onClick={onClose}>
             Cancel
           </button>
-          <button disabled={isLoading} type="submit">
+          <Button className="" disabled={isLoading} type="submit">
             Save
-          </button>
+          </Button>
+         </div>
+
         </div>
       </form>
     </Modal>

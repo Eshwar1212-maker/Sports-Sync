@@ -47,6 +47,9 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [formattedDate, setFormattedDate] = useState(format(date!, "yyyy-MM-dd"))
   const [workout, setWorkout] = useState("");
   const [showConfetti, setShowConfetti] = useState<boolean>(false)
+
+  console.log(workouts);
+  
   
   const { theme } = useTheme();
   const handleCallbackExercises = ({ title, weight, reps, sets }: exercise) => {

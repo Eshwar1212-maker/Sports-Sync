@@ -1,106 +1,174 @@
 "use client";
-import { LineChart, Card, Title, Text, Metric } from "@tremor/react";
+import { LineChart, Card, AreaChart} from "@tremor/react";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
-import DashboardSelect from "./DashboardSelect";
 
-const chartdata = [
-  {
-    month: 1,
-    Consistency: 9.74,
-    Intensity: 1.53,
-  },
-  {
-    month: 2,
-    Consistency: 1.96,
-    Intensity: 5.58,
-  },
-  {
-    month: 3,
-    Consistency: 4.96,
-    Intensity: 1.61,
-  },
-  {
-    month: 4,
-    Consistency: 3.93,
-    Intensity: 1.61,
-  },
-  {
-    month: 5,
-    Consistency: 9.88,
-    Intensity: 1.67,
-  },
-  {
-    month: 6,
-    Consistency: 12.93,
-    Intensity: 1.61,
-  },
-  {
-    month: 7,
-    Consistency: 9.88,
-    Intensity: 1.67,
-  },
-];
 
 const dataFormatter = (number: number) => {
-  return `${Intl.NumberFormat("us").format(number).toString()}%`;
+  return `${Intl.NumberFormat("us").format(number).toString()}`;
 };
 
-const Dashboard = () => {
-  const { theme } = useTheme();
+const Dashboard = ({workouts}: any) => {
 
+  //Helper function to return days worked out for each month
+
+  const getDaysWorkedOutByMonth = (month: string) => {
+       const unique = new Set()
+       workouts.forEach((workout: any) => {
+          if(workout.date.toString().includes(month)){
+            unique.add(workout.date.toString().split(" ")[2])
+          }
+       })
+
+       return unique.size
+  }
+
+  console.log(getDaysWorkedOutByMonth("Aug"));
+
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const unique: any = {}
+    months.map((month) => {
+        unique[month] = getDaysWorkedOutByMonth(month)
+    })
+  const chartdata = [
+    {
+      year: "Jan",
+      Consistency: unique["Jan"],
+    },
+    {
+      year: "Feb",
+      Consistency: unique["Feb"],
+    },
+    {
+      year: "Mar",
+      Consistency: unique["Mar"],
+    },
+    {
+      year: "Apr",
+      Consistency: unique["Apr"],
+    },
+    {
+      year: "May",
+      Consistency: unique["May"],
+    },
+    {
+      year: "Jun",
+      Consistency: unique["Jun"],
+    },
+    {
+      year: "Jul",
+      Consistency: unique["Jul"],
+    },
+    {
+      year: "Aug",
+      Consistency: unique["Aug"],
+    },
+    {
+      year: "Sep",
+      Consistency: unique["Sept"],
+    },
+    {
+      year: "Oct",
+      Consistency: unique["Oct"],
+    },
+    {
+      year: "Nov",
+      Consistency: unique["Nov"],
+    },
+    {
+      year: "Dec",
+      Consistency: unique["Dec"],
+    }
+  ];
+  
+  const exercisesData = [
+    {
+      year: "Jan",
+      exercises: 0,
+    },
+    {
+      year: "Feb",
+      Consistency: 10
+    },
+    {
+      year: "Mar",
+      Consistency: 50,
+    },
+    {
+      year: "Apr",
+      Consistency: 60,
+    },
+    {
+      year: "May",
+      Consistency: 90,
+    },
+    {
+      year: "Jun",
+      Consistency: 20,
+    },
+    {
+      year: "Jul",
+      Consistency: 30,
+    },
+    {
+      year: "Aug",
+      Consistency: 45,
+    },
+    {
+      year: "Sep",
+      Consistency: 55,
+    },
+    {
+      year: "Oct",
+      Consistency: 44,
+    },
+    {
+      year: "Nov",
+      Consistency: 56,
+    },
+    {
+      year: "Dec",
+      Consistency: 64,
+    }
+  ];
+  
+
+
+  const { theme } = useTheme();
+  
   return (
-    <div className="relative">
+    <div className="px-6">
       <div>
       <Card className="">
 
-        <h1 className="text-lg font-semibold">
-          Your consistency and intensity the past 12 months
+        <h1 className="text-lg font-semibold text-black">
+          Days you worked out each month
         </h1>
-        <LineChart
+        <AreaChart
           className="mt-46"
           data={chartdata}
           index="year"
           categories={["Consistency", "Intensity"]}
-          colors={["blue", "gray"]}
+          colors={["sky", "red"]}
           valueFormatter={dataFormatter}
           yAxisWidth={40}
         />
       </Card>
-      <div className="flex">
-        <Card className="" decoration="top" decorationColor="slate">
-          <h2 className="text-md font-semibold">Consistency summary</h2>
-          <ul             className={clsx(
-              "flex list-disc gap-2 flex-col px-6 py-1",
-              theme === "dark" ? "text-white" : "text-black"
-            )}>
-            <li>8 workouts in May</li>
-            <li>8 workouts in June</li>
-          </ul>
-        </Card>
-        <Card className="" decoration="top" decorationColor="slate">
-          <h2 className="text-md font-semibold">Intensity summary</h2>
-          <ul
-            className={clsx(
-              "flex list-disc gap-2 flex-col px-6 py-1 text-sm",
-              theme === "dark" ? "text-white" : "text-black"
-            )}
-          >
-            <li>16 workouts in May</li>
-            <li>13 workouts in June</li>
-            <li>22 workouts in July</li>
-            <li>21 workouts in August</li>
-            <li>22 workouts in September</li>
-            <li>24 workouts in October</li>
-            <li>19 workouts in November</li>
-            <li>18 workouts in December</li>
-            <li>22 workouts in January</li>
-            <li>26 workouts in February</li>
-            <li>14 workouts in March</li>
-          </ul>
-        </Card>
-        </div>
+      <Card className="">
 
+        <h1 className="text-lg font-semibold text-black">
+          Number of exercises completed each month
+        </h1>
+        <AreaChart
+          className="mt-46"
+          data={exercisesData}
+          index="year"
+          categories={["Consistency"]}
+          colors={["red"]}
+          valueFormatter={dataFormatter}
+          yAxisWidth={40}
+        />
+      </Card>
       </div>
     </div>
   );
