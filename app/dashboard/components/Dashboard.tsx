@@ -1,7 +1,6 @@
 "use client";
 import { LineChart, Card, AreaChart, Title } from "@tremor/react";
-import clsx from "clsx";
-import { useTheme } from "next-themes";
+
 import DashBoardSelect from "./DashboardSelect";
 
 const dataFormatter = (number: number) => {
@@ -21,8 +20,6 @@ const Dashboard = ({ workouts }: any) => {
     return unique.size;
   };
 
-  console.log(getDaysWorkedOutByMonth("Aug"));
-
   const months = [
     "Jan",
     "Feb",
@@ -41,7 +38,6 @@ const Dashboard = ({ workouts }: any) => {
   months.map((month) => {
     unique[month] = getDaysWorkedOutByMonth(month);
   });
-  const exercisesPerMonth: any = {};
   const chartdata = [
     {
       year: "Jan",
@@ -92,63 +88,86 @@ const Dashboard = ({ workouts }: any) => {
       Consistency: unique["Dec"],
     },
   ];
+  const getExercisesByMonth = (month: string) => {
+    let totalExercises = 0
+    workouts.forEach((workout: any) => {        
+      if(workout.date.toString().split(" ")[1].includes(month))
+      totalExercises += 1
+    })
+    return totalExercises
+}
 
+console.log(getExercisesByMonth("Aug"));
+const exercisesPerMonth: any = {};
+months.forEach((month) => {
+  exercisesPerMonth[month] = getExercisesByMonth(month)
+})
+
+
+console.log(exercisesPerMonth);
   const exercisesData = [
     {
       year: "Jan",
-      Intensity: 0,
+      Exercises: exercisesPerMonth["Jan"],
     },
     {
       year: "Feb",
-      Consistency: 10,
+      Exercises: exercisesPerMonth["Feb"],
     },
     {
       year: "Mar",
-      Intensity: 50,
+      Exercises: exercisesPerMonth["Mar"],
     },
     {
       year: "Apr",
-      Intensity: 60,
+      Exercises: exercisesPerMonth["Apr"],
     },
     {
       year: "May",
-      Intensity: 90,
+      Exercises: exercisesPerMonth["May"],
     },
     {
       year: "Jun",
-      Intensity: 20,
+      Exercises: exercisesPerMonth["Jun"],
     },
     {
       year: "Jul",
-      Intensity: 30,
+      Exercises: exercisesPerMonth["Jul"],
     },
     {
       year: "Aug",
-      Intensity: 45,
+      Exercises: exercisesPerMonth["Aug"],
     },
     {
       year: "Sep",
-      Intensity: 55,
+      Exercises: exercisesPerMonth["Sep"],
     },
     {
       year: "Oct",
-      Intensity: 44,
+      Exercises: exercisesPerMonth["Oct"],
     },
     {
       year: "Nov",
-      Intensity: 56,
+      Exercises: exercisesPerMonth["Nov"],
     },
     {
       year: "Dec",
-      Intensity: 64,
+      Exercises: exercisesPerMonth["Dec"],
     },
   ];
+
+
+  
+
 
   //const { theme } = useTheme();
 
   return (
-    <div className="px-6 py-4">
-      <DashBoardSelect />
+    <div className="px-6 mt-3">
+     <div className="">
+     <DashBoardSelect />
+
+     </div>
       <div>
         <Card className="">
           <Title className="">Days you worked out each month</Title>
@@ -168,7 +187,7 @@ const Dashboard = ({ workouts }: any) => {
             className="mt-46"
             data={exercisesData}
             index="year"
-            categories={["Intensity"]}
+            categories={["Exercises"]}
             colors={["red"]}
             valueFormatter={dataFormatter}
             yAxisWidth={40}
