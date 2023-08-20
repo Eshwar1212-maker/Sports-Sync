@@ -163,7 +163,7 @@ console.log(exercisesPerMonth);
   //const { theme } = useTheme();
 
   return (
-    <div className="px-6 mt-3">
+    <div className="px-6 mt-8">
      <div className="">
      <DashBoardSelect />
 

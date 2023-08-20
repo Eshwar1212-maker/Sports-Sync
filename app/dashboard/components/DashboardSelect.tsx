@@ -30,7 +30,7 @@ const solutions = [
 export default function DashBoardSelect() {
   const {theme} = useTheme()
   return (
-    <div className="z-40 flex justify-end ml-10">
+    <div className="z-40 flex justify-end mb-1">
       <Popover className="relative">
         {({ open }) => (
           <>
