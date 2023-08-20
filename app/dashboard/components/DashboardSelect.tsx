@@ -3,6 +3,8 @@
 import { Popover, Transition } from '@headlessui/react'
 import { CgSelect } from 'react-icons/cg'
 import { Fragment } from 'react'
+import { useTheme } from 'next-themes'
+import clsx from 'clsx'
 
 const solutions = [
   {
@@ -26,22 +28,24 @@ const solutions = [
 ]
 
 export default function DashBoardSelect() {
+  const {theme} = useTheme()
   return (
-    <div className="z-40 flex justify-end mb-1">
+    <div className="z-40 flex justify-end mb-1 my-5">
       <Popover className="relative">
         {({ open }) => (
           <>
             <Popover.Button
-              className={`
+              className={clsx(`
                 ${open ? '' : 'text-opacity-90'}
-                group inline-flex items-center rounded-md bg-white border-[1px] mr-9 border-black px-3 py-2 text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                group inline-flex items-center rounded-md border-[1px] mr-9 border-black px-3 py-2 text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`,
+                theme === "light" ? "bg-white" : "bg-slate-700")}
             >
               <span>General</span>
               <CgSelect
                 className={`${open ? '' : 'text-opacity-70'}
                   ml-2 h-5 w-5 text-blue-300 transition duration-150 ease-in-out group-hover:text-opacity-80`}
                 aria-hidden="true"
-                color='black'
+                color={theme === "light" ? 'black' : "white"}
               />
             </Popover.Button>
             <Transition
@@ -55,7 +59,7 @@ export default function DashBoardSelect() {
             >
               <Popover.Panel className="absolute z-10 mt-3 w-[300px] max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="relative flex flex-col bg-slate-100 p-7 gap-10">
+                  <div className="relative flex flex-col bg-slate-200 p-7 gap-10">
                     {solutions.map((item) => (
                       <a
                         key={item.name}

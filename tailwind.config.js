@@ -15,33 +15,34 @@ module.exports = {
         // light mode
         tremor: {
           brand: {
-            faint: "#", // blue-50
-            muted: "#", // blue-200
-            subtle: "", // blue-400
-            DEFAULT: "", // blue-500
-            emphasis: "", // blue-700
+            faint: "#eff6ff", // blue-50
+            muted: "#bfdbfe", // blue-200
+            subtle: "#60a5fa", // blue-400
+            DEFAULT: "#3b82f6", // blue-500
+            emphasis: "#1d4ed8", // blue-700
             inverted: "#ffffff", // white
           },
           background: {
             muted: "#f9fafb", // gray-50
             subtle: "#f3f4f6", // gray-100
-            DEFAULT: "", // white
-            emphasis: "", // gray-700
+            DEFAULT: "#ffffff", // white
+            emphasis: "#374151", // gray-700
           },
           border: {
-            DEFAULT: "", // gray-200
+            DEFAULT: "#e5e7eb", // gray-200
           },
           ring: {
-            DEFAULT: "", // gray-200
+            DEFAULT: "#e5e7eb", // gray-200
           },
           content: {
-            subtle: "", // gray-400
-            DEFAULT: "", // gray-500
-            emphasis: "", // gray-700
+            subtle: "#9ca3af", // gray-400
+            DEFAULT: "#6b7280", // gray-500
+            emphasis: "#374151", // gray-700
             strong: "#111827", // gray-900
             inverted: "#ffffff", // white
           },
         },
+        // dark mode
         // dark mode
         "dark-tremor": {
           brand: {
@@ -55,7 +56,7 @@ module.exports = {
           background: {
             muted: "#131A2B", // custom
             subtle: "#1f2937", // gray-800
-            DEFAULT: "", // gray-900
+            DEFAULT: "#b1c5da", // gray-900
             emphasis: "#d1d5db", // gray-300
           },
           border: {
@@ -65,11 +66,11 @@ module.exports = {
             DEFAULT: "#1f2937", // gray-800
           },
           content: {
-            subtle: "#4b5563", // gray-600
-            DEFAULT: "#6b7280", // gray-600
-            emphasis: "#e5e7eb", // gray-200
-            strong: "#f9fafb", // gray-50
-            inverted: "#000000", // black
+            subtle: "black", // gray-600
+            DEFAULT: "black", // gray-600
+            emphasis: "black", // gray-200
+            strong: "black", // gray-50
+            inverted: "black", // black
           },
         },
       },

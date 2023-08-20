@@ -69,7 +69,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
                 className="py-8 h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md p-2 leading-6 font-semibold relative">
                 <div>
                   <SlLogout
-                    color={theme === "light" ? "gray" : "white"}
+                    color={"gray"}
                     onClick={() =>
                       signOut({ callbackUrl: "http://localhost:3000" })
                     }
@@ -78,12 +78,6 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
                 </div>
               </li>
             </ul>
-          </nav>
-          <nav className="mt-4 flex flex-col justify-between items-center">
-            <div
-              onClick={() => setIsOpen(true)}
-              className="cursor-pointer hover:opacity-75 transition"
-            ></div>
           </nav>
           <nav className="mt-4 flex flex-col justify-between items-center">
             <div className="mb-3">

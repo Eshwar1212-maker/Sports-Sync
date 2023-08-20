@@ -25,7 +25,7 @@ export function NotificationsSheet() {
 {  false &&   <span className=" mr-2 pr-2">
                 5
               </span>}
-              <IoIosNotificationsOutline className="" color={theme === "light" ? "gray" : "white"} size={35} />
+              <IoIosNotificationsOutline className="" color={"gray"} size={35} />
             </div>
           </SheetTrigger>
           <SheetContent className="" side={"left"}>
