@@ -9,17 +9,18 @@ import { signOut } from "next-auth/react";
 import SettingsModal from "./SettingsModal";
 import { CiSettings } from "react-icons/ci";
 import ThemeButton from "./ThemeButton";
-import { NotificationsSheet } from "./NotificationsSheet";
 import { useTheme } from "next-themes";
+import { NotificationsSheet } from "../notifications/NotificationsSheet";
 
 interface DesktopSidebarProps {
   currentUser: User;
+  unSeen: any
 }
 
-const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
+const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, unSeen }) => {
   const routes = useRoutes();
-  const [isOpen, setIsOpen] = useState(false);
-  const {theme} = useTheme()
+  const [isOpen, setIsOpen] = useState(false);  
+  
   return (
     <>
       <SettingsModal
@@ -62,7 +63,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
               <li
                 className=" h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md leading-6 font-semibold relative mr-2">
                 <div>
-                  <NotificationsSheet />
+                  <NotificationsSheet unSeen={unSeen}/>
                 </div>
               </li>
               <li
