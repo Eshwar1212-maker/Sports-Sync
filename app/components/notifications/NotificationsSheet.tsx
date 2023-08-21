@@ -51,9 +51,9 @@ export function NotificationsSheet({unSeen}: any) {
     <div className="grid grid-cols-2 relative">
         <Sheet>
           <SheetTrigger asChild>
-            <div className="mx-auto flex flex-col my-10">
+            <div className={notifications.length > 0 ? "mx-auto flex flex-col my-10" : "mx-auto flex flex-col" }>
             {  notifications.length > 0 && 
-              <span className="text-[12px] mx-auto my-[-29px] text-blue-500">
+              <span className={"text-[12px] mx-auto my-[-29px] text-blue-500"}>
                 {notifications.length}
               </span>
             }
