@@ -48,7 +48,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [workout, setWorkout] = useState("");
   const [showConfetti, setShowConfetti] = useState<boolean>(false)
 
-  console.log(workouts);
   
   
   const { theme } = useTheme();
@@ -57,7 +56,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
     setWorkout(workout + `\n\n - ${title}    \n         ${weight} lbs | ${sets} sets | ${reps} reps`)
   };
 
-  console.log(workout);
   
 
   const handleEdit = (exerciseData: any) => {

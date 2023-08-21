@@ -25,7 +25,6 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
   const session = useSession();
   const router = useRouter();
   const {theme} = useTheme()
-  console.log(theme);
   
 
   const handleClick = useCallback(() => {

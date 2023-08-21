@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import { useSession } from "next-auth/react";
 import Avatar from "@/app/components/Avatar";
 import { FullMessageType } from "@/app/types";
+import { useTheme } from "next-themes";
 
 interface MessageBoxProps {
   data: FullMessageType;
@@ -19,6 +20,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
   
   const session = useSession();
   const [imageModalOpen, setImageModalOpen] = useState(false);
+  const {theme} = useTheme()
   const isOwn = session.data?.user?.email === data?.sender?.email
   const seenList = (data?.seen || [])
     .filter((user) => user.email !== data?.sender?.email)
@@ -62,7 +64,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
               "
             />
           ) : (
-            <div>{data?.body}</div>
+            <div className={theme === "dark" ?  "text-black" : ""}>{data?.body}</div>
           )}
         </div>
         {isLast && isOwn && seenList?.length > 0 && (
