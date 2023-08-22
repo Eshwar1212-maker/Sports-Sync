@@ -97,14 +97,12 @@ const Dashboard = ({ workouts }: any) => {
     return totalExercises
 }
 
-console.log(getExercisesByMonth("Aug"));
 const exercisesPerMonth: any = {};
 months.forEach((month) => {
   exercisesPerMonth[month] = getExercisesByMonth(month)
 })
 
 
-console.log(exercisesPerMonth);
   const exercisesData = [
     {
       year: "Jan",

@@ -12,6 +12,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { Workout } from "@prisma/client";
 import { AiOutlineTrophy } from "react-icons/ai";
+import { useTheme } from "next-themes";
 
 type exercise = {
   title: string;
@@ -75,16 +76,13 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const findWorkoutRecord = () => {
     const titleRecord = workoutRecord.filter((workout: Workout) => workout.title === title);
     const isPersonalRecord = titleRecord.every((workout: Workout) => {
-      console.log(weight, workout?.weight);
       return weight < (1 + workout?.weight!)
     });
-    console.log( "IS PERSONAL RECORD: ", isPersonalRecord);
     setPersonalRecord(!isPersonalRecord);
 }
 
 useEffect(() => {
     findWorkoutRecord()
-    console.log("PERSONAL RECORD: ", personalRecord);
 }, [personalRecord, weight]);
 
   
@@ -95,7 +93,7 @@ useEffect(() => {
     setActiveTab("weight");
   };
 
-  //ADD WORKOUT
+
   const {
     mutate: addWorkout,
     isLoading,
@@ -172,6 +170,7 @@ useEffect(() => {
       setActiveTab("exercises");
     }
   }, [selectedExercise]);
+  const {theme} = useTheme()
 
   return (
     <Modal isFullWidth isOpen={isOpen} onClose={onClose}>
@@ -180,11 +179,11 @@ useEffect(() => {
           <TabsTrigger
             onClick={() => setActiveTab("exercises")}
             value="exercises"
-            className=""
+            className={theme === "light" ? "text-black" : "text-white"}
           >
             My Exercises
           </TabsTrigger>
-          <TabsTrigger onClick={() => setActiveTab("weight")} value="weight">
+          <TabsTrigger className={theme === "light" ? "text-black" : "text-white"} onClick={() => setActiveTab("weight")} value="weight">
             Intensity
           </TabsTrigger>
         </TabsList>

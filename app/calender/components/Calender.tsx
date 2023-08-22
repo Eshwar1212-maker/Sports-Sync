@@ -27,7 +27,6 @@ function Calendar({userEvents}: {userEvents: any}) {
   
   const handleEventClick = (info: any) => {
     setIsOpen(true);
-    console.log(info.event);
     setSelectedEvent(info.event); 
   }
 

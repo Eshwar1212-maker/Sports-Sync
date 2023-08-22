@@ -10,7 +10,6 @@ export default async function UsersLayout({
   children: React.ReactNode;
 }) {
   const workouts = await getWorkouts();
-  console.log(workouts);
   return (
     <Sidebar>
       <div className="h-full">

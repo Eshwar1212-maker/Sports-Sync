@@ -37,7 +37,7 @@ export default function DashBoardSelect() {
             <Popover.Button
               className={clsx(`
                 ${open ? '' : 'text-opacity-90'}
-                group inline-flex items-center rounded-md border-[1px] mr-9 border-black px-3 py-2 text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 ml-20 focus-visible:ring-white focus-visible:ring-opacity-75 bg-slate-500`)}
+                group inline-flex items-center rounded-md border-[1px] mr-9 border-black px-3 py-2 text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 ml-0 focus-visible:ring-white focus-visible:ring-opacity-75 bg-slate-500`)}
             >
               <span className='text-white'>General</span>
               <CgSelect

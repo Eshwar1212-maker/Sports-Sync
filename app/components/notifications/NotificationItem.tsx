@@ -8,7 +8,6 @@ interface NotificationItemProps {
 const NotificationItem: FC<NotificationItemProps> = ({
         name, image, body
 }) => { 
-  console.log(body.length);
   function getSubstringWithoutCuttingWords(str: string, length: number) {
     // Start with the initial substring
     let result = str.substring(0, length);
@@ -23,7 +22,7 @@ const NotificationItem: FC<NotificationItemProps> = ({
 }
 
   return (
-    <div className='flex flex-row justify-between gap-10 border-b-[1px] w-full border-slate-200 py-4 text-white'>
+    <div className='flex flex-row justify-between gap-10 border-b-[1px] w-full border-slate-500 py-4'>
         <div className="relative inline-block rounded-full overflow-hidden min-h-9 min-w-9 max-h-9 max-w-9 md:h-11 md:w-11 ml-3 m-auto">
             <Image
             fill
@@ -32,9 +31,9 @@ const NotificationItem: FC<NotificationItemProps> = ({
              />
         </div>
         <div className='flex m-auto max-w-[170px]'>
-            <p className='font-light text-[13px]'><span className='font-bold text-md text-gray-200 text-[13px]'>
+            <p className='font-light text-[13px]'><span className='font-bold text-md text-[13px]'>
               {name} messaged you:</span> "{getSubstringWithoutCuttingWords(body, 10)}{body.length > 10 && "..."}"
-              <span className='cursor-pointer font-bold text-md text-gray-200 text-[13px] border-b'>  </span></p>
+              <span className='cursor-pointer font-bold text-md text-[13px] border-b'>  </span></p>
         </div>
         <div className='m-auto'>
             8:22

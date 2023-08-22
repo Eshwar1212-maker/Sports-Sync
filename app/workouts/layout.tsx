@@ -11,9 +11,7 @@ export default async function WorkoutsLayout({
 }) {
     const workouts = await getWorkouts()
     const getRecordWorkouts = await getRecordWorkout()
-    console.log(workouts);
     
-    console.log("RECORD WORKOUTS: " + getRecordWorkouts);
     
 
     return (
