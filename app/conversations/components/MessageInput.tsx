@@ -1,5 +1,7 @@
 "use client"
 
+import clsx from 'clsx'
+import { useTheme } from 'next-themes'
 import { FC } from 'react'
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
 interface MessageInputProps {
@@ -13,6 +15,7 @@ interface MessageInputProps {
 const MessageInput: FC<MessageInputProps> = ({
     id, register, type, placeholder, errors, required
 }) => {
+  const {theme} = useTheme()
   return (
     <div className='relative w-full'>
         <input
@@ -21,7 +24,7 @@ const MessageInput: FC<MessageInputProps> = ({
         autoComplete={id}
         {...register(id, {required})}
         placeholder={placeholder}
-        className='text-black font-light py-2 px-4 bg-neutral-100 w-full rounded-full focus:outline-none'
+        className={clsx('text-black font-light py-2 px-4 w-full rounded-full focus:outline-none', theme === "light" ? "bg-neutral-100" : "text-white")}
          />
          
     </div>

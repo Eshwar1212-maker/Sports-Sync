@@ -8,8 +8,6 @@ async function Sidebar({children}: {
 }){
     const currentUser = await getCurrentUser()
     const unSeenMessages = await getUnseenMessages()
-    console.log("UNSEEN: ",  unSeenMessages);
-    console.log("huuh");
     
     
     

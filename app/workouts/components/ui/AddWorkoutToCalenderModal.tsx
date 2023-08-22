@@ -44,7 +44,7 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
       });
     },
     {
-      onSuccess: (response) => {
+      onSuccess: () => {
         onClose();
         toast.success(
           `${workoutTitle} added for ${formattedDate}`
@@ -58,7 +58,6 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
   );
 
   function handleSelect(title: any) {
-    console.log(title.name);
     setWorkoutTitle(title.name);
   }
 

@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import NotificationItem from "./NotificationItem";
+import { useTheme } from "next-themes";
 
 type Notification = {
   name: string
@@ -43,10 +44,9 @@ export function NotificationsSheet({unSeen}: any) {
   }, [unSeen]);
 
 
-  console.log(unSeen);
   
   
-
+const {theme} = useTheme()
   return (
     <div className="grid grid-cols-2 relative">
         <Sheet>
@@ -60,9 +60,9 @@ export function NotificationsSheet({unSeen}: any) {
               <IoIosNotificationsOutline className="" color={notifications.length > 0 ? "gray" : "gray"} size={35} />
             </div>
           </SheetTrigger>
-          <SheetContent className="" side={"left"}>
-            <SheetHeader className="">
-                <SheetTitle>Notifications</SheetTitle>
+          <SheetContent className={theme === "light" ? "bg-white" : "bg-black"} side={"left"}>
+            <SheetHeader>
+                <h2 className="font-bold text-lg boder-b-[2px] border-b-black">Notifications</h2>
             </SheetHeader>
             <SheetClose className="absolute top-1 right-2">
               <AiOutlineCloseCircle size={33} color="white"/>

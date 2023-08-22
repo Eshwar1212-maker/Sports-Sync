@@ -11,6 +11,8 @@ import useOtherUser from '@/app/hooks/useOtherUser';
 import Avatar from '@/app/components/Avatar';
 import AvatarGroup from '@/app/components/AvatarGroup';
 import ConfirmModal from './ConfirmModal';
+import clsx from 'clsx';
+import { useTheme } from 'next-themes';
 
 interface ProfileDrawerProps {
   isOpen: boolean;
@@ -35,7 +37,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   }, [data.name, otherUser.name]);
 
 
-
+  const {theme} = useTheme()
 
   return (
     <>
@@ -69,14 +71,14 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                   leaveFrom="translate-x-0"
                   leaveTo="translate-x-full"
                 >
-                  <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                    <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+                  <Dialog.Panel className="pointer-events-auto w-screen max-w-md ">
+                    <div className={clsx("flex h-full flex-col overflow-y-scrollpy-6 shadow-xl", theme === "light" ? "bg-white" : "bg-[#1c1c1c]")}>
                       <div className="px-4 sm:px-6">
                         <div className="flex items-start justify-end">
                           <div className="ml-3 flex h-7 items-center">
                             <button
                               type="button"
-                              className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                              className={clsx("rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2", theme === "light" ? "text-gray-400 bg-white hover:text-gray-500" : "text-gray-400")}
                               onClick={onClose}
                             >
                               <span className="sr-only">Close panel</span>
@@ -90,7 +92,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                           <div className="mb-2">
                             {data.isGroup ? <AvatarGroup users={data.users} /> : <Avatar user={otherUser} />}
                           </div>
-                          <div className='text-black'>
+                          <div className={theme === "light" ? 'text-black' : ""}>
                             {title}
                           </div>
                           <div className="flex gap-10 my-8">
@@ -98,7 +100,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                               <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
                                 <IoTrash color='black' size={20} />
                               </div>
-                              <div className="text-sm font-light text-neutral-600">
+                              <div className={clsx("text-sm font-light", theme === "light" && "text-neutral-600")}>
                                 Delete
                               </div>
                             </div>
@@ -107,50 +109,20 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                         <dl className="space-y-8 px-4 sm:space-y-6 sm:px-6">
                           {data.isGroup && (
                             <div>
-                              <dt 
-                                className="
-                                  text-sm 
-                                  font-medium 
-                                  text-gray-500 
-                                  sm:w-40 
-                                  sm:flex-shrink-0
-                                "
-                              >
+                              <dt className={clsx("text-sm font-medium sm:w-40 sm:flex-shrink-0", theme === "light" && "text-gray-500")}>
                                 Emails
                               </dt>
-                              <dd 
-                                className="
-                                  mt-1 
-                                  text-sm 
-                                  text-gray-900 
-                                  sm:col-span-2
-                                "
-                              >
+                              <dd className={clsx("mt-1 text-sm text-gray-900 sm:col-span-2", theme === "light" && "text-gray-900")}>
                                 {data.users.map((user) => user.email).join(', ')}
                               </dd>
                             </div>
                           )}
                           {!data.isGroup && (
                             <div>
-                              <dt 
-                                className="
-                                  text-sm 
-                                  font-medium 
-                                  text-gray-500 
-                                  sm:w-40 
-                                  sm:flex-shrink-0
-                                "
-                              >
+                              <dt className={clsx("text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0", theme === "light" && "text-gray-500")}>
                                 Email
                               </dt>
-                              <dd 
-                                className="
-                                  mt-1 
-                                  text-sm 
-                                  text-gray-900 
-                                  sm:col-span-2
-                                "
-                              >
+                              <dd className={clsx("mt-1 text-sm sm:col-span-2", theme === "light" && "text-gray-900")}>
                                 {otherUser.email}
                               </dd>
                             </div>
