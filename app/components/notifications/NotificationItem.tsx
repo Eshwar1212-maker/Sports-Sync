@@ -1,3 +1,5 @@
+import clsx from 'clsx'
+import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import { FC } from 'react'
 interface NotificationItemProps {
@@ -20,9 +22,11 @@ const NotificationItem: FC<NotificationItemProps> = ({
 
     return result;
 }
+ 
+ const {theme} = useTheme()
 
   return (
-    <div className='flex flex-row justify-between gap-10 border-b-[1px] w-full border-slate-500 py-4'>
+    <div className={clsx('flex flex-row justify-between gap-10 border-b-[1px] w-full border-slate-500 py-4', theme === "light" ? "text-black" : "text-white")}>
         <div className="relative inline-block rounded-full overflow-hidden min-h-9 min-w-9 max-h-9 max-w-9 md:h-11 md:w-11 ml-3 m-auto">
             <Image
             fill
@@ -31,12 +35,12 @@ const NotificationItem: FC<NotificationItemProps> = ({
              />
         </div>
         <div className='flex m-auto max-w-[170px]'>
-            <p className='font-light text-[13px]'><span className='font-bold text-md text-[13px]'>
+            <p className='font-light text-[14px]'><span className='font-bold text-md'>
               {name} messaged you:</span> "{getSubstringWithoutCuttingWords(body, 10)}{body.length > 10 && "..."}"
               <span className='cursor-pointer font-bold text-md text-[13px] border-b'>  </span></p>
         </div>
         <div className='m-auto'>
-            8:22
+            {/* time */}
         </div>
     </div>
   )

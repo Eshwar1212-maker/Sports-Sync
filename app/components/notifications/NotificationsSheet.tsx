@@ -15,6 +15,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import NotificationItem from "./NotificationItem";
 import { useTheme } from "next-themes";
+import clsx from "clsx";
 
 type Notification = {
   name: string
@@ -52,21 +53,15 @@ const {theme} = useTheme()
         <Sheet>
           <SheetTrigger asChild>
             <div className={notifications.length > 0 ? "mx-auto flex flex-col my-10" : "mx-auto flex flex-col" }>
-            {  notifications.length > 0 && 
-              <span className={"text-[12px] mx-auto my-[-29px] text-blue-500"}>
-                {notifications.length}
-              </span>
-            }
-              <IoIosNotificationsOutline className="" color={notifications.length > 0 ? "gray" : "gray"} size={35} />
+              <IoIosNotificationsOutline className={notifications.length > 0 ? " my-[-33px]" : "" }color={(notifications.length > 0 && theme === "light" ) ? "blue" : ""} 
+              size={35} />
             </div>
           </SheetTrigger>
           <SheetContent className={theme === "light" ? "bg-white" : "bg-black"} side={"left"}>
             <SheetHeader>
                 <h2 className="font-bold text-lg boder-b-[2px] border-b-black">Notifications</h2>
             </SheetHeader>
-            <SheetClose className="absolute top-1 right-2">
-              <AiOutlineCloseCircle size={33} color="white"/>
-            </SheetClose>
+            <SheetClose className="absolute top-1 right-2"/>
             <SheetDescription className="items-center text-center flex justify-center py-[30px] flex-col">
                 {
                notifications.length === 0 && <p className="text-2xl">No new notifications</p>
