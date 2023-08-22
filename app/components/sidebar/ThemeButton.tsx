@@ -31,7 +31,7 @@ const ThemeButton = () => {
             setTheme("dark");
           }}
         >
-          <FaAffiliatetheme size={9}/>
+          <FaAffiliatetheme size={10}/>
         </button>
       ) : (
         <button
@@ -40,7 +40,7 @@ const ThemeButton = () => {
             setTheme("light");
           }}
         >
-          <BsFillCircleFill color="white" size={6}/>
+          <FaAffiliatetheme color="white" size={10}/>
         </button>
       )}
     </div>
