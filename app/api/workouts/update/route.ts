@@ -1,6 +1,7 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
+import getWorkouts from "@/app/actions/getWorkouts";
 
 
 
@@ -8,7 +9,7 @@ export async function PATCH(request: Request) {
     try {
       const currentUser = await getCurrentUser();
       const body = await request.json();
-      const { workoutId, weight, reps, sets } = body;
+      const { workoutId, weight, reps, sets, isPersonalRecord } = body;
   
       if (!currentUser?.id || !currentUser?.email) {
         return new NextResponse("Unauthorized", { status: 400 });
@@ -16,14 +17,14 @@ export async function PATCH(request: Request) {
   
       if (!workoutId) {
         return new NextResponse("Workout ID is required", { status: 400 });
-      }
-  
+      }  
       const updatedEvent = await prisma.workout.update({
         where: { id: workoutId },
         data: {
           weight,
           reps,
           sets,
+          isPersonalRecord,
           user: {
             connect: { id: currentUser.id },
           },

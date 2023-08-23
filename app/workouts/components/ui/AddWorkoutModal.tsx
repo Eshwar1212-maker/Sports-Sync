@@ -59,16 +59,14 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   workoutId,
   updateWorkoutInState,
   workoutRecord,
-  showConfetti
 }) => {
   const [title, setTitle] = useState<string>("");
-  const [weight, setWeight] = useState<any>(0);
+  const [weight, setWeight] = useState<any>();
   const [sets, setSets] = useState<number | null>(0);
   const [reps, setReps] = useState<number | null>(0);
   const [addExercise, setAddExercise] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>();
   const [personalRecord, setPersonalRecord] = useState(false)
-  const [showingConfetti, setShowingConfetti] = useState<boolean>(false);
 
 
 
@@ -76,6 +74,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const findWorkoutRecord = () => {
     const titleRecord = workoutRecord.filter((workout: Workout) => workout.title === title);
     const isPersonalRecord = titleRecord.every((workout: Workout) => {
+      console.log("comparing ", weight + " to ", workout?.weight);
       return weight < (1 + workout?.weight!)
     });
     setPersonalRecord(!isPersonalRecord);
@@ -83,7 +82,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
 
 useEffect(() => {
     findWorkoutRecord()
-}, [personalRecord, weight]);
+}, [weight, editedWeight]);
 
   
   
@@ -105,6 +104,7 @@ useEffect(() => {
       sets: number | null;
       reps: number | null;
       date: string;
+      isPersonalRecord?: boolean
     }) => {
       return axios.post("/api/workouts", data);
     },
@@ -119,7 +119,7 @@ useEffect(() => {
   );
   //UPDATE WORKOUT
   const { mutate: updateWorkout } = useMutation(
-    (data: { weight: number; sets: number; reps: number, workoutId: string }) => {
+    (data: { weight: number; sets: number; reps: number, workoutId: string, isPersonalRecord?: boolean }) => {
       return axios.patch("/api/workouts/update", data);
     },
     {
@@ -142,14 +142,18 @@ useEffect(() => {
       sets,
       reps,
       date,
+      isPersonalRecord: personalRecord
     };
     const updatedExerciseData = {
       weight: editedWeight,
       sets: editedSets,
       reps: editedReps,
-      workoutId: workoutId
+      workoutId: workoutId,
+      isPersonalRecord: personalRecord
     };
     if (selectedExercise) {
+      console.log(personalRecord);
+      findWorkoutRecord()
       updateWorkout(updatedExerciseData);
     } else {
       addWorkout(exerciseData);
@@ -162,6 +166,7 @@ useEffect(() => {
       setSets(null);
     }
   };
+  console.log(personalRecord);
 
   useEffect(() => {
     if (selectedExercise) {
