@@ -155,9 +155,14 @@ useEffect(() => {
       console.log(personalRecord);
       findWorkoutRecord()
       updateWorkout(updatedExerciseData);
+      // handleCallbackExercises(exerciseData);
+      // setActiveTab("exercises");
+      // setTitle("");
+      // setWeight(null);
+      // setReps(null);
+      // setSets(null);
     } else {
       addWorkout(exerciseData);
-      handleCallbackExercises(exerciseData);
       onClose();
       setActiveTab("exercises");
       setTitle("");
