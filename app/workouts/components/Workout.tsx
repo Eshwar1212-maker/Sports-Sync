@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from "react";
 import WorkoutModal from "./ui/AddWorkoutModal";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
+import { AiOutlineTrophy } from "react-icons/ai";
 import {
   Popover,
   PopoverContent,
@@ -12,7 +13,7 @@ import {
 import { SlCalender } from "react-icons/sl";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
-import Confetti from 'react-confetti';
+import Confetti from "react-confetti";
 import { DropdownMenuDemo } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
@@ -24,12 +25,12 @@ type exercise = {
   exercise?: string;
   weight?: number | null;
   id?: string;
+  isPersonalRecord?: boolean
 };
 
 interface WorkoutProps {
   workouts: any;
-  workoutRecord: any
-
+  workoutRecord: any;
 }
 
 const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
@@ -44,19 +45,20 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [selectedExercise, setSelectedExercise] = useState(false);
   const [selectedExerciseId, setSelectedExerciseId] = useState("");
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
-  const [formattedDate, setFormattedDate] = useState(format(date!, "yyyy-MM-dd"))
+  const [formattedDate, setFormattedDate] = useState(
+    format(date!, "yyyy-MM-dd")
+  );
   const [workout, setWorkout] = useState("");
-  const [showConfetti, setShowConfetti] = useState<boolean>(false)
+  const [showConfetti, setShowConfetti] = useState<boolean>(false);
 
-  
-  
   const { theme } = useTheme();
-  const handleCallbackExercises = ({ title, weight, reps, sets }: exercise) => {
-    setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets }]);
-    setWorkout(workout + `\n\n - ${title}    \n         ${weight} lbs | ${sets} sets | ${reps} reps`)
+  const handleCallbackExercises = ({ title, weight, reps, sets, isPersonalRecord }: exercise) => {
+    setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets, isPersonalRecord }]);
+    setWorkout(
+      workout +
+        `\n\n - ${title}    \n         ${weight} lbs | ${sets} sets | ${reps} reps`
+    );
   };
-
-  
 
   const handleEdit = (exerciseData: any) => {
     setSelectedExercise(true);
@@ -73,10 +75,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
         workout.id === updatedWorkout.id ? updatedWorkout : workout
       );
     });
-  };  
-  
-
-  
+  };
 
   useEffect(() => {
     const workoutsForSelectedDate = allWorkouts.filter(
@@ -94,17 +93,15 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
     setFilteredWorkouts(workoutsForSelectedDate);
   }, [date, allWorkouts]);
 
-
   useEffect(() => {
     setTimeout(() => {
       setShowConfetti(false);
-  }, 3000);
-  }, [showConfetti])
-  
+    }, 3000);
+  }, [showConfetti]);
 
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
-          {/* {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />} */}
+      {/* {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />} */}
 
       <div className="">
         <AddWorkoutToCalenderModal
@@ -186,21 +183,37 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                 {filteredWorkouts.length > 0 &&
                   filteredWorkouts.map((exerciseData: any) => (
                     <li
+                      className="p-3 text-lg flex flex-col gap-4 rounded-sm border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0 relative"
                       onClick={() => {
+                        console.log(exerciseData);
                         setSelectedExerciseId(exerciseData.id);
                       }}
-                      className="p-3 text-lg flex flex-col gap-4 rounded-sm border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0"
                     >
                       <div className="flex justify-between relative top-0">
                         <div>
+                        <div className="flex flex-row absolute gap-6">
+                          <div>
                           <h3 className="font-semibold text-lg">
-                            {exerciseData.title}
+                            {exerciseData.title} 
                           </h3>
+                          </div>
+
+                          <div>{exerciseData.isPersonalRecord ? <AiOutlineTrophy className=" my-1" size={25} color="blue" /> : ""}</div>
                         </div>
-                        <div className="flex py-0 my-0">
-                          <DropdownMenuDemo
-                            onEdit={() => handleEdit(exerciseData)}
-                          />
+                        </div>
+                        <div className="flex flex-col py-0 my-0 top-0">
+                          <div className="pr-1">
+                            <DropdownMenuDemo
+                              onEdit={() => handleEdit(exerciseData)}
+                            />
+                          </div>
+                          {/* <div
+                            className={
+                              exerciseData.isPersonalRecord ? "absolute" : "opacity-0 absolute"
+                            }
+                          >
+                            <AiOutlineTrophy className="my-12 ml-3" size={35} color="blue" />
+                          </div> */}
                         </div>
                       </div>
                       <div className="flex">

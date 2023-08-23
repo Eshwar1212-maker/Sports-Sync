@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
     const body = await request.json();
-    const {title, weight, reps, sets, date} = body;
+    const {title, weight, reps, sets, date, isPersonalRecord} = body;
 
     if (!currentUser?.id || !currentUser?.email) {
       return new NextResponse("Unauthorized", { status: 400 });
@@ -18,6 +18,7 @@ export async function POST(request: Request) {
         date,
         sets,
         reps,
+        isPersonalRecord,
         user: {
           connect: {
             id: currentUser.id

@@ -15,9 +15,10 @@ import { NotificationsSheet } from "../notifications/NotificationsSheet";
 interface DesktopSidebarProps {
   currentUser: User;
   unSeen: any
+  workouts: any
 }
 
-const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, unSeen }) => {
+const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, unSeen, workouts }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false); 
   const {theme} = useTheme() 
@@ -64,7 +65,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, unSeen }) 
               <li
                 className="my-[-20px] h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md leading-6 font-semibold relative mr-2">
                 <div>
-                  <NotificationsSheet unSeen={unSeen}/>
+                  <NotificationsSheet workouts={workouts} unSeen={unSeen}/>
                 </div>
               </li>
               <li
