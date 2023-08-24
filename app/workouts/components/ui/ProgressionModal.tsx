@@ -5,6 +5,7 @@ import { FC, useEffect, useState } from 'react'
 import { format } from 'date-fns';
 import { useTheme } from 'next-themes';
 import clsx from 'clsx';
+import { IoClose } from 'react-icons/io5';
 
 const dataFormatter = (number: number) => {
     return `${Intl.NumberFormat("us").format(number).toString()}`;
@@ -60,7 +61,11 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
   return (
     <Modal isFullWidth={true} isOpen={isOpen} onClose={onClose}>
       <div className=''>
-      <Title className="">Progression on {exerciseName}</Title>
+      <div className='flex justify-between'>
+      <Title className="text-sm">Progression on {exerciseName}</Title>
+      <button onClick={() => onClose()} className='sm:hidden'><IoClose className="h-6 w-6" aria-hidden="true" />
+      </button>
+      </div>
       <AreaChart
         className={clsx("mt-46 py-8 h-[430px]")}
         data={exercise}
