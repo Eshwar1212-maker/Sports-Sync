@@ -7,6 +7,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     transparent: "transparent",
     current: "currentColor",
@@ -23,10 +24,10 @@ module.exports = {
             inverted: "#ffffff", // white
           },
           background: {
-            muted: "white", // gray-50
-            subtle: "white", // gray-100
-            DEFAULT: "white", // white
-            emphasis: "white", // gray-700
+            muted: "#f9fafb", // gray-50
+            subtle: "#f3f4f6", // gray-100
+            DEFAULT: "#ffffff", // white
+            emphasis: "#374151", // gray-700
           },
           border: {
             DEFAULT: "#e5e7eb", // gray-200
@@ -43,7 +44,6 @@ module.exports = {
           },
         },
         // dark mode
-        // dark mode
         "dark-tremor": {
           brand: {
             faint: "#0B1229", // custom
@@ -56,7 +56,7 @@ module.exports = {
           background: {
             muted: "#131A2B", // custom
             subtle: "#1f2937", // gray-800
-            DEFAULT: "#b1c5da", // gray-900
+            DEFAULT: "#111827", // gray-900
             emphasis: "#d1d5db", // gray-300
           },
           border: {
@@ -66,11 +66,11 @@ module.exports = {
             DEFAULT: "#1f2937", // gray-800
           },
           content: {
-            subtle: "black", // gray-600
-            DEFAULT: "black", // gray-600
-            emphasis: "black", // gray-200
-            strong: "black", // gray-50
-            inverted: "black", // black
+            subtle: "#4b5563", // gray-600
+            DEFAULT: "#6b7280", // gray-600
+            emphasis: "#e5e7eb", // gray-200
+            strong: "#f9fafb", // gray-50
+            inverted: "#000000", // black
           },
         },
       },
