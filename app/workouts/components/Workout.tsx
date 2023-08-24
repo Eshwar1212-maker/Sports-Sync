@@ -17,6 +17,7 @@ import Confetti from "react-confetti";
 import { DropdownMenuDemo } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
+import { BsFillTrophyFill } from "react-icons/bs";
 
 type exercise = {
   title: string;
@@ -200,7 +201,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                           </h3>
                           </div>
 
-                          <div>{exerciseData.isPersonalRecord ? <AiOutlineTrophy className=" my-1" size={25} color="blue" /> : ""}</div>
+                          <div>{exerciseData.isPersonalRecord ? <BsFillTrophyFill className="mb-4" size={29} color="lightblue" /> : ""}</div>
                         </div>
                         </div>
                         <div className="flex flex-col py-0 my-0 top-0">
