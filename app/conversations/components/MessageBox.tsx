@@ -60,7 +60,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
               src={data?.image} 
               className="object-cover cursor-pointer hover:scale-110 transition translate"/>
           ) : (
-            <div className={theme === "dark" ?  "text-black" : ""}>{data?.body}</div>
+            <div className={theme === "dark" ?  "text-white" : ""}>{data?.body}</div>
           )}
         </div>
         {isLast && isOwn && seenList?.length > 0 && (
