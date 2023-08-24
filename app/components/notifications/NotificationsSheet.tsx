@@ -28,7 +28,6 @@ export function NotificationsSheet({ unSeen, workouts }: any) {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [record, setRecord] = useState(workouts);
 
-  console.log(record);
 
   useEffect(() => {
     let newNotifications = unSeen.map((item: any): Notification => {

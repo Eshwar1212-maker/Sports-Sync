@@ -52,6 +52,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
 
   const { theme } = useTheme();
+
   const handleCallbackExercises = ({ title, weight, reps, sets, isPersonalRecord }: exercise) => {
     setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets, isPersonalRecord }]);
     setWorkout(
@@ -59,6 +60,8 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
         `\n\n - ${title}    \n         ${weight} lbs | ${sets} sets | ${reps} reps`
     );
   };
+
+  
 
   const handleEdit = (exerciseData: any) => {
     setSelectedExercise(true);
@@ -185,7 +188,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                     <li
                       className="p-3 text-lg flex flex-col gap-4 rounded-sm border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0 relative"
                       onClick={() => {
-                        console.log(exerciseData);
                         setSelectedExerciseId(exerciseData.id);
                       }}
                     >

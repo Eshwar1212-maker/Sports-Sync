@@ -24,7 +24,6 @@ const NotificationItem: FC<NotificationItemProps> = ({ name, image, body, date }
   }
 
   const { theme } = useTheme();
-  console.log(date?.split(" ")[1], "/", date?.split(" ")[2]);
   
   return (
     <div
