@@ -150,7 +150,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             />
           )}
           <Input
-            label="Email address (Demo email: Test@gmail.com)"
+            label="Email address (Demo email: test@gmail.com)"
             register={register}
             id="email"
             errors={errors}
