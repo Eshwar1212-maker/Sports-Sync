@@ -48,7 +48,7 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
   ];
 
   const exercise = filteredWorkouts.map((workout: any) => {
-    const formattedDate = format(new Date(workout.date), 'MM/yy');
+    const formattedDate = format(new Date(workout.date), 'MM/dd');
     return { year: formattedDate, weight: workout.weight };
   });
   console.log(exercise);
