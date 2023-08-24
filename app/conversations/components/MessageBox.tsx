@@ -32,10 +32,10 @@ const MessageBox: React.FC<MessageBoxProps> = ({
   const avatar = clsx(isOwn && 'order-2');
   const body = clsx('flex flex-col gap-2', isOwn && 'items-end');
   const message = clsx(
-    'text-sm w-fit overflow-hidden', 
+    'text-sm w-fit overflow-hidden md:max-w-[45%]', 
     isOwn && theme === "light" ? 'bg-sky-500 text-white' : 'bg-gray-100', 
     isOwn && theme === "dark" ? 'bg-sky-500 text-white' : 'bg-gray-100', 
-    data?.image ? 'rounded-md p-0' : 'md:rounded-full py-2 px-3'
+    data?.image ? 'rounded-md p-0' : 'md:rounded-lg py-2 px-3'
   );
   
   return ( 
@@ -60,7 +60,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
               src={data?.image} 
               className="object-cover cursor-pointer hover:scale-110 transition translate"/>
           ) : (
-            <div className={theme === "dark" ?  "text-white" : ""}>{data?.body}</div>
+            <div>{data?.body}</div>
           )}
         </div>
         {isLast && isOwn && seenList?.length > 0 && (
