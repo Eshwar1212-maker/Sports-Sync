@@ -120,7 +120,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     }
   );
   //UPDATE WORKOUT
-  const { mutate: updateWorkout } = useMutation(
+  const { mutate: updateWorkout, isLoading: isUpdateLoading } = useMutation(
     (data: { weight: number; sets: number; reps: number, workoutId: string, isPersonalRecord?: boolean }) => {
       return axios.patch("/api/workouts/update", data);
     },
@@ -178,7 +178,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     }
   }, [selectedExercise]);
   const {theme} = useTheme()
-
+  
   return (
     <Modal isFullWidth isOpen={isOpen} onClose={onClose}>
       <Tabs value={activeTab} defaultValue="exercises">
@@ -208,7 +208,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
             <h3 className="text-2xl mb-3 font-semibold">
             {!selectedExercise ? title : editedName}
           </h3>
-          {(personalRecord && title) &&
+          {(personalRecord && title && weight !== undefined) &&
               <div className="flex flex-row gap-3 mb-3">
                 <AiOutlineTrophy color="lightblue" size={46} /> 
                 <span className="m-auto text-[14px] font-light">Person Record!</span>
@@ -264,10 +264,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
         <Button onClick={() => setAddExercise(!addExercise)} secondary>
           New Exercises <IoIosAdd size={22} />
         </Button>
-        <Button
-          disabled={!title && !selectedExercise}
-          onClick={handleWorkoutAddition}
-        >
+        <Button disabled={!selectedExercise ? isLoading : isUpdateLoading} onClick={handleWorkoutAddition}>
           {selectedExercise ? "Update" : "Add Workout"}
         </Button>
       </div>

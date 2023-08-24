@@ -15,7 +15,7 @@ const solutions = [
   },
   {
     name: 'Progressive Overload',
-    description: 'Lets take a look at your progression on your lifts',
+    description: 'Lets take a look at your progression on compound exercises',
     href: '##',
     icon: IconTwo,
   },
