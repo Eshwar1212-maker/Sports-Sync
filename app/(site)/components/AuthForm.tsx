@@ -89,12 +89,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
       registerMutation.mutate(data);
     }
     if (variant === "LOGIN") {
-      toast((t) => (
-        <>
-          <span className="text-sm">Signing you in, please wait...</span>{" "}
-          <LoadingModal />
-        </>
-      ));
+
       loginMutation.mutate(data);
     }
   };
@@ -155,14 +150,14 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             />
           )}
           <Input
-            label="Email address"
+            label="Email address (Demo email: Test@gmail.com)"
             register={register}
             id="email"
             errors={errors}
             disabled={registerMutation.isLoading || loginMutation.isLoading}
           />
           <Input
-            label="Password"
+            label="Password (Demo password: test)"
             register={register}
             id="password"
             errors={errors}
