@@ -1,0 +1,72 @@
+import Modal from '@/app/components/Modal'
+import { Workout } from '@prisma/client';
+import { AreaChart, Title } from '@tremor/react';
+import { FC, useEffect, useState } from 'react'
+import { format } from 'date-fns';
+
+const dataFormatter = (number: number) => {
+    return `${Intl.NumberFormat("us").format(number).toString()}`;
+};
+
+interface ProgressionModalProps {
+  isOpen?: boolean;
+  onClose: () => void;
+  exerciseName: string;
+  workouts: any;
+}
+
+const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exerciseName, workouts }) => {
+
+  const [filteredWorkouts, setFilteredWorkouts] = useState([]);
+
+  useEffect(() => {
+    const filtered = workouts.filter((workout: Workout) => {
+      console.log("WORKOUT TITLE: " + workout.title, "  EXERCISE NAME: ", exerciseName);
+      return workout.title === exerciseName;
+    });
+    console.log(filtered);
+    setFilteredWorkouts(filtered);
+  }, [exerciseName]);
+
+  const exercisesData = [
+    {
+      year: "Jan",
+      weight: 4,
+    },
+    {
+      year: "Feb",
+      weight: 7,
+    },
+    {
+      year: "Mar",
+      weight: 11,
+    },
+    {
+      year: "Apr",
+      weight: 7,
+    }
+  ];
+
+  const exercise = filteredWorkouts.map((workout: any) => {
+    const formattedDate = format(new Date(workout.date), 'MM/yy');
+    return { year: formattedDate, weight: workout.weight };
+  });
+  console.log(exercise);
+
+  return (
+    <Modal isFullWidth={true} isOpen={isOpen} onClose={onClose}>
+      <Title className="">Progression on {exerciseName}</Title>
+      <AreaChart
+        className="mt-46"
+        data={exercise}
+        index="year"
+        categories={["weight"]}
+        colors={["sky", "red"]}
+        valueFormatter={dataFormatter}
+        yAxisWidth={40}
+      />
+    </Modal>
+  );
+}
+
+export default ProgressionModal;

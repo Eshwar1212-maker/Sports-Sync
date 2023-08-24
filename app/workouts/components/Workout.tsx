@@ -14,10 +14,11 @@ import { SlCalender } from "react-icons/sl";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
 import Confetti from "react-confetti";
-import { DropdownMenuDemo } from "./WorkoutDrawer";
+import { WorkoutDrawer } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
 import { BsFillTrophyFill } from "react-icons/bs";
+import { title } from "process";
 
 type exercise = {
   title: string;
@@ -188,7 +189,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                   filteredWorkouts.map((exerciseData: any) => (
                     <li
                       className="p-3 text-lg flex flex-col gap-4 rounded-sm border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0 relative"
-                      onClick={() => {
+                      onClick={() => {                        
                         setSelectedExerciseId(exerciseData.id);
                       }}
                     >
@@ -206,7 +207,9 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                         </div>
                         <div className="flex flex-col py-0 my-0 top-0">
                           <div className="pr-1">
-                            <DropdownMenuDemo
+                            <WorkoutDrawer
+                              workouts={workouts}
+                              exerciseName={exerciseData.title}
                               onEdit={() => handleEdit(exerciseData)}
                             />
                           </div>
