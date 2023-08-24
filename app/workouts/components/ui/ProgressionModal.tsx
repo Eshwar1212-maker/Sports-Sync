@@ -3,6 +3,8 @@ import { Workout } from '@prisma/client';
 import { AreaChart, Title } from '@tremor/react';
 import { FC, useEffect, useState } from 'react'
 import { format } from 'date-fns';
+import { useTheme } from 'next-themes';
+import clsx from 'clsx';
 
 const dataFormatter = (number: number) => {
     return `${Intl.NumberFormat("us").format(number).toString()}`;
@@ -53,11 +55,14 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
   });
   console.log(exercise);
 
+  const {theme} = useTheme()
+
   return (
     <Modal isFullWidth={true} isOpen={isOpen} onClose={onClose}>
+      <div className=''>
       <Title className="">Progression on {exerciseName}</Title>
       <AreaChart
-        className="mt-46"
+        className={clsx("mt-46 py-8 h-[430px]")}
         data={exercise}
         index="year"
         categories={["weight"]}
@@ -65,6 +70,7 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
         valueFormatter={dataFormatter}
         yAxisWidth={40}
       />
+      </div>
     </Modal>
   );
 }
