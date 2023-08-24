@@ -73,16 +73,18 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
 
   const findWorkoutRecord = () => {
     const titleRecord = workoutRecord.filter((workout: Workout) => workout.title === title);
-    const isPersonalRecord = titleRecord.every((workout: Workout) => {
-      console.log("comparing ", weight + " to ", workout?.weight);
-      return weight < (1 + workout?.weight!)
+    const isPersonalRecord = titleRecord.every((workout: Workout) => {      
+      return weight > (workout?.weight!)
     });
-    setPersonalRecord(!isPersonalRecord);
+    setPersonalRecord(isPersonalRecord);
 }
 
-useEffect(() => {
-    findWorkoutRecord()
-}, [weight, editedWeight]);
+  useEffect(() => {
+      findWorkoutRecord()
+      return () => {
+        setPersonalRecord(false)
+      }
+  }, [weight, editedWeight]);
 
   
   
@@ -128,6 +130,7 @@ useEffect(() => {
         updateWorkoutInState(response.data); 
         toast.success("Workout updated");
         findWorkoutRecord()
+        handleCallbackExercises({})
       },
       onError: (error) => {
         console.log("UPDATE EVENT ERROR: ", error);
@@ -152,15 +155,9 @@ useEffect(() => {
       isPersonalRecord: personalRecord
     };
     if (selectedExercise) {
-      console.log(personalRecord);
       findWorkoutRecord()
       updateWorkout(updatedExerciseData);
-      // handleCallbackExercises(exerciseData);
-      // setActiveTab("exercises");
-      // setTitle("");
-      // setWeight(null);
-      // setReps(null);
-      // setSets(null);
+      handleCallbackExercises(exerciseData);
     } else {
       addWorkout(exerciseData);
       onClose();
@@ -169,9 +166,9 @@ useEffect(() => {
       setWeight(null);
       setReps(null);
       setSets(null);
+      handleCallbackExercises(exerciseData)
     }
   };
-  console.log(personalRecord);
 
   useEffect(() => {
     if (selectedExercise) {

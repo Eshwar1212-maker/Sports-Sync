@@ -10,7 +10,6 @@ async function Sidebar({children}: {
     const currentUser = await getCurrentUser()
     const unSeenMessages = await getUnseenMessages()
     const workouts = await getWorkouts()
-    console.log(workouts);
     
     const recordWorkouts = workouts?.filter((workout) => {
         return workout.isPersonalRecord === true
