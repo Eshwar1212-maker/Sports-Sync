@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import Avatar from "@/app/components/Avatar";
 import { FullMessageType } from "@/app/types";
 import { useTheme } from "next-themes";
+import ImageModal from "./ImageModal";
 
 interface MessageBoxProps {
   data: FullMessageType;
@@ -29,7 +30,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
 
   const container = clsx('flex gap-3 p-4', isOwn && 'justify-end');
   const avatar = clsx(isOwn && 'order-2');
-  const body = clsx('flex flex-col gap-2 max-w-[36%]', isOwn && 'items-end max-w-[50%] text-white');
+  const body = clsx('flex flex-col gap-2 md:max-w-[36%]', isOwn && 'items-end max-w-[50%] text-white');
   const message = clsx(
     'text-sm w-fit overflow-hidden', 
     isOwn && theme === "light" ? 'bg-sky-500 text-white' : 'bg-gray-100', 
@@ -49,6 +50,8 @@ const MessageBox: React.FC<MessageBoxProps> = ({
           </div>
         </div>
         <div className={message}>
+        <ImageModal src={data.image} isOpen={imageModalOpen} onClose={() => setImageModalOpen(false)}/>
+
           {data?.image ? (
             <Image
               alt="Image"
