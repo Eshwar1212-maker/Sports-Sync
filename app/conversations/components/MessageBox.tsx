@@ -7,7 +7,6 @@ import { useSession } from "next-auth/react";
 import Avatar from "@/app/components/Avatar";
 import { FullMessageType } from "@/app/types";
 import { useTheme } from "next-themes";
-import ImageModal from "./ImageModal";
 
 interface MessageBoxProps {
   data: FullMessageType;
@@ -30,12 +29,12 @@ const MessageBox: React.FC<MessageBoxProps> = ({
 
   const container = clsx('flex gap-3 p-4', isOwn && 'justify-end');
   const avatar = clsx(isOwn && 'order-2');
-  const body = clsx('flex flex-col gap-2', isOwn && 'items-end');
+  const body = clsx('flex flex-col gap-2 max-w-[36%]', isOwn && 'items-end max-w-[50%] text-white');
   const message = clsx(
-    'text-sm w-fit overflow-hidden md:max-w-[45%]', 
+    'text-sm w-fit overflow-hidden', 
     isOwn && theme === "light" ? 'bg-sky-500 text-white' : 'bg-gray-100', 
     isOwn && theme === "dark" ? 'bg-sky-500 text-white' : 'bg-gray-100', 
-    data?.image ? 'rounded-md p-0' : 'md:rounded-lg py-2 px-3'
+    data?.image ? 'rounded-md p-0' : 'rounded-lg py-2 px-3'
   );
   
   return ( 
@@ -50,7 +49,6 @@ const MessageBox: React.FC<MessageBoxProps> = ({
           </div>
         </div>
         <div className={message}>
-        <ImageModal src={data.image} isOpen={imageModalOpen} onClose={() => setImageModalOpen(false)} />
           {data?.image ? (
             <Image
               alt="Image"
@@ -60,7 +58,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
               src={data?.image} 
               className="object-cover cursor-pointer hover:scale-110 transition translate"/>
           ) : (
-            <div>{data?.body}</div>
+            <div className={!isOwn ? "text-black" : ""}>{data?.body}</div>
           )}
         </div>
         {isLast && isOwn && seenList?.length > 0 && (
