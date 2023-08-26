@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import { useTheme } from 'next-themes';
 import clsx from 'clsx';
 import { IoClose } from 'react-icons/io5';
+import ProgressionModall from './Modal';
 
 const dataFormatter = (number: number) => {
     return `${Intl.NumberFormat("us").format(number).toString()}`;
@@ -59,7 +60,7 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
   const {theme} = useTheme()
 
   return (
-    <Modal isFullWidth={true} isOpen={isOpen} onClose={onClose}>
+    <ProgressionModall isFullWidth={true} isOpen={isOpen} onClose={onClose}>
       <div className=''>
       <div className='flex justify-between'>
       <Title className="text-sm">Progression on {exerciseName}</Title>
@@ -76,7 +77,7 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
         yAxisWidth={40}
       />
       </div>
-    </Modal>
+    </ProgressionModall>
   );
 }
 
