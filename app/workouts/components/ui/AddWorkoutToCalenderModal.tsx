@@ -62,7 +62,7 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
   }
 
   return (
-    <Modal isFullWidth isOpen={isOpen} onClose={onClose}>
+    <Modal isFullWidth={true} isImage={true} isOpen={isOpen} onClose={onClose}>
       <h1 className="text-center pb-2">
         {date.toString().split(" ")[0] +
           "        " +
