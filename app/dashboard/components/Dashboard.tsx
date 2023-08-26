@@ -2,6 +2,7 @@
 import { LineChart, Card, AreaChart, Title } from "@tremor/react";
 
 import DashBoardSelect from "./DashboardSelect";
+import { useMemo } from "react";
 
 const dataFormatter = (number: number) => {
   return `${Intl.NumberFormat("us").format(number).toString()}`;
@@ -11,14 +12,18 @@ const Dashboard = ({ workouts }: any) => {
   //Helper function to return days worked out for each month
 
   const getDaysWorkedOutByMonth = (month: string) => {
-    const unique = new Set();
-    workouts.forEach((workout: any) => {
-      if (workout.date.toString().includes(month)) {
-        unique.add(workout.date.toString().split(" ")[2]);
-      }
-    });
-    return unique.size;
-  };
+    return useMemo(() => {
+      const unique = new Set();
+      workouts.forEach((workout: any) => {
+        if (workout.date.toString().includes(month)) {
+          unique.add(workout.date.toString().split(" ")[2]);
+        }
+      });
+      return unique.size;
+    }, [workouts, month]);
+  }
+  
+  
 
   const months = [
     "Jan",
@@ -96,6 +101,8 @@ const Dashboard = ({ workouts }: any) => {
     })
     return totalExercises
 }
+
+
 
 const exercisesPerMonth: any = {};
 months.forEach((month) => {
