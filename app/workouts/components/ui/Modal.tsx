@@ -74,7 +74,7 @@ const ProgressionModall: React.FC<ModalProps> = ({ isOpen, onClose, children, is
                 shadow-xl 
                 transition-all
               `, currentTheme == "dark" ? "bg-[#1c1c1c]" : "bg-white",
-              "w-full md:w-[960px] md:h-[500px]",
+              "w-full md:w-[960px] md:h-[600px]",
 
               
               )}
