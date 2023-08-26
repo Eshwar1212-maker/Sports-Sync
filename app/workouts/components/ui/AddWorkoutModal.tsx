@@ -180,7 +180,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const {theme} = useTheme()
   
   return (
-    <Modal isFullWidth isOpen={isOpen} onClose={onClose}>
+    <Modal isFullWidth={true} isImage={true} isOpen={isOpen} onClose={onClose}>
       <Tabs value={activeTab} defaultValue="exercises">
         <TabsList>
           <TabsTrigger

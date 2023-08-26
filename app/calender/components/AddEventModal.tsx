@@ -112,7 +112,7 @@ function AddEventModal({
 
 
   return (
-    <Modal isFullWidth={false} isImage={false} isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit}>
         <input
           className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin"
