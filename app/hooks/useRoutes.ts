@@ -16,21 +16,21 @@ const useRoutes = () => {
         label: "Dashboard",
         href: "/dashboard",
         icon: FcNegativeDynamic,
-        active: pathName === "/dashboard" || !!conversationId,
+        active: pathName === "/dashboard",
         route: "Dashboard"
     },
         {
           label: "Calender",
           href: "/calender",
           icon: SlCalender,
-          active: pathName?.includes("calender") || !!conversationId,
+          active: pathName?.includes("calender"),
           route: "Calender"
         },
        {
             label: "Workouts",
             href: "/workouts",
             icon: CgGym,
-            active: pathName === "/workouts" || !!conversationId,
+            active: pathName === "/workouts",
             route: "Workouts"
         },
        {
