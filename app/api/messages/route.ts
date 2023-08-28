@@ -10,6 +10,8 @@ export async function POST(
     try{
         const currentUser = await getCurrentUser()
         const body = await request.json()
+        console.log("HELLOOOOOO");
+        
         const { message, image, conversationId} = body
         if(!currentUser?.id || !currentUser?.email){
             return new NextResponse('Unauthorized', {status: 401})
@@ -28,17 +30,13 @@ export async function POST(
                         id: currentUser.id
                     }
                 },
-                seen: {
-                    connect: {
-                        id: currentUser.id
-                    }
-                }
             },
             include: {
-                seen: true,
                 sender: true
             }
         })
+                const bufferSize1 = Buffer.from(JSON.stringify(newMessage)).length;
+        console.log("  HELLOOOOOOOOOOOOOOOOOOOOOOOOO ", bufferSize1);
         const updatedConversation = await prisma.conversation.update({
             where: {
                 id: conversationId
@@ -60,16 +58,19 @@ export async function POST(
                 }
             }
         })
+
+        
+
         await pusherServer.trigger(conversationId, 'messages:new', newMessage)
-        const lastMessage = updatedConversation.messages[updatedConversation.messages.length - 1]
+        const lastMessage = updatedConversation.messages[updatedConversation.messages.length - 1].body
         updatedConversation.users.map((user) => pusherServer.trigger(user.email!, 'conversatin: update', {
             id: conversationId,
             messages: [lastMessage]
         }))
+
         return NextResponse.json(newMessage)
     }catch(error){
         console.log(error);
-        
         return new NextResponse('Internal Error', {status: 500})
     }
 }
