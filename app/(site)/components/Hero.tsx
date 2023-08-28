@@ -33,7 +33,7 @@ const Hero = () => {
   return (
     <div className="bg-white text-black">
       <div className="flex flex-col justify-between pb-11 py-20 sm:my-12 mb-6 md:h-[75vh] lg:flex-row lg:h-[70vh] lg:px-11 xl:px-[100px] 2xl:px-[90px]">
-        <div className="sm:w-full lg:w-1/2 p-4 flex flex-col lg:items-start lg:space-y- lg:pl-40">
+        <div className="sm:w-full lg:w-1/2 p-4 flex flex-col lg:items-start lg:space-y-6 2xl:pl-40">
           <div className="space-y-5 text-center lg:text-left">
             <h1 style={inter.style} className="text-4xl 2xl:text-6xl font-bold my-4">
               The world's best platform for athletes
@@ -74,7 +74,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="my-[400px] sm:my-20 bg-gray-100 py-10">
+      <div className="my-[400px] lg:my-20 bg-gray-100 py-10">
         <h2 className="text-[25px] xl:text-3xl text-center font-bold px-4">
           Use our calender, workout tracker, messaging system, <br /> and
           fitness dashboard to reach your goals.
