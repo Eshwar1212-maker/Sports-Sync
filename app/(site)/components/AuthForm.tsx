@@ -127,9 +127,11 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
 
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
+  "../../assets/auth.jpg"
 
   return (
-    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div 
+    className="mt-8 sm:mx-auto sm:w-full sm:max-w-md bg-center bg-cover bg-gray-100 sm:border-[3px] sm:border-black mx-1">
       <div className="px-4 py-8 shadow sm:rounded-lg sm:px-10">
         <h2
           className={clsx(
