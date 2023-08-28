@@ -16,8 +16,8 @@ const First: FC<FirstProps> = ({}) => {
           as games, practices, meetings, and more.
         </p>
       </div>
-      <div className="flex flex-col px-1 lg:py-10 w-full md:w-1/2 lg:w-2/5 xl:w-1/2 items-center">
-        <div className="h-[500px]">
+      <div className="flex flex-col px-1 lg:py-10 w-full md:w-1/2 lg:w-2/5 xl:w-1/2 items-center lg:pl-[97px] mb-10">
+        <div className="h-[470px]">
           <Image
             width={450}
             height={300} // adjust this value to fit your needs
