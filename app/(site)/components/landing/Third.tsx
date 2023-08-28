@@ -25,6 +25,7 @@ const Second: FC<SecondProps> = ({}) => {
               src={two}
               width={800}
               height={100}
+              priority={true}
               />
             </div>
       </div>
@@ -35,6 +36,8 @@ const Second: FC<SecondProps> = ({}) => {
             height={300} 
             src={one}
             alt="tracker image"
+            priority={true}
+
           />
         </div>
       </div>

@@ -22,6 +22,7 @@ const Second: FC<SecondProps> = ({}) => {
               src={calenderTwo}
               width={800}
               height={100}
+              priority={true}
               />
             </div>
       </div>
@@ -32,6 +33,7 @@ const Second: FC<SecondProps> = ({}) => {
             height={300} // adjust this value to fit your needs
             src={one}
             alt="Calender tracker image"
+            priority={true}
           />
         </div>
       </div>
