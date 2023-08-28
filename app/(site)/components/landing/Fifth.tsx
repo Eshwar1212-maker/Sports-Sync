@@ -41,7 +41,7 @@ function SwiperC() {
         className="mySwiper"
       >
         <SwiperSlide className="">
-          <video className="w-full h-[70vh]" width="450" height="300" autoPlay muted loop >
+          <video className="w-full h-[70vh]" width="450" height="300" aria-label="Workout log video" autoPlay muted loop >
             <source 
             src="/workoutlog.mp4" 
             type="video/mp4" 
@@ -50,7 +50,7 @@ function SwiperC() {
           </video>
         </SwiperSlide>
         <SwiperSlide className="">
-          <video className="w-full h-[70vh] max-w-[1100px] m-auto px-10" width="450" height="300" autoPlay muted loop>
+          <video className="w-full h-[70vh] max-w-[1100px] m-auto px-10" width="450" height="300" aria-label="Calender feature video" autoPlay muted loop>
             <source 
             src="/c.mp4" 
             type="video/mp4" 
@@ -60,7 +60,7 @@ function SwiperC() {
           </video>
         </SwiperSlide>
         <SwiperSlide className="">
-          <video className="w-full h-[70vh] max-w-[1100px] m-auto px-10" width="450" height="300" autoPlay muted loop>
+          <video className="w-full h-[70vh] max-w-[1100px] m-auto px-10" width="450" height="300" aria-label="Messaging feature video" autoPlay muted loop>
             <source 
             src="/m.mp4" 
             type="video/mp4" 
