@@ -1,29 +1,28 @@
-import one from "../../../assets/dash.jpg";
-import two from "../../../assets/das.png";
+import { Footer } from "react-day-picker";
+import one from "../../../assets/hey.png";
+import two from "../../../assets/tr.png";
 import Image from "next/image";
 import { FC } from "react";
-import Footer from "./Footer";
 
 interface SecondProps {}
 
-const Second: FC<SecondProps> = ({}) => {
+const Fourth: FC<SecondProps> = ({}) => {
   return (
     <div>
-    <div className="flex flex-col justify-center items-center lg:flex-row bg-green-100 sm:mb-[-37px] pb-11">
+    <div className="flex flex-col justify-center items-center lg:flex-row sm:mb-[-37px] pb-11 bg-white">
       <div className="w-[80%] lg:w-[600px] py-20 items-center text-center">
         <h3 className="text-gray-800 text-3xl md:text-3xl lg:text-5xl font-thin">
-          It all starts with tracking
+          Monitor progressive overload and more
         </h3>
         <p className="text-sm md:text-xl py-4 text-gray-500">
-         Visit your dashboard regularly to see how consistent and intense 
-         you have been working out over the course of months, in order 
-         for you to judge your progress. 
+         Track your progress on every exercise with beautiful charts, monitoring personal records, weight increase, 
+         every time you log a workout.
         </p>
         <div className="bg-black hidden lg:block">
             <Image
-              alt="calender tracker image"
+              alt="workout log image"
               src={two}
-              width={800}
+              width={600}
               height={100}
               />
             </div>
@@ -34,15 +33,16 @@ const Second: FC<SecondProps> = ({}) => {
             width={450}
             height={300} 
             src={one}
-            alt="tracker image"
+            alt="progressive overload image"
           />
         </div>
       </div>
     </div>
-        </div>
+    {/* <Footer /> */}
+   </div>
 
 
   );
 };
 
-export default Second;
+export default Fourth;
