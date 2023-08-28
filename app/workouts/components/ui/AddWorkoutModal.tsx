@@ -264,7 +264,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
         <Button onClick={() => setAddExercise(!addExercise)} secondary>
           New Exercises <IoIosAdd size={22} />
         </Button>
-        <Button disabled={!selectedExercise ? isLoading : isUpdateLoading} onClick={handleWorkoutAddition}>
+        <Button disabled={!selectedExercise ? !title : isUpdateLoading} onClick={handleWorkoutAddition}>
           {selectedExercise ? "Update" : "Add Workout"}
         </Button>
       </div>
