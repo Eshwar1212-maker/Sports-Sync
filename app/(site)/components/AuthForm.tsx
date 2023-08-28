@@ -150,14 +150,14 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             />
           )}
           <Input
-            label="Email address (Demo email: test@gmail.com)"
+            label={variant === 'LOGIN' ? "Email address (Demo email: test@gmail.com)" : "Email"}
             register={register}
             id="email"
             errors={errors}
             disabled={registerMutation.isLoading || loginMutation.isLoading}
           />
           <Input
-            label="Password (Demo password: test)"
+            label={variant === 'LOGIN' ? "Password (Demo password: test)" : "Password"}
             register={register}
             id="password"
             errors={errors}
