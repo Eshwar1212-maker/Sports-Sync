@@ -24,6 +24,7 @@ const Fourth: FC<SecondProps> = ({}) => {
               src={two}
               width={600}
               height={100}
+              priority={true}
               />
             </div>
       </div>
@@ -33,6 +34,7 @@ const Fourth: FC<SecondProps> = ({}) => {
             width={450}
             height={300} 
             src={one}
+            priority={true}
             alt="progressive overload image"
           />
         </div>
