@@ -16,6 +16,7 @@ const page: FC<pageProps> = ({
     <div className=''>
       <Navbar />
       <Hero />
+      <Footer />
     </div>
   )
 }

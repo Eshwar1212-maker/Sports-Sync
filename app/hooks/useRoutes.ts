@@ -23,7 +23,7 @@ const useRoutes = () => {
           label: "Calender",
           href: "/calender",
           icon: SlCalender,
-          active: pathName === "/calender" || !!conversationId,
+          active: pathName?.includes("calender") || !!conversationId,
           route: "Calender"
         },
        {
