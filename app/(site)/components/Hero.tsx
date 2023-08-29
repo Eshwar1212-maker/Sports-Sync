@@ -49,7 +49,7 @@ const Hero = () => {
             <button
               aria-label="Get Started, create your account"
               onClick={() => router.push("/auth")}
-              className="bg-blue-700 md:bg-blue-900 hover:bg-blue-800 transition ease-in-out duration-200 text-sm md:text-md lg:text-xl p-3 md:p-5 text-white rounded-sm"
+              className="bg-blue-900 hover:bg-blue-800 transition ease-in-out duration-200 text-sm md:text-md lg:text-xl p-3 md:p-5 text-white rounded-sm"
             >
               Get Started
             </button>
@@ -75,14 +75,14 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="my-[400px] lg:my-20 bg-gray-100 py-10">
+      <div className="mt-[120px] lg:my-20 bg-gray-100 py-10">
         <h2 className="text-[25px] xl:text-3xl text-center font-bold px-4">
           Use our calender, workout tracker, messaging system, <br /> and
           fitness dashboard to reach your goals.
         </h2>
         <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[200px] px-6">
           <div className="flex flex-col py-3 sm:py-10 space-x-4">
-            <div className="bg-green-100">
+            <div className="bg-blue-900">
               <Image
                 alt="fitness dashboard"
                 src={dashboard}
@@ -99,7 +99,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="flex flex-col">
-            <div className="bg-green-100">
+            <div className="bg-blue-900">
               <Image
                 alt="fitness dashboard"
                 src={calendertwo}
@@ -117,7 +117,7 @@ const Hero = () => {
             </p>
           </div>
           <div className="flex flex-col">
-            <div className="bg-orange-200 lg:max-w-[600px]">
+            <div className="bg-blue-900 lg:max-w-[600px]">
               <Image
                 alt="fitness dashboard"
                 src={message}
