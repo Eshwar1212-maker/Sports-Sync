@@ -115,6 +115,7 @@ function AddEventModal({
     <Modal isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit}>
         <input
+          aria-label='Event name'
           className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin"
           placeholder="Untitled"
           value={selectedEvent ? updateTitle : eventTitle}

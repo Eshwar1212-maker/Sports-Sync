@@ -31,7 +31,7 @@ const bon = Bonheur_Royale({
 const Hero = () => {
   const router = useRouter();
   return (
-    <div className="text-black">
+    <div className="text-black bg-white">
       <div className="flex flex-col justify-between pb-11 py-20 sm:my-12 mb-6 md:h-[75vh] lg:flex-row lg:h-[70vh] lg:px-11 xl:px-[100px] 2xl:px-[90px]">
         <div className="sm:w-full lg:w-1/2 p-4 flex flex-col lg:items-start lg:space-y-6 2xl:pl-40">
           <div className="space-y-5 text-center lg:text-left">
@@ -75,18 +75,18 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="mt-[120px] lg:my-20 bg-gray-100 py-10">
+      <main className="mt-[120px] lg:my-20 bg-gray-100 py-10">
         <h2 className="text-[25px] xl:text-3xl text-center font-bold px-4">
           Use our calender, workout tracker, messaging system, <br /> and
           fitness dashboard to reach your goals.
         </h2>
-        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[200px] px-6">
-          <div className="flex flex-col py-3 sm:py-10 space-x-4">
+        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[120px] px-6 space-x-6">
+          <div className="flex flex-col sm:py-10 space-x-4">
             <div className="bg-blue-900">
               <Image
-                alt="fitness dashboard"
+                alt="fitness tracker image"
                 src={dashboard}
-                width={600}
+                width={590}
                 height={440}
               />
             </div>
@@ -101,9 +101,9 @@ const Hero = () => {
           <div className="flex flex-col">
             <div className="bg-blue-900">
               <Image
-                alt="fitness dashboard"
+                alt="calender image"
                 src={calendertwo}
-                width={680}
+                width={690}
                 height={440}
               />
             </div>
@@ -119,7 +119,7 @@ const Hero = () => {
           <div className="flex flex-col">
             <div className="bg-blue-900 lg:max-w-[600px]">
               <Image
-                alt="fitness dashboard"
+                alt="messenger image"
                 src={message}
                 width={680}
                 height={440}
@@ -138,7 +138,7 @@ const Hero = () => {
         <Second />
         <Third />
         <Fourth />
-      </div>
+      </main>
     </div>
   );
 };

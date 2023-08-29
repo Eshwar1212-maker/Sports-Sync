@@ -173,7 +173,7 @@ months.forEach((month) => {
      <DashBoardSelect />
 
      </div>
-      <div>
+      <main>
         <Card className="">
           <Title className="">Days you worked out each month</Title>
           <AreaChart
@@ -198,7 +198,7 @@ months.forEach((month) => {
             yAxisWidth={40}
           />
         </Card>
-      </div>
+      </main>
     </div>
   );
 };

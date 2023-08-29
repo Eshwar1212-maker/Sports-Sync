@@ -177,7 +177,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
           </div>
         </header>
         {/* BODY */}
-        <div className="mx-auto flex justify-center pr-7 md:pr-16 h-[80vh]">
+        <main className="mx-auto flex justify-center pr-7 md:pr-16 h-[80vh]">
           {filteredWorkouts.length == 0 ? (
             <p className="text-2xl text-gray-300 py-[270px] md:pr-14">
               Workout log empty
@@ -257,7 +257,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
               </p>
             </div>
           )}
-        </div>
+        </main>
       </div>
     </div>
   );

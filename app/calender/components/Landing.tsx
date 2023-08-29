@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { FC } from "react";
@@ -7,21 +7,30 @@ import clsx from "clsx";
 import { useTheme } from "next-themes";
 interface landingProps {}
 
-
 const Landing: FC<landingProps> = ({}) => {
-  const {theme} = useTheme()
-  
+  const { theme } = useTheme();
+
   return (
     <>
       {/*DESKTOP MENU*/}
 
       <div className="hidden lg:block py-[100px] sm:px-6 md:pl-60 container">
-        <div className="flex flex-col md:flex-row space-x-9 pb-11">
+        <main className="flex flex-col md:flex-row space-x-9 pb-11">
           <div className="space-y-4 w-[90vw] md:w-1/2">
-            <h1 className={clsx(theme == "dark" ? "text-3xl xl:text-5xl font-bold text-gray-300" : "text-4xl xl:text-5xl font-bold text-black")}>
+            <h1
+              className={clsx(
+                "text-4xl xl:text-5xl font-bold",
+                theme === "dark" && "text-gray-200"
+              )}
+            >
               Use our Calenders to visualize your routine
             </h1>
-            <p className={clsx(theme == "light" ? "text-[15px] font-light py-2 text-gray-500 max-w-[620px]" : "text-[15px] text-gray-300 py-2 max-w-[620px]")}>
+            <p
+              className={clsx(
+                "lg:text-xl font-light py-6",
+                theme === "dark" && "text-gray-300"
+              )}
+            >
               Use our Calender feature to either schedule your own practices and
               workouts, or collaborate with your team so you guys can schedule
               games, practices, events, etc.
@@ -34,9 +43,13 @@ const Landing: FC<landingProps> = ({}) => {
               width={400}
               className="mx-auto w-auto"
               src="https://cdn.hashnode.com/res/hashnode/image/upload/v1612787425944/MMJR2txbo.jpeg"
+              aria-label="fullcalenderjs image"
             />
+            {/* <span className="text-md text-gray-200 flex justify-end">
+              Powered by fullcalenderjs
+            </span> */}
           </div>
-        </div>
+        </main>
         <div className="flex flex-start">
           <div className="">
             <CalenderOptions />
@@ -47,10 +60,22 @@ const Landing: FC<landingProps> = ({}) => {
       <div className="px-10 items-center py-10 lg:hidden">
         <div className="space-y-7">
           <div className="space-y-7 px-7 md:px-20">
-          <h1 className={clsx(theme == "dark" ? "text-4xl font-bold text-gray-300" : "text-4xl text-black font-bold")}>
+            <h1
+              className={clsx(
+                theme == "dark"
+                  ? "text-4xl font-bold text-gray-300"
+                  : "text-4xl text-black font-bold"
+              )}
+            >
               Use our Calenders to visualize your routine
             </h1>
-            <p className={clsx(theme == "light" ? "text-sm font-light text-black" : "text-sm font-light text-gray-300")}>
+            <p
+              className={clsx(
+                theme == "light"
+                  ? "text-sm font-light text-black"
+                  : "text-sm font-light text-gray-300"
+              )}
+            >
               Use our Calender feature to either schedule your own practices and
               workouts, or collaborate with your team so you guys can schedule
               games, practices, events, etc.
@@ -63,6 +88,7 @@ const Landing: FC<landingProps> = ({}) => {
               width={400}
               className="mx-auto w-auto"
               src="https://cdn.hashnode.com/res/hashnode/image/upload/v1612787425944/MMJR2txbo.jpeg"
+              aria-label="fullcalenderjs image"
             />
           </div>
         </div>
