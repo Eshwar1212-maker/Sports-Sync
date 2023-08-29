@@ -80,7 +80,7 @@ const Hero = () => {
           Use our calender, workout tracker, messaging system, <br /> and
           fitness dashboard to reach your goals.
         </h2>
-        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[120px] px-6 space-x-6 mx-auto">
+        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[120px] px-6 space-x-6 mx-auto space-y-10">
           <div className="flex flex-col sm:py-10 space-x-4">
             <div className="bg-blue-900">
               <Image
@@ -92,7 +92,7 @@ const Hero = () => {
             </div>
             <div>
               <h3 className="text-2xl lg:text-3xl">Set Goals</h3>
-              <p className="text-[17px] sm:text-sm md:text-lg">
+              <p className="text-sm md:text-lg">
                 Use our dashboard so you can <br />
                 monitor your goals and progress.
               </p>
@@ -110,7 +110,7 @@ const Hero = () => {
             <h3 className="text-2xl lg:text-3xl">
               Plan your life as an athlete
             </h3>
-            <p className="text-[17px] sm:text-sm md:text-lg">
+            <p className="text-sm md:text-lg">
               Your life can be very busy as an athlete,
               <br />
               use our calender to track everything.
