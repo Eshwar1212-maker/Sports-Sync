@@ -33,7 +33,7 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
 
   return (
     <Link href={href}>
-    <div className={clsx(`group flex flex-col items-center gap-x-3 rounded-md p-2leading-6 relative`,
+    <div className={clsx(`group flex flex-col items-center gap-x-3 rounded-md p-2 leading-6 relative`,
       (active && theme === "dark" && href !== "/users") && "text-white bg-slate-800", 
       (active && theme === "light" && href !== "/users") && "text-black font-bold bg-slate-200")}
       >

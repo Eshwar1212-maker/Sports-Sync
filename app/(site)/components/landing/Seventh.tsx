@@ -23,7 +23,7 @@ const bon = Bonheur_Royale({
   variable: "--font-sans",
   weight: "400",
 });
-const Sixth: FC<SixthProps> = ({}) => {
+const Seventh: FC<SixthProps> = ({}) => {
   const router = useRouter()
   const session = useSession();
 
@@ -86,4 +86,4 @@ const Sixth: FC<SixthProps> = ({}) => {
   );
 };
 
-export default Sixth;
+export default Seventh;

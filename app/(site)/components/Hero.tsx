@@ -14,6 +14,8 @@ import { useRouter } from "next/navigation";
 import Fourth from "./landing/Fourth";
 import Fifth from "./landing/Fifth";
 import { Footer } from "react-day-picker";
+import Sixth from "./landing/Sixth";
+import Seventh from "./landing/Seventh";
 
 const inter = PT_Sans({
   subsets: ["latin"],
@@ -75,22 +77,23 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <main className="mt-[120px] lg:my-20 bg-gray-100 py-10">
-        <h2 className="text-[25px] xl:text-3xl text-center font-bold px-4">
+      <main className="mt-[120px] lg:my-20 py-10">
+        <h2 className="text-[22px] xl:text-3xl text-center font-bold px-4">
           Use our calender, workout tracker, messaging system, <br /> and
           fitness dashboard to reach your goals.
         </h2>
-        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[120px] px-6 space-x-6 mx-auto space-y-10">
-          <div className="flex flex-col sm:py-10 space-x-4">
+        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[120px] px-10 space-x-6 mx-auto space-y-10 sm:space-y-0 py-10">
+          <div className="flex flex-col">
             <div className="bg-blue-900">
               <Image
                 alt="fitness tracker image"
                 src={dashboard}
-                width={590}
+                width={600}
                 height={440}
+                className=""
               />
             </div>
-            <div>
+            <div className="">
               <h3 className="text-2xl lg:text-3xl">Set Goals</h3>
               <p className="text-sm md:text-lg">
                 Use our dashboard so you can <br />
@@ -138,6 +141,7 @@ const Hero = () => {
         <Second />
         <Third />
         <Fourth />
+        {/* <Sixth /> */}
       </main>
     </div>
   );
