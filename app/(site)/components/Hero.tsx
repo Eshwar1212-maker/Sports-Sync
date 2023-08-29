@@ -80,7 +80,7 @@ const Hero = () => {
           Use our calender, workout tracker, messaging system, <br /> and
           fitness dashboard to reach your goals.
         </h2>
-        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[120px] px-6 space-x-6">
+        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[120px] px-6 space-x-6 mx-auto">
           <div className="flex flex-col sm:py-10 space-x-4">
             <div className="bg-blue-900">
               <Image
@@ -121,15 +121,15 @@ const Hero = () => {
               <Image
                 alt="messenger image"
                 src={message}
-                width={680}
+                width={690}
                 height={440}
               />
             </div>
             <h3 className="text-2xl lg:text-3xl">Schedule games</h3>
             <p className="text-[17px] sm:text-sm md:text-lg">
-              Use our messaging system to schedule games,
+              Use our messaging system to schedule games.
               <br />
-              or practices with your friends and teams.
+             <span className="hidden 2xl:block">Or practices with your friends and teams.</span> 
             </p>
           </div>
         </div>
