@@ -31,7 +31,7 @@ const bon = Bonheur_Royale({
 const Hero = () => {
   const router = useRouter();
   return (
-    <div className="bg-white text-black">
+    <div className="text-black">
       <div className="flex flex-col justify-between pb-11 py-20 sm:my-12 mb-6 md:h-[75vh] lg:flex-row lg:h-[70vh] lg:px-11 xl:px-[100px] 2xl:px-[90px]">
         <div className="sm:w-full lg:w-1/2 p-4 flex flex-col lg:items-start lg:space-y-6 2xl:pl-40">
           <div className="space-y-5 text-center lg:text-left">
@@ -55,6 +55,7 @@ const Hero = () => {
             </button>
           </div>
         </div>
+      
         <div className="flex justify-center bg-[#FFFFFF] relative  mx-auto mb-11">
           <div className="px-10 relative my-14">
             <Image
@@ -132,13 +133,12 @@ const Hero = () => {
             </p>
           </div>
         </div>
+        <Fifth />
         <First />
         <Second />
         <Third />
         <Fourth />
-        <Fifth />
       </div>
-
     </div>
   );
 };

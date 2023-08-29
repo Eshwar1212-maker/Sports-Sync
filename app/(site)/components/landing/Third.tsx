@@ -9,7 +9,7 @@ interface SecondProps {}
 const Second: FC<SecondProps> = ({}) => {
   return (
     <div>
-    <div className="flex flex-col justify-center items-center lg:flex-row bg-green-100 sm:mb-[-37px] pb-11">
+    <div className="flex flex-col justify-center items-center lg:flex-row bg-slate-100 sm:mb-[-37px] pb-11">
       <div className="w-[80%] lg:w-[600px] py-20 items-center text-center">
         <h3 className="text-gray-800 text-3xl md:text-3xl lg:text-5xl font-thin">
           It all starts with tracking
