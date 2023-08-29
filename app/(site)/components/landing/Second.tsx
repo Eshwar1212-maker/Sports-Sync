@@ -13,7 +13,7 @@ const Second: FC<SecondProps> = ({}) => {
           Productivity takes<br /> you to the next level
         </h3>
         <p className="text-sm md:text-xl py-4 text-gray-500">
-          Use our calender to schedule all of your own events, such as practices, games, meetings, 
+          Use our calender to schedule all of yopur own events, such as practices, games, meetings, 
           or create a workspace with your tddeam so all of you can stay connected. 
         </p>
         <div className="bg-black hidden lg:block">

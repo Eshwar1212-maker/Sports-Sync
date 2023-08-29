@@ -127,7 +127,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
 
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
-  "../../assets/auth.jpg"
+  
 
   return (
     <div 
