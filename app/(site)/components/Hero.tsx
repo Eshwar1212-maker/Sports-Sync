@@ -3,7 +3,7 @@
 import four from "../../assets/four.jpg";
 import soccer from "../../assets/soccer.jpg";
 import calendertwo from "../../assets/calendertwo.png";
-import dashboard from "../../assets/dashboard.png";
+import dashboard from "../../assets/das.png";
 import message from "../../assets/message.png";
 import Image from "next/image";
 import { PT_Sans, Bonheur_Royale } from "next/font/google";
