@@ -1,43 +1,54 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { RadioGroup } from '@headlessui/react'
-import { useRouter } from 'next/navigation'
+import { useState } from "react";
+import { RadioGroup } from "@headlessui/react";
+import { useRouter } from "next/navigation";
+import ProModal from "./ProModal";
 
 const plans = [
   {
-    name: 'My Calender',
-    description: 'Track your own practices, workouts, and weekly training routine, with a monthly, weekly, and daily view.',
-    href: "userCalender"
+    name: "My Calender",
+    description:
+      "Track your own practices, workouts, and weekly training routine, with a monthly, weekly, and daily view.",
+    href: "userCalender",
   },
   {
-    name: 'Team Workspace',
-    description: "Create a calender for either your team or workout partners, so you can schedule your games and practices.",
-    href: "team"
-  }
-] 
+    name: "Team Workspace",
+    description:
+      "Create a calender for either your team or workout partners, so you can schedule your games and practices.",
+    href: "team",
+  },
+];
 export default function CalenderOptions() {
-  const [selected, setSelected] = useState()
-  const router = useRouter()
+  const [selected, setSelected] = useState();
+  const [isProModalOpen, setIsProModalOpen] = useState(false)
+  const router = useRouter();
   return (
     <div className="w-full px-4">
+      <ProModal isOpen={isProModalOpen} onClose={() => setIsProModalOpen(false)} />
       <div className="mx-auto w-full max-w-md">
         <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
           <div className="space-y-2">
             {plans.map((plan: any) => (
               <RadioGroup.Option
-                onClick={() => router.push(`/calender/${plan.href}`)}
+                onClick={() => {
+                  if (plan.name === "My Calender") {
+                    router.push(`/calender/${plan.href}`);
+                  }else{
+                    setIsProModalOpen(true)
+                  }
+                }}
                 key={plan.name}
                 value={plan}
                 className={({ active, checked }) =>
                   `${
                     active
-                      ? 'ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300'
-                      : ''
+                      ? "ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300"
+                      : ""
                   }
                   ${
-                    checked ? 'bg-sky-900 bg-opacity-75 text-white' : 'bg-white'
+                    checked ? "bg-sky-900 bg-opacity-75 text-white" : "bg-white"
                   }
                     relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                 }
@@ -47,25 +58,24 @@ export default function CalenderOptions() {
                     <div className="flex w-full items-center justify-between space-y-5">
                       <div className="flex items-center">
                         <div className="text-[15px]">
-     
-                            <RadioGroup.Label
+                          <RadioGroup.Label
                             as="p"
                             className={`font-medium  ${
-                              checked ? 'text-white' : 'text-gray-900'
+                              checked ? "text-white" : "text-gray-900"
                             }`}
                           >
                             {plan.name}
                           </RadioGroup.Label>
-                          
+
                           <RadioGroup.Description
                             as="span"
                             className={`inline ${
-                              checked ? 'text-sky-50' : 'text-gray-500'
+                              checked ? "text-sky-50" : "text-gray-500"
                             }`}
                           >
-                            <span className='text-[14px]'>
+                            <span className="text-[14px]">
                               {plan.description}
-                            </span>{' '}
+                            </span>{" "}
                           </RadioGroup.Description>
                         </div>
                       </div>
@@ -83,7 +93,7 @@ export default function CalenderOptions() {
         </RadioGroup>
       </div>
     </div>
-  )
+  );
 }
 
 function CheckIcon(props: any) {
@@ -98,5 +108,5 @@ function CheckIcon(props: any) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }

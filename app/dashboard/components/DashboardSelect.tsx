@@ -2,9 +2,10 @@
 
 import { Popover, Transition } from '@headlessui/react'
 import { CgSelect } from 'react-icons/cg'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { useTheme } from 'next-themes'
 import clsx from 'clsx'
+import ProModal from '@/app/calender/components/ProModal'
 
 const solutions = [
   {
@@ -28,9 +29,11 @@ const solutions = [
 ]
 
 export default function DashBoardSelect() {
+  const [isOpen, setIsOpen] = useState(false)
   const {theme} = useTheme()
   return (
     <div className="z-40 flex justify-end mb-1">
+      <ProModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <Popover className="relative">
         {({ open }) => (
           <>
@@ -58,7 +61,7 @@ export default function DashBoardSelect() {
             >
               <Popover.Panel className="absolute z-10 mt-3 w-[260px] max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="relative flex flex-col bg-blue-100 p-7 gap-10">
+                  <div onClick={() => setIsOpen(true)} className="relative flex flex-col bg-blue-100 p-7 gap-10">
                     {solutions.map((item) => (
                       <a
                         key={item.name}
@@ -79,7 +82,7 @@ export default function DashBoardSelect() {
                       </a>
                     ))}
                   </div>
-                  <div className="bg-gray-50 p-4">
+                  <div onClick={() => setIsOpen(true)} className="bg-gray-50 p-4">
                     <a
                       href="##"
                       className="flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"

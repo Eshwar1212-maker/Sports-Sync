@@ -82,7 +82,7 @@ const Hero = () => {
           Use our calender, workout tracker, messaging system, <br /> and
           fitness dashboard to reach your goals.
         </h2>
-        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[120px] px-10 space-x-6 mx-auto space-y-10 sm:space-y-0 py-10">
+        <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[120px] px-10 space-x-5 mx-auto space-y-10 sm:space-y-0 py-10">
           <div className="flex flex-col">
             <div className="bg-blue-900">
               <Image
