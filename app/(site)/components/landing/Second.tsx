@@ -9,7 +9,7 @@ const Second: FC<SecondProps> = ({}) => {
   return (
     <div className="flex flex-col justify-center items-center lg:flex-row bg-gray-100 pb-9">
       <div className="w-[80%] lg:w-[600px] py-20 text-center">
-      <h3 className="text-gray-800 text-3xl md:text-3xl lg:text-5xl font-thin mx-auto">
+      <h3 className="text-gray-800 text-3xl md:text-4xl lg:text-5xl font-thin mx-auto">
           Productivity takes<br /> you to the next level
         </h3>
         <p className="text-sm md:text-xl py-4 text-gray-500">

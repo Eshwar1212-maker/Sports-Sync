@@ -11,7 +11,7 @@ const Second: FC<SecondProps> = ({}) => {
     <div>
     <div className="flex flex-col justify-center items-center lg:flex-row bg-white sm:mb-[-37px] pb-11">
       <div className="w-[80%] lg:w-[600px] py-20 items-center text-center">
-        <h3 className="text-gray-800 text-3xl md:text-3xl lg:text-5xl font-thin">
+        <h3 className="text-gray-800 text-3xl md:text-4xl lg:text-5xl font-thin">
           It all starts with tracking
         </h3>
         <p className="text-sm md:text-xl py-4 text-gray-500">
