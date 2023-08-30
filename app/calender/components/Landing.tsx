@@ -51,9 +51,7 @@ const Landing: FC<landingProps> = ({}) => {
           </div>
         </main>
         <div className="flex flex-start">
-          <div className="">
             <CalenderOptions />
-          </div>
         </div>
       </div>
       {/*MOBILE MENU*/}

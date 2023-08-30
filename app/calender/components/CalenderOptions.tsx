@@ -26,7 +26,7 @@ export default function CalenderOptions() {
   return (
     <div className="w-full px-4">
       <ProModal isOpen={isProModalOpen} onClose={() => setIsProModalOpen(false)} />
-      <div className="mx-auto w-full max-w-md">
+      <div className=" w-full max-w-md">
         <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
           <div className="space-y-2">
@@ -73,7 +73,7 @@ export default function CalenderOptions() {
                               checked ? "text-sky-50" : "text-gray-500"
                             }`}
                           >
-                            <span className="text-[14px]">
+                            <span className="">
                               {plan.description}
                             </span>{" "}
                           </RadioGroup.Description>
