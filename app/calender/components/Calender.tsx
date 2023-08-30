@@ -7,6 +7,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import AddEventModal from "./AddEventModal";
 import { Event } from "@prisma/client";
+import axios from "axios";
 
 
 function Calendar({userEvents}: {userEvents: any}) {
@@ -27,8 +28,22 @@ function Calendar({userEvents}: {userEvents: any}) {
   
   const handleEventClick = (info: any) => {
     setIsOpen(true);
+    console.log("INFO" , info);
+    
     setSelectedEvent(info.event); 
   }
+
+  const handleEventDrop = (info: any) => {
+    console.log("INFO : ", info);
+  
+    const event = info.event;
+    console.log(`Event ${event.title} was moved to ${event.start}`);
+    // axios.patch("/api/events/update", {
+    //   notes: updateNotes,
+    //   title: updateTitle,
+    //   eventId: info.event._def.publicId
+    // })
+  };
 
   return (
     <div className="">
@@ -53,6 +68,8 @@ function Calendar({userEvents}: {userEvents: any}) {
         eventColor="#00BFFF" 
         eventClick={handleEventClick}  
         dayCellClassNames="cursor-pointer"
+        editable={true}
+        eventDrop={handleEventDrop}
       /> 
     </div>
   );

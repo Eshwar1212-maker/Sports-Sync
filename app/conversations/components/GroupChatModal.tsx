@@ -1,21 +1,18 @@
 "use client";
 
-import getCurrentUser from "@/app/actions/getCurrentUser";
 import Button from "@/app/components/Button";
 import Modal from "@/app/components/Modal";
 import Input from "@/app/components/inputs/Input";
 import Select from "@/app/components/inputs/Select";
-import useOtherUser from "@/app/hooks/useOtherUser";
 import { User } from "@prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import clsx from "clsx";
-import { log } from "console";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 
 import { FC } from "react";
-import { Field, FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import {FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 interface GroupChatModalProps {
   isOpen: boolean;
@@ -47,7 +44,6 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
   const {
     mutate: createGroupChatMutation,
     isLoading,
-    isError,
   } = useMutation(
     (data: FieldValues) => {
       return axios.post(`/api/conversations`, {
@@ -135,6 +131,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
           <Button disabled={isLoading} type="submit">
             Create
           </Button>
+          
         </div>
       </form>
     </Modal>

@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  favicon: {
+    src: "/icon.jpeg"
+  }
+  ,
   experimental: {
   },
   images: {
