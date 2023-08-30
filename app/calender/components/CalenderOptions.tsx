@@ -24,7 +24,7 @@ export default function CalenderOptions() {
   const [isProModalOpen, setIsProModalOpen] = useState(false)
   const router = useRouter();
   return (
-    <div className="w-full px-4">
+    <div className="w-full px-4 mx-auto items-center flex justify-center lg:block">
       <ProModal isOpen={isProModalOpen} onClose={() => setIsProModalOpen(false)} />
       <div className=" w-full max-w-md">
         <RadioGroup value={selected} onChange={setSelected}>
@@ -55,7 +55,7 @@ export default function CalenderOptions() {
               >
                 {({ active, checked }) => (
                   <>
-                    <div className="flex w-full items-center justify-between space-y-5">
+                    <div className="flex w-full items-center justify-between space-y-5 mx-auto">
                       <div className="flex items-center">
                         <div className="text-[15px]">
                           <RadioGroup.Label

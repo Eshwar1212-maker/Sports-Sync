@@ -130,6 +130,9 @@ const ConversationList: React.FC<ConversationListProps> = ({
               selected={conversationId === item.id}
             />
           ))}
+             {
+              items.length === 0 &&  <p className="flex justify-center text-gray-500 py-[350px] text-2xl sm:hidden">No conversations</p>
+            }
         </div>
       </aside>
     </>
