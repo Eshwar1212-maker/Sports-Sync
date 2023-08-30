@@ -28,6 +28,7 @@ function AddEventModal({
     selectedEvent && selectedEvent.title
   );
 
+  
   const [updateNotes, setUpdateNotes] = useState(
     selectedEvent?._def?.extendedProps?.notes || ""
   );
@@ -61,6 +62,8 @@ function AddEventModal({
   //UPDATE CALENDER EVENT MUTATION
   const { mutate: updateEvent } = useMutation(
     (data: { title: string; notes: string; eventId: string }) => {
+      console.log(data);
+      
       return axios.patch("/api/events/update", data);
     },
     {
@@ -110,7 +113,7 @@ function AddEventModal({
   };
 
 
-
+  
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit}>
@@ -128,16 +131,10 @@ function AddEventModal({
           }
         />
         <div className="py-4">
-          {!selectedEvent && (
             <h3 className="text-base font-semibold leading-7">Date</h3>
-          )}
-          {!selectedEvent
-            ? date.split("-")[1] +
-              "/" +
-              date.split("-")[2] +
-              "/" +
-              date.split("-")[0]
-            : selectedEvent.date}
+          {
+            date.length > 15 ? date.slice(0, date.length - 15) : date.split("-")[1] + "/" + date.split("-")[2] + "/" + date.split("-")[0]
+          }
         </div>
         <div className="border-[1px] border-solid border-gray-900 w-full" />
         <div className="py-6  ">

@@ -19,7 +19,7 @@ const Landing: FC<landingProps> = ({}) => {
           <div className="space-y-4 w-[90vw] md:w-1/2">
             <h1
               className={clsx(
-                "text-4xl xl:text-5xl font-bold",
+                "lg:text-4xl xl:text-5xl font-bold",
                 theme === "dark" && "text-gray-200"
               )}
             >
@@ -36,11 +36,11 @@ const Landing: FC<landingProps> = ({}) => {
               games, practices, events, etc.
             </p>
           </div>
-          <div className="w-full md:w-1/2 h-64 md:h-auto">
+          <div className="w-full md:w-1/2">
             <Image
               alt="Logo"
-              height={400}
-              width={400}
+              height={1000}
+              width={1000}
               className="mx-auto w-auto"
               src="https://cdn.hashnode.com/res/hashnode/image/upload/v1612787425944/MMJR2txbo.jpeg"
               aria-label="fullcalenderjs image"
@@ -51,20 +51,18 @@ const Landing: FC<landingProps> = ({}) => {
           </div>
         </main>
         <div className="flex flex-start">
-          <div className="">
             <CalenderOptions />
-          </div>
         </div>
       </div>
       {/*MOBILE MENU*/}
-      <div className="px-10 items-center py-10 lg:hidden">
+      <div className="px-4 items-center py-10 lg:hidden">
         <div className="space-y-7">
           <div className="space-y-7 px-7 md:px-20">
             <h1
               className={clsx(
                 theme == "dark"
-                  ? "text-4xl font-bold text-gray-300"
-                  : "text-4xl text-black font-bold"
+                  ? "text-3xl sm:text-4xl font-bold text-gray-300"
+                  : "text-3xl sm:text-4xl text-black font-bold"
               )}
             >
               Use our Calenders to visualize your routine
@@ -72,7 +70,7 @@ const Landing: FC<landingProps> = ({}) => {
             <p
               className={clsx(
                 theme == "light"
-                  ? "text-sm font-light text-black"
+                  ? "text-sm sm:text-lg font-light text-black"
                   : "text-sm font-light text-gray-300"
               )}
             >
@@ -81,7 +79,7 @@ const Landing: FC<landingProps> = ({}) => {
               games, practices, events, etc.
             </p>
           </div>
-          <div className="">
+          <div className="px-6">
             <Image
               alt="Logo"
               height={400}
@@ -93,7 +91,7 @@ const Landing: FC<landingProps> = ({}) => {
           </div>
         </div>
         <div className="my-5">
-          <div className="">
+          <div className="mx-auto">
             <CalenderOptions />
           </div>
         </div>

@@ -93,11 +93,11 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         <div className="focus:outline-none">
           <span className="absolute inset-0" aria-hidden="true" />
           <div className="flex justify-between items-center mb-1">
-            <p className={clsx(theme === "light" ?  "text-md font-medium text-gray-900" : "text-md font-medium text-gray-200")}>
+            <p className={clsx(theme === "light" ?  "text-md font-medium " : "text-md font-medium")}>
               {data.name || otherUser.name}
             </p>
             {lastMessage?.createdAt && (
-              <p className={clsx(theme === "light" ? "text-xs text-gray-400 font-light" : "text-xs font-light text-gray-300")}>
+              <p className={clsx(theme === "light" ? "text-xs  font-light" : "text-xs font-light ")}>
                 {format(new Date(lastMessage.createdAt), 'p')}
               </p>
             )}
