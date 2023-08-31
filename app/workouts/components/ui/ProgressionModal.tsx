@@ -55,7 +55,6 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
     const formattedDate = format(new Date(workout.date), 'MM/dd');
     return { year: formattedDate, weight: workout.weight };
   });
-  console.log(exercise);
 
   const {theme} = useTheme()
 

@@ -23,6 +23,8 @@ import ProgressionModal from "./ui/ProgressionModal"
 import { useState } from "react"
 import { BiLineChart } from "react-icons/bi"
 import { SlChart } from "react-icons/sl"
+import axios from "axios"
+import { useMutation } from "@tanstack/react-query"
 
 interface WorkoutDrawerProps{
   exerciseData?: Workout
@@ -30,11 +32,44 @@ interface WorkoutDrawerProps{
   onViewProgression?: () => void
   exerciseName: string
   workouts: any
+  handleDelete?: () => void
 }
 
-export function WorkoutDrawer({exerciseData, onEdit, onViewProgression, exerciseName, workouts}: WorkoutDrawerProps) {
+export function WorkoutDrawer({exerciseData, onEdit, exerciseName, workouts, handleDelete}: WorkoutDrawerProps) {
   const {theme} = useTheme()
   const [isOpen, setIsOpen] = useState(false)
+
+  const { mutate: deleteWorkout, isLoading: isDeleteLoading } = useMutation(
+    (data: { weight: number; sets: number; reps: number, workoutId: string, isPersonalRecord?: boolean }) => {
+      return axios.patch("/api/workouts/update", data);
+    },
+    {
+      onSuccess: (response) => {
+        // onClose();
+        // updateWorkoutInState(response.data); 
+        // toast.success("Workout updated");
+        // findWorkoutRecord()
+        // handleCallbackExercises({})
+      },
+      onError: (error) => {
+        console.log("UPDATE EVENT ERROR: ", error);
+      },
+    }
+  );
+
+  console.log(workouts);
+  
+
+  // const handleDeleteWorkout = () => {
+  //   const updatedExerciseData = {
+  //     weight: editedWeight,
+  //     sets: editedSets,
+  //     reps: editedReps,
+  //     workoutId: workoutId,
+  //     isPersonalRecord: personalRecord,
+  //     date: new Date("1900-02-21")
+  //   };
+  // }
   
   return (
     <DropdownMenu>
@@ -53,7 +88,9 @@ export function WorkoutDrawer({exerciseData, onEdit, onViewProgression, exercise
             Edit
             <DropdownMenuShortcut><AiOutlineEdit color="black" size={22} /></DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer">
+          <DropdownMenuItem
+           onClick={handleDelete}
+           className="cursor-pointer">
           Delete
           <DropdownMenuShortcut><AiOutlineDelete color="black" size={22}/></DropdownMenuShortcut>
         </DropdownMenuItem>

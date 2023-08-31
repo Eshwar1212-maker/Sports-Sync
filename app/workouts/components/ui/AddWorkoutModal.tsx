@@ -137,6 +137,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       },
     }
   );
+  
 
   const handleWorkoutAddition = () => {
     const exerciseData = {

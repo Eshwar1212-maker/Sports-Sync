@@ -62,6 +62,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
         `\n\n - ${title}    \n         ${weight} lbs | ${sets} sets | ${reps} reps`
     );
   };
+console.log(selectedExerciseId);
 
   
 
@@ -189,7 +190,8 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                   filteredWorkouts.map((exerciseData: any) => (
                     <li
                       className="p-3 text-lg flex flex-col gap-4 rounded-sm border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0 relative"
-                      onClick={() => {                        
+                      onClick={() => {    
+                        console.log(exerciseData.id);  
                         setSelectedExerciseId(exerciseData.id);
                       }}
                     >
