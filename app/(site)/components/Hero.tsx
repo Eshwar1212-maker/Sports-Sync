@@ -31,7 +31,7 @@ const Hero = () => {
   const router = useRouter();
   return (
     <div className="text-black bg-white">
-      <div className="flex flex-col justify-between pb-11 py-20 sm:my-12 h-[65vh] mb-6 md:h-[75vh] lg:flex-row lg:h-[59vh] lg:px-11 xl:px-[100px] 2xl:px-[90px] ">
+      <div className="flex flex-col justify-between pb-11 py-20 sm:py-8 sm:my-6 lg:py-20 lg:my-10 h-[65vh] mb-6 md:h-[67vh] lg:flex-row lg:h-[59vh] lg:px-11 xl:px-[100px] 2xl:px-[90px] ">
         <div className="sm:w-full lg:w-1/2 p-4 flex flex-col lg:items-start lg:space-y-6 2xl:pl-40">
           <div className="space-y-5 text-center lg:text-left">
             <h1 style={inter.style} className="text-4xl lg:text-5xl 2xl:text-6xl font-bold my-4">
@@ -75,8 +75,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <main className="mt-[120px] lg:my-14=6 py-10 bg-slate-100">
-        <h2 className="text-lg py-2 sm:py-0 sm:text-[22px] xl:text-2xl text-center font-bold px-4 max-w-[630px] mx-auto">
+      <main className="mt-[120px] lg:my-14=6 py-4 md:py-10 bg-slate-100">
+        <h2 className="text-lg py-2 sm:py-14 md:py-4 sm:text-[22px] xl:text-2xl text-center font-bold px-4 max-w-[630px] mx-auto">
           Use our calender, workout tracker, messaging system, and
           fitness dashboard to reach your goals.
         </h2>
