@@ -173,14 +173,14 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
           </div>
         </header>
         {/* BODY */}
-        <main className="mx-auto flex justify-center pr-7 md:pr-16 h-[80vh]">
+        <main className="mx-auto flex justify-center pr-7 md:pr-16 h-[80vh] py-5 sm:py-2">
           {filteredWorkouts.length == 0 ? (
             <p className="text-2xl text-gray-300 py-[270px] md:pr-14">
               Workout log empty
             </p>
-          ) : (
+          ) : ( 
             <div className="flex flex-col">
-              <ul className="overflow-y-auto flex flex-col gap-1 border-b-[2px] border-b-black">
+              <ul className="overflow-y-auto flex flex-col gap-3 sm:gap-1 sm:border-b-[2px] border-b-black ">
                 {filteredWorkouts.length > 0 &&
                   filteredWorkouts.map((exerciseData: any) => (
                     <li
