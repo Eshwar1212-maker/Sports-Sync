@@ -1,9 +1,7 @@
-import Modal from '@/app/components/Modal'
 import { Workout } from '@prisma/client';
 import { AreaChart, Title } from '@tremor/react';
 import { FC, useEffect, useState } from 'react'
 import { format } from 'date-fns';
-import { useTheme } from 'next-themes';
 import clsx from 'clsx';
 import { IoClose } from 'react-icons/io5';
 import ProgressionModall from './Modal';
@@ -32,31 +30,12 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
     setFilteredWorkouts(filtered);
   }, [exerciseName]);
 
-  const exercisesData = [
-    {
-      year: "Jan",
-      weight: 4,
-    },
-    {
-      year: "Feb",
-      weight: 7,
-    },
-    {
-      year: "Mar",
-      weight: 11,
-    },
-    {
-      year: "Apr",
-      weight: 7,
-    }
-  ];
 
   const exercise = filteredWorkouts.map((workout: any) => {
     const formattedDate = format(new Date(workout.date), 'MM/dd');
     return { year: formattedDate, weight: workout.weight };
   });
 
-  const {theme} = useTheme()
 
   return (
     <ProgressionModall isFullWidth={true} isOpen={isOpen} onClose={onClose}>
@@ -76,6 +55,9 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
         yAxisWidth={40}
       />
       </div>
+      {
+        exercise.length <= 1 && <p className='text-sm mx-auto text-center'>Add one more entry of this exercise for a progression</p>
+      }
     </ProgressionModall>
   );
 }
