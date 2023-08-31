@@ -1,14 +1,13 @@
 "use client";
 
 import Modal from "@/app/components/Modal";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FC, useEffect, useState } from "react";
-import Exercises from "./Exercises";
+import { FC,useState } from "react";
 import ListBox from "./ListBox";
 import { Button } from "@/components/ui/button";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { IoClose } from "react-icons/io5";
 
 interface WorkoutModalProps {
   isOpen: boolean;
@@ -70,6 +69,10 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
           "      " +
           date.toString().split(" ")[2]}
       </h1>
+      <button aria-label="close modal button" onClick={onClose} className="sm:hidden fixed right-3 top-3">
+            <IoClose size={20} />
+      </button>
+
       <div className="flex flex-col gap-3 mb-3 h-[6%]">
         <ListBox onSelectedChange={handleSelect} />
       </div>
