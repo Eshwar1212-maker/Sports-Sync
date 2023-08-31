@@ -1,12 +1,14 @@
-import one from "../../../assets/dash.jpg";
+import one from "../../../assets/qq.jpg";
 import two from "../../../assets/das.png";
 import Image from "next/image";
 import { FC } from "react";
 import Footer from "./Footer";
+import { useRouter } from "next/navigation";
 
 interface SecondProps {}
 
 const Second: FC<SecondProps> = ({}) => {
+  const router = useRouter()
   return (
     <div>
     <div className="flex flex-col justify-center items-center lg:flex-row bg-white sm:mb-[-37px] pb-11">
@@ -23,16 +25,21 @@ const Second: FC<SecondProps> = ({}) => {
             <Image
               alt="calender tracker image"
               src={two}
-              width={800}
-              height={100}
+              width={700}
+              height={400}
               priority={true}
               />
             </div>
+            <p
+             onClick={() => router.push("/auth")}
+             className="mx-auto text-black text-center font-bold cursor-pointer hover:underline">
+              Start dominating the competition today
+            </p>
       </div>
-      <div className="flex flex-col lg:py-10 w-full md:w-1/2 lg:w-2/5 xl:w-1/2 items-center px-2 mx-2 my-9">
-        <div className="">
+      <div className="flex flex-col lg:py-10 w-full md:w-1/2 lg:w-2/5 xl:w-1/2 items-center px-2">
+        <div className="max-w-[450px]">
           <Image
-            width={450}
+            width={750}
             height={300} 
             src={one}
             alt="tracker image"
