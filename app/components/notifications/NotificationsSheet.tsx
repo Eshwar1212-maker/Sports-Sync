@@ -12,11 +12,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useEffect, useState } from "react";
-import { AiOutlineCloseCircle } from "react-icons/ai";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import NotificationItem from "./NotificationItem";
 import { useTheme } from "next-themes";
-import clsx from "clsx";
 
 type Notification = {
   name: string;
