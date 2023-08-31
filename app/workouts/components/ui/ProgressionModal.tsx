@@ -25,10 +25,8 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
 
   useEffect(() => {
     const filtered = workouts.filter((workout: Workout) => {
-      console.log("WORKOUT TITLE: " + workout.title, "  EXERCISE NAME: ", exerciseName);
       return workout.title === exerciseName;
     });
-    console.log(filtered);
     setFilteredWorkouts(filtered);
   }, [exerciseName]);
 
@@ -55,7 +53,6 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
     const formattedDate = format(new Date(workout.date), 'MM/dd');
     return { year: formattedDate, weight: workout.weight };
   });
-  console.log(exercise);
 
   const {theme} = useTheme()
 

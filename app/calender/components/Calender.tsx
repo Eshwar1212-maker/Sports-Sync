@@ -15,6 +15,7 @@ function Calendar({userEvents}: {userEvents: any}) {
   const [date, setDate] = useState("")
   const [events, setEvents] = useState<any>(userEvents);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
 
   const handleDateClick = (arg: any) => {
     setIsOpen(true)
@@ -27,17 +28,18 @@ function Calendar({userEvents}: {userEvents: any}) {
   }
   
   const handleEventClick = (info: any) => {
+    const newObj:any = Object.values(info)[1]
     setIsOpen(true);
-    console.log("INFO" , info);
-    
+   // console.log("INFO" , Object.values(info));
+    //console.log("INFO" , newObj._instance.range.end);
+    setSelectedDate(newObj._instance.range.end.toString())
     setSelectedEvent(info.event); 
   }
 
   const handleEventDrop = (info: any) => {
-    console.log("INFO : ", info);
   
     const event = info.event;
-    console.log(`Event ${event.title} was moved to ${event.start}`);
+   // console.log(`Event ${event.title} was moved to ${event.start}`);
     // axios.patch("/api/events/update", {
     //   notes: updateNotes,
     //   title: updateTitle,
@@ -53,6 +55,7 @@ function Calendar({userEvents}: {userEvents: any}) {
        onClose={() => setIsOpen(false)}
        onSave={updateEvents}
        selectedEvent={selectedEvent}
+       selectedDate={selectedDate}
        />
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

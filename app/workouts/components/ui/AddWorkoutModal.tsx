@@ -13,6 +13,8 @@ import { toast } from "react-hot-toast";
 import { Workout } from "@prisma/client";
 import { AiOutlineTrophy } from "react-icons/ai";
 import { useTheme } from "next-themes";
+import { Button as Button2 } from "../../../../components/ui/button";
+import { BiSolidTrash } from "react-icons/bi";
 
 type exercise = {
   title: string;
@@ -20,7 +22,7 @@ type exercise = {
   sets?: number | null;
   exercise?: string;
   weight?: number | null;
-  id?: string
+  id?: string;
 };
 
 interface WorkoutModalProps {
@@ -36,12 +38,11 @@ interface WorkoutModalProps {
   setEditedExerciseWeight: any;
   setEditedExerciseSets: any;
   setEditedExerciseReps: any;
-  workoutId: string
-  updateWorkoutInState: any
-  workoutRecord: any
-  showConfetti: any
+  workoutId: string;
+  updateWorkoutInState: any;
+  workoutRecord: any;
+  showConfetti?: any;
 }
-
 
 const WorkoutModal: FC<WorkoutModalProps> = ({
   isOpen,
@@ -66,34 +67,29 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const [reps, setReps] = useState<number | null>(0);
   const [addExercise, setAddExercise] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>();
-  const [personalRecord, setPersonalRecord] = useState(false)
-
-
-
+  const [personalRecord, setPersonalRecord] = useState(false);
 
   const findWorkoutRecord = () => {
-    const titleRecord = workoutRecord.filter((workout: Workout) => workout.title === title);
-    const isPersonalRecord = titleRecord.every((workout: Workout) => {      
-      return weight > (workout?.weight!)
+    const titleRecord = workoutRecord.filter(
+      (workout: Workout) => workout.title === title
+    );
+    const isPersonalRecord = titleRecord.every((workout: Workout) => {
+      return weight > workout?.weight!;
     });
     setPersonalRecord(isPersonalRecord);
-}
+  };
 
   useEffect(() => {
-      findWorkoutRecord()
-      return () => {
-        setPersonalRecord(false)
-      }
+    findWorkoutRecord();
+    return () => {
+      setPersonalRecord(false);
+    };
   }, [weight, editedWeight]);
-
-  
-  
 
   const handleExerciseSelected = (selectedExercise: string) => {
     setTitle(selectedExercise);
     setActiveTab("weight");
   };
-
 
   const {
     mutate: addWorkout,
@@ -106,37 +102,80 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       sets: number | null;
       reps: number | null;
       date: string;
-      isPersonalRecord?: boolean
+      isPersonalRecord?: boolean;
     }) => {
       return axios.post("/api/workouts", data);
     },
     {
       onSuccess: () => {
-        findWorkoutRecord()
+        findWorkoutRecord();
       },
       onError: (error) => {
         console.log(error);
       },
     }
   );
+  console.log(workoutId);
+
   //UPDATE WORKOUT
   const { mutate: updateWorkout, isLoading: isUpdateLoading } = useMutation(
-    (data: { weight: number; sets: number; reps: number, workoutId: string, isPersonalRecord?: boolean }) => {
+    (data: {
+      weight: number;
+      sets: number;
+      reps: number;
+      workoutId: string;
+      isPersonalRecord?: boolean;
+    }) => {
       return axios.patch("/api/workouts/update", data);
     },
     {
       onSuccess: (response) => {
         onClose();
-        updateWorkoutInState(response.data); 
+        updateWorkoutInState(response.data);
         toast.success("Workout updated");
-        findWorkoutRecord()
-        handleCallbackExercises({})
+        findWorkoutRecord();
+        handleCallbackExercises({});
       },
       onError: (error) => {
         console.log("UPDATE EVENT ERROR: ", error);
       },
     }
   );
+
+  //DELETE WORKOUT
+  const { mutate: deleteWorkout, isLoading: isDeleteLoading } = useMutation(
+    (data: {
+      weight?: number;
+      sets?: number;
+      reps?: number;
+      workoutId: string;
+      isPersonalRecord?: boolean;
+      date: Date;
+    }) => {
+      return axios.patch("/api/workouts/update", data);
+    },
+    {
+      onSuccess: (response) => {
+        onClose();
+        toast("Workout deleted");
+        updateWorkoutInState(response.data);
+        findWorkoutRecord();
+        handleCallbackExercises({});
+      },
+      onError: (error) => {
+        console.log("UPDATE EVENT ERROR: ", error);
+      },
+    }
+  );
+
+  const handleDeleteWorkout = () => {
+    console.log(workoutId);
+    const updatedExerciseData = {
+      workoutId: workoutId,
+      date: new Date("1900-02-21"),
+    };
+    deleteWorkout(updatedExerciseData);
+  };
 
   const handleWorkoutAddition = () => {
     const exerciseData = {
@@ -145,17 +184,17 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       sets,
       reps,
       date,
-      isPersonalRecord: personalRecord
+      isPersonalRecord: personalRecord,
     };
     const updatedExerciseData = {
       weight: editedWeight,
       sets: editedSets,
       reps: editedReps,
       workoutId: workoutId,
-      isPersonalRecord: personalRecord
+      isPersonalRecord: personalRecord,
     };
     if (selectedExercise) {
-      findWorkoutRecord()
+      findWorkoutRecord();
       updateWorkout(updatedExerciseData);
       handleCallbackExercises(exerciseData);
     } else {
@@ -166,7 +205,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       setWeight(null);
       setReps(null);
       setSets(null);
-      handleCallbackExercises(exerciseData)
+      handleCallbackExercises(exerciseData);
     }
   };
 
@@ -177,8 +216,8 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       setActiveTab("exercises");
     }
   }, [selectedExercise]);
-  const {theme} = useTheme()
-  
+  const { theme } = useTheme();
+
   return (
     <Modal isFullWidth={true} isImage={true} isOpen={isOpen} onClose={onClose}>
       <Tabs value={activeTab} defaultValue="exercises">
@@ -190,7 +229,11 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           >
             My Exercises
           </TabsTrigger>
-          <TabsTrigger className={theme === "light" ? "text-black" : "text-white"} onClick={() => setActiveTab("weight")} value="weight">
+          <TabsTrigger
+            className={theme === "light" ? "text-black" : "text-white"}
+            onClick={() => setActiveTab("weight")}
+            value="weight"
+          >
             Intensity
           </TabsTrigger>
         </TabsList>
@@ -204,16 +247,17 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           className="flex flex-col w-fit mx-auto py-[70px] gap-2 justify-center"
           value="weight"
         >
-   
-            <h3 className="text-2xl mb-3 font-semibold">
+          <h3 className="text-2xl mb-3 font-semibold">
             {!selectedExercise ? title : editedName}
           </h3>
-          {(personalRecord && title && weight !== undefined) &&
-              <div className="flex flex-row gap-3 mb-3">
-                <AiOutlineTrophy color="lightblue" size={46} /> 
-                <span className="m-auto text-[14px] font-light">Person Record!</span>
-               </div>  
-            }
+          {personalRecord && title && weight !== undefined && (
+            <div className="flex flex-row gap-3 mb-3">
+              <AiOutlineTrophy color="lightblue" size={46} />
+              <span className="m-auto text-[14px] font-light">
+                Person Record!
+              </span>
+            </div>
+          )}
           <label>Weight:</label>
           <input
             type="number"
@@ -260,13 +304,37 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           />
         </TabsContent>
       </Tabs>
-      <div className="bottom-4 fixed flex gap-2 right-8">
-        <Button onClick={() => setAddExercise(!addExercise)} secondary>
-          New Exercises <IoIosAdd size={22} />
-        </Button>
-        <Button disabled={!selectedExercise ? !title : isUpdateLoading} onClick={handleWorkoutAddition}>
-          {selectedExercise ? "Update" : "Add Workout"}
-        </Button>
+
+      <div className="">
+{ selectedExercise &&       <div className="fixed left-8 bottom-6">
+          <div className="hidden md:flex gap-2">
+            <Button2
+              disabled={isDeleteLoading}
+              variant={"destructive"}
+              onClick={handleDeleteWorkout}
+            >
+              Delete
+            </Button2>
+          </div>
+          <div className=" flex gap-2 md:hidden pb-2">
+            <BiSolidTrash
+              aria-label="Delete workout"
+              onClick={handleDeleteWorkout}
+              size={20}
+            />
+          </div>
+        </div>}
+        <div className="fixed right-8 bottom-6 flex gap-4">
+          <Button2 className="" onClick={onClose} variant={"secondary"}>
+            Cancel
+          </Button2>
+          <Button2
+            disabled={!selectedExercise ? !title : isUpdateLoading}
+            onClick={handleWorkoutAddition}
+          >
+            {selectedExercise ? "Update" : "Add Workout"}
+          </Button2>
+        </div>
       </div>
     </Modal>
   );

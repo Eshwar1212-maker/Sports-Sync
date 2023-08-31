@@ -15,7 +15,7 @@ const Dashboard = ({ workouts }: any) => {
     return useMemo(() => {
       const unique = new Set();
       workouts.forEach((workout: any) => {
-        if (workout.date.toString().includes(month)) {
+        if (workout.date.toString().includes(month) && workout.date.toString().includes(new Date().getFullYear())) {
           unique.add(workout.date.toString().split(" ")[2]);
         }
       });
@@ -95,8 +95,10 @@ const Dashboard = ({ workouts }: any) => {
   ];
   const getExercisesByMonth = (month: string) => {
     let totalExercises = 0
-    workouts.forEach((workout: any) => {        
-      if(workout.date.toString().split(" ")[1].includes(month))
+    workouts.forEach((workout: any) => {      
+      console.log(workout.date.toString());
+        
+      if(workout.date.toString().split(" ")[1].includes(month) && workout.date.toString().includes(new Date().getFullYear()))
       totalExercises += 1
     })
     return totalExercises

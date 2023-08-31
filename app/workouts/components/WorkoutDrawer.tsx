@@ -23,6 +23,10 @@ import ProgressionModal from "./ui/ProgressionModal"
 import { useState } from "react"
 import { BiLineChart } from "react-icons/bi"
 import { SlChart } from "react-icons/sl"
+import axios from "axios"
+import { useMutation } from "@tanstack/react-query"
+import { toast } from "react-hot-toast"
+import { useRouter } from "next/navigation"
 
 interface WorkoutDrawerProps{
   exerciseData?: Workout
@@ -30,11 +34,15 @@ interface WorkoutDrawerProps{
   onViewProgression?: () => void
   exerciseName: string
   workouts: any
+  workoutId: string
 }
 
-export function WorkoutDrawer({exerciseData, onEdit, onViewProgression, exerciseName, workouts}: WorkoutDrawerProps) {
+export function WorkoutDrawer({exerciseData, onEdit, exerciseName, workouts, workoutId}: WorkoutDrawerProps) {
   const {theme} = useTheme()
   const [isOpen, setIsOpen] = useState(false)
+
+  const router = useRouter()
+
   
   return (
     <DropdownMenu>
@@ -53,10 +61,6 @@ export function WorkoutDrawer({exerciseData, onEdit, onViewProgression, exercise
             Edit
             <DropdownMenuShortcut><AiOutlineEdit color="black" size={22} /></DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer">
-          Delete
-          <DropdownMenuShortcut><AiOutlineDelete color="black" size={22}/></DropdownMenuShortcut>
-        </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setIsOpen(true)} className="cursor-pointer">
           {exerciseName} progression
           <DropdownMenuShortcut><FcAreaChart className="border-[1px] border-black p-0 m-0 bg-blue-200" color="white" size={24}/></DropdownMenuShortcut>
