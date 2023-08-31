@@ -62,14 +62,16 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   workoutRecord,
 }) => {
   const [title, setTitle] = useState<string>("");
-  const [weight, setWeight] = useState<any>();
+  const [weight, setWeight] = useState<number>(0);
   const [sets, setSets] = useState<number | null>(0);
   const [reps, setReps] = useState<number | null>(0);
-  const [addExercise, setAddExercise] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>();
-  const [personalRecord, setPersonalRecord] = useState(false);
+  const [personalRecord, setPersonalRecord] = useState<boolean>(false);
 
+  //FINDING PERSONAL RECORDD
   const findWorkoutRecord = () => {
+    console.log(weight);
+    
     const titleRecord = workoutRecord.filter(
       (workout: Workout) => workout.title === title
     );
@@ -84,13 +86,14 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     return () => {
       setPersonalRecord(false);
     };
-  }, [weight, editedWeight]);
+  }, [weight, editedWeight, personalRecord]);
 
   const handleExerciseSelected = (selectedExercise: string) => {
     setTitle(selectedExercise);
     setActiveTab("weight");
   };
 
+  //POST REQUEST, ADDING WORKOUT
   const {
     mutate: addWorkout,
     isLoading,
@@ -202,7 +205,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       onClose();
       setActiveTab("exercises");
       setTitle("");
-      setWeight(null);
+      setWeight(0);
       setReps(null);
       setSets(null);
       handleCallbackExercises(exerciseData);
@@ -250,14 +253,19 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           <h3 className="text-2xl mb-3 font-semibold">
             {!selectedExercise ? title : editedName}
           </h3>
-          {personalRecord && title && weight !== undefined && (
+          {(personalRecord === true) ? (
             <div className="flex flex-row gap-3 mb-3">
               <AiOutlineTrophy color="lightblue" size={46} />
               <span className="m-auto text-[14px] font-light">
                 Person Record!
               </span>
             </div>
-          )}
+          )
+            : null
+
+          }
+            
+          
           <label>Weight:</label>
           <input
             type="number"
