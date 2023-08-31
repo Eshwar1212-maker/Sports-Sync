@@ -92,19 +92,8 @@ export function NotificationsSheet({ unSeen, workouts }: any) {
           <SheetClose className="absolute top-1 right-2" />
 
           <SheetDescription className="items-center text-center flex justify-center flex-col overflow-y-scroll max-h-[830px] my-[40px] py-[300px]">
-            {notifications.length === 0 && record.length === 0 && (
               <p className="text-2xl">No new notifications</p>
-            )}
-            {notifications.map((item) => {
-              return (
-                <NotificationItem
-                  name={item.name}
-                  image={item.image}
-                  body={item.body}
-                  date={item.date?.toString()}
-                />
-              );
-            })}
+  
           </SheetDescription>
           <SheetFooter></SheetFooter>
         </SheetContent>
