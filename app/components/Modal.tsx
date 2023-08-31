@@ -74,7 +74,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth, i
                 shadow-xl 
                 transition-all
               `, currentTheme == "dark" ? "bg-[#1c1c1c]" : "bg-white",
-              (isFullWidth && isImage) ? "w-full md:w-[900px] h-[712px]" : "w-full sm:my-8 sm:w-full sm:max-w-lg sm:p-6",
+              (isFullWidth && isImage) ? "w-[95%] h-[570px] md:w-[900px] md:h-[712px]" : "w-full sm:my-8 sm:w-full sm:max-w-lg sm:p-6",
               
               )}
               >
