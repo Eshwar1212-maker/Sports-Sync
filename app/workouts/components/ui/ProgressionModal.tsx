@@ -25,10 +25,8 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
 
   useEffect(() => {
     const filtered = workouts.filter((workout: Workout) => {
-      console.log("WORKOUT TITLE: " + workout.title, "  EXERCISE NAME: ", exerciseName);
       return workout.title === exerciseName;
     });
-    console.log(filtered);
     setFilteredWorkouts(filtered);
   }, [exerciseName]);
 

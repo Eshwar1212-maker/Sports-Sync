@@ -1,9 +1,9 @@
 "use client";
 
-import Button from "@/app/components/Button";
 import Modal from "@/app/components/Modal";
 import Input from "@/app/components/inputs/Input";
 import Select from "@/app/components/inputs/Select";
+import { Button } from "@/components/ui/button";
 import { User } from "@prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
@@ -124,7 +124,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
             disabled={isLoading}
             onClick={onClose}
             type="button"
-            secondary
+            variant={"secondary"}
           >
             Cancel
           </Button>

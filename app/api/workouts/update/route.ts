@@ -9,7 +9,7 @@ export async function PATCH(request: Request) {
     try {
       const currentUser = await getCurrentUser();
       const body = await request.json();
-      const { workoutId, weight, reps, sets, isPersonalRecord } = body;
+      const { workoutId, weight, reps, sets, isPersonalRecord, date } = body;
   
       if (!currentUser?.id || !currentUser?.email) {
         return new NextResponse("Unauthorized", { status: 400 });
@@ -25,6 +25,7 @@ export async function PATCH(request: Request) {
           reps,
           sets,
           isPersonalRecord,
+          date,
           user: {
             connect: { id: currentUser.id },
           },

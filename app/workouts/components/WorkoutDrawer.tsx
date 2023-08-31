@@ -25,6 +25,8 @@ import { BiLineChart } from "react-icons/bi"
 import { SlChart } from "react-icons/sl"
 import axios from "axios"
 import { useMutation } from "@tanstack/react-query"
+import { toast } from "react-hot-toast"
+import { useRouter } from "next/navigation"
 
 interface WorkoutDrawerProps{
   exerciseData?: Workout
@@ -32,44 +34,15 @@ interface WorkoutDrawerProps{
   onViewProgression?: () => void
   exerciseName: string
   workouts: any
-  handleDelete?: () => void
+  workoutId: string
 }
 
-export function WorkoutDrawer({exerciseData, onEdit, exerciseName, workouts, handleDelete}: WorkoutDrawerProps) {
+export function WorkoutDrawer({exerciseData, onEdit, exerciseName, workouts, workoutId}: WorkoutDrawerProps) {
   const {theme} = useTheme()
   const [isOpen, setIsOpen] = useState(false)
 
-  const { mutate: deleteWorkout, isLoading: isDeleteLoading } = useMutation(
-    (data: { weight: number; sets: number; reps: number, workoutId: string, isPersonalRecord?: boolean }) => {
-      return axios.patch("/api/workouts/update", data);
-    },
-    {
-      onSuccess: (response) => {
-        // onClose();
-        // updateWorkoutInState(response.data); 
-        // toast.success("Workout updated");
-        // findWorkoutRecord()
-        // handleCallbackExercises({})
-      },
-      onError: (error) => {
-        console.log("UPDATE EVENT ERROR: ", error);
-      },
-    }
-  );
+  const router = useRouter()
 
-  console.log(workouts);
-  
-
-  // const handleDeleteWorkout = () => {
-  //   const updatedExerciseData = {
-  //     weight: editedWeight,
-  //     sets: editedSets,
-  //     reps: editedReps,
-  //     workoutId: workoutId,
-  //     isPersonalRecord: personalRecord,
-  //     date: new Date("1900-02-21")
-  //   };
-  // }
   
   return (
     <DropdownMenu>
@@ -88,12 +61,6 @@ export function WorkoutDrawer({exerciseData, onEdit, exerciseName, workouts, han
             Edit
             <DropdownMenuShortcut><AiOutlineEdit color="black" size={22} /></DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem
-           onClick={handleDelete}
-           className="cursor-pointer">
-          Delete
-          <DropdownMenuShortcut><AiOutlineDelete color="black" size={22}/></DropdownMenuShortcut>
-        </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setIsOpen(true)} className="cursor-pointer">
           {exerciseName} progression
           <DropdownMenuShortcut><FcAreaChart className="border-[1px] border-black p-0 m-0 bg-blue-200" color="white" size={24}/></DropdownMenuShortcut>

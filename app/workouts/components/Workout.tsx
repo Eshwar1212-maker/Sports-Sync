@@ -4,7 +4,6 @@ import { FC, useEffect, useState } from "react";
 import WorkoutModal from "./ui/AddWorkoutModal";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
-import { AiOutlineTrophy } from "react-icons/ai";
 import {
   Popover,
   PopoverContent,
@@ -13,12 +12,10 @@ import {
 import { SlCalender } from "react-icons/sl";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
-import Confetti from "react-confetti";
 import { WorkoutDrawer } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
 import { BsFillTrophyFill } from "react-icons/bs";
-import { title } from "process";
 
 type exercise = {
   title: string;
@@ -45,26 +42,27 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [editedExerciseSets, setEditedExerciseSets] = useState();
   const [editedExerciseReps, setEditedExerciseReps] = useState();
   const [selectedExercise, setSelectedExercise] = useState(false);
-  const [selectedExerciseId, setSelectedExerciseId] = useState("");
+  const [selectedExerciseId, setSelectedExerciseId] = useState<string>("");
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
   const [formattedDate, setFormattedDate] = useState(
     format(date!, "yyyy-MM-dd")
   );
+
   const [workout, setWorkout] = useState("");
-  const [showConfetti, setShowConfetti] = useState<boolean>(false);
 
   const { theme } = useTheme();
+  
 
-  const handleCallbackExercises = ({ title, weight, reps, sets, isPersonalRecord }: exercise) => {
-    setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets, isPersonalRecord }]);
+  const handleCallbackExercises = ({ title, weight, reps, sets, isPersonalRecord, id }: exercise) => {
+    setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets, isPersonalRecord, id }]);
     setWorkout(
       workout +
         `\n\n - ${title}    \n         ${weight} lbs | ${sets} sets | ${reps} reps`
     );
   };
-console.log(selectedExerciseId);
 
   
+
 
   const handleEdit = (exerciseData: any) => {
     setSelectedExercise(true);
@@ -85,10 +83,12 @@ console.log(selectedExerciseId);
 
   useEffect(() => {
     const workoutsForSelectedDate = allWorkouts.filter(
-      (workout: any) =>
-        format(new Date(workout.date), "PPP") === format(date, "PPP")
-    );
+      (workout: any) => {
+        //console.log(format(new Date(workout.date), "PPP"),  "  " , workout.date);
+        return format(new Date(workout.date), "PPP") === format(date, "PPP")
 
+      }
+    );
     const workoutsToNotes = workoutsForSelectedDate
       .map((workout) => {
         return `- ${workout.title}    \n         ${workout.weight} lbs | ${workout.sets} sets | ${workout.reps} reps`;
@@ -99,11 +99,7 @@ console.log(selectedExerciseId);
     setFilteredWorkouts(workoutsForSelectedDate);
   }, [date, allWorkouts]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowConfetti(false);
-    }, 3000);
-  }, [showConfetti]);
+  console.log(selectedExerciseId);
 
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
@@ -133,7 +129,6 @@ console.log(selectedExerciseId);
           workoutId={selectedExerciseId}
           updateWorkoutInState={updateWorkoutInState}
           workoutRecord={workoutRecord}
-          showConfetti={setShowConfetti}
         />
         {/* HEADER */}
         <header className="flex justify-between max-w-[670px] py-5 mx-auto">
@@ -191,9 +186,9 @@ console.log(selectedExerciseId);
                     <li
                       className="p-3 text-lg flex flex-col gap-4 rounded-sm border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0 relative"
                       onClick={() => {    
-                        console.log(exerciseData.id);  
                         setSelectedExerciseId(exerciseData.id);
-                      }}
+                        console.log(exerciseData);
+                   }}
                     >
                       <div className="flex justify-between relative top-0">
                         <div>
@@ -208,11 +203,13 @@ console.log(selectedExerciseId);
                         </div>
                         </div>
                         <div className="flex flex-col py-0 my-0 top-0">
-                          <div className="pr-1">
+                          <div
+                           className="pr-1">
                             <WorkoutDrawer
                               workouts={workouts}
                               exerciseName={exerciseData.title}
                               onEdit={() => handleEdit(exerciseData)}
+                              workoutId={selectedExerciseId}
                             />
                           </div>
                           {/* <div

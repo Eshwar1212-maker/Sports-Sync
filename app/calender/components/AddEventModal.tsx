@@ -3,10 +3,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Modal from "@/app/components/Modal";
 import { useMutation } from "@tanstack/react-query";
-import Button from "@/app/components/Button";
 import { toast } from "react-hot-toast";
 import { BiSolidTrash } from "react-icons/bi";
 import { useToast } from "@/components/ui/use-toast";
+import { Button } from "@/components/ui/button";
 
 interface EventsModaProps {
   isOpen?: boolean;
@@ -194,9 +194,9 @@ function AddEventModal({
           </button>
         )}
         <div className="flex gap-3 justify-end py-1">
-          <button type="button" onClick={onClose}>
+          <Button variant={"secondary"} type="button" onClick={onClose}>
             Cancel
-          </button>
+          </Button>
           <Button
             type="submit"
             disabled={!selectedEvent ? !eventTitle : !updateTitle}

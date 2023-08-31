@@ -89,13 +89,6 @@ model Event {
   user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model Team {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  title   String?
-  userIds String[] @db.ObjectId
-  members User[]   @relation(fields: [userIds], references: [id])
-  events  Event[]
-}
 
 model Workout {
   id     String  @id @default(auto()) @map("_id") @db.ObjectId
@@ -107,4 +100,12 @@ model Workout {
   userId String  @db.ObjectId
   isPersonalRecord Boolean?
   user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Team {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  title   String?
+  userIds String[] @db.ObjectId
+  members User[]   @relation(fields: [userIds], references: [id])
+  events  Event[]
 }
