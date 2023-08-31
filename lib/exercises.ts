@@ -13,6 +13,7 @@
         "Pull-Ups",
         "Chin-Ups",
         "Bicep Curls",
+        "Sprints",
         "Tricep Dips",
         "Incline Dumbell Bench Press",
         "Flat Dumbell Bench Press",
