@@ -199,7 +199,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                           </h3>
                           </div>
 
-                          <div>{exerciseData.isPersonalRecord ? <BsFillTrophyFill className="mb-4" size={29} color="lightblue" /> : ""}</div>
+                          <div>{(exerciseData.isPersonalRecord && exerciseData.weight > 0) ? <BsFillTrophyFill className="mb-4" size={29} color="lightblue" /> : ""}</div>
                         </div>
                         </div>
                         <div className="flex flex-col py-0 my-0 top-0">
