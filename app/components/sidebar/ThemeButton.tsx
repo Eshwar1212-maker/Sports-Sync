@@ -48,9 +48,9 @@ const ThemeButton = ({isSettings}: ThemButton) => {
           }}
         >
           { isSettings ?       
-           <MdLightMode color="white" size={isSettings ? 16 : 10}/>   
+           <MdLightMode type="button" color="white" size={isSettings ? 16 : 10}/>   
           :
-          <FaAffiliatetheme color="white" size={isSettings ? 18 : 10}/>
+          <FaAffiliatetheme type="button" color="white" size={isSettings ? 18 : 10}/>
         }
         </button>
       )}
