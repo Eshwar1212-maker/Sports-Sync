@@ -72,7 +72,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, unSeen, wo
           </nav>
           <nav className="mt-4 flex flex-col justify-between items-center">
             <div className="mb-3">
-              <ThemeButton />
+              <ThemeButton isSettings={false} />
             </div>
 
             <div
