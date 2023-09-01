@@ -33,6 +33,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
+  const [active, setActive] = useState(false)
   const {
     register,
     handleSubmit,
@@ -70,7 +71,8 @@ const SettingsModal: React.FC<SettingsModal> = ({
         toast.success("Profile settings updated");
       });
   };
-
+  console.log(active);
+  
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <form className="" onSubmit={handleSubmit(onSubmit)}>
