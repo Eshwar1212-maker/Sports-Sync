@@ -332,7 +332,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
             />
           </div>
         </div>}
-        <div className="fixed right-8 bottom-6 flex gap-4">
+        <div className="fixed right-8 bottom-4 flex gap-4 ">
           <Button2 className="" onClick={onClose} variant={"secondary"}>
             Cancel
           </Button2>

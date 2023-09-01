@@ -13,9 +13,10 @@ interface ModalProps {
   isFullWidth?: boolean
   isImage?: boolean
   isMessage?: boolean
+  isImageImage?: boolean
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth, isImage, isMessage}) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth, isImage, isMessage, isImageImage}) => {
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
   return (
@@ -75,8 +76,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth, i
                 shadow-xl 
                 transition-all
               `, currentTheme == "dark" ? "bg-[#1c1c1c]" : "bg-white",
-              (isFullWidth && isImage) ? "w-[95%] h-[694px] md:w-[900px] md:h-[712px]" : "w-full sm:my-8 sm:w-full sm:max-w-lg sm:p-6",
-              (isFullWidth && isImage && isMessage) ? "w-[65%] h-[504px] md:w-[900px] md:h-[712px]" : "w-full sm:my-8 sm:w-full sm:max-w-lg sm:p-6",
+              (isFullWidth && isImage && !isMessage) ? "w-[95%] h-[694px] md:w-[900px] md:h-[712px]" : "w-full sm:my-8 sm:w-full sm:max-w-lg sm:p-6",
 
               
               )}
