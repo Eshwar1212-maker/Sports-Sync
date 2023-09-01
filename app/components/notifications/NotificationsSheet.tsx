@@ -70,9 +70,6 @@ export function NotificationsSheet({ unSeen, workouts }: any) {
           >
             <IoIosNotificationsOutline
               className={notifications.length > 0 ? " my-[-33px]" : ""}
-              color={
-                notifications.length > 0 && theme === "light" ? "blue" : ""
-              }
               size={35}
             />
           </div>

@@ -36,7 +36,6 @@ const Input: FC<InputProps> = ({
                 ring-inset ring-gray-300 placeholder:text-gray-400focus focus:ring-2 focus:ring-inset
                 focus:ring-sky-600 sm:text-sm sm:leading-6
             `, errors[id] && "focus: ring-rose-500", disabled && "opacity-50 cursor-default",
-            currentTheme === "dark" ? "bg-white text-black" : ""
             )}
             />
       </div>
