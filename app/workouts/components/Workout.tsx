@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from "react";
 import WorkoutModal from "./ui/AddWorkoutModal";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
+import {GrAdd, GrFormAdd} from "react-icons/gr"
 import {
   Popover,
   PopoverContent,
@@ -16,6 +17,8 @@ import { WorkoutDrawer } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
 import { BsFillTrophyFill } from "react-icons/bs";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { IoAddOutline } from "react-icons/io5";
 
 type exercise = {
   title: string;
@@ -131,7 +134,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
           workoutRecord={workoutRecord}
         />
         {/* HEADER */}
-        <header className="flex justify-between max-w-[670px] py-5 mx-auto">
+        <header className="flex justify-between max-w-[670px] py-5 mx-auto pl-6 md:pl-0">
           <div>
             <Popover>
               <PopoverTrigger asChild>
@@ -156,13 +159,23 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                 theme === "light" && "text-gray-800"
               )}
             >
-              {format(date!, "MM/dd/yyyy")}
+              {date.toString().split(" ")[0] + ", " + date.toString().split(" ")[1] + " " + date.toString().split(" ")[2]}
             </h1>
           </div>
           <div className="">
             <Button
               variant={"default"}
-              className={"text-[11px] md:text-[13px] py-1 md:mr-16"}
+              className={"text-[11px] md:text-[13px] py-2 md:hidden"}
+              onClick={() => {
+                setSelectedExercise(false);
+                setIsOpen(true);
+              }}
+            >
+              <IoAddOutline className="" color="white" size={30} />
+            </Button>
+            <Button
+              variant={"default"}
+              className={"hidden md:block text-[11px] md:text-[13px] py-2"}
               onClick={() => {
                 setSelectedExercise(false);
                 setIsOpen(true);
@@ -175,7 +188,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
         {/* BODY */}
         <main className="mx-auto flex justify-center pr-7 md:pr-16 h-[80vh] py-5 sm:py-2">
           {filteredWorkouts.length == 0 ? (
-            <p className="text-2xl text-gray-300 py-[270px] md:pr-14">
+            <p className="text-2xl text-gray-300 py-[270px] pl-10 pr-3 md:pr-14">
               Workout log empty
             </p>
           ) : ( 
