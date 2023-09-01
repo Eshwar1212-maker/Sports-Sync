@@ -27,8 +27,8 @@ const MobileFooter = ({user}: any) => {
   return (
     <div
       className={clsx(
-        "fixed justify-between w-full bottom-0 z-40 flex items-center border-t-[1px] lg:hidden overflow-x-scroll",
-        theme === "light" && "bg-gray-100"
+        "fixed justify-between w-full bottom-0 z-50 flex items-center border-t-[1px] lg:hidden overflow-x-scroll",
+        theme === "light" ? "bg-gray-100" : "bg-slate-900"
       )}
     >
       <SettingsModal currentUser={user} isOpen={open} onClose={() => setOpen(false)}/>
@@ -47,7 +47,7 @@ const MobileFooter = ({user}: any) => {
     <CiSettings
      onClick={() => setOpen(true)}
      className="group flex gap-x-3 text-sm leading-6 font-semibold w-full justify-center text-gray-500 hover:text-black pr-3"
-     color="black"
+
      size={31} />
 
     </div>
