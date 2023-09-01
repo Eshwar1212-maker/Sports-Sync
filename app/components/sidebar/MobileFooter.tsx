@@ -11,6 +11,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import { CiSettings } from "react-icons/ci";
 import { useState } from "react";
 import SettingsModal from "./SettingsModal";
+import { useTheme } from "next-themes";
 
 const MobileFooter = ({user}: any) => {
   const routes = useRoutes();
@@ -21,10 +22,13 @@ const MobileFooter = ({user}: any) => {
     return null;
   }
 
+  const {theme} = useTheme()
+
   return (
     <div
       className={clsx(
-        "fixed justify-between w-full bottom-0 z-40 bg-gray-100 flex items-center border-t-[1px] lg:hidden overflow-x-scroll"
+        "fixed justify-between w-full bottom-0 z-40 flex items-center border-t-[1px] lg:hidden overflow-x-scroll",
+        theme === "light" && "bg-gray-100"
       )}
     >
       <SettingsModal currentUser={user} isOpen={open} onClose={() => setOpen(false)}/>

@@ -23,7 +23,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.push("/users");
+      router.push("/workouts");
     }
   }, [session?.status, router]);
 
@@ -78,7 +78,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
           toast.error(
             "Login failed, please make sure you are using the right email and password."
           );
-          router.push("/users");
+          router.push("/workouts");
 
       },
     }
@@ -106,7 +106,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
           toast.error("Social login failed. Please try again.");
         if (callback?.ok && !callback?.error) {
           toast.success("Successfully logged in!");
-          router.push("/users");
+          router.push("/workouts");
         }
       },
     }
