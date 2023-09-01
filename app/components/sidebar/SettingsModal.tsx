@@ -145,7 +145,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
           "
         >
           <div>
-            <Button className="w-fit px-4 pl-2 mb-1" variant={"secondary"}>
+            <Button type="button" className="w-fit px-4 pl-2 mb-1" variant={"secondary"}>
               <SlLogout
                 color={theme === "dark" ? "white" : ""}
                 onClick={() =>
