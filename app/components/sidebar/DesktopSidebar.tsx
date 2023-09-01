@@ -68,18 +68,6 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, unSeen, wo
                   <NotificationsSheet workouts={workouts} unSeen={unSeen}/>
                 </div>
               </li>
-              <li
-                className="py-8 h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md p-2 leading-6 font-semibold relative mr-1">
-                <div>
-                  <SlLogout
-                    color={theme === "dark" ? "white" : ""}
-                    onClick={() =>
-                      signOut({ callbackUrl: "http://localhost:3000" })
-                    }
-                    size={24}
-                  />
-                </div>
-              </li>
             </ul>
           </nav>
           <nav className="mt-4 flex flex-col justify-between items-center">

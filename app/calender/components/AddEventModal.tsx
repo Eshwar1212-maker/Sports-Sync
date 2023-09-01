@@ -135,7 +135,7 @@ function AddEventModal({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <form onSubmit={handleSubmit}>
+      <form className="px-3" onSubmit={handleSubmit}>
         <input
           aria-label="Event name"
           className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin"

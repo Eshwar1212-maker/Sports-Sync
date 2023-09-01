@@ -15,6 +15,9 @@ import { useTheme } from "next-themes";
 import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
+import { SlLogout } from "react-icons/sl";
+import ThemeButton from "./ThemeButton";
+import { IoClose } from "react-icons/io5";
 
 interface SettingsModal {
   isOpen?: boolean;
@@ -49,7 +52,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
     });
   };
 
-  const {theme} = useTheme()
+  const { theme } = useTheme();
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -73,9 +76,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
       <form className="" onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold leading-7">
-              Settings
-            </h2>
+            <h2 className="text-base font-semibold leading-7">Settings</h2>
             <div className="mt-10 flex flex-col gap-y-8">
               <Input
                 disabled={isLoading}
@@ -86,7 +87,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
                 register={register}
               />
               <div className="">
-         
+                <h3 className="text-sm">Photo</h3>
                 <div className="mt-2 flex items-center">
                   <Image
                     width="160"
@@ -111,16 +112,27 @@ const SettingsModal: React.FC<SettingsModal> = ({
                 </div>
                 <div className="">
                   <input
-                    className={clsx("text-[12px] p-1 my-2 border-[1px] bg-white",
-                     theme == "dark" && "bg-slate-400 text-black p-1 border-[1px] border-black w-[160px] px-2")}
+                    className={clsx(
+                      "text-[12px] p-1 my-2 border-[1px] bg-white",
+                        "bg-slate-400 text-black p-1 border-[1px] border-black w-[160px] px-2"
+                    )}
                     placeholder="Or enter image address"
                     onChange={(e) => setImageUrl(e.target.value)}
                   />
+                </div>
+                <div className="mt-2 sm:mt-4">
+                  <Button
+                   className="lg:hidden"
+                   type="button" 
+                   variant={"secondary"}
+                   ><ThemeButton isSettings={true} />
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <div
           className="
             mt-6 
@@ -132,17 +144,30 @@ const SettingsModal: React.FC<SettingsModal> = ({
           "
         >
           <div>
-
+            <Button className="w-fit px-4 pl-2 mb-1" variant={"secondary"}>
+              <SlLogout
+                color={theme === "dark" ? "white" : ""}
+                onClick={() =>
+                  signOut({ callbackUrl: "http://localhost:3000" })
+                }
+                size={24}
+                className="mx-auto"
+              />
+            </Button>
           </div>
-         <div className="gap-4 flex">
-         <Button variant={"secondary"} type="button" disabled={isLoading} onClick={onClose}>
-            Cancel
-          </Button>
-          <Button className="" disabled={isLoading} type="submit">
-            Save
-          </Button>
-         </div>
-
+          <div className="gap-4 flex">
+            <Button
+              variant={"secondary"}
+              type="button"
+              disabled={isLoading}
+              onClick={onClose}
+            >
+              Cancel
+            </Button>
+            <Button className="" disabled={isLoading} type="submit">
+              Save
+            </Button>
+          </div>
         </div>
       </form>
     </Modal>
