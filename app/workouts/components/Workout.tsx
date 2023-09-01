@@ -134,7 +134,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
           workoutRecord={workoutRecord}
         />
         {/* HEADER */}
-        <header className="flex justify-between max-w-[670px] py-5 mx-auto pl-2 md:pl-0">
+        <header className="flex justify-between max-w-[670px] py-5 mx-auto">
           <div>
             <Popover>
               <PopoverTrigger asChild>
@@ -192,7 +192,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
               Workout log empty
             </p>
           ) : ( 
-            <div className="flex flex-col">
+            <div className="flex flex-col md:pl-16">
               <ul className="overflow-y-auto flex flex-col gap-3 sm:gap-1 sm:border-b-[2px] border-b-black ">
                 {filteredWorkouts.length > 0 &&
                   filteredWorkouts.map((exerciseData: any) => (
