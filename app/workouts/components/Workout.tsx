@@ -134,7 +134,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
           workoutRecord={workoutRecord}
         />
         {/* HEADER */}
-        <header className="flex justify-between max-w-[670px] py-5 mx-auto pl-6 md:pl-0">
+        <header className="flex justify-between max-w-[670px] py-5 mx-auto pl-2 md:pl-0">
           <div>
             <Popover>
               <PopoverTrigger asChild>
