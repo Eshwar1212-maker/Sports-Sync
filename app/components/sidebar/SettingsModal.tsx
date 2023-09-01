@@ -71,7 +71,6 @@ const SettingsModal: React.FC<SettingsModal> = ({
         toast.success("Profile settings updated");
       });
   };
-  console.log(active);
   
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
