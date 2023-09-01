@@ -12,6 +12,7 @@ export const config = {
         "/conversations/:path",
         "/workouts/:path",
         "/calender/:path",
+        "/calender/userCalender/:path",
         "/dashboard/:path",
 
     ]
