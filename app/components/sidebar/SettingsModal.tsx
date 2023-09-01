@@ -135,9 +135,9 @@ const SettingsModal: React.FC<SettingsModal> = ({
 
           </div>
          <div className="gap-4 flex">
-         <button disabled={isLoading} onClick={onClose}>
+         <Button variant={"secondary"} type="button" disabled={isLoading} onClick={onClose}>
             Cancel
-          </button>
+          </Button>
           <Button className="" disabled={isLoading} type="submit">
             Save
           </Button>
