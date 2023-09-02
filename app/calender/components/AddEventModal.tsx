@@ -138,7 +138,7 @@ function AddEventModal({
       <form className="px-3" onSubmit={handleSubmit}>
         <input
           aria-label="Event name"
-          className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pr-10"
+          className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pl-10 sm:pl-0"
           placeholder="Untitled"
           value={selectedEvent ? updateTitle : eventTitle}
           onChange={
@@ -149,7 +149,7 @@ function AddEventModal({
               : (e) => setEventTitle(e.target.value)
           }
         />
-        <div className="py-4 pr-10 sm:pr-0">
+        <div className="py-4 pl-10 sm:pl-0">
           <h3 className="text-base font-semibold leading-7">Date</h3>
           {selectedEvent
             ? selectedDate.split(" ")[0] +
@@ -165,8 +165,8 @@ function AddEventModal({
               "/" +
               date.split("-")[0]}
         </div>
-        <div className="border-[1px] border-solid border-gray-900 w-full pr-10 sm:pr-0" />
-        <div className="py-6  pr-10 sm:pr-0">
+        <div className="border-[1px] border-solid border-gray-900 w-full pl-10 sm:pl-0" />
+        <div className="py-6  pl-10 sm:pl-0">
           <textarea
             className="bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px] text-md"
             placeholder="Add notes over here..."
@@ -182,7 +182,7 @@ function AddEventModal({
           <button
             type="button"
             onClick={handleDelete}
-            className="bottom-8 fixed py-2 pr-10 sm:pr-0"
+            className="bottom-8 fixed py-2"
           >
             <BiSolidTrash
               onClick={() => toaster({
