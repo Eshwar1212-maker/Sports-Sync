@@ -72,7 +72,7 @@ function AddEventModal({
       onSuccess: (response) => {
         onClose();
         onSave(response.data);
-        toast.success("Event updated");
+        toast("Event updated");
       },
       onError: (error) => {
         console.log("UPDATE EVENT ERROR: ", error);
