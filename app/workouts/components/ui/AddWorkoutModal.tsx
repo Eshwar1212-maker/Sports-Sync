@@ -70,7 +70,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
 
   //FINDING PERSONAL RECORDD
   const findWorkoutRecord = () => {
-    console.log(weight);
     
     const titleRecord = workoutRecord.filter(
       (workout: Workout) => workout.title === title
@@ -118,7 +117,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       },
     }
   );
-  console.log(workoutId);
 
   //UPDATE WORKOUT
   const { mutate: updateWorkout, isLoading: isUpdateLoading } = useMutation(
@@ -172,7 +170,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   );
 
   const handleDeleteWorkout = () => {
-    console.log(workoutId);
     const updatedExerciseData = {
       workoutId: workoutId,
       date: new Date("1900-02-21"),

@@ -131,7 +131,6 @@ function AddEventModal({
     setEventNotes("");
   };
 
-  console.log(selectedDate);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -182,7 +181,7 @@ function AddEventModal({
           <button
             type="button"
             onClick={handleDelete}
-            className="bottom-8 fixed py-2 sm:py-0 pl-4 sm:pl-0"
+            className="bottom-6 sm:bottom-4 fixed sm:py-2 pl-4 sm:pl-0"
           >
             <BiSolidTrash
               onClick={() => toaster({
@@ -193,7 +192,7 @@ function AddEventModal({
             />
           </button>
         )}
-        <div className="fixed right-0 flex bottom-6 pr-5 gap-2 pb-2">
+        <div className="fixed right-0 flex bottom-2 pr-5 gap-2 pb-2">
           <Button variant={"secondary"} type="button" onClick={onClose}>
             Cancel
           </Button>

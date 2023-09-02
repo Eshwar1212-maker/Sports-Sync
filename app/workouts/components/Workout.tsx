@@ -87,7 +87,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   useEffect(() => {
     const workoutsForSelectedDate = allWorkouts.filter(
       (workout: any) => {
-        //console.log(format(new Date(workout.date), "PPP"),  "  " , workout.date);
         return format(new Date(workout.date), "PPP") === format(date, "PPP")
 
       }
@@ -200,7 +199,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                       className="p-3 text-lg flex flex-col gap-4 rounded-sm border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0 relative"
                       onClick={() => {    
                         setSelectedExerciseId(exerciseData.id);
-                        console.log(exerciseData);
                    }}
                     >
                       <div className="flex justify-between relative top-0">

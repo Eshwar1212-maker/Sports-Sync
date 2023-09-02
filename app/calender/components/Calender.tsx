@@ -30,8 +30,6 @@ function Calendar({userEvents}: {userEvents: any}) {
   const handleEventClick = (info: any) => {
     const newObj:any = Object.values(info)[1]
     setIsOpen(true);
-   // console.log("INFO" , Object.values(info));
-    //console.log("INFO" , newObj._instance.range.end);
     setSelectedDate(newObj._instance.range.end.toString())
     setSelectedEvent(info.event); 
   }
@@ -39,7 +37,6 @@ function Calendar({userEvents}: {userEvents: any}) {
   const handleEventDrop = (info: any) => {
   
     const event = info.event;
-   // console.log(`Event ${event.title} was moved to ${event.start}`);
     // axios.patch("/api/events/update", {
     //   notes: updateNotes,
     //   title: updateTitle,
