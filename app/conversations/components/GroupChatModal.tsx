@@ -55,6 +55,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
       onSuccess: () => {
         router.refresh();
         router.push(`/conversations`);
+        onClose()
       },
       onError: () => {
         toast.error(
