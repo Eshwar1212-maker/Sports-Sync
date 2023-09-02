@@ -56,7 +56,7 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
       />
       </div>
       {
-        exercise.length <= 1 && <p className='text-sm mx-auto text-center'>Add one more entry of this exercise for a progression</p>
+        exercise.length <= 1 && <p className='text-sm mx-auto text-center'>Refresh the page if no data shows</p>
       }
     </ProgressionModall>
   );

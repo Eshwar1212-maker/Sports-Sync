@@ -11,6 +11,7 @@
         "Mountain Climbers",
         "Tuck Jumps",
         "Pull-Ups",
+        "Poliquan Squats",
         "Chin-Ups",
         "Bicep Curls",
         "Sprints",
