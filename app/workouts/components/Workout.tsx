@@ -101,8 +101,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
     setFilteredWorkouts(workoutsForSelectedDate);
   }, [date, allWorkouts]);
 
-  console.log(selectedExerciseId);
-
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
       {/* {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />} */}
