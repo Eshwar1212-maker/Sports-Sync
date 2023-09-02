@@ -135,10 +135,10 @@ function AddEventModal({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <form className="px-3" onSubmit={handleSubmit}>
+      <form className="px-1" onSubmit={handleSubmit}>
         <input
           aria-label="Event name"
-          className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pl-10 sm:pl-0"
+          className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pl-4 sm:pl-0"
           placeholder="Untitled"
           value={selectedEvent ? updateTitle : eventTitle}
           onChange={
@@ -149,7 +149,7 @@ function AddEventModal({
               : (e) => setEventTitle(e.target.value)
           }
         />
-        <div className="py-4 pl-10 sm:pl-0">
+        <div className="py-4 pl-4 sm:pl-0">
           <h3 className="text-base font-semibold leading-7">Date</h3>
           {selectedEvent
             ? selectedDate.split(" ")[0] +
@@ -165,7 +165,7 @@ function AddEventModal({
               "/" +
               date.split("-")[0]}
         </div>
-        <div className="border-[1px] border-solid border-gray-900 w-full pl-10 sm:pl-0" />
+        <div className="border-[1px] border-solid border-gray-900 w-full pl-4 sm:pl-0" />
         <div className="py-6  pl-10 sm:pl-0">
           <textarea
             className="bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px] text-md"
@@ -182,7 +182,7 @@ function AddEventModal({
           <button
             type="button"
             onClick={handleDelete}
-            className="bottom-8 fixed py-2"
+            className="bottom-8 fixed py-2 sm:py-0 pl-4 sm:pl-0"
           >
             <BiSolidTrash
               onClick={() => toaster({
@@ -193,7 +193,7 @@ function AddEventModal({
             />
           </button>
         )}
-        <div className="flex gap-3 justify-end py-1">
+        <div className="fixed right-0 flex bottom-6 pr-5 gap-2 pb-2">
           <Button variant={"secondary"} type="button" onClick={onClose}>
             Cancel
           </Button>
