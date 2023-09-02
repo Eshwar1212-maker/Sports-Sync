@@ -56,7 +56,10 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
       />
       </div>
       {
-        exercise.length <= 1 && <p className='text-sm mx-auto text-center'>Refresh the page if no data shows</p>
+        exercise.length < 1 &&
+         <p className='text-sm mx-auto text-center'>
+          <span className='underline cursor-pointer' onClick={() => location.reload()}>Refresh</span> the page if no data shows
+        </p>
       }
     </ProgressionModall>
   );
