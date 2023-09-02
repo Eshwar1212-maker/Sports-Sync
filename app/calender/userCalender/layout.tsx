@@ -27,7 +27,7 @@ export default async function CalenderLayout({
         >
           <HiChevronLeft size={32} />
         </Link>
-      <div className="py-8 px-10 xl:px-0 xl:pr-20 text-[12px]">
+      <div className="py-8 px-10 xl:px-0 xl:pr-10 text-[12px]">
         <Calender userEvents={userEvents} />
         {children}
       </div>

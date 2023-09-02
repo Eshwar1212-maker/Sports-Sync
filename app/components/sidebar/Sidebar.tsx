@@ -20,7 +20,7 @@ async function Sidebar({children}: {
         <div className="h-full">
             <DesktopSidebar workouts={recordWorkouts} unSeen={unSeenMessages} currentUser={currentUser!}/>
             <MobileFooter user = {currentUser} />
-            <main className="lg:pl-20 h-full">
+            <main className="lg:pl-[60px] h-full">
             {children}
             </main>
         </div>
