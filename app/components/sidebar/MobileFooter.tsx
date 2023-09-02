@@ -46,7 +46,6 @@ const MobileFooter = ({user}: any) => {
     <CiSettings
      onClick={() => setOpen(true)}
      className="group flex gap-x-3 text-sm leading-6 font-semibold w-full justify-center text-gray-500 hover:text-black pr-4 pl-3"
-
      size={31} />
 
     </div>
