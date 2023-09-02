@@ -10,7 +10,6 @@ export async function POST(
     try{
         const currentUser = await getCurrentUser()
         const body = await request.json()
-        console.log("HELLOOOOOO");
         
         const { message, image, conversationId} = body
         if(!currentUser?.id || !currentUser?.email){
@@ -36,7 +35,6 @@ export async function POST(
             }
         })
                 const bufferSize1 = Buffer.from(JSON.stringify(newMessage)).length;
-        console.log("  HELLOOOOOOOOOOOOOOOOOOOOOOOOO ", bufferSize1);
         const updatedConversation = await prisma.conversation.update({
             where: {
                 id: conversationId

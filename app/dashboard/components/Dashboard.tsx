@@ -96,7 +96,6 @@ const Dashboard = ({ workouts }: any) => {
   const getExercisesByMonth = (month: string) => {
     let totalExercises = 0
     workouts.forEach((workout: any) => {      
-      console.log(workout.date.toString());
         
       if(workout.date.toString().split(" ")[1].includes(month) && workout.date.toString().includes(new Date().getFullYear()))
       totalExercises += 1
