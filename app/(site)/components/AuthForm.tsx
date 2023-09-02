@@ -78,7 +78,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
           toast.error(
             "Login failed, please make sure you are using the right email and password."
           );
-          router.push("/workouts");
+          router.push("/conversations");
 
       },
     }
