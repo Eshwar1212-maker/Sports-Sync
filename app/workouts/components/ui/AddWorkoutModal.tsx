@@ -109,8 +109,9 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       return axios.post("/api/workouts", data);
     },
     {
-      onSuccess: () => {
+      onSuccess: (exerciseData) => {
         findWorkoutRecord();
+        handleCallbackExercises(exerciseData.data)
       },
       onError: (error) => {
         console.log(error);
@@ -125,7 +126,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       sets: number;
       reps: number;
       workoutId: string;
-      isPersonalRecord?: boolean;
+      isPersonalRecord: boolean;
     }) => {
       return axios.patch("/api/workouts/update", data);
     },
@@ -133,12 +134,13 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       onSuccess: (response) => {
         onClose();
         updateWorkoutInState(response.data);
+        handleCallbackExercises(response.data)
         toast.success("Workout updated");
-        findWorkoutRecord();
-        handleCallbackExercises({});
+
       },
       onError: (error) => {
         console.log("UPDATE EVENT ERROR: ", error);
+        toast.error("Issue updating, reload the page if issue persists")
       },
     }
   );
@@ -146,7 +148,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   //DELETE WORKOUT
   const { mutate: deleteWorkout, isLoading: isDeleteLoading } = useMutation(
     (data: {
-      weight?: number;
+      weight: number;
       sets?: number;
       reps?: number;
       workoutId: string;
@@ -165,6 +167,8 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       },
       onError: (error) => {
         console.log("UPDATE EVENT ERROR: ", error);
+        toast.error("Issue deleting, reload the page if issue persists")
+
       },
     }
   );
@@ -173,6 +177,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     const updatedExerciseData = {
       workoutId: workoutId,
       date: new Date("1900-02-21"),
+      weight: 0
     };
     deleteWorkout(updatedExerciseData);
   };
@@ -196,7 +201,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     if (selectedExercise) {
       findWorkoutRecord();
       updateWorkout(updatedExerciseData);
-      handleCallbackExercises(exerciseData);
     } else {
       addWorkout(exerciseData);
       onClose();
@@ -205,7 +209,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       setWeight(0);
       setReps(null);
       setSets(null);
-      handleCallbackExercises(exerciseData);
     }
   };
 
@@ -250,18 +253,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           <h3 className="text-2xl mb-3 font-semibold">
             {!selectedExercise ? title : editedName}
           </h3>
-          {(personalRecord === true) ? (
-            <div className="flex flex-row gap-3 mb-3">
-              <AiOutlineTrophy color="lightblue" size={46} />
-              <span className="m-auto text-[14px] font-light">
-                Person Record!
-              </span>
-            </div>
-          )
-            : null
-
-          }
-            
           
           <label>Weight:</label>
           <input

@@ -4,7 +4,6 @@ import { FC, useEffect, useState } from "react";
 import WorkoutModal from "./ui/AddWorkoutModal";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
-import {GrAdd, GrFormAdd} from "react-icons/gr"
 import {
   Popover,
   PopoverContent,
@@ -17,11 +16,10 @@ import { WorkoutDrawer } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
 import { BsFillTrophyFill } from "react-icons/bs";
-import { IoIosAddCircleOutline } from "react-icons/io";
 import { IoAddOutline } from "react-icons/io5";
 
 type exercise = {
-  title: string;
+  title?: string;
   reps?: number | null;
   sets?: number | null;
   exercise?: string;
@@ -56,16 +54,13 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const { theme } = useTheme();
   
 
-  const handleCallbackExercises = ({ title, weight, reps, sets, isPersonalRecord, id }: exercise) => {
-    setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets, isPersonalRecord, id }]);
+  const handleCallbackExercises = ({ title, weight, reps, sets, isPersonalRecord}: exercise) => {
+    setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets, isPersonalRecord}]);
     setWorkout(
       workout +
         `\n\n - ${title}    \n         ${weight} lbs | ${sets} sets | ${reps} reps`
     );
   };
-
-  
-
 
   const handleEdit = (exerciseData: any) => {
     setSelectedExercise(true);
@@ -103,7 +98,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
 
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
-      {/* {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />} */}
 
       <div className="">
         <AddWorkoutToCalenderModal
