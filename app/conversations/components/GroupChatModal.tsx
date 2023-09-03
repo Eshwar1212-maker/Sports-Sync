@@ -95,12 +95,11 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
           <div className="border-b border-gray-900/10 pb-10">
             <h2
               className={clsx(
-                `text-base font-semibold leading-7`, currentTheme === "dark" ? "text-white" : "text-gray-900"
+                `text-base font-semibold leading-7`
               )}
             >
               Create a group chat
             </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600"></p>
             <div className="mt-10 flex flex-col gap-y-8"></div>
             <Input
               register={register}

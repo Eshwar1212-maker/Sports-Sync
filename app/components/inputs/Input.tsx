@@ -22,7 +22,7 @@ const Input: FC<InputProps> = ({
   const currentTheme = theme === "system" ? systemTheme : theme;
   return (
     <div className=''>
-      <label htmlFor={id} className='block text-sm font-md leading-6 text-black'>{label}</label>
+      <label htmlFor={id} className='block text-sm font-md leading-6'>{label}</label>
       <div className='mt-2'>
             <input
             placeholder={placeholder}
