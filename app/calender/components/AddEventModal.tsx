@@ -40,9 +40,7 @@ function AddEventModal({
 }: EventsModaProps) {
   const [eventTitle, setEventTitle] = useState("");
   const [eventNotes, setEventNotes] = useState("");
-  const [updateTitle, setUpdateTitle] = useState(
-    selectedEvent && selectedEvent.title
-  );
+  const [updateTitle, setUpdateTitle] = useState(selectedEvent && selectedEvent.title);
   const [specificEventNotes, setSpecificEventNotes] = useState<any>([]);
   const [preFilledTitle, setPreFilledTitle] = useState("");
   const [addPrefilledValue, setAddPrefilledValue] = useState(true);
@@ -214,8 +212,8 @@ function AddEventModal({
         <div className="py-6  pl-10 sm:pl-0">
           <textarea
             className={clsx(
-              "bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px] text-md",
-              (eventTitle.length > 20 && specificEventNotes) && "text-gray-400"
+              "bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px]",
+              (eventTitle.length > 20 && specificEventNotes) && "text-gray-400 text-xl"
             )}
             placeholder="Add notes over here..."
             style={
@@ -241,7 +239,7 @@ function AddEventModal({
                   Work with previous {preFilledTitle}?{" "}
                 </p>
               </div>
-              <div className={clsx("flex gap-2 p-2", theme === "light" && "bg-gray-200")}>
+              <div className={clsx("flex gap-2 p-2", theme === "light" && "")}>
                 <button
                   type="button"
                   aria-label="Checkmark for notes"

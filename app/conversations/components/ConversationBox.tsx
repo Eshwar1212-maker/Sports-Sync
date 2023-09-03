@@ -107,8 +107,6 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
               truncate 
               text-sm
               `,
-              hasSeen ? 'text-gray-500' : 'text-black font-medium',
-              theme == "dark" ? "text-slate-200" : ""
             )}>
               {lastMessageText}
             </p>
