@@ -47,6 +47,7 @@ function Calendar({userEvents}: {userEvents: any}) {
   return (
     <div className="">
       <AddEventModal
+       events={events}
        date={date}
        isOpen={isOpen}
        onClose={() => setIsOpen(false)}

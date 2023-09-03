@@ -7,6 +7,16 @@ import { toast } from "react-hot-toast";
 import { BiSolidTrash } from "react-icons/bi";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
+import clsx from "clsx";
+import { Indie_Flower, Tulpen_One } from "next/font/google";
+import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
+
+const bon = Indie_Flower({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+  weight: "400",
+});
 
 interface EventsModaProps {
   isOpen?: boolean;
@@ -15,6 +25,7 @@ interface EventsModaProps {
   onSave: any;
   selectedEvent: any;
   selectedDate: string;
+  events: any;
 }
 
 function AddEventModal({
@@ -24,12 +35,31 @@ function AddEventModal({
   onSave,
   selectedEvent,
   selectedDate,
+  events,
 }: EventsModaProps) {
   const [eventTitle, setEventTitle] = useState("");
   const [eventNotes, setEventNotes] = useState("");
   const [updateTitle, setUpdateTitle] = useState(
     selectedEvent && selectedEvent.title
   );
+  const [specificEventNotes, setSpecificEventNotes] = useState<any>([]);
+  const [preFilledTitle, setPreFilledTitle] = useState("");
+  const [addPrefilledValue, setAddPrefilledValue] = useState(true);
+  const [preFilledText, setPreFilledText] = useState("");
+
+  useEffect(() => {
+    if (eventTitle.length > 2) {
+      const newEvents = events.filter((event: any) => {
+        if (event.date.toString().includes("2023") && event.notes.length > 10) {
+          return event.title.includes(eventTitle);
+        }
+      });
+      setPreFilledTitle(newEvents[0]?.title);
+      setSpecificEventNotes(newEvents);
+    }
+  }, [eventTitle]);
+
+  console.log(specificEventNotes);
 
   const [updateNotes, setUpdateNotes] = useState(
     selectedEvent?._def?.extendedProps?.notes || ""
@@ -63,7 +93,12 @@ function AddEventModal({
 
   //UPDATE CALENDER EVENT MUTATION
   const { mutate: updateEvent } = useMutation(
-    (data: { title: string; notes: string; eventId: string, date?: string }) => {
+    (data: {
+      title: string;
+      notes: string;
+      eventId: string;
+      date?: string;
+    }) => {
       console.log(data);
 
       return axios.patch("/api/events/update", data);
@@ -80,7 +115,12 @@ function AddEventModal({
     }
   );
   const { mutate: deleteEv } = useMutation(
-    (data: { title: string; notes: string; eventId: string, date?: string }) => {
+    (data: {
+      title: string;
+      notes: string;
+      eventId: string;
+      date?: string;
+    }) => {
       return axios.patch("/api/events/update", data);
     },
     {
@@ -98,11 +138,11 @@ function AddEventModal({
   const handleDelete = () => {
     try {
       deleteEv({
-        notes: updateNotes,
-        title: updateTitle,
+        notes: "",
+        title: "",
         eventId: selectedEvent?._def?.publicId,
         date: "1000-09-20",
-      })
+      });
     } catch (error) {
       console.error("Error deleting event:", error);
       toast.error("Error deleting the event");
@@ -130,7 +170,6 @@ function AddEventModal({
     setEventTitle("");
     setEventNotes("");
   };
-
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -167,15 +206,57 @@ function AddEventModal({
         <div className="border-[1px] border-solid border-gray-900 w-full pl-4 sm:pl-0" />
         <div className="py-6  pl-10 sm:pl-0">
           <textarea
-            className="bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px] text-md"
+            className={clsx(
+              "bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px] text-md",
+              eventTitle.length > 20 && specificEventNotes && "text-gray-400"
+            )}
             placeholder="Add notes over here..."
-            value={selectedEvent ? updateNotes : eventNotes}
+            style={
+              eventTitle.length > 4 && specificEventNotes && addPrefilledValue
+                ? bon.style
+                : {}
+            }
+            value={selectedEvent ? updateNotes : eventNotes + (addPrefilledValue && eventTitle.length > 4 ? specificEventNotes[specificEventNotes.length -1]?.notes! : "")}
+
             onChange={(e) =>
               selectedEvent
                 ? setUpdateNotes(e.target.value)
                 : setEventNotes(e.target.value)
             }
           />
+          {eventTitle.length > 4 && specificEventNotes && addPrefilledValue && (
+            <div
+              style={bon.style}
+              className="flex flex-row gap-1 bg-gray-100 w-fit rounded-lg my-auto pl-2"
+            >
+              <div className="">
+                <p className="text-[18px] text-gray-600 my-3">
+                  Work with previous {preFilledTitle}?{" "}
+                </p>
+              </div>
+              <div className="flex gap-2 bg-gray-200 p-2">
+                <button
+                  type="button"
+                  aria-label="Checkmark for notes"
+                  onClick={() => {
+                    setEventNotes(
+                      (prevNotes) => prevNotes + specificEventNotes[0]?.notes!
+                    );
+                    setAddPrefilledValue(false);
+                  }}
+                >
+                  <AiOutlineCheck size={24} />
+                </button>
+                <button
+                  onClick={() => setAddPrefilledValue(false)}
+                  aria-label="Dismiss prev notes"
+                  type="button"
+                >
+                  <AiOutlineClose size={24} />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
         {selectedEvent && (
           <button
@@ -184,10 +265,12 @@ function AddEventModal({
             className="bottom-6 sm:bottom-4 fixed sm:py-2 pl-4 sm:pl-0"
           >
             <BiSolidTrash
-              onClick={() => toaster({
-                title: "event removed",
-                description: ""
-              })}
+              onClick={() =>
+                toaster({
+                  title: "event removed",
+                  description: "",
+                })
+              }
               size={24}
             />
           </button>
