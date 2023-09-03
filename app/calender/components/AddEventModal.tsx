@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import clsx from "clsx";
 import { Indie_Flower, Tulpen_One } from "next/font/google";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
+import { useTheme } from "next-themes";
 
 const bon = Indie_Flower({
   subsets: ["latin"],
@@ -49,15 +50,19 @@ function AddEventModal({
 
   useEffect(() => {
     if (eventTitle.length > 2) {
-      const newEvents = events.filter((event: any) => {
-        if (event.date.toString().includes("2023") && event.notes.length > 10) {
-          return event.title.includes(eventTitle);
-        }
-      });
+      const newEvents = events
+        .filter((event: any) => {
+          if (event.date.toString().includes("2023") && event.notes.length > 10) {
+            return event.title.includes(eventTitle);
+          }
+        })
+        .sort((a: any, b: any) => b.notes.length - a.notes.length); 
+  
       setPreFilledTitle(newEvents[0]?.title);
       setSpecificEventNotes(newEvents);
     }
   }, [eventTitle]);
+  
 
   console.log(specificEventNotes);
 
@@ -65,6 +70,8 @@ function AddEventModal({
     selectedEvent?._def?.extendedProps?.notes || ""
   );
   const { toast: toaster } = useToast();
+
+  const {theme} = useTheme()
 
   useEffect(() => {
     setUpdateTitle(selectedEvent ? selectedEvent.title : "");
@@ -208,7 +215,7 @@ function AddEventModal({
           <textarea
             className={clsx(
               "bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px] text-md",
-              eventTitle.length > 20 && specificEventNotes && "text-gray-400"
+              (eventTitle.length > 20 && specificEventNotes) && "text-gray-400"
             )}
             placeholder="Add notes over here..."
             style={
@@ -216,7 +223,7 @@ function AddEventModal({
                 ? bon.style
                 : {}
             }
-            value={selectedEvent ? updateNotes : eventNotes + (addPrefilledValue && eventTitle.length > 4 ? specificEventNotes[specificEventNotes.length -1]?.notes! : "")}
+            value={selectedEvent ? updateNotes : eventNotes + (addPrefilledValue && eventTitle.length > 4 ? specificEventNotes[0]?.notes! : "")}
 
             onChange={(e) =>
               selectedEvent
@@ -227,14 +234,14 @@ function AddEventModal({
           {eventTitle.length > 4 && specificEventNotes && addPrefilledValue && (
             <div
               style={bon.style}
-              className="flex flex-row gap-1 bg-gray-100 w-fit rounded-lg my-auto pl-2"
+              className={clsx("flex flex-row gap-1 w-fit rounded-lg my-auto pl-2", theme === "light" && "bg-gray-100")}
             >
               <div className="">
-                <p className="text-[18px] text-gray-600 my-3">
+                <p className={clsx("text-[18px] my-3", theme === "light" && "text-gray-600")}>
                   Work with previous {preFilledTitle}?{" "}
                 </p>
               </div>
-              <div className="flex gap-2 bg-gray-200 p-2">
+              <div className={clsx("flex gap-2 p-2", theme === "light" && "bg-gray-200")}>
                 <button
                   type="button"
                   aria-label="Checkmark for notes"
