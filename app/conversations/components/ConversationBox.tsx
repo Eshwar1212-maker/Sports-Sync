@@ -81,7 +81,8 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         transition
         cursor-pointer
         `,
-        theme == "dark" ? "hover:bg-neutral-700" : "hover:bg-neutral-100"
+        theme === "light" && "hover:bg-neutral-100",
+        theme === "dark" && "hover:bg-neutral-700" 
       )}
     >
       {data.isGroup ? (

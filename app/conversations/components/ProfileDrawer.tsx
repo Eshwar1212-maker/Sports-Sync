@@ -78,7 +78,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                           <div className="ml-3 flex h-7 items-center">
                             <button
                               type="button"
-                              className={clsx("rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2", theme === "light" ? "text-gray-400 bg-white hover:text-gray-500" : "text-gray-400")}
+                              className={clsx("rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2")}
                               onClick={onClose}
                             >
                               <span className="sr-only">Close panel</span>
@@ -109,20 +109,20 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                         <dl className="space-y-8 px-4 sm:space-y-6 sm:px-6">
                           {data.isGroup && (
                             <div>
-                              <dt className={clsx("text-sm font-medium sm:w-40 sm:flex-shrink-0", theme === "light" && "text-gray-500")}>
+                              <dt className={clsx("text-sm font-medium sm:w-40 sm:flex-shrink-0")}>
                                 Emails
                               </dt>
-                              <dd className={clsx("mt-1 text-sm text-gray-900 sm:col-span-2", theme === "light" && "text-gray-900")}>
+                              <dd className={clsx("mt-1 text-sm sm:col-span-2")}>
                                 {data.users.map((user) => user.email).join(', ')}
                               </dd>
                             </div>
                           )}
                           {!data.isGroup && (
                             <div>
-                              <dt className={clsx("text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0", theme === "light" && "text-gray-500")}>
+                              <dt className={clsx("text-sm font-medium sm:w-40 sm:flex-shrink-0")}>
                                 Email
                               </dt>
-                              <dd className={clsx("mt-1 text-sm sm:col-span-2", theme === "light" && "text-gray-900")}>
+                              <dd className={clsx("mt-1 text-sm sm:col-span-2")}>
                                 {otherUser.email}
                               </dd>
                             </div>
