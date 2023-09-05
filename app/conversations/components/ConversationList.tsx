@@ -18,11 +18,13 @@ interface ConversationListProps {
   initialItems: FullConversationType[];
   users: User[];
   title?: string;
+  currentUser: any
 }
 
 const ConversationList: React.FC<ConversationListProps> = ({ 
   initialItems, 
-  users
+  users,
+  currentUser
 }) => {
   const [items, setItems] = useState(initialItems);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -87,6 +89,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
         users={users} 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)}
+        currentUser={currentUser}
       />
       <aside className={clsx(`
         fixed 

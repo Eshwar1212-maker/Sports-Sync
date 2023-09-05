@@ -25,20 +25,24 @@ export async function DELETE(
       }
     })
     if(!existingConversation) return new NextResponse("Invalid Id", {status: 400})
-    const deletedConversation = await prisma.conversation.deleteMany({
-      where: {
-        id: conversationId,
-        userIds: {
-          hasSome: [currentUser.id]
-        } 
-      }
-    })
-    existingConversation.users.forEach((user) => {
-      if(user.email){
-        pusherServer.trigger(user.email, 'conversation:remove', existingConversation)
-      }
-    })
-    return NextResponse.json(deletedConversation)
+    if(existingConversation.admin?.includes(currentUser?.email!)){
+      const deletedConversation = await prisma.conversation.deleteMany({
+        where: {
+          id: conversationId,
+          userIds: {
+            hasSome: [currentUser.id]
+          } 
+        }
+      })
+      
+      existingConversation.users.forEach((user) => {
+        if(user.email){
+          pusherServer.trigger(user.email, 'conversation:remove', existingConversation)
+        }
+      })
+      return NextResponse.json(deletedConversation)
+    }
+
   } catch (error) {
     return new NextResponse('Error', { status: 500 });
   }
