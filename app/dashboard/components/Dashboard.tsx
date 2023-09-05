@@ -170,7 +170,7 @@ months.forEach((month) => {
 
   return (
     <div className="px-6 mt-8 pb-20 mb-20 sm:pb-0 sm:mb-0">
-     <div className="">
+     <div className="hidden sm:block">
      <DashBoardSelect />
 
      </div>
