@@ -18,12 +18,14 @@ interface GroupChatModalProps {
   isOpen: boolean;
   onClose: () => void;
   users: User[];
+  currentUser: any
 }
 
 const GroupChatModal: FC<GroupChatModalProps> = ({
   isOpen,
   onClose,
   users,
+  currentUser
 }) => {
   const router = useRouter();
   const {
@@ -40,7 +42,8 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
   });
 
   const members = watch("members");
-
+  console.log(currentUser?.name);
+  
   const {
     mutate: createGroupChatMutation,
     isLoading,
@@ -49,6 +52,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
       return axios.post(`/api/conversations`, {
         ...data,
         isGroup: true,
+        admin: `${currentUser.email + " " + currentUser.name}`
       });
     },
     {

@@ -13,7 +13,8 @@ export async function POST(
       userId,
       isGroup,
       members,
-      name
+      name,
+      admin
     } = body;
 
     if (!currentUser?.id || !currentUser?.email) {
@@ -28,6 +29,7 @@ export async function POST(
       const newConversation = await prisma.conversation.create({
         data: {
           name,
+          admin,
           isGroup,
           users: {
             connect: [

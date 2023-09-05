@@ -1,4 +1,5 @@
 import getConversations from "../actions/getConversations"
+import getCurrentUser from "../actions/getCurrentUser"
 import getUsers from "../actions/getUsers"
 import Sidebar from "../components/sidebar/Sidebar"
 import ConversationList from "./components/ConversationList"
@@ -11,9 +12,7 @@ export default async function ConversationsLayout({
 
     const conversations = await getConversations()
     const users = await getUsers()    
-    
-    console.log(conversations);
-    
+    const currentUser = await getCurrentUser()
     return (
         <Sidebar>
             <div className="h-full">
@@ -21,6 +20,7 @@ export default async function ConversationsLayout({
                 users={users}
                 title="Messages"
                 initialItems = {conversations}
+                currentUser = {currentUser}
                 />
                 {children}
             </div>

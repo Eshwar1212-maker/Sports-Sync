@@ -2,7 +2,7 @@
 
 import { Fragment, useMemo, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { IoClose, IoTrash } from 'react-icons/io5'
+import { IoClose, IoExitOutline, IoTrash } from 'react-icons/io5'
 import { Conversation, User } from '@prisma/client';
 import { format } from 'date-fns';
 
@@ -20,17 +20,19 @@ interface ProfileDrawerProps {
   data: Conversation & {
     users: User[]
   }
+  currentUser?: any
 }
 
 const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   isOpen,
   onClose,
   data,
+  currentUser
 }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const otherUser = useOtherUser(data);
   
-
+ 
   
   const title = useMemo(() => {
     return data.name || otherUser.name;
@@ -75,7 +77,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                     <div className={clsx("flex h-full flex-col overflow-y-scrollpy-6 shadow-xl", theme === "light" ? "bg-white" : "bg-[#1c1c1c]")}>
                       <div className="px-4 sm:px-6">
                         <div className="flex items-start justify-end">
-                          <div className="ml-3 flex h-7 items-center">
+                          <div className="ml-3 flex h-7 items-center py-8">
                             <button
                               type="button"
                               className={clsx("rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2")}
@@ -95,7 +97,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                           <div className={theme === "light" ? 'text-black' : ""}>
                             {title}
                           </div>
-                          <div className="flex gap-10 my-8">
+                      {  (data?.admin?.includes(currentUser.email)) &&   <div className="flex gap-10 my-8">
                             <div onClick={() => setConfirmOpen(true)} className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75">
                               <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
                                 <IoTrash color='black' size={20} />
@@ -104,16 +106,36 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                 Delete
                               </div>
                             </div>
-                          </div>
-                        <div className="w-full pb-5 pt-5 sm:px-0 sm:pt-0">
+                          </div>}
+                      {  (!data?.admin?.includes(currentUser.email)) &&   <div className="flex gap-10 my-8">
+                            <div onClick={() => setConfirmOpen(true)} className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75">
+                              <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
+                                <IoExitOutline color='black' size={20} />
+                              </div>
+                              <div className={clsx("text-sm font-light", theme === "light" && "text-neutral-600")}>
+                                Leave
+                              </div>
+                            </div>
+                          </div>}
+                        <div className={clsx("w-full pb-5 pt-5 sm:px-0 sm:pt-0 flex justify-center", !data?.admin?.includes(currentUser.email) && " ")}>
+                        
                         <dl className="space-y-8 px-4 sm:space-y-6 sm:px-6">
                           {data.isGroup && (
-                            <div>
-                              <dt className={clsx("text-sm font-medium sm:w-40 sm:flex-shrink-0")}>
-                                Emails
+                            <div className=''>
+                              <dt className={clsx("text-md sm:w-40 sm:flex-shrink-0 font-semibold my-1")}>
+                               Mod
                               </dt>
-                              <dd className={clsx("mt-1 text-sm sm:col-span-2")}>
-                                {data.users.map((user) => user.email).join(', ')}
+                              <dd className={clsx("mt-1 text-sm sm:col-span-2 ")}>
+                              {data?.admin?.split(" ")[1] + " " + data?.admin?.split(" ")[2]}
+                              </dd>
+
+                              <dt className={clsx("text-md sm:w-40 sm:flex-shrink-0 font-semibold my-1")}>
+                                Member Emails
+                              </dt>
+                              <dd className={clsx("mt-1 text-sm sm:col-span-2 whitespace-pre-wrap max-w-[50px]")}>
+                                {data.users.map((user) =>
+                                 user.email).join(`, `)
+                                 }
                               </dd>
                             </div>
                           )}
