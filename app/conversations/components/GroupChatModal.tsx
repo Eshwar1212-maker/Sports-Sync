@@ -42,7 +42,6 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
   });
 
   const members = watch("members");
-  console.log(currentUser?.name);
   
   const {
     mutate: createGroupChatMutation,

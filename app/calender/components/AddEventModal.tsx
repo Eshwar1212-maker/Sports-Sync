@@ -42,9 +42,11 @@ function AddEventModal({
   const [eventNotes, setEventNotes] = useState("");
   const [updateTitle, setUpdateTitle] = useState(selectedEvent && selectedEvent.title);
   const [specificEventNotes, setSpecificEventNotes] = useState<any>([]);
-  const [preFilledTitle, setPreFilledTitle] = useState("");
+  const [preFilledTitle, setPreFilledTitle] = useState();
   const [addPrefilledValue, setAddPrefilledValue] = useState(true);
-  const [preFilledText, setPreFilledText] = useState("");
+
+  console.log(preFilledTitle, "  ", addPrefilledValue, " ", specificEventNotes);
+  
 
   useEffect(() => {
     if (eventTitle.length > 2) {
@@ -62,7 +64,7 @@ function AddEventModal({
   }, [eventTitle]);
   
 
-  console.log(specificEventNotes);
+  console.log(specificEventNotes.length);
 
   const [updateNotes, setUpdateNotes] = useState(
     selectedEvent?._def?.extendedProps?.notes || ""
@@ -217,11 +219,11 @@ function AddEventModal({
             )}
             placeholder="Add notes over here..."
             style={
-              eventTitle.length > 4 && specificEventNotes && addPrefilledValue
+              eventTitle.length > 4 && specificEventNotes.length > 0 && addPrefilledValue
                 ? bon.style
                 : {}
             }
-            value={selectedEvent ? updateNotes : eventNotes + (addPrefilledValue && eventTitle.length > 4 ? specificEventNotes[0]?.notes! : "")}
+            value={selectedEvent ? updateNotes : eventNotes + (addPrefilledValue && eventTitle.length > 4 && specificEventNotes.length > 0 ? specificEventNotes[0]?.notes! : "")}
 
             onChange={(e) =>
               selectedEvent
@@ -229,7 +231,7 @@ function AddEventModal({
                 : setEventNotes(e.target.value)
             }
           />
-          {eventTitle.length > 4 && specificEventNotes && addPrefilledValue && (
+          {eventTitle.length > 4 && specificEventNotes.length > 0 && addPrefilledValue && (
             <div
               style={bon.style}
               className={clsx("flex flex-row gap-1 w-fit rounded-lg my-auto pl-2", theme === "light" && "bg-gray-100")}
