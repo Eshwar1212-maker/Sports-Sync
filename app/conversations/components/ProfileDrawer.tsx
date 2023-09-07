@@ -4,7 +4,6 @@ import { Fragment, useMemo, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { IoClose, IoExitOutline, IoTrash } from 'react-icons/io5'
 import { Conversation, User } from '@prisma/client';
-import { format } from 'date-fns';
 
 import useOtherUser from '@/app/hooks/useOtherUser';
 
@@ -100,7 +99,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                           <div className={theme === "light" ? 'text-black' : ""}>
                             {title}
                           </div>
-                      {  (data?.admin?.includes(currentUser.email)) &&   <div className="flex gap-10 my-8">
+                      {  (data?.admin?.includes(currentUser.email) && data?.isGroup) &&   <div className="flex gap-10 my-8">
                             <div onClick={() => setConfirmOpen(true)} className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75">
                               <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
                                 <IoTrash color='black' size={20} />
@@ -110,7 +109,17 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                               </div>
                             </div>
                           </div>}
-                      {  (!data?.admin?.includes(currentUser.email)) &&   <div className="flex gap-10 my-8">
+                      {  data.isGroup !== true &&   <div className="flex gap-10 my-8">
+                            <div onClick={() => setConfirmOpen(true)} className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75">
+                              <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
+                                <IoTrash color='black' size={20} />
+                              </div>
+                              <div className={clsx("text-sm font-light", theme === "light" && "text-neutral-600")}>
+                                Delete
+                              </div>
+                            </div>
+                          </div>}
+                      {  (!data?.admin?.includes(currentUser.email) && data?.userIds?.length > 2) &&   <div className="flex gap-10 my-8">
                             <div onClick={() => setConfirmOpen(true)} className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75">
                               <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
                                 <IoExitOutline color='black' size={20} />
