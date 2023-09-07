@@ -80,7 +80,6 @@ const ConversationList: React.FC<ConversationListProps> = ({
   }, [pusherKey, router]);
 
 
-  console.log(items);
   
 
   return (
