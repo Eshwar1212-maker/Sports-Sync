@@ -84,8 +84,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
     });
   };
 
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
+
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     createGroupChatMutation(data);

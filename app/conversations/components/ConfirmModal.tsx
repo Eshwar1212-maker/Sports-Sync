@@ -9,10 +9,10 @@ import { useRouter } from 'next/navigation';
 import useConversation from '@/app/hooks/useConversation';
 import { toast } from 'react-hot-toast';
 import Modal from '@/app/components/Modal';
-import Button from '@/app/components/Button';
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import { IoClose } from 'react-icons/io5';
+import { Button } from '@/components/ui/button';
 
 interface ConfirmModalProps {
   isOpen?: boolean;
@@ -33,12 +33,17 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
     setIsLoading(true);
     axios.delete(`/api/conversations/${conversationId}`)
     .then(() => {
-      onClose();
       router.push('/conversations');
       router.refresh();
+      onClose();
+
     })
-    .catch(() => toast.error('Something went wrong!'))
-    .finally(() => setIsLoading(false))
+    .catch(() => location.reload()
+    )
+    .finally(() => {
+      toast.success("Conversation deleted")
+      setIsLoading(false)}
+      )
   }, [router, conversationId, onClose]);
 
   const { systemTheme, theme } = useTheme();
@@ -90,18 +95,18 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
           </div>
         </div>
       </div>
-      <div className="mt-5 sm:mt-4 flex justify-end">
+      <div className="mt-5 sm:mt-4 flex justify-end gap-2">
         <Button
           disabled={isLoading}
-          danger
           onClick={onDelete}
+          variant={"destructive"}
         >
           Delete
         </Button>
         <Button
           disabled={isLoading}
-          secondary
           onClick={onClose}
+          variant={"ghost"}
         >
           Cancel
         </Button>
