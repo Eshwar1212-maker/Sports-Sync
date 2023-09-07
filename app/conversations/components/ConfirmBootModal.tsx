@@ -63,7 +63,7 @@ const ConfirmBootModal: React.FC<ConfirmModalProps> = ({
             as="h3" 
             className="text-base font-semibold leading-6 text-gray-900"
           >
-            Kick {bootedMember && bootedMember[0]} from {conversationName}?
+            Boot {bootedMember && bootedMember[0]} from {conversationName}?
           </Dialog.Title>
           <div className="mt-2">
           </div>
@@ -75,12 +75,12 @@ const ConfirmBootModal: React.FC<ConfirmModalProps> = ({
           onClick={onDelete}
           variant={"destructive"}
         >
-          Kick
+          Boot
         </Button>
         <Button
           disabled={isLoading}
           onClick={onClose}
-          variant={"link"}
+          variant={"ghost"}
         >
           Cancel
         </Button>
