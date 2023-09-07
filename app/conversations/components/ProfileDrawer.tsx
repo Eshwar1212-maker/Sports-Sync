@@ -196,7 +196,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                           >
                             <dl className="space-y-8 px-4 sm:space-y-6 sm:px-6">
                               {data.isGroup && (
-                                <div className="">
+                                <div className="overflow-y-scroll max-h-[600px]">
                                   <dt
                                     className={clsx(
                                       "text-md sm:w-40 sm:flex-shrink-0 font-semibold my-1"
@@ -219,11 +219,11 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                       "text-md sm:w-40 sm:flex-shrink-0 font-semibold my-1"
                                     )}
                                   >
-                                    Members
+                                   {data.users.length} Members
                                   </dt>
                                   <dd
                                     className={clsx(
-                                      "mt-1 text-sm sm:col-span-2 whitespace-pre-wrap md:w-[269px] max-w-[600px]"
+                                      "mt-1 text-sm sm:col-span-2 whitespace-pre-wrap md:w-[269px] max-w-[600px] border-b-2 mx-9"
                                     )}
                                   >
                                     {data.users.map((user: any) => {
@@ -235,9 +235,8 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                               {user.name}
                                             </p>
                                           </div>
-                                          {data?.admin?.includes(
-                                            currentUser.email
-                                          ) && (
+                                          {(data?.admin?.includes(currentUser.email) && !currentUser.email.includes(user.email))
+                                           && (
                                             <Button
                                               onClick={() => {
                                                 setBootedMember([user.name, user.email, user.id] as string[])
