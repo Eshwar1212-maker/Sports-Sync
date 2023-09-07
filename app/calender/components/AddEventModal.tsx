@@ -45,7 +45,6 @@ function AddEventModal({
   const [preFilledTitle, setPreFilledTitle] = useState();
   const [addPrefilledValue, setAddPrefilledValue] = useState(true);
 
-  console.log(preFilledTitle, "  ", addPrefilledValue, " ", specificEventNotes);
   
 
   useEffect(() => {
