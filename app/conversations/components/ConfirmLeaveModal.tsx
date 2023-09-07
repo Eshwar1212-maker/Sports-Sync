@@ -20,10 +20,10 @@ interface ConfirmModalProps {
   conversationName: string | null
 }
 
-const ConfirmModal: React.FC<ConfirmModalProps> = ({ 
+const ConfirmLeaveModal: React.FC<ConfirmModalProps> = ({ 
   isOpen, 
   onClose,
-  conversationName 
+  conversationName
 }) => {
   const router = useRouter();
   const { conversationId } = useConversation();
@@ -31,11 +31,12 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
   
   const onDelete = useCallback(() => {
     setIsLoading(true);
-    axios.delete(`/api/conversations/${conversationId}`)
+    axios.patch(`/api/conversations/${conversationId}/leave`)
     .then(() => {
       onClose();
       router.push('/conversations');
       router.refresh();
+      toast.success(`Succesfully left ${conversationName}`)
     })
     .catch(() => toast.error('Something went wrong!'))
     .finally(() => setIsLoading(false))
@@ -81,11 +82,11 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
             as="h3" 
             className="text-base font-semibold leading-6 text-gray-900"
           >
-            Delete conversation
+            Leave {conversationName}?
           </Dialog.Title>
           <div className="mt-2">
           <p className={clsx(`text-sm`, currentTheme == "dark" ? "text-gray-300" : "text-gray-600")}>
-              Are you sure you want to delete this conversation? This action cannot be undone.
+              Are you sure you want to leave {conversationName}? This action cannot be undone.
             </p>
           </div>
         </div>
@@ -96,7 +97,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
           danger
           onClick={onDelete}
         >
-          Delete
+          Leave
         </Button>
         <Button
           disabled={isLoading}
@@ -110,7 +111,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
   )
 }
 
-export default ConfirmModal;
+export default ConfirmLeaveModal;
 
 interface ModalProps {
   isOpen?: boolean;

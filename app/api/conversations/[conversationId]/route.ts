@@ -41,7 +41,8 @@ export async function DELETE(
         }
       })
       return NextResponse.json(deletedConversation)
-    }else{
+    }
+    else{
       const deletedConversation = await prisma.conversation.deleteMany({
         where: {
           id: conversationId,
