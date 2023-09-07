@@ -30,7 +30,6 @@ const ConfirmBootModal: React.FC<ConfirmModalProps> = ({
   const router = useRouter();
   const { conversationId } = useConversation();
   const [isLoading, setIsLoading] = useState(false);
-  console.log(bootedMember);
   
   const onDelete = useCallback(() => {
     setIsLoading(true);
@@ -45,7 +44,6 @@ const ConfirmBootModal: React.FC<ConfirmModalProps> = ({
     .finally(() => setIsLoading(false))
   }, [router, conversationId, onClose]);
 
-  console.log(bootedMember);
   
   return (
     <Modall isOpen={isOpen} onClose={onClose}>

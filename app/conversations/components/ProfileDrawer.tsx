@@ -43,7 +43,6 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
 
   const { theme } = useTheme();
 
-  //console.log(data);
 
   return (
     <>

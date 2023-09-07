@@ -20,6 +20,8 @@ interface GroupChatModalProps {
   users: User[];
   currentUser: any
 }
+export const revalidate = 0;
+
 
 const GroupChatModal: FC<GroupChatModalProps> = ({
   isOpen,

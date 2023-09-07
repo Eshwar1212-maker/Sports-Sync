@@ -38,9 +38,6 @@ export async function PATCH(
       return new NextResponse('Invalid ID', { status: 400 });
     }
 
-    console.log("CONVERSATION  " , conversation.userIds );
-    console.log("CURRENT USER  " + currentUser.id );
-
 
     const newUsers = conversation.userIds.filter((userId) => {
       return userId !== currentUser.id
