@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
-import { pusherServer } from "@/app/libs/pusher";
 
 interface IParams {
   conversationId?: string;
@@ -14,10 +13,15 @@ export async function PATCH(
 ) {
   try {
     const currentUser = await getCurrentUser();
-    const {conversationId} = params;
+    const body = await request.json();
+    const {conversationId, bootedMember} = body
 
-    if (!currentUser?.id || !currentUser?.email) {
+    if (!currentUser?.id) {
       return new NextResponse('Unauthorized', { status: 401 });
+    }
+
+    if (!bootedMember) {
+      return new NextResponse("bootedMemberId is required", { status: 400 });
     }
 
     const conversation = await prisma.conversation.findUnique({
@@ -25,25 +29,13 @@ export async function PATCH(
         id: conversationId,
       },
       include: {
-        messages: {
-          include: {
-            seen: true
-          },
+        users: true
         },
-        users: true,
-      },
+       
     });
 
-    if (!conversation) {
-      return new NextResponse('Invalid ID', { status: 400 });
-    }
-
-    console.log("CONVERSATION  " , conversation.userIds );
-    console.log("CURRENT USER  " + currentUser.id );
-
-
-    const newUsers = conversation.userIds.filter((userId) => {
-      return userId !== currentUser.id
+    const newUsers = conversation?.userIds.filter((userId) => {
+      return userId !== bootedMember
     })
     
     const newConversation = await prisma.conversation.update({
@@ -57,6 +49,8 @@ export async function PATCH(
 
     return NextResponse.json(newConversation);
   } catch (error) {
+    console.log(error);
+    
     return new NextResponse('Error', { status: 500 });
   }
 }
