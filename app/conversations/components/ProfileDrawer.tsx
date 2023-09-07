@@ -12,6 +12,7 @@ import AvatarGroup from '@/app/components/AvatarGroup';
 import ConfirmModal from './ConfirmModal';
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';
+import ConfirmLeaveModal from './ConfirmLeaveModal';
 
 interface ProfileDrawerProps {
   isOpen: boolean;
@@ -29,13 +30,14 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   currentUser
 }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [confirmLeaveOpen, setConfirmLeaveOpen] = useState(false);
   const otherUser = useOtherUser(data);
   
  
   
   const title = useMemo(() => {
     return data.name || otherUser.name;
-  }, [data.name, otherUser.name]);
+  }, [data.name, otherUser?.name]);
 
 
   const {theme} = useTheme()
@@ -48,6 +50,12 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
       <ConfirmModal 
         isOpen={confirmOpen} 
         onClose={() => setConfirmOpen(false)}
+        conversationName={data.name}
+      />
+      <ConfirmLeaveModal
+        isOpen={confirmLeaveOpen} 
+        onClose={() => setConfirmLeaveOpen(false)}
+        conversationName={data.name}
       />
       <Transition.Root show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -120,7 +128,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                             </div>
                           </div>}
                       {  (!data?.admin?.includes(currentUser.email) && data?.userIds?.length > 2) &&   <div className="flex gap-10 my-8">
-                            <div onClick={() => setConfirmOpen(true)} className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75">
+                            <div onClick={() => setConfirmLeaveOpen(true)} className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75">
                               <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
                                 <IoExitOutline color='black' size={20} />
                               </div>

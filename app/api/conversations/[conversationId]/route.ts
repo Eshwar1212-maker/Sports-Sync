@@ -25,7 +25,7 @@ export async function DELETE(
       }
     })
     if(!existingConversation) return new NextResponse("Invalid Id", {status: 400})
-
+    if(existingConversation.admin?.includes(currentUser?.email!) && existingConversation?.isGroup){
       const deletedConversation = await prisma.conversation.deleteMany({
         where: {
           id: conversationId,
@@ -41,7 +41,20 @@ export async function DELETE(
         }
       })
       return NextResponse.json(deletedConversation)
-    
+    }
+    else{
+      const deletedConversation = await prisma.conversation.deleteMany({
+        where: {
+          id: conversationId,
+          userIds: {
+            hasSome: [currentUser.id]
+          } 
+        }
+      })
+      return NextResponse.json(deletedConversation)
+
+      
+    }
 
   } catch (error) {
     return new NextResponse('Error', { status: 500 });
