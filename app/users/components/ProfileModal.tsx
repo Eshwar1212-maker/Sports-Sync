@@ -9,8 +9,9 @@ interface ProfileModalProps {
   isOpen: boolean;
   onClose: () => void;
   user: User;
+  createConversation?: any
 }
-const ProfileModal: FC<ProfileModalProps> = ({ isOpen, onClose, user }) => {
+const ProfileModal: FC<ProfileModalProps> = ({ isOpen, onClose, user, createConversation }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="p-8 space-y-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
@@ -35,7 +36,10 @@ const ProfileModal: FC<ProfileModalProps> = ({ isOpen, onClose, user }) => {
           </p>
         )}
         <div className="flex justify-center py-1 gap-4">
-          <Button>Message</Button>
+          <Button
+          onClick={() => createConversation()}
+          >Message
+          </Button>
           <Button
             onClick={() => {
               toast.success("Friend request sent!");

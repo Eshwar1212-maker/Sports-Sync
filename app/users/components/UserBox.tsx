@@ -66,6 +66,7 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
             isOpen={isProfileOpen}
             onClose={() => setIsProfileOpen(false)}
             user={clickedUser}
+            createConversation={createConversation}
            />
           <Avatar user={data} />
           <div className="min-w-0 flex-1">
