@@ -44,7 +44,7 @@ useEffect(() => {
       <div className="">
         <input
           onChange={(e) => setSearchInput(e.target.value)}
-          className={clsx("w-[290px] p-2 border-[1px] border-black", theme === "dark" && "border-[1px] border-gray-300 rounded-sm text-white color: #fff;")}
+          className={clsx("w-[290px] p-2 border-[1px] border-black", theme === "dark" && "border-[1px] border-gray-500 rounded-sm text-gray-300 color: #fff;")}
           placeholder="Search Exercises..."
         />
       </div>
@@ -54,7 +54,7 @@ useEffect(() => {
         {searchedExercises.map((exercise, index) => (
           <div key={index} className="flex justify-between py-1 my-auto">
             <li className={clsx("border-b-[1px] cursor-pointer text-lg pb-1 font-light",
-             theme === "dark" && "border-slate-400 w-full hover:bg-gray-900 ", theme === "light" && "border-blue-200 w-full hover:bg-gray-50 ")}
+             theme === "dark" && "border-slate-600 w-full hover:bg-gray-900 text-gray-300", theme === "light" && "border-blue-200 w-full hover:bg-gray-50 ")}
              >
               {exercise}
             </li>

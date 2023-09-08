@@ -79,7 +79,7 @@ const ConfirmLeaveModal: React.FC<ConfirmModalProps> = ({
         >
           <Dialog.Title 
             as="h3" 
-            className="text-base font-semibold leading-6 text-gray-900"
+            className={clsx("text-base font-semibold leading-6", theme === "light" && "text-gray-900", theme === "dark" && "text-gray-100",)}
           >
             Leave {conversationName}?
           </Dialog.Title>
