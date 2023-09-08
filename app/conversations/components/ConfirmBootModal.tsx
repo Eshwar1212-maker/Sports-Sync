@@ -43,11 +43,12 @@ const ConfirmBootModal: React.FC<ConfirmModalProps> = ({
     .catch(() => toast.error('Something went wrong!'))
     .finally(() => setIsLoading(false))
   }, [router, conversationId, onClose]);
-
+  
+  const {theme} = useTheme()
   
   return (
     <Modall isOpen={isOpen} onClose={onClose}>
-      <div className="sm:flex sm:items-start w-[500px]">
+      <div className="sm:flex sm:items-start md:w-[500px]">
         <div 
           className="
             mt-3 
@@ -59,7 +60,7 @@ const ConfirmBootModal: React.FC<ConfirmModalProps> = ({
         >
           <Dialog.Title 
             as="h3" 
-            className="text-base font-semibold leading-6 text-gray-900"
+            className={clsx("text-base font-semibold leading-6", theme === "light" && "text-gray-900", theme === "dark" && "text-gray-100",)}
           >
             Boot {bootedMember && bootedMember[0]} from {conversationName}?
           </Dialog.Title>
