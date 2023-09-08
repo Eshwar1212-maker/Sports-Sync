@@ -18,6 +18,12 @@ import { signOut } from "next-auth/react";
 import { SlLogout } from "react-icons/sl";
 import ThemeButton from "./ThemeButton";
 import { IoClose } from "react-icons/io5";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@radix-ui/react-tooltip";
 
 interface SettingsModal {
   isOpen?: boolean;
@@ -33,7 +39,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
-  const [active, setActive] = useState(false)
+  const [bio, setBio] = useState<any>(currentUser?.bio);
   const {
     register,
     handleSubmit,
@@ -44,6 +50,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
     defaultValues: {
       name: currentUser?.name,
       image: currentUser?.image,
+      bio: currentUser?.bio,
     },
   });
   const image = watch("image");
@@ -58,7 +65,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
     axios
-      .post("/api/settings", { ...data, imageUrl })
+      .post("/api/settings", { ...data, imageUrl, bio })
       .then(() => {
         router.refresh();
         onClose();
@@ -71,14 +78,14 @@ const SettingsModal: React.FC<SettingsModal> = ({
         toast("Profile settings updated");
       });
   };
-  
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <form className="" onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base font-semibold leading-7">Settings</h2>
-            <div className="mt-10 flex flex-col gap-y-8">
+            <div className="mt-10 flex flex-col gap-y-4">
               <Input
                 disabled={isLoading}
                 label="Name"
@@ -87,8 +94,21 @@ const SettingsModal: React.FC<SettingsModal> = ({
                 required
                 register={register}
               />
+              <label className="block text-sm font-md leading-6">Bio</label>
+              <input
+                placeholder={
+                  (!currentUser.bio as any) &&
+                  "Mention what sport you play, or type of athlete, or if your a coach!"
+                }
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                className={
+                  "form-input block w-full ronded-md border-0 py-1.5 shadow-sm ring-1 px-2 bg-white text-black ring-inset ring-gray-300focus:ring-sky-600 sm:text-sm sm:leading-6"
+                }
+              />
+
               <div className="">
-                <h3 className="text-sm">Photo</h3>
+                <label className="block text-sm font-md leading-6">Photo</label>
                 <div className="mt-2 flex items-center">
                   <Image
                     width="160"
@@ -115,7 +135,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
                   <input
                     className={clsx(
                       "text-[12px] p-1 my-2 border-[1px] bg-white",
-                        "bg-slate-400 text-black p-1 border-[1px] border-black w-[160px] px-2"
+                      "bg-slate-400 text-black p-1 border-[1px] border-black w-[160px] px-2"
                     )}
                     placeholder="Or enter image address"
                     onChange={(e) => setImageUrl(e.target.value)}
@@ -123,10 +143,11 @@ const SettingsModal: React.FC<SettingsModal> = ({
                 </div>
                 <div className="mt-2 sm:mt-4">
                   <Button
-                   className="lg:hidden"
-                   type="button" 
-                   variant={"secondary"}
-                   ><ThemeButton isSettings={true} />
+                    className="lg:hidden"
+                    type="button"
+                    variant={"secondary"}
+                  >
+                    <ThemeButton isSettings={true} />
                   </Button>
                 </div>
               </div>
@@ -144,18 +165,31 @@ const SettingsModal: React.FC<SettingsModal> = ({
             relative bottom-0
           "
         >
-          <div>
-            <Button type="button" className="w-fit px-4 pl-2 mb-1" variant={"secondary"}>
-              <SlLogout
-                color={theme === "dark" ? "white" : ""}
-                onClick={() =>
-                  signOut({ callbackUrl: "http://localhost:3000" })
-                }
-                size={24}
-                className="mx-auto"
-              />
-            </Button>
-          </div>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <div>
+                  <Button
+                    type="button"
+                    className="w-fit px-4 pl-2 mb-1"
+                    variant={"secondary"}
+                  >
+                    <SlLogout
+                      color={theme === "dark" ? "white" : ""}
+                      onClick={() =>
+                        signOut({ callbackUrl: "http://localhost:3000" })
+                      }
+                      size={24}
+                      className="mx-auto"
+                    />
+                  </Button>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="text-[13px] pb-3">Sign Out</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <div className="gap-4 flex">
             <Button
               variant={"secondary"}
