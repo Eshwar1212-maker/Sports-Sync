@@ -57,9 +57,7 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
         <div
           className={clsx(
             "w-full relative flex items-center space-x-3 p-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer",
-            currentTheme === "dark"
-              ? "hover:bg-neutral-800"
-              : "hover:bg-neutral-100"
+            currentTheme === "light" &&  "hover:bg-neutral-100", currentTheme === "dark" && "hover:bg-neutral-800"
           )}
         >
           <ProfileModal
