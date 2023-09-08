@@ -28,7 +28,7 @@ import {
 interface SettingsModal {
   isOpen?: boolean;
   onClose: () => void;
-  currentUser: User;
+  currentUser: any;
 }
 
 const SettingsModal: React.FC<SettingsModal> = ({
