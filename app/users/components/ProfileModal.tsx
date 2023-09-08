@@ -28,9 +28,9 @@ const ProfileModal: FC<ProfileModalProps> = ({ isOpen, onClose, user, createConv
           />
         </div>
         <p className="text-center text-sm text-gray-700 dark:text-gray-300 py-2">
-          {user?.bio && user?.bio}
+          {user?.bio! && user?.bio!}
         </p>
-        {!user?.bio && (
+        {!user?.bio! && (
           <p className="text-center text-[13px] text-gray-500 dark:text-gray-300 py-2 font-light">
             User has not filled out their bio
           </p>
