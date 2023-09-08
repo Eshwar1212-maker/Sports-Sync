@@ -97,7 +97,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
               <label className="block text-sm font-md leading-6">Bio</label>
               <input
                 placeholder={
-                  (!currentUser.bio as any) &&
+                  (!currentUser.bio! as any) &&
                   "Mention what sport you play, or type of athlete, or if your a coach!"
                 }
                 value={bio}
