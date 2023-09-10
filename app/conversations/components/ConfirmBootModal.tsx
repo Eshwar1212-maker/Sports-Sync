@@ -36,7 +36,7 @@ const ConfirmBootModal: React.FC<ConfirmModalProps> = ({
     axios.patch(`/api/conversations/${conversationId}/boot`, {conversationId: conversationId, bootedMember: bootedMember[2]!})
     .then(() => {
       onClose();
-      router.push('/conversations');
+      router.push(`/conversations/${conversationId}`);
       router.refresh();
       toast.success(`Succesfully booted ${bootedMember[0]}`)
     })

@@ -19,13 +19,13 @@ const ProfileModal: FC<ProfileModalProps> = ({ isOpen, onClose, user, createConv
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white pb-8">
             {user?.name}
           </h3>
-          <Image
+{  user?.image &&  <Image
             alt="Profile image"
             width={160}
             height={160}
             src={user?.image as string}
             className="mx-auto rounded-lg object-cover"
-          />
+          />}
         </div>
         <p className="text-center text-sm text-gray-700 dark:text-gray-300 py-2">
           {user?.bio! && user?.bio!}
@@ -40,14 +40,14 @@ const ProfileModal: FC<ProfileModalProps> = ({ isOpen, onClose, user, createConv
           onClick={() => createConversation()}
           >Message
           </Button>
-          <Button
+          {/* <Button
             onClick={() => {
               toast.success("Friend request sent!");
             }}
             variant="secondary"
           >
             Add Friend <BiMessageSquareAdd size={16} className="ml-2" />
-          </Button>
+          </Button> */}
         </div>
         <p className="text-center text-sm text-gray-600 dark:text-gray-400">
           Joined {user?.createdAt.toString().split(" ").slice(0, 4).join(" ")}

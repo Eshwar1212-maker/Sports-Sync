@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import LoadingModal from "@/app/components/LoadingModal";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
+import Navbar from "./Navbar";
 
 type Variant = "LOGIN" | "REGISTER";
 interface AuthFormProps {}
@@ -131,11 +132,11 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
 
   return (
     <div 
-    className="mt-8 sm:mx-auto sm:w-full sm:max-w-md bg-center bg-cover bg-white sm:border-[3px] sm:border-black mx-1 text-lg text-black">
+    className="mt-8 sm:mx-auto sm:w-full sm:max-w-md bg-center bg-cover bg-slate-100 rounded-md sm:bg-gray-900 opacity-90 sm:border-[3px] sm:border-black mx-1 text-lg sm:text-white">
       <div className="px-4 py-8 shadow sm:rounded-lg sm:px-10">
         <h2
           className={clsx(
-            "mb-4 text-center text-2xl font-bold tracking-tight text-gray-900",
+            "mb-4 text-center text-2xl font-bold tracking-tight sm:text-gray-200",
           )}
         >
           Sign in to your account
@@ -148,6 +149,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
               id="name"
               errors={errors}
               disabled={registerMutation.isLoading || loginMutation.isLoading}
+              placeholder="Enter Name..."
             />
           )}
           <Input
@@ -156,6 +158,8 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             id="email"
             errors={errors}
             disabled={registerMutation.isLoading || loginMutation.isLoading}
+            placeholder="Enter Email..."
+
           />
           <Input
             label={variant === 'LOGIN' ? "Password (Demo password: test)" : "Password"}
@@ -163,6 +167,8 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             id="password"
             errors={errors}
             disabled={registerMutation.isLoading || loginMutation.isLoading}
+            placeholder="Enter Password..."
+
           />
           <div>
             <Button
@@ -175,14 +181,12 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
         </form>
         <div className="mt-6">
           <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300" />
-            </div>
+
             <div className="relative flex justify-center text-sm">
               <span
                 className={clsx(
-                  `px-2`,
-                  currentTheme === "dark" ? "text-gray-500" : "text-gray-500"
+                  `px-2 sm:text-gray-200`,
+               
                 )}
               >
                 Or continue with
@@ -196,7 +200,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             />
           </div>
         </div>
-        <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
+        <div className="flex gap-2 justify-center text-sm mt-6 px-2 sm:text-gray-200">
           <div>
             {variant === "LOGIN"
               ? "First time here?"
@@ -207,6 +211,8 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
           </div>
         </div>
       </div>
+      <p className="text-gray-100 m-auto font-semibold max-w-[455px] pl-5 text-sm hidden md:block pb-9 mx-auto px-9 text-center">Passion brings communities together, communities foster growth, growth gets us to the end result.</p>
+
     </div>
   );
 };
