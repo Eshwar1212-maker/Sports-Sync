@@ -24,6 +24,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
+import { ActionTooltip } from "../ActionToolTip";
 
 interface SettingsModal {
   isOpen?: boolean;
@@ -39,7 +40,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
-  const [bio, setBio] = useState<any>(currentUser?.bio || '');
+  const [bio, setBio] = useState<any>(currentUser?.bio || "");
   const {
     register,
     handleSubmit,
@@ -96,11 +97,12 @@ const SettingsModal: React.FC<SettingsModal> = ({
               />
               <label className="block text-sm font-md leading-6">Bio</label>
               <input
-               placeholder={
-                currentUser?.bio ? undefined : "Mention what sport you play, or type of athlete, or if you're a coach!"
-              }
-              
-                value={bio || ''}
+                placeholder={
+                  currentUser?.bio
+                    ? undefined
+                    : "Mention what sport you play, or type of athlete, or if you're a coach!"
+                }
+                value={bio || ""}
                 onChange={(e) => setBio(e.target.value)}
                 className={
                   "form-input block w-full ronded-md border-0 py-1.5 shadow-sm ring-1 px-2 bg-white text-black ring-inset ring-gray-300focus:ring-sky-600 sm:text-sm sm:leading-6"
@@ -165,31 +167,23 @@ const SettingsModal: React.FC<SettingsModal> = ({
             relative bottom-0
           "
         >
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <div>
-                  <Button
-                    type="button"
-                    className="w-fit px-4 pl-2 mb-1"
-                    variant={"secondary"}
-                  >
-                    <SlLogout
-                      color={theme === "dark" ? "white" : ""}
-                      onClick={() =>
-                        signOut({ callbackUrl: "http://localhost:3000" })
-                      }
-                      size={24}
-                      className="mx-auto"
-                    />
-                  </Button>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p className="text-[13px] pb-3">Sign Out</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <ActionTooltip label="Logout">
+            <Button
+              type="button"
+              className="w-fit px-4 pl-2 mb-1"
+              variant={"secondary"}
+            >
+              <SlLogout
+                color={theme === "dark" ? "white" : ""}
+                onClick={() =>
+                  signOut({ callbackUrl: "http://localhost:3000" })
+                }
+                size={24}
+                className="mx-auto"
+              />
+            </Button>
+          </ActionTooltip>
+
           <div className="gap-4 flex">
             <Button
               variant={"secondary"}
