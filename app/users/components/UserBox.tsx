@@ -71,7 +71,7 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
             <div className="focus:outline-none">
               <div className="flex justify-between items-center mb-1">
                 <div>
-                  <p className="text-sm font-md">{(data.name?.split(" ")[0] +  " " + data.name?.split(" ")[1]).substring(0, 16)}</p>
+                  <p className="text-sm font-md">{data?.name!.split(" ").length > 1 ? (data.name?.split(" ")[0] +  " " + data.name?.split(" ")[1]).substring(0, 16) : data.name?.split(" ")[0]}</p>
                 </div>
                 <div className="flex gap-2 pl-4">
                   <TooltipProvider>

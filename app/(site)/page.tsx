@@ -13,7 +13,7 @@ const page: FC<pageProps> = ({
   
 }) => {
   return (
-    <div className='bg-white'>
+    <div>
       <Navbar />
       <Hero />
       <Footer />
