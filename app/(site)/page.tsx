@@ -14,7 +14,7 @@ const page: FC<pageProps> = ({
 }) => {
   return (
     <div className='bg-white'>
-      <Navbar />
+      <Navbar isHome={true}/>
       <Hero />
       <Footer />
     </div>

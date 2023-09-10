@@ -6,13 +6,13 @@ import { FiAlertTriangle } from 'react-icons/fi'
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
-import useConversation from '@/app/hooks/useConversation';
+import useConversation from "../../hooks/useConversation";
 import { toast } from 'react-hot-toast';
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import { IoClose } from 'react-icons/io5';
-import { Button } from '@/components/ui/button';
 import { User } from '@prisma/client';
+import { Button } from '@/components/ui/button';
 
 interface ConfirmModalProps {
   isOpen?: boolean;
