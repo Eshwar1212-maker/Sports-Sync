@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Avatar from "@/app/components/Avatar";
 import LoadingModal from "@/app/components/LoadingModal";
 import { User } from "@prisma/client";
@@ -14,8 +14,7 @@ import clsx from "clsx";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
-import { AiOutlineMessage, AiOutlineUserAdd } from "react-icons/ai";
-import { BiMessageAdd } from "react-icons/bi";
+import { AiOutlineUserAdd } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";
 import ProfileModal from "./ProfileModal";
 
@@ -26,8 +25,8 @@ interface UserBoxProps {
 
 const UserBox: FC<UserBoxProps> = ({ data, input }) => {
   const router = useRouter();
-  const [isProfileOpen, setIsProfileOpen] = useState(false)
-  const [clickedUser, setClickedUser] = useState<any>()
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [clickedUser, setClickedUser] = useState<any>();
   const {
     mutate: createConversation,
     isLoading,
@@ -56,8 +55,9 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
       ) : (
         <div
           className={clsx(
-            "w-full relative flex items-center space-x-3 p-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer",
-            currentTheme === "light" &&  "hover:bg-neutral-100", currentTheme === "dark" && "hover:bg-neutral-800"
+            "w-full relative flex items-center space-x-3 p-3 rounded-lg transition cursor-pointer",
+            currentTheme === "light" && "",
+            currentTheme === "dark" && ""
           )}
         >
           <ProfileModal
@@ -65,26 +65,35 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
             onClose={() => setIsProfileOpen(false)}
             user={clickedUser}
             createConversation={createConversation}
-           />
+          />
           <Avatar user={data} />
           <div className="min-w-0 flex-1">
             <div className="focus:outline-none">
               <div className="flex justify-between items-center mb-1">
                 <div>
-                  <p className="text-sm font-md">{data?.name!.split(" ").length > 1 ? (data.name?.split(" ")[0] +  " " + data.name?.split(" ")[1]).substring(0, 16) : data.name?.split(" ")[0]}</p>
+                  <p className="text-sm font-md">
+                    {data?.name!.split(" ").length > 1
+                      ? (
+                          data.name?.split(" ")[0] +
+                          " " +
+                          data.name?.split(" ")[1]
+                        ).substring(0, 16)
+                      : data.name?.split(" ")[0]}
+                  </p>
                 </div>
                 <div className="flex gap-2 pl-4">
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger>
                         <AiOutlineUserAdd
-                         onClick={() => {
-                          console.log(data);
-                          setClickedUser(data)
-                          setIsProfileOpen(true)
-                        }}
-                         size={24} 
-                         />
+                          className="hover:bg-slate-200 hover:rounded-full"
+                          onClick={() => {
+                            console.log(data);
+                            setClickedUser(data);
+                            setIsProfileOpen(true);
+                          }}
+                          size={24}
+                        />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p className="text-[13px] pb-3">View Profile</p>
@@ -94,18 +103,17 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger>
-                        
-                  <FiMessageCircle
-                    onClick={() => createConversation()}
-                    size={24}
-                  />
+                        <FiMessageCircle
+                          className="hover:bg-slate-200 hover:rounded-full"
+                          onClick={() => createConversation()}
+                          size={24}
+                        />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p className="text-[13px] pb-3">Message {data.name}</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-
                 </div>
               </div>
             </div>
