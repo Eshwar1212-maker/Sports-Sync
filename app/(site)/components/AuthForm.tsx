@@ -132,7 +132,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
 
   return (
     <div 
-    className="mt-8 sm:mx-auto sm:w-full sm:max-w-md bg-center bg-cover bg-slate-100 rounded-md sm:bg-gray-900 opacity-90 sm:border-[3px] sm:border-black mx-1 text-lg sm:text-white">
+    className="mt-8 sm:mx-auto sm:w-full sm:max-w-md bg-center bg-cover bg-slate-100 rounded-md sm:bg-black opacity-90 sm:border-[3px] sm:border-black mx-1 text-lg sm:text-white">
       <div className="px-4 py-8 shadow sm:rounded-lg sm:px-10">
         <h2
           className={clsx(

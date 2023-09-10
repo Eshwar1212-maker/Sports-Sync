@@ -17,6 +17,8 @@ import { FC, useState } from "react";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";
 import ProfileModal from "./ProfileModal";
+import { ActionTooltip } from "@/app/components/ActionToolTip";
+import { cn } from "@/lib/utils";
 
 interface UserBoxProps {
   data: User;
@@ -82,38 +84,29 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
                   </p>
                 </div>
                 <div className="flex gap-2 pl-4">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <AiOutlineUserAdd
-                          className="hover:bg-slate-200 hover:rounded-full"
-                          onClick={() => {
-                            console.log(data);
-                            setClickedUser(data);
-                            setIsProfileOpen(true);
-                          }}
-                          size={24}
-                        />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p className="text-[13px] pb-3">View Profile</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <FiMessageCircle
-                          className="hover:bg-slate-200 hover:rounded-full"
+                  <ActionTooltip label="View Profile">
+                    <button>
+                      <AiOutlineUserAdd
+                        className={cn("hover:rounded-full", theme === "light" && "hover:bg-slate-200")}
+                        onClick={() => {
+                          console.log(data);
+                          setClickedUser(data);
+                          setIsProfileOpen(true);
+                        }}
+                        size={24}
+                      />
+                    </button>
+                  </ActionTooltip>
+                  <ActionTooltip label={`Message ${data.name}`}>
+                    <button>
+                    <FiMessageCircle
+                          className={cn("hover:rounded-full", theme === "light" && "hover:bg-slate-200")}
                           onClick={() => createConversation()}
                           size={24}
                         />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p className="text-[13px] pb-3">Message {data.name}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+                    </button>
+                  </ActionTooltip>
+              
                 </div>
               </div>
             </div>
