@@ -14,12 +14,12 @@ const Landing: FC<landingProps> = ({}) => {
     <>
       {/*DESKTOP MENU*/}
 
-      <div className="hidden lg:block py-[100px] sm:px-6 md:pl-60 container">
+      <div className="hidden xl:block py-[100px] sm:px-6 md:pl-60 container">
         <main className="flex flex-col md:flex-row space-x-9 pb-11">
           <div className="space-y-4 w-[90vw] md:w-1/2">
             <h1
               className={clsx(
-                "lg:text-4xl xl:text-5xl font-bold",
+                "lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold",
                 theme === "dark" && "text-gray-200"
               )}
             >
@@ -45,9 +45,6 @@ const Landing: FC<landingProps> = ({}) => {
               src="https://cdn.hashnode.com/res/hashnode/image/upload/v1612787425944/MMJR2txbo.jpeg"
               aria-label="fullcalenderjs image"
             />
-            {/* <span className="text-md text-gray-200 flex justify-end">
-              Powered by fullcalenderjs
-            </span> */}
           </div>
         </main>
         <div className="flex flex-start">
@@ -55,7 +52,7 @@ const Landing: FC<landingProps> = ({}) => {
         </div>
       </div>
       {/*MOBILE MENU*/}
-      <div className="px-4 items-center py-10 lg:hidden">
+      <div className="px-4 items-center py-10 xl:hidden">
         <div className="space-y-7">
           <div className="space-y-7 px-7 md:px-20">
             <h1
@@ -88,7 +85,7 @@ const Landing: FC<landingProps> = ({}) => {
           </div>
         </div>
         <div className="my-5">
-          <div className="mx-auto">
+          <div className="mx-auto lg:pl-60">
             <CalenderOptions />
           </div>
         </div>
