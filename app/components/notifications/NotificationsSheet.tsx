@@ -11,9 +11,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useEffect, useState } from "react";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import {TiDeleteOutline} from "react-icons/ti"
 import { useTheme } from "next-themes";
+import NotificationItem from "./NotificationItem";
+import { Button } from "@/components/ui/button";
 
 type Notification = {
   name: string;
@@ -22,39 +24,11 @@ type Notification = {
   date?: string
 };
 
-export function NotificationsSheet({ unSeen, workouts }: any) {
-  const [notifications, setNotifications] = useState<Notification[]>([]);
-  const [record, setRecord] = useState(workouts);
+export function NotificationsSheet({notifications}: any) {
+  
+  console.log(notifications);
+  console.log(notifications[1]);
 
-
-  useEffect(() => {
-    let newNotifications = unSeen.map((item: any): Notification => {
-      return {
-        name: item.sender.name,
-        image: item?.sender?.image,
-        body: item?.body,
-      };
-    });
-    newNotifications = newNotifications.concat(
-      record.map((rec: any) => {
-        return {
-          name: rec.title,
-          image: rec.weight,
-          body: "New personal record",
-          date: rec.date
-        };
-      })
-    );
-    setNotifications((prevNotifications) => {
-      const seen = new Set(
-        prevNotifications.map((item) => JSON.stringify(item))
-      );
-      const uniqueNotifications = newNotifications.filter(
-        (item: any) => !seen.has(JSON.stringify(item))
-      );
-      return [...prevNotifications, ...uniqueNotifications];
-    });
-  }, [unSeen]);
 
   const { theme } = useTheme();
   return (
@@ -85,9 +59,21 @@ export function NotificationsSheet({ unSeen, workouts }: any) {
           </SheetHeader>
           <SheetClose className="absolute top-1 right-2" />
 
+          
           <SheetDescription className="items-center text-center flex justify-center flex-col overflow-y-scroll max-h-[830px] my-[40px] py-[300px]">
-              <p className="text-2xl">No new notifications</p>
-  
+              {notifications.length === 0 && <p className="text-2xl">No new notifications</p>}
+
+              {
+                notifications.map((notification: any) => {
+                  console.log(notification);
+                  
+                    return (
+                      <div className="border-b-[3px] border-b-slate-600">
+                       <NotificationItem notification ={notification}/>
+                      </div>
+                    )
+                })
+              }
           </SheetDescription>
           <SheetFooter></SheetFooter>
         </SheetContent>

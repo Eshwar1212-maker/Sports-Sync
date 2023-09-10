@@ -17,9 +17,10 @@ interface HeaderProps {
     users: User[]
   }
   currentUser: any
+  users: User[]
 }
 
-const Header: React.FC<HeaderProps> = ({ conversation, currentUser }) => {
+const Header: React.FC<HeaderProps> = ({ conversation, currentUser, users }) => {
   const otherUser = useOtherUser(conversation);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -33,6 +34,7 @@ const Header: React.FC<HeaderProps> = ({ conversation, currentUser }) => {
       isOpen={drawerOpen} 
       onClose={() => setDrawerOpen(false)}
       currentUser={currentUser}
+      users={users}
     />
     <div className={clsx("w-full flex border-b-[1px] sm:px-4 py-3 px-4 lg:px-6 justify-between items-center shadow-sm", theme == "light" && "bg-white")}>
       <div className="flex gap-3 items-center">

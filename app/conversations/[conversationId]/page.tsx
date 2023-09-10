@@ -7,6 +7,7 @@ import Body from "../components/Body"
 import { GrFormCheckmark } from "react-icons/gr"
 import Form from "../components/Form"
 import getCurrentUser from "@/app/actions/getCurrentUser"
+import getUsers from "@/app/actions/getUsers"
 
 
 interface IParams {
@@ -17,6 +18,7 @@ const ConversationId = async ({ params }: { params: IParams }) => {
     const conversation = await getConversationById(params.conversationId)
     const messages = await getMessages(params.conversationId)
     const currentUser = await getCurrentUser()
+    const users = await getUsers()
 
     if (!conversation) {
         return (
@@ -30,7 +32,7 @@ const ConversationId = async ({ params }: { params: IParams }) => {
     return (
         <div className="lg:pl-80 h-full">
            <div className="h-full flex flex-col">
-            <Header currentUser={currentUser} conversation={conversation} />
+            <Header users={users} currentUser={currentUser} conversation={conversation} />
             <Body initialMessages={messages}/>
             <Form />
            </div>

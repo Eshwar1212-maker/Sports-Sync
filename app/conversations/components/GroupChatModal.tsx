@@ -8,9 +8,7 @@ import { User } from "@prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import clsx from "clsx";
-import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
-
 import { FC } from "react";
 import {FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";

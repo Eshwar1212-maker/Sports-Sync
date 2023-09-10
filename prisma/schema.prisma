@@ -31,7 +31,9 @@ model User {
   teamIds         String[]       @db.ObjectId
   events          Event[]
   workouts        Workout[]
-  exercises String[]
+  notifications   Notifications[]
+  notificationIds String[]       @db.ObjectId
+  exercises       String[]
 }
 
 model Account {
@@ -90,17 +92,16 @@ model Event {
   user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-
 model Workout {
-  id     String  @id @default(auto()) @map("_id") @db.ObjectId
-  title  String
-  reps   Int?
-  sets   Int?
-  weight   Int?
-  date DateTime
-  userId String  @db.ObjectId
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  reps             Int?
+  sets             Int?
+  weight           Int?
+  date             DateTime
+  userId           String   @db.ObjectId
   isPersonalRecord Boolean?
-  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Team {
@@ -109,4 +110,16 @@ model Team {
   userIds String[] @db.ObjectId
   members User[]   @relation(fields: [userIds], references: [id])
   events  Event[]
+}
+
+model Notifications {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  userId    String   @db.ObjectId
+  accepted Boolean @default(false)
+  recipient String[]
+  recipientImage String
+  groupId   String
+  createdAt DateTime  @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
