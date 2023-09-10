@@ -39,7 +39,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
-  const [bio, setBio] = useState<any>(currentUser?.bio!);
+  const [bio, setBio] = useState<any>(currentUser?.bio || '');
   const {
     register,
     handleSubmit,
@@ -96,11 +96,11 @@ const SettingsModal: React.FC<SettingsModal> = ({
               />
               <label className="block text-sm font-md leading-6">Bio</label>
               <input
-                placeholder={
-                  (!currentUser.bio! as any) &&
-                  "Mention what sport you play, or type of athlete, or if your a coach!"
-                }
-                value={bio!}
+               placeholder={
+                currentUser?.bio ? undefined : "Mention what sport you play, or type of athlete, or if you're a coach!"
+              }
+              
+                value={bio || ''}
                 onChange={(e) => setBio(e.target.value)}
                 className={
                   "form-input block w-full ronded-md border-0 py-1.5 shadow-sm ring-1 px-2 bg-white text-black ring-inset ring-gray-300focus:ring-sky-600 sm:text-sm sm:leading-6"
