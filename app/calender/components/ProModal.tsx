@@ -14,7 +14,7 @@ const ProModal: FC<ProModalProps> = ({ isOpen, onClose }) => {
       <div className="flex flex-col gap-3 pb-10 h-[400px]">
         <div className="flex flex-col space-y-0 gap-1 pb-3">
           <div className="flex justify-between">
-            <h2 className="text-2xl font-semibold">Upgrade to Pro!</h2>
+            <h2 className="text-2xl font-semibold">Upgrade to Pro For Full Access!</h2>
             <button
               type="button"
               className="rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:hidden"

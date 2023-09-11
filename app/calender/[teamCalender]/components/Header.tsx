@@ -6,6 +6,7 @@ import { FC } from "react";
 import { AiOutlineMenu, AiOutlineMenuFold } from "react-icons/ai";
 import { BiMenuAltRight } from "react-icons/bi";
 import { HiChevronLeft } from "react-icons/hi";
+import { HiEllipsisHorizontal, HiEllipsisVertical } from "react-icons/hi2";
 import { RiMenu3Fill } from "react-icons/ri";
 interface HeaderProps {
   team: Team & {
@@ -17,9 +18,9 @@ const Header: FC<HeaderProps> = ({ team }) => {
 
 
   return (
-    <div className="border-b-[2px] border-b-slate-600 flex justify-between pb-1 px-3">
+    <div className="border-b-[2px] border-b-slate-600 flex justify-between px-3">
       <div className="">
-        <h1 className=" text-[15px] font-bold pb-2">{team?.title}</h1>
+        <h1 className=" text-[15px] font-bold pb-1">{team?.title}</h1>
         <div className="flex gap-4">
         {team.users.map((user) => {
           return (
@@ -34,18 +35,18 @@ const Header: FC<HeaderProps> = ({ team }) => {
                 />
               )}
             </ActionTooltip>
-
-
           );
         })}
 
       </div>
       </div>
-      <ActionTooltip label="Team Settings">
-            <button>
-            <RiMenu3Fill size={22}/>
+      <div className="my-4">
+      <ActionTooltip label="Manage Team">
+            <button aria-label="Team Settings" className="">
+            <HiEllipsisVertical size={32}/>
             </button>
         </ActionTooltip>
+      </div>
     </div>
   );
 };
