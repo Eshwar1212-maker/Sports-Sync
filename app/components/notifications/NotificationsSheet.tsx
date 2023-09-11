@@ -1,6 +1,5 @@
 "use client";
 
-
 import {
   Sheet,
   SheetClose,
@@ -12,22 +11,28 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import {TiDeleteOutline} from "react-icons/ti"
+import { TiDeleteOutline } from "react-icons/ti";
 import { useTheme } from "next-themes";
 import NotificationItem from "./NotificationItem";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 type Notification = {
   name: string;
   image: any;
   body: string;
-  date?: string
+  date?: string;
 };
 
-export function NotificationsSheet({notifications}: any) {
-  
+export function NotificationsSheet({ notifications }: any) {
   console.log(notifications);
   console.log(notifications[1]);
+  const [currentNotifications, setCurrentNotifications] = useState(notifications);
+
+  const handleDelete = (id: string) => {
+    const updatedNotifications = currentNotifications.filter((noti: any) => noti.id !== id);
+    setCurrentNotifications(updatedNotifications);
+  };
 
 
   const { theme } = useTheme();
@@ -59,21 +64,26 @@ export function NotificationsSheet({notifications}: any) {
           </SheetHeader>
           <SheetClose className="absolute top-1 right-2" />
 
-          
           <SheetDescription className="items-center text-center flex justify-center flex-col overflow-y-scroll max-h-[830px] my-[40px] py-[300px]">
-              {notifications.length === 0 && <p className="text-2xl">No new notifications</p>}
+            {notifications.length === 0 && (
+              <p className="text-2xl">No new notifications</p>
+            )}
 
-              {
-                notifications.map((notification: any) => {
-                  console.log(notification);
-                  
-                    return (
-                      <div className="border-b-[3px] border-b-slate-600">
-                       <NotificationItem notification ={notification}/>
-                      </div>
-                    )
-                })
-              }
+            {currentNotifications.map((notification: any) => {
+              console.log(notification);
+
+              return (
+                <div
+                  key={notification.id}
+                  className="border-b-[3px] border-b-slate-600"
+                >
+                  <NotificationItem
+                    handleDelete={handleDelete}
+                    notification={notification}
+                  />
+                </div>
+              );
+            })}
           </SheetDescription>
           <SheetFooter></SheetFooter>
         </SheetContent>

@@ -16,8 +16,12 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 interface NotificationItemProps {
   notification: any;
+  handleDelete: any;
 }
-const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
+const NotificationItem: FC<NotificationItemProps> = ({
+  notification,
+  handleDelete,
+}) => {
   const [invitationResponse, setInvitationResponse] = useState<boolean>(false);
   const { theme } = useTheme();
   console.log("NAME ", name);
@@ -38,11 +42,12 @@ const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
     },
     onSuccess: (response) => {
       console.log(response.data);
-      if(invitationResponse){
+      if (invitationResponse) {
         toast.success(`Succesfully added to group, redirecting`);
         router.push(`/conversations/${notification?.groupId}`);
-      }else{
-        toast.success("Invitation rejected")
+      } else {
+        toast.success("Invitation rejected");
+        handleDelete(notification?.id);
       }
     },
     onError: (error) => {
@@ -54,7 +59,8 @@ const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
     <div
       className={clsx(
         "flex flex-row justify-between gap-6 w-full pt-4 px-5",
-        theme === "light" ? "text-black" : "text-white", notification?.accepted === true && "opacity-80 text-gray-700"
+        theme === "light" ? "text-black" : "text-white",
+        notification?.accepted === true && "opacity-80 text-gray-700"
       )}
     >
       <div className=" pt-6">
@@ -84,6 +90,7 @@ const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
           <div className="flex gap-2 mx-auto my-auto text-[12px]">
             <ActionTooltip label="Join Chat">
               <Button
+                disabled={isLoading}
                 onClick={() => {
                   setInvitationResponse(true);
                   invitationResponseMutation();
@@ -97,6 +104,7 @@ const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
             </ActionTooltip>
             <ActionTooltip label="Decline Invitation">
               <Button
+                disabled={isLoading}
                 onClick={() => invitationResponseMutation()}
                 className="px-2"
                 variant={"destructive"}
