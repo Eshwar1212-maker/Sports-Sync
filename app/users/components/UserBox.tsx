@@ -57,7 +57,7 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
       ) : (
         <div
           className={clsx(
-            "w-full relative flex items-center space-x-3 p-3 rounded-lg transition cursor-pointer",
+            "w-full relative flex items-center space-x-3 p-3 rounded-lg transition",
             currentTheme === "light" && "",
             currentTheme === "dark" && ""
           )}
