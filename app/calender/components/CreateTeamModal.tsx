@@ -109,7 +109,7 @@ const CreateTeamModal: FC<CreateTeamModalProps> = ({
           onClick={() => creatWorkspaceMutation()}
           className=" fixed right-6 bottom-4"
         >
-          Send an invite
+          Create Workspace
         </Button>
       </div>
     </Modal>

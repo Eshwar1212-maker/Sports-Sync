@@ -8,7 +8,7 @@ import CreateTeamModal from "./CreateTeamModal";
 
 const plans = [
   {
-    name: "My Calender(free with your plan)",
+    name: "My Calender",
     description:
       "Track your own practices, workouts, and weekly training routine, with a monthly, weekly, and daily view.",
     href: "userCalender",

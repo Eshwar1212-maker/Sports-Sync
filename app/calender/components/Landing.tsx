@@ -103,7 +103,7 @@ const Landing: FC<landingProps> = ({ users, userTeams }) => {
           </div>
         </div>
         <div className="my-5">
-          <div className="mx-auto lg:pl-60">
+          <div className="pl-10 sm:pl-40 md:pl-60">
             <CalenderOptions />
           </div>
         </div>

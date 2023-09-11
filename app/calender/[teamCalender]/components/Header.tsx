@@ -21,7 +21,7 @@ const Header: FC<HeaderProps> = ({ team }) => {
     <div className="border-b-[2px] border-b-slate-600 flex justify-between px-3">
       <div className="">
         <h1 className=" text-[15px] font-bold pb-1">{team?.title}</h1>
-        <div className="flex gap-4">
+        <div className="flex gap-4 pb-1">
         {team.users.map((user) => {
           return (
             <ActionTooltip label={user?.name as string}>
@@ -31,7 +31,7 @@ const Header: FC<HeaderProps> = ({ team }) => {
                   alt="Avatar"
                   width={30}
                   height={40}
-                  className="rounded-[30px]"
+                  className="rounded-[890px]"
                 />
               )}
             </ActionTooltip>
