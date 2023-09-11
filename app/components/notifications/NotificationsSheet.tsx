@@ -41,14 +41,16 @@ export function NotificationsSheet({ notifications }: any) {
         <SheetTrigger asChild>
           <div
             className={
-              notifications.length > 0
-                ? "mx-auto flex flex-col my-10"
+              notifications?.length > 0
+                ? "mx-auto flex flex-col"
                 : "mx-auto flex flex-col"
             }
           >
+          {notifications?.length > 0 &&  <span className="mb-7 ml-2 mx-auto pl-1">{notifications?.length}</span>}
             <IoIosNotificationsOutline
-              className={notifications.length > 0 ? " my-[-33px]" : ""}
+              className={notifications?.length > 0 ? " my-[-33px]" : ""}
               size={35}
+              color={(notifications?.length > 0 && theme === "light") ? "blue" : ""}
             />
           </div>
         </SheetTrigger>

@@ -100,7 +100,7 @@ const NotificationItem: FC<NotificationItemProps> = ({
                 variant={"tertiary"}
                 type="button"
               >
-                <BsSendCheck size={20} />
+                <BsSendCheck size={25} />
               </Button>
             </ActionTooltip>
             <ActionTooltip label="Decline Invitation">
@@ -111,7 +111,7 @@ const NotificationItem: FC<NotificationItemProps> = ({
                 variant={"destructive"}
                 type="button"
               >
-                <TiDeleteOutline size={24} />
+                <TiDeleteOutline size={30} />
               </Button>
             </ActionTooltip>
           </div>
