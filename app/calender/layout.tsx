@@ -1,4 +1,5 @@
 import Sidebar from "../components/sidebar/Sidebar";
+import Landing from "./components/Landing";
 
 
 export default async function CalenderLayout({

@@ -9,20 +9,22 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { FC, useState } from "react";
 import toast from "react-hot-toast";
-import AsyncSelect from "react-select/async"; // Corrected the import here
+import AsyncSelect from "react-select/async"
 
 const CustomOption: FC<any> = ({ data, innerRef, innerProps }) => (
   <div className="flex justify-between px-6" ref={innerRef} {...innerProps}>
     <p className="my-auto text-black">{data?.label}</p>
-    <div className="rounded-full">
-      <Image
-        className="rounded-full"
-        src={data?.photo}
-        alt={`${data?.label}'s photo`}
-        width={40}
-        height={40}
-      />
-    </div>
+    {data?.photo && (
+      <div className="rounded-full">
+        <Image
+          className="rounded-full"
+          src={data?.photo}
+          alt={`${data?.label}'s photo`}
+          width={40}
+          height={40}
+        />
+      </div>
+    )}
   </div>
 );
 
@@ -56,7 +58,6 @@ const AddUserToGroup: FC<AddUserToGroupProps> = ({
   };
 
   const pathName = useParams();
-  console.log(pathName?.conversationId);
 
   const promiseOptions = (inputValue: any) =>
     new Promise<any>((resolve) => {

@@ -62,9 +62,6 @@ function AddEventModal({
     }
   }, [eventTitle]);
   
-
-  console.log(specificEventNotes.length);
-
   const [updateNotes, setUpdateNotes] = useState(
     selectedEvent?._def?.extendedProps?.notes || ""
   );

@@ -89,7 +89,6 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
                       <AiOutlineUserAdd
                         className={cn("hover:rounded-full", theme === "light" && "hover:bg-slate-200")}
                         onClick={() => {
-                          console.log(data);
                           setClickedUser(data);
                           setIsProfileOpen(true);
                         }}
