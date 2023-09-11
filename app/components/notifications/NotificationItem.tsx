@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
-import { format, subDays } from "date-fns";
+import { format, formatDistanceToNow, subDays } from "date-fns";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { FC, useState } from "react";
@@ -46,7 +46,7 @@ const NotificationItem: FC<NotificationItemProps> = ({
         toast.success(`Succesfully added to group, redirecting`);
         router.push(`/conversations/${notification?.groupId}`);
       } else {
-        toast.success("Invitation rejected");
+        toast("Invitation rejected");
         handleDelete(notification?.id);
       }
     },
@@ -58,36 +58,37 @@ const NotificationItem: FC<NotificationItemProps> = ({
   return (
     <div
       className={clsx(
-        "flex flex-row justify-between gap-6 w-full pt-4 px-5",
+        "flex flex-row justify-between gap-6 w-full pt-4 px-2",
         theme === "light" ? "text-black" : "text-white",
         notification?.accepted === true && "opacity-80 text-gray-700"
       )}
     >
-      <div className=" pt-6">
+      <div className="pt-8 w-[156px]">
         <Image
-          className="rounded-[30px]"
+          className="rounded-[30px] mx-auto"
           alt="recipient image"
-          width={54}
+          width={46}
           height={60}
           src={notification?.recipientImage}
         />
-        <p className="text-[12px]">
-          {format(new Date(notification?.createdAt), "MM/dd/yyyy h:mm a")}
+        <p className="text-[11px] font-bold mx-auto">
+          {formatDistanceToNow(new Date(notification?.createdAt), { addSuffix: true }).replace("about", "")}
         </p>
       </div>
       <div className="text-sm flex flex-col gap-2 pt-6">
         <div className="">
-          <p className="text-[14px]">
+          <p className="text-[12px]">
+            {notification?.title.split(" ")[1] + " " + notification?.title.split(" ")[2] + " "}
             {notification?.title
               .split(" ")
-              .slice(1, notification.title.length - 1)
+              .slice(3, notification.title.length - 1)
               .join(" ")}{" "}
             group chat{" "}
           </p>
         </div>
 
         {notification.accepted === false ? (
-          <div className="flex gap-2 mx-auto my-auto text-[12px]">
+          <div className="flex gap-2 mx-auto my-auto text-[12px] pb-2">
             <ActionTooltip label="Join Chat">
               <Button
                 disabled={isLoading}
@@ -95,22 +96,22 @@ const NotificationItem: FC<NotificationItemProps> = ({
                   setInvitationResponse(true);
                   invitationResponseMutation();
                 }}
-                className="p-2 px-4"
+                className="p-1 px-4"
                 variant={"tertiary"}
                 type="button"
               >
-                <BsSendCheck size={26} />
+                <BsSendCheck size={20} />
               </Button>
             </ActionTooltip>
             <ActionTooltip label="Decline Invitation">
               <Button
                 disabled={isLoading}
                 onClick={() => invitationResponseMutation()}
-                className="px-2"
+                className="px-3"
                 variant={"destructive"}
                 type="button"
               >
-                <TiDeleteOutline size={32} />
+                <TiDeleteOutline size={24} />
               </Button>
             </ActionTooltip>
           </div>

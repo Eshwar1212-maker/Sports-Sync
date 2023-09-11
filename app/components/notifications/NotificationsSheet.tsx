@@ -11,11 +11,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { TiDeleteOutline } from "react-icons/ti";
 import { useTheme } from "next-themes";
 import NotificationItem from "./NotificationItem";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import clsx from "clsx";
 
 type Notification = {
   name: string;
@@ -64,7 +63,7 @@ export function NotificationsSheet({ notifications }: any) {
           </SheetHeader>
           <SheetClose className="absolute top-1 right-2" />
 
-          <SheetDescription className="items-center text-center flex justify-center flex-col overflow-y-scroll max-h-[830px] my-[40px] py-[300px]">
+          <SheetDescription className={clsx("items-center text-center flex justify-center flex-col overflow-y-scroll max-h-[830px]", notifications.length === 0 && "my-[40px] py-[300px]")}>
             {notifications.length === 0 && (
               <p className="text-2xl">No new notifications</p>
             )}
