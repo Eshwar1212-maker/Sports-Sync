@@ -4,9 +4,8 @@ import { Fragment, useMemo, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoClose, IoExitOutline, IoTrash } from "react-icons/io5";
 import { Conversation, User } from "@prisma/client";
-
+import {RiUserAddLine} from "react-icons/ri"
 import useOtherUser from "@/app/hooks/useOtherUser";
-
 import Avatar from "@/app/components/Avatar";
 import AvatarGroup from "@/app/components/AvatarGroup";
 import ConfirmModal from "./ConfirmModal";
@@ -15,6 +14,8 @@ import { useTheme } from "next-themes";
 import ConfirmLeaveModal from "./ConfirmLeaveModal";
 import { Button } from "@/components/ui/button";
 import ConfirmBootModal from "./ConfirmBootModal";
+import { ActionTooltip } from "@/app/components/ActionToolTip";
+import AddUserToGroup from "./AddUserToGroup";
 
 interface ProfileDrawerProps {
   isOpen: boolean;
@@ -23,6 +24,7 @@ interface ProfileDrawerProps {
     users: User[];
   };
   currentUser?: any;
+  users: User[]
 }
 
 const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
@@ -30,12 +32,17 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   onClose,
   data,
   currentUser,
+  users
 }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [confirmLeaveOpen, setConfirmLeaveOpen] = useState(false);
   const [confirmBootOpen, setConfirmBootOpen] = useState(false);
+  const [isAddUserOpen, setIsAddUserOpen] = useState(false);
   const [bootedMember, setBootedMember] = useState<any>();
   const otherUser = useOtherUser(data);
+
+  console.log(data);
+  
 
   const title = useMemo(() => {
     return data.name || otherUser.name;
@@ -61,6 +68,12 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
         onClose={() => setConfirmBootOpen(false)}
         conversationName={data.name}
         bootedMember={bootedMember}
+      />
+      <AddUserToGroup 
+      isOpen={isAddUserOpen}
+      onClose={() => setIsAddUserOpen(false)}
+      users={users}
+      data={data}
       />
       <Transition.Root show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -143,6 +156,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                   >
                                     Delete
                                   </div>
+                      
                                 </div>
                               </div>
                             )}
@@ -163,6 +177,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                 >
                                   Delete
                                 </div>
+                                
                               </div>
                             </div>
                           )}
@@ -203,6 +218,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                   >
                                     Mod
                                   </dt>
+                                  <div className="flex justify-between">
                                   <dd
                                     className={clsx(
                                       "mt-1 text-lg sm:col-span-2 py-2"
@@ -212,14 +228,23 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                       " " +
                                       data?.admin?.split(" ")[2]}
                                   </dd>
-
+                                  </div>
+                                  <div className="flex justify-between border-b-[2px] border-b-black">
                                   <dt
                                     className={clsx(
-                                      "text-md sm:w-40 sm:flex-shrink-0 font-semibold my-1"
+                                      "text-md sm:w-40 sm:flex-shrink-0 font-semibold my-2"
                                     )}
                                   >
                                    {data.users.length} Members
                                   </dt>
+                                  <ActionTooltip label="Invite more users">
+                                      <Button onClick={() => setIsAddUserOpen(true)} className="mx-3 mb-2" variant={"secondary"}>
+                                        <RiUserAddLine size={20}/>
+                                      </Button>
+                                  </ActionTooltip>
+                                  </div>
+                       
+                         
                                   <dd
                                     className={clsx(
                                       "mt-1 text-sm sm:col-span-2 whitespace-pre-wrap md:w-[269px] max-w-[600px] border-b-2 mx-9"
@@ -281,6 +306,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                 </Transition.Child>
               </div>
             </div>
+            
           </div>
         </Dialog>
       </Transition.Root>

@@ -9,9 +9,14 @@ interface ProfileModalProps {
   isOpen: boolean;
   onClose: () => void;
   user: User;
-  createConversation?: any
+  createConversation?: any;
 }
-const ProfileModal: FC<ProfileModalProps> = ({ isOpen, onClose, user, createConversation }) => {
+const ProfileModal: FC<ProfileModalProps> = ({
+  isOpen,
+  onClose,
+  user,
+  createConversation,
+}) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="p-8 space-y-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
@@ -19,13 +24,15 @@ const ProfileModal: FC<ProfileModalProps> = ({ isOpen, onClose, user, createConv
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white pb-8">
             {user?.name}
           </h3>
-{  user?.image &&  <Image
-            alt="Profile image"
-            width={160}
-            height={160}
-            src={user?.image as string}
-            className="mx-auto rounded-lg object-cover"
-          />}
+          {user?.image && (
+            <Image
+              alt="Profile image"
+              width={160}
+              height={160}
+              src={user?.image as string}
+              className="mx-auto rounded-lg object-cover"
+            />
+          )}
         </div>
         <p className="text-center text-sm text-gray-700 dark:text-gray-300 py-2">
           {user?.bio! && user?.bio!}
@@ -36,10 +43,7 @@ const ProfileModal: FC<ProfileModalProps> = ({ isOpen, onClose, user, createConv
           </p>
         )}
         <div className="flex justify-center py-1 gap-4">
-          <Button
-          onClick={() => createConversation()}
-          >Message
-          </Button>
+          <Button onClick={() => createConversation()}>Message</Button>
           {/* <Button
             onClick={() => {
               toast.success("Friend request sent!");

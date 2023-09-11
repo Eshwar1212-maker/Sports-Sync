@@ -1,6 +1,5 @@
 "use client";
 
-
 import {
   Sheet,
   SheetClose,
@@ -11,50 +10,30 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useEffect, useState } from "react";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { TiDeleteOutline } from "react-icons/ti";
 import { useTheme } from "next-themes";
+import NotificationItem from "./NotificationItem";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 type Notification = {
   name: string;
   image: any;
   body: string;
-  date?: string
+  date?: string;
 };
 
-export function NotificationsSheet({ unSeen, workouts }: any) {
-  const [notifications, setNotifications] = useState<Notification[]>([]);
-  const [record, setRecord] = useState(workouts);
+export function NotificationsSheet({ notifications }: any) {
+  console.log(notifications);
+  console.log(notifications[1]);
+  const [currentNotifications, setCurrentNotifications] = useState(notifications);
 
+  const handleDelete = (id: string) => {
+    const updatedNotifications = currentNotifications.filter((noti: any) => noti.id !== id);
+    setCurrentNotifications(updatedNotifications);
+  };
 
-  useEffect(() => {
-    let newNotifications = unSeen.map((item: any): Notification => {
-      return {
-        name: item.sender.name,
-        image: item?.sender?.image,
-        body: item?.body,
-      };
-    });
-    newNotifications = newNotifications.concat(
-      record.map((rec: any) => {
-        return {
-          name: rec.title,
-          image: rec.weight,
-          body: "New personal record",
-          date: rec.date
-        };
-      })
-    );
-    setNotifications((prevNotifications) => {
-      const seen = new Set(
-        prevNotifications.map((item) => JSON.stringify(item))
-      );
-      const uniqueNotifications = newNotifications.filter(
-        (item: any) => !seen.has(JSON.stringify(item))
-      );
-      return [...prevNotifications, ...uniqueNotifications];
-    });
-  }, [unSeen]);
 
   const { theme } = useTheme();
   return (
@@ -86,8 +65,25 @@ export function NotificationsSheet({ unSeen, workouts }: any) {
           <SheetClose className="absolute top-1 right-2" />
 
           <SheetDescription className="items-center text-center flex justify-center flex-col overflow-y-scroll max-h-[830px] my-[40px] py-[300px]">
+            {notifications.length === 0 && (
               <p className="text-2xl">No new notifications</p>
-  
+            )}
+
+            {currentNotifications.map((notification: any) => {
+              console.log(notification);
+
+              return (
+                <div
+                  key={notification.id}
+                  className="border-b-[3px] border-b-slate-600"
+                >
+                  <NotificationItem
+                    handleDelete={handleDelete}
+                    notification={notification}
+                  />
+                </div>
+              );
+            })}
           </SheetDescription>
           <SheetFooter></SheetFooter>
         </SheetContent>

@@ -1,70 +1,122 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
 import clsx from "clsx";
+import { format, subDays } from "date-fns";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { FC } from "react";
-import { AiOutlineTrophy } from "react-icons/ai";
+import { FC, useState } from "react";
+import { AiOutlineCheckCircle, AiOutlineTrophy } from "react-icons/ai";
+import { TiDeleteOutline } from "react-icons/ti";
+import { ActionTooltip } from "../ActionToolTip";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { BsSendCheck } from "react-icons/bs";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 interface NotificationItemProps {
-  name: string;
-  image: string;
-  body: string;
-  date?: string
+  notification: any;
+  handleDelete: any;
 }
-const NotificationItem: FC<NotificationItemProps> = ({ name, image, body, date }) => {
-  function getSubstringWithoutCuttingWords(str: string, length: number) {
-    // Start with the initial substring
-    let result = str.substring(0, length);
-
-    // Check if the last character is a whitespace or if it's the end of the string
-    while (length < str.length && str[length] !== " ") {
-      result += str[length];
-      length++;
-    }
-
-    return result;
-  }
-
+const NotificationItem: FC<NotificationItemProps> = ({
+  notification,
+  handleDelete,
+}) => {
+  const [invitationResponse, setInvitationResponse] = useState<boolean>(false);
   const { theme } = useTheme();
-  
+  console.log("NAME ", name);
+  console.log(notification);
+  const router = useRouter();
+
+  const {
+    mutate: invitationResponseMutation,
+    isLoading,
+    isError,
+  } = useMutation({
+    mutationFn: () => {
+      return axios.patch("/api/notifications/invitations/response", {
+        response: invitationResponse,
+        notificationId: notification?.id,
+        groupChatId: notification?.groupId,
+      });
+    },
+    onSuccess: (response) => {
+      console.log(response.data);
+      if (invitationResponse) {
+        toast.success(`Succesfully added to group, redirecting`);
+        router.push(`/conversations/${notification?.groupId}`);
+      } else {
+        toast.success("Invitation rejected");
+        handleDelete(notification?.id);
+      }
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
   return (
     <div
       className={clsx(
-        "flex flex-row justify-between gap-10 border-b-[1px] w-full border-slate-500 py-4",
-        theme === "light" ? "text-black" : "text-white"
+        "flex flex-row justify-between gap-6 w-full pt-4 px-5",
+        theme === "light" ? "text-black" : "text-white",
+        notification?.accepted === true && "opacity-80 text-gray-700"
       )}
     >
-      <div
-        className={clsx(
-          "relative inline-block overflow-hidden min-h-9 min-w-9 max-h-9 max-w-9 md:h-11 md:w-11 ml-3 m-auto",
-          typeof image === "string" && "rounded-full"
-        )}
-      >
-        {typeof image === "string" && (
-          <Image fill src={image} alt="Notification" />
-        )}
-        <AiOutlineTrophy color="blue" className="m-auto" size={35}/>
-        <span className="text-[9px]">{image}lbs</span>
+      <div className=" pt-6">
+        <Image
+          className="rounded-[30px]"
+          alt="recipient image"
+          width={54}
+          height={60}
+          src={notification?.recipientImage}
+        />
+        <p className="text-[12px]">
+          {format(new Date(notification?.createdAt), "MM/dd/yyyy h:mm a")}
+        </p>
       </div>
-      <div className="flex m-auto max-w-[170px]">
-        {typeof image === "string" ? (
-          <p className="font-light text-[14px]">
-            <span className="font-bold text-md">{name} messaged you:</span> "
-            {getSubstringWithoutCuttingWords(body, 10)}
-            {body.length > 10 && "..."}"
-            <span className="cursor-pointer font-bold text-md text-[13px] border-b">
-              {" "}
-            </span>
-          </p>
-        )  : (
+      <div className="text-sm flex flex-col gap-2 pt-6">
+        <div className="">
           <p className="text-[14px]">
-            <span className="font-bold text-[14px]">{body}</span> on the {name} for {image}lbs!
+            {notification?.title
+              .split(" ")
+              .slice(1, notification.title.length - 1)
+              .join(" ")}{" "}
+            group chat{" "}
           </p>
-        )
+        </div>
 
-      }
-
-      </div>
-      <div className="m-auto">
-        {typeof image !== "string" && date?.split(" ")[1] + " " + date?.split(" ")[2]}
+        {notification.accepted === false ? (
+          <div className="flex gap-2 mx-auto my-auto text-[12px]">
+            <ActionTooltip label="Join Chat">
+              <Button
+                disabled={isLoading}
+                onClick={() => {
+                  setInvitationResponse(true);
+                  invitationResponseMutation();
+                }}
+                className="p-2 px-4"
+                variant={"tertiary"}
+                type="button"
+              >
+                <BsSendCheck size={26} />
+              </Button>
+            </ActionTooltip>
+            <ActionTooltip label="Decline Invitation">
+              <Button
+                disabled={isLoading}
+                onClick={() => invitationResponseMutation()}
+                className="px-2"
+                variant={"destructive"}
+                type="button"
+              >
+                <TiDeleteOutline size={32} />
+              </Button>
+            </ActionTooltip>
+          </div>
+        ) : (
+          <div className="font-light">Accepted Invitation</div>
+        )}
       </div>
     </div>
   );

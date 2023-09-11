@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { User } from "@prisma/client";
+import { Notifications, User } from "@prisma/client";
 import DesktopItem from "./DeskTopItem";
 import useRoutes from "@/app/hooks/useRoutes";
-import { SlLogout } from "react-icons/sl";
-import { signOut } from "next-auth/react";
 import SettingsModal from "./SettingsModal";
 import { CiSettings } from "react-icons/ci";
 import ThemeButton from "./ThemeButton";
@@ -14,11 +12,10 @@ import { NotificationsSheet } from "../notifications/NotificationsSheet";
 
 interface DesktopSidebarProps {
   currentUser: User;
-  unSeen: any
-  workouts: any
+  notifications: any
 }
 
-const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, unSeen, workouts }) => {
+const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, notifications}) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false); 
   const {theme} = useTheme() 
@@ -65,7 +62,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, unSeen, wo
               <li
                 className="my-[-20px] h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md leading-6 font-semibold relative mr-2">
                 <div>
-                  <NotificationsSheet workouts={workouts} unSeen={unSeen}/>
+                  <NotificationsSheet notifications={notifications}/>
                 </div>
               </li>
             </ul>
