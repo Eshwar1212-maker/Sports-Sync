@@ -107,8 +107,9 @@ model Workout {
 model Team {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
   title   String?
+  admin String?
   userIds String[] @db.ObjectId
-  members User[]   @relation(fields: [userIds], references: [id])
+  users User[]   @relation(fields: [userIds], references: [id])
   events  Event[]
 }
 

@@ -11,6 +11,7 @@ export default async function CalenderLayout({
   children: React.ReactNode;
 }) {
   const userEvents = await getEvents();
+  
 
   return (
     <Sidebar>

@@ -13,7 +13,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { BsSendCheck } from "react-icons/bs";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 interface NotificationItemProps {
   notification: any;
   handleDelete: any;
@@ -24,8 +24,9 @@ const NotificationItem: FC<NotificationItemProps> = ({
 }) => {
   const [invitationResponse, setInvitationResponse] = useState<boolean>(false);
   const { theme } = useTheme();
-  console.log("NAME ", name);
-  console.log(notification);
+
+
+  
   const router = useRouter();
 
   const {
@@ -41,7 +42,6 @@ const NotificationItem: FC<NotificationItemProps> = ({
       });
     },
     onSuccess: (response) => {
-      console.log(response.data);
       if (invitationResponse) {
         toast.success(`Succesfully added to group, redirecting`);
         router.push(`/conversations/${notification?.groupId}`);

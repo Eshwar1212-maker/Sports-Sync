@@ -6,8 +6,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import AddEventModal from "./AddEventModal";
-import { Event } from "@prisma/client";
-import axios from "axios";
+
 
 
 function Calendar({userEvents}: {userEvents: any}) {
@@ -78,7 +77,7 @@ function Calendar({userEvents}: {userEvents: any}) {
 
 export default Calendar;
 
-const DayCell = ({ date }: any) => {
+export const DayCell = ({ date }: any) => {
   return (
     <div className="relative flex flex-col items-start justify-start h-full">
       <div className="z-0">{date.getDate()}</div>

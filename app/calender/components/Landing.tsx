@@ -1,19 +1,32 @@
 "use client";
 
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useState } from "react";
 import CalenderOptions from "./CalenderOptions";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
-interface landingProps {}
+import { Team, User } from "@prisma/client";
+import CreateTeamModal from "./CreateTeamModal";
+import { Button } from "@/components/ui/button";
+import { MdGroupAdd } from "react-icons/md";
+import { IoMdAdd, IoMdAddCircleOutline } from "react-icons/io";
 
-const Landing: FC<landingProps> = ({}) => {
+interface landingProps {
+  users: User[];
+  userTeams: { title: string | null }[] | null;
+}
+const Landing: FC<landingProps> = ({ users, userTeams }) => {
   const { theme } = useTheme();
+  const [isProModalOpen, setIsProModalOpen] = useState(false);
 
   return (
     <>
       {/*DESKTOP MENU*/}
-
+      <CreateTeamModal
+        users={users!}
+        isOpen={isProModalOpen}
+        onClose={() => setIsProModalOpen(false)}
+      />
       <div className="hidden xl:block py-[100px] sm:px-6 md:pl-60 container">
         <main className="flex flex-col md:flex-row space-x-9 pb-11">
           <div className="space-y-4 w-[90vw] md:w-1/2">
@@ -27,7 +40,7 @@ const Landing: FC<landingProps> = ({}) => {
             </h1>
             <p
               className={clsx(
-                "lg:text-xl font-light py-6",
+                "lg:text-xl py-6 pr-8",
                 theme === "dark" && "text-gray-300"
               )}
             >
@@ -35,6 +48,9 @@ const Landing: FC<landingProps> = ({}) => {
               workouts, or collaborate with your team so you guys can schedule
               games, practices, events, etc.
             </p>
+            <div className="flex flex-start">
+              <CalenderOptions userTeams={userTeams} />
+            </div>
           </div>
           <div className="w-full md:w-1/2">
             <Image
@@ -45,12 +61,17 @@ const Landing: FC<landingProps> = ({}) => {
               src="https://cdn.hashnode.com/res/hashnode/image/upload/v1612787425944/MMJR2txbo.jpeg"
               aria-label="fullcalenderjs image"
             />
+            <Button
+              onClick={() => setIsProModalOpen(true)}
+              className="my-8 text-xl p-10 "
+              variant={"four"}
+            >
+              Create a new workspace <IoMdAddCircleOutline className="pl-2" size={40}/>
+            </Button>
           </div>
         </main>
-        <div className="flex flex-start">
-            <CalenderOptions />
-        </div>
       </div>
+
       {/*MOBILE MENU*/}
       <div className="px-4 items-center py-10 xl:hidden">
         <div className="space-y-7">
@@ -64,10 +85,7 @@ const Landing: FC<landingProps> = ({}) => {
             >
               Use our Calenders to visualize your routine
             </h1>
-            <p
-              className={"text-sm sm:text-lg font-ligh"}
-            
-            >
+            <p className={"text-sm sm:text-lg font-ligh"}>
               Use our Calender feature to either schedule your own practices and
               workouts, or collaborate with your team so you guys can schedule
               games, practices, events, etc.
@@ -85,7 +103,7 @@ const Landing: FC<landingProps> = ({}) => {
           </div>
         </div>
         <div className="my-5">
-          <div className="mx-auto lg:pl-60">
+          <div className="pl-10 sm:pl-40 md:pl-60">
             <CalenderOptions />
           </div>
         </div>

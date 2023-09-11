@@ -24,8 +24,7 @@ type Notification = {
 };
 
 export function NotificationsSheet({ notifications }: any) {
-  console.log(notifications);
-  console.log(notifications[1]);
+
   const [currentNotifications, setCurrentNotifications] = useState(notifications);
 
   const handleDelete = (id: string) => {
@@ -71,8 +70,6 @@ export function NotificationsSheet({ notifications }: any) {
             )}
 
             {currentNotifications.map((notification: any) => {
-              console.log(notification);
-
               return (
                 <div
                   key={notification.id}

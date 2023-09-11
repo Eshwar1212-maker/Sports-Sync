@@ -41,7 +41,6 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   const [bootedMember, setBootedMember] = useState<any>();
   const otherUser = useOtherUser(data);
 
-  console.log(data);
   
 
   const title = useMemo(() => {

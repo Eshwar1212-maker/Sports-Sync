@@ -1,19 +1,21 @@
-import { FC } from 'react'
-import EmptyState from '../components/EmptyState'
-import Landing from './components/Landing'
+import { FC } from "react";
+import Landing from "./components/Landing";
+import getUsers from "../actions/getUsers";
+import axios from "axios";
+import { getUsersTeams } from "../actions/getUsersTeams";
 
-interface PageProps {
+const Home = async () => {
+
+  const users = await getUsers()
+  const userTeams = await getUsersTeams()
+  console.log(userTeams);
   
-}
-const Home: FC<PageProps> = ({
-  
-}) => {
-  
+
   return (
-    <div className='h-full'>
-          <Landing />
+    <div className="h-full">
+      <Landing userTeams={userTeams} users={users}/>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
