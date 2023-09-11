@@ -6,7 +6,7 @@ export async function PATCH(request: Request) {
   try {
     const currentUser = await getCurrentUser();
     const body = await request.json();
-    const { response, notificationId, groupChatId, userToAddId } = body;
+    const { response, notificationId, groupChatId } = body;
 
     //MAKE PATCH REQUEST TO EXISTING NOTIFICATION, UPDATE ACCEPTED OR NOT
     const notification = await prisma.notifications.update({

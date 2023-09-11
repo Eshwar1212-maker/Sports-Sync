@@ -88,7 +88,7 @@ const AddUserToGroup: FC<AddUserToGroupProps> = ({
   } = useMutation(
     async () => {
       axios.post("/api/notifications/invitations", {
-        title: `${data?.admin}invited you to ${data?.name}`,
+        title: `${data?.admin} invited you to ${data?.name}'s `,
         users: selectedUsers,
         groupId: pathName?.conversationId,
       });
