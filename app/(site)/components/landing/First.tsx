@@ -13,7 +13,7 @@ const First: FC<FirstProps> = ({}) => {
           Sports Sync is the <br /> social network for athletes
         </h3>
         <p className="text-sm sm:text-md md:text-xl py-4 text-gray-500">
-          Message your teammates or friends to schedule games, and create a
+          Message your teammates or friends to schedule games, invite users to your private team chat with mod functionalities, and create a
           custom calender for your team so you guys can manage your events, such
           as games, practices, meetings, and more.
         </p>
@@ -21,7 +21,7 @@ const First: FC<FirstProps> = ({}) => {
           onClick={() => router.push("/auth")}
           className=" text-black font-bold hover:underline cursor-pointer"
         >
-          Start Training
+          Start Connecting
         </p>
       </div>
 
