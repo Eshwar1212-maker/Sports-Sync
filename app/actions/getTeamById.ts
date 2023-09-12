@@ -13,7 +13,8 @@ export const getTeamById = async(
                 id: teamId
             },
             include: {
-                users: true
+                users: true,
+                events: true
             }
         })
         return team;

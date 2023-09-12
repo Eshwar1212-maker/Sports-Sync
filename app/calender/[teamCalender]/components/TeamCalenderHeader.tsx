@@ -8,30 +8,32 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { HiChevronLeft } from "react-icons/hi";
 import { HiEllipsisHorizontal, HiEllipsisVertical } from "react-icons/hi2";
 import { RiMenu3Fill } from "react-icons/ri";
+import { TeamDrawer } from "./TeamDrawer";
 interface HeaderProps {
   team: Team & {
     users: User[];
   };
+  currentUser: User
 }
 
-const Header: FC<HeaderProps> = ({ team }) => {
+const TeamCalenderHeader: FC<HeaderProps> = ({ team }) => {
 
 
   return (
-    <div className="border-b-[2px] border-b-slate-600 flex justify-between px-3">
+    <div className="border-b-[2px] border-b-slate-400 flex justify-between px-3">
       <div className="">
-        <h1 className=" text-[15px] font-bold pb-1">{team?.title}</h1>
-        <div className="flex gap-4 pb-1">
+        <h1 className="text-[22px] font-semibold mr-2">{team?.title}</h1>
+        <div className="flex gap-1 pl-1">
         {team.users.map((user) => {
           return (
-            <ActionTooltip label={user?.name as string}>
+            <ActionTooltip  label={user?.name as string}>
               {user?.image && (
                 <Image
                   src={user?.image as string}
                   alt="Avatar"
-                  width={30}
+                  width={20}
                   height={40}
-                  className="rounded-[890px]"
+                  className="rounded-full"
                 />
               )}
             </ActionTooltip>
@@ -42,13 +44,11 @@ const Header: FC<HeaderProps> = ({ team }) => {
       </div>
       <div className="my-4">
       <ActionTooltip label="Manage Team">
-            <button aria-label="Team Settings" className="">
-            <HiEllipsisVertical size={32}/>
-            </button>
-        </ActionTooltip>
+          <TeamDrawer team={team}/>
+       </ActionTooltip>
       </div>
     </div>
   );
 };
 
-export default Header;
+export default TeamCalenderHeader;

@@ -1,7 +1,11 @@
 import { getTeamById } from "@/app/actions/getTeamById";
 import EmptyState from "@/app/components/EmptyState";
 import TeamCalender from "./components/TeamCalender";
-import Header from "./components/Header";
+import Header from "./components/TeamCalenderHeader";
+import { FullTeamEventType } from "@/app/types";
+import { Team } from "@prisma/client";
+import TeamCalenderHeader from "./components/TeamCalenderHeader";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 
 interface TeamIdPageProps {
   params: {
@@ -10,7 +14,10 @@ interface TeamIdPageProps {
 }
 const TeamId = async ({ params }: TeamIdPageProps) => {
 
-  const team = await getTeamById(params.teamCalender);
+
+
+  const team: any = await getTeamById(params.teamCalender);
+  const currentUser = await getCurrentUser()
 
   if (!team) {
     return (
@@ -23,12 +30,12 @@ const TeamId = async ({ params }: TeamIdPageProps) => {
   }
 
   return (
-    <div className="py-8 px-10 lg:ml-8 xl:px-0 xl:pr-20 text-[12px]">
+    <div className=" px-10 lg:ml-8 xl:px-0 xl:pr-20 text-[12px]">
       <div className="h-full flex flex-col">
-        <Header team={team} />
+        <TeamCalenderHeader currentUser={currentUser!} team={team} />
       </div>
       <div className="py-4">
-        <TeamCalender />
+        <TeamCalender currentUser={currentUser!} team={team}/>
       </div>
     </div>
   );
