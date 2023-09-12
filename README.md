@@ -1,20 +1,30 @@
 # Sports Sync
 
-This is a workout/productivity app for teams and players. This app aims to make the lives of athletes easier with calender planning of events, a workout log tracker, a dashboard to show user consistency, and a messaging
-system so athletes can stay in touch with their teammates and friends.
+Synced is an all in one sports/productivity application for athletes and teams. It was made to help manage the lives of athletes in one platform. Athletes use Whats App to create group chats, Google Calender to schedule their events, FitNotes to track their workouts, why not do it all in one app?
 
 ## Features
 
 - Calender section for tracking athletic events, such as workouts, games, team meetings, etc
 - Workout log to track workouts for specific days in the gym
-- Messaging system, to contact your teammates, or friends, to schedule games.
+- Messaging system, to contact your teammates, or friends, to schedule games, with full mod functionalities, ability to invite users and boot users(if your the mod).
 - A user dashboard to track workout consistency, intensity, and more over the course of a long period of time.
+- Full progressive overload tracker for every exercise completed, with charts showing your progression.
+- Full workspace tam calender, so users can create private teams, and schedule and render events everyone in the team can see.
+
+## Technologies Used
+
+- Leveraged NextJS13 modern app router for server side rendering and build in API route handlers
+- Used Fullcalendar js for a fully functional calendar, allowing athletes to schedule any event needed, such as games, practices, meetings, etc, along with shadcn/ui for a smaller calendar for the workout log
+- Integrated Pusher for real-time web socket communication, allowing teams to create group chats and get instant updates from everyone, fostering great communication. 
+- Utilized  prisma and mongodb for a highly scalable database allowing users to seamlessly post workout logs, calendar events, and messages, along with being able to add a certain workout to their calendar.
+- Employed tremor for beautiful charts tracking user progress, such as consistency, intensity, and progressive overload for every exercise logged.
+
 
 ## Prerequisites
 
--Strong knowledge of React and Javascript is required
--Basic knowledge of Nextjs is required
--Knowledge of database management is required
+- Knowledge of React and Javascript is required.
+- Basic knowledge of Nextjs is required.
+- Knowledge of database management is required.
 
 ## Installation
 
@@ -40,3 +50,10 @@ Get your env variables:
             NEXT_PUBLIC_PUSHER_APP_KEY =
             PUSHER_SECRET =
             cluster =
+## Screenshots
+
+![Calender Feature]("/app/assets/cal.png")
+![Messaging Feature]("/app/assets/message.png")
+![Workout Log Feature]("/app/assets/hey.png")
+![Progressive Overload Tracker Feature]("/app/assets/tr.png")
+![Consistency and Intensity Tracker Feature]("/app/assets/das.png")
