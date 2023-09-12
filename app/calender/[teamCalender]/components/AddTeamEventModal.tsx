@@ -11,7 +11,7 @@ import clsx from "clsx";
 import { Indie_Flower, Tulpen_One } from "next/font/google";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { useTheme } from "next-themes";
-import { Team } from "@prisma/client";
+import { Team, User } from "@prisma/client";
 
 const bon = Indie_Flower({
   subsets: ["latin"],
@@ -28,7 +28,8 @@ interface EventsModaProps {
   selectedEvent: any;
   selectedDate: string;
   events: any;
-  team: Team
+  team: Team;
+  currentUser: User;
 }
 
 function AddTeamEventModal({
@@ -39,38 +40,42 @@ function AddTeamEventModal({
   selectedEvent,
   selectedDate,
   events,
-  team
+  team,
+  currentUser,
 }: EventsModaProps) {
   const [eventTitle, setEventTitle] = useState("");
   const [eventNotes, setEventNotes] = useState("");
-  const [updateTitle, setUpdateTitle] = useState(selectedEvent && selectedEvent.title);
+  const [updateTitle, setUpdateTitle] = useState(
+    selectedEvent && selectedEvent.title
+  );
   const [specificEventNotes, setSpecificEventNotes] = useState<any>([]);
   const [preFilledTitle, setPreFilledTitle] = useState();
   const [addPrefilledValue, setAddPrefilledValue] = useState(true);
-
-  
 
   useEffect(() => {
     if (eventTitle.length > 2) {
       const newEvents = events
         .filter((event: any) => {
-          if (event.date.toString().includes("2023") && event.notes.length > 10) {
+          if (
+            event.date.toString().includes("2023") &&
+            event.notes.length > 10
+          ) {
             return event.title.includes(eventTitle);
           }
         })
-        .sort((a: any, b: any) => b.notes.length - a.notes.length); 
-  
+        .sort((a: any, b: any) => b.notes.length - a.notes.length);
+
       setPreFilledTitle(newEvents[0]?.title);
       setSpecificEventNotes(newEvents);
     }
   }, [eventTitle]);
-  
+
   const [updateNotes, setUpdateNotes] = useState(
     selectedEvent?._def?.extendedProps?.notes || ""
   );
   const { toast: toaster } = useToast();
 
-  const {theme} = useTheme()
+  const { theme } = useTheme();
 
   useEffect(() => {
     setUpdateTitle(selectedEvent ? selectedEvent.title : "");
@@ -83,7 +88,13 @@ function AddTeamEventModal({
     isLoading,
     error,
   } = useMutation(
-    (data: { title: string; notes: string; date: string, teamId: string }) => {
+    (data: {
+      title: string;
+      notes: string;
+      date: string;
+      teamId: string;
+      poster: string;
+    }) => {
       return axios.post("/api/teams/teamEvents", data);
     },
     {
@@ -104,7 +115,7 @@ function AddTeamEventModal({
       notes: string;
       eventId: string;
       date?: string;
-      teamId: string
+      teamId: string;
     }) => {
       console.log(data);
 
@@ -126,7 +137,7 @@ function AddTeamEventModal({
       title: string;
       notes: string;
       eventId: string;
-      teamId: string
+      teamId: string;
       date?: string;
     }) => {
       return axios.patch("/api/teams/teamEvents/update", data);
@@ -150,7 +161,7 @@ function AddTeamEventModal({
         title: "",
         eventId: selectedEvent?._def?.publicId,
         date: "1000-09-20",
-        teamId: team?.id
+        teamId: team?.id,
       });
     } catch (error) {
       console.error("Error deleting event:", error);
@@ -165,7 +176,7 @@ function AddTeamEventModal({
         notes: updateNotes,
         title: updateTitle,
         eventId: selectedEvent?._def?.publicId,
-        teamId: team?.id
+        teamId: team?.id,
       });
       setUpdateNotes("");
       setUpdateTitle("");
@@ -174,16 +185,15 @@ function AddTeamEventModal({
         title: eventTitle,
         notes: eventNotes,
         date,
-        teamId: team?.id
+        teamId: team?.id,
+        poster: currentUser?.name!,
       });
     }
 
     setEventTitle("");
     setEventNotes("");
   };
- 
-  console.log(selectedEvent);
-  
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <form className="px-1" onSubmit={handleSubmit}>
@@ -221,55 +231,79 @@ function AddTeamEventModal({
           <textarea
             className={clsx(
               "bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px]",
-              (eventTitle.length > 20 && specificEventNotes) && "text-gray-400 text-xl"
+              eventTitle.length > 20 &&
+                specificEventNotes &&
+                "text-gray-400 text-xl"
             )}
             placeholder="Add notes over here..."
             style={
-              eventTitle.length > 4 && specificEventNotes.length > 0 && addPrefilledValue
+              eventTitle.length > 4 &&
+              specificEventNotes.length > 0 &&
+              addPrefilledValue
                 ? bon.style
                 : {}
             }
-            value={selectedEvent ? updateNotes : eventNotes + (addPrefilledValue && eventTitle.length > 4 && specificEventNotes.length > 0 ? specificEventNotes[0]?.notes! : "")}
-
+            value={
+              selectedEvent
+                ? updateNotes
+                : eventNotes +
+                  (addPrefilledValue &&
+                  eventTitle.length > 4 &&
+                  specificEventNotes.length > 0
+                    ? specificEventNotes[0]?.notes!
+                    : "")
+            }
             onChange={(e) =>
               selectedEvent
                 ? setUpdateNotes(e.target.value)
                 : setEventNotes(e.target.value)
             }
           />
-          {eventTitle.length > 4 && specificEventNotes.length > 0 && addPrefilledValue && (
-            <div
-              style={bon.style}
-              className={clsx("flex flex-row gap-1 w-fit rounded-lg my-auto pl-2", theme === "light" && "bg-gray-100")}
-            >
-              <div className="">
-                <p className={clsx("text-[18px] my-3", theme === "light" && "text-gray-600")}>
-                  Work with previous {preFilledTitle}?{" "}
-                </p>
-              </div>
-              <div className={clsx("flex gap-2 p-2", theme === "light" && "")}>
-                <button
-                  type="button"
-                  aria-label="Checkmark for notes"
-                  onClick={() => {
-                    setEventNotes(
-                      (prevNotes) => prevNotes + specificEventNotes[0]?.notes!
-                    );
-                    setAddPrefilledValue(false);
-                  }}
+          {eventTitle.length > 4 &&
+            specificEventNotes.length > 0 &&
+            addPrefilledValue && (
+              <div
+                style={bon.style}
+                className={clsx(
+                  "flex flex-row gap-1 w-fit rounded-lg my-auto pl-2",
+                  theme === "light" && "bg-gray-100"
+                )}
+              >
+                <div className="">
+                  <p
+                    className={clsx(
+                      "text-[18px] my-3",
+                      theme === "light" && "text-gray-600"
+                    )}
+                  >
+                    Work with previous {preFilledTitle}?{" "}
+                  </p>
+                </div>
+                <div
+                  className={clsx("flex gap-2 p-2", theme === "light" && "")}
                 >
-                  <AiOutlineCheck size={24} />
-                </button>
-                <button
-                  onClick={() => setAddPrefilledValue(false)}
-                  aria-label="Dismiss prev notes"
-                  type="button"
-                >
-                  <AiOutlineClose size={24} />
-                </button>
+                  <button
+                    type="button"
+                    aria-label="Checkmark for notes"
+                    onClick={() => {
+                      setEventNotes(
+                        (prevNotes) => prevNotes + specificEventNotes[0]?.notes!
+                      );
+                      setAddPrefilledValue(false);
+                    }}
+                  >
+                    <AiOutlineCheck size={24} />
+                  </button>
+                  <button
+                    onClick={() => setAddPrefilledValue(false)}
+                    aria-label="Dismiss prev notes"
+                    type="button"
+                  >
+                    <AiOutlineClose size={24} />
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
         {selectedEvent && (
           <button

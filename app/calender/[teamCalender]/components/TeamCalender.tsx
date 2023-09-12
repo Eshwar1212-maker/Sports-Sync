@@ -52,6 +52,7 @@ const TeamCalender: FC<TeamCalenderProps> = ({team, currentUser}) => {
         onSave={updateEvents}
         selectedEvent={selectedEvent}
         selectedDate={selectedDate}
+        currentUser={currentUser}
       />
       <div>
         <FullCalendar

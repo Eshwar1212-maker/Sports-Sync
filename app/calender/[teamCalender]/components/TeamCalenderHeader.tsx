@@ -16,7 +16,7 @@ interface HeaderProps {
   currentUser: User
 }
 
-const TeamCalenderHeader: FC<HeaderProps> = ({ team }) => {
+const TeamCalenderHeader: FC<HeaderProps> = ({ team, currentUser }) => {
 
 
   return (
@@ -44,7 +44,7 @@ const TeamCalenderHeader: FC<HeaderProps> = ({ team }) => {
       </div>
       <div className="my-4">
       <ActionTooltip label="Manage Team">
-          <TeamDrawer team={team}/>
+          <TeamDrawer currentUser={currentUser} team={team}/>
        </ActionTooltip>
       </div>
     </div>
