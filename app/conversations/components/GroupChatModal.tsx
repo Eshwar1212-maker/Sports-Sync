@@ -49,15 +49,18 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
   } = useMutation(
     (data: FieldValues) => {
       return axios.post(`/api/conversations`, {
+
         ...data,
         isGroup: true,
         admin: `${currentUser.email + " " + currentUser.name}`
       });
     },
     {
-      onSuccess: () => {
+      onSuccess: (response) => {
+        console.log(response);
+        
         router.refresh();
-        router.push(`/conversations`);
+        router.push(`/conversations/${response.data.id}`);
         toast.success(`Succesfully created group`)
         onClose()
       },

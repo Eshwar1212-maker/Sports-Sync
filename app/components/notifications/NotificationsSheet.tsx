@@ -66,7 +66,10 @@ export function NotificationsSheet({ notifications }: any) {
 
           <SheetDescription className={clsx("items-center text-center flex justify-center flex-col overflow-y-scroll max-h-[830px]", notifications.length === 0 && "my-[40px] py-[300px]")}>
             {notifications.length === 0 && (
+              <div>
               <p className="text-2xl">No new notifications</p>
+              <p className="py-2 px-3 text-md">You will get notifications when someone invites you to a group or team, and when you hit personal records on your workouts.</p>
+              </div>
             )}
 
             {currentNotifications.map((notification: any) => {
