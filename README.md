@@ -15,8 +15,8 @@ Synced is an all in one sports/productivity application for athletes and teams. 
 
 ## Technologies Used
 
-- Leveraged NextJS13 modern app router for server side rendering and build in API route handlers
-- Used Fullcalendar js for a fully functional calendar, allowing athletes to schedule any event needed, such as games, practices, meetings, etc, along with shadcn/ui for a smaller calendar for the workout log
+- Leveraged NextJS13 modern app router for server side rendering and built in API route handlers.
+- Used Fullcalendar js for a fully functional calendar, allowing athletes to schedule any event needed, such as games, practices, meetings, etc, along with shadcn/ui for a smaller calendar for the workout log.
 - Integrated Pusher for real-time web socket communication, allowing teams to create group chats and get instant updates from everyone, fostering great communication. 
 - Utilized  prisma and mongodb for a highly scalable database allowing users to seamlessly post workout logs, calendar events, and messages, along with being able to add a certain workout to their calendar.
 - Employed tremor for beautiful charts tracking user progress, such as consistency, intensity, and progressive overload for every exercise logged.
