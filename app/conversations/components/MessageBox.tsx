@@ -12,27 +12,24 @@ import ImageModal from "./ImageModal";
 interface MessageBoxProps {
   data: FullMessageType;
   isLast?: boolean;
+  currentUser: any
 }
 
 const MessageBox: React.FC<MessageBoxProps> = ({ 
   data, 
-  isLast
+  isLast,
+  currentUser
 }) => {
   
   const session = useSession();
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const {theme} = useTheme()
   const isOwn = session.data?.user?.email === data?.sender?.email
-  const seenList = (data?.seen || [])
-    .filter((user) => user.email !== data?.sender?.email)
-    .map((user) => user.name)
-    .join(', ');
-
   const container = clsx('flex gap-3 p-4', isOwn && 'justify-end');
   const avatar = clsx(isOwn && 'order-2');
-  const body = clsx('flex flex-col gap-2 md:max-w-[36%]', isOwn && 'items-end max-w-[50%] text-white');
+  const body = clsx('flex flex-col gap-2 md:max-w-[36%]', isOwn && 'items-end text-white');
   const message = clsx(
-    'text-sm w-fit overflow-hidden', 
+    'text-sm w-fit overflow-hidden max-w-[280px] md:max-w-[400px]', 
     isOwn && theme === "light" ? 'bg-sky-500 text-white' : 'bg-gray-100', 
     isOwn && theme === "dark" ? 'bg-sky-500 text-white' : 'bg-gray-100', 
     data?.image ? 'rounded-md p-0' : 'rounded-lg py-2 px-3'
@@ -64,11 +61,11 @@ const MessageBox: React.FC<MessageBoxProps> = ({
             <div className={!isOwn ? "text-black" : ""}>{data?.body}</div>
           )}
         </div>
-        {isLast && isOwn && seenList?.length > 0 && (
+        {/* {isLast && isOwn && seenList?.length > 0 && (
           <div className="text-xs font-light text-gray-500">
             {`Seen by ${seenList}`}
           </div>
-        )}
+        )} */}
       </div>
     </div>
    );

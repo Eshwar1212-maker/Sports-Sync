@@ -31,10 +31,16 @@ export async function POST(
                 },
             },
             include: {
-                sender: true
-            }
+                sender: {
+                    select: {
+                        image: true,
+                        email: true
+                    }
+                }
+                
+            },
         })
-                const bufferSize1 = Buffer.from(JSON.stringify(newMessage)).length;
+        const bufferSize1 = Buffer.from(JSON.stringify(newMessage)).length;
         const updatedConversation = await prisma.conversation.update({
             where: {
                 id: conversationId
@@ -57,6 +63,7 @@ export async function POST(
             }
         })
 
+        console.log(bufferSize1);
         
 
         await pusherServer.trigger(conversationId, 'messages:new', newMessage)
