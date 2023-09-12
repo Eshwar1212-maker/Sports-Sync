@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
     const body = await request.json();
-    const { notes, title, date, teamId} = body;
+    const { notes, title, date, teamId, poster} = body;
 
     console.log("HELLOOOOO");
     
@@ -19,6 +19,7 @@ export async function POST(request: Request) {
         notes,
         title,
         date,
+        poster,
         user: {
           connect: {
             id: currentUser.id
