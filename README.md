@@ -1,6 +1,8 @@
 # Sports Sync
 
 Synced is an all in one sports/productivity application for athletes and teams. It was made to help manage the lives of athletes in one platform. Athletes use Whats App to create group chats, Google Calender to schedule their events, FitNotes to track their workouts, why not do it all in one app?
+![Synced](/app/assets/synced.png)
+
 
 ## Features
 
@@ -52,8 +54,8 @@ Get your env variables:
             cluster =
 ## Screenshots
 
-![Calender Feature]("/app/assets/cal.png")
-![Messaging Feature]("/app/assets/message.png")
-![Workout Log Feature]("/app/assets/hey.png")
-![Progressive Overload Tracker Feature]("/app/assets/tr.png")
-![Consistency and Intensity Tracker Feature]("/app/assets/das.png")
+![Calender Feature](/app/assets/cal.png)
+![Messaging Feature](/app/assets/message.png)
+![Workout Log Feature](/app/assets/hey.pn")
+![Progressive Overload Tracker Feature](/app/assets/tr.png)
+![Consistency and Intensity Tracker Feature](/app/assets/das.png)
