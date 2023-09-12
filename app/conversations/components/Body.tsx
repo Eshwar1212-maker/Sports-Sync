@@ -30,7 +30,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [], currentUser }) => {
       bottomRef?.current?.scrollIntoView();
       setMessages((current: any) => {
         if (find(current, { id: message.id })) {
-          return current;D
+          return current;
         }
 
         return [...current, message]
