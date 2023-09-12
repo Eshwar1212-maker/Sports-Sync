@@ -79,11 +79,9 @@ export function TeamDrawer({ team, currentUser }: ProfileDrawerProps) {
               </div>
               <div className="fixed bottom-10">
               <div className="flex gap-2 py-3 justify-center mx-auto">
-                <ActionTooltip label={`${team?.title}'s group chat`}>
                 <Button variant={"five"}>
                   Group Chat
               </Button>
-                </ActionTooltip>
       
                 <ActionTooltip label={`Leave ${team?.title}`}>
                   <Button variant={"destructive"}>
