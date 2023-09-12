@@ -37,7 +37,7 @@ export function TeamDrawer({ team, currentUser }: ProfileDrawerProps) {
       </SheetTrigger>
       <SheetContent className="space-y-6">
         <SheetHeader>
-          <SheetTitle>Manage {team?.title}</SheetTitle>
+          <SheetTitle>{team?.title}</SheetTitle>
           <SheetDescription className="py-[20px]">
             <div className="">
               <h4 className="font-bold pb-1 text-md">Moderator</h4>
