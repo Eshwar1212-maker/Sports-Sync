@@ -10,10 +10,8 @@ import { HiEllipsisHorizontal, HiEllipsisVertical } from "react-icons/hi2";
 import { RiMenu3Fill } from "react-icons/ri";
 import { TeamDrawer } from "./TeamDrawer";
 interface HeaderProps {
-  team: Team & {
-    users: User[];
-  };
-  currentUser: User
+  team: any
+  currentUser: any
 }
 
 const TeamCalenderHeader: FC<HeaderProps> = ({ team, currentUser }) => {
@@ -24,7 +22,7 @@ const TeamCalenderHeader: FC<HeaderProps> = ({ team, currentUser }) => {
       <div className="">
         <h1 className="text-[22px] font-semibold mr-2">{team?.title}</h1>
         <div className="flex gap-1 pl-1">
-        {team.users.map((user) => {
+        {team.users.map((user: any) => {
           return (
             <ActionTooltip  label={user?.name as string}>
               {user?.image && (
