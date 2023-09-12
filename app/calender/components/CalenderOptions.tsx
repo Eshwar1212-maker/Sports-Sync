@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { useRouter } from "next/navigation";
-import ProModal from "./ProModal";
-import CreateTeamModal from "./CreateTeamModal";
+
 
 const plans = [
   {
