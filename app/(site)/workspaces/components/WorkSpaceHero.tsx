@@ -14,7 +14,7 @@ const WorkSpaceHero: FC<heroProps> = ({}) => {
           Syned is the easiest way for individual athletes or teams to plan, manage, and visualize their events in a shared team calender. <br />We're here to help you have
           as strong a season as ever.
         </p>
-        <div className="text-sm sm:text-md flex gap-8 py-2">
+        <div className="text-sm sm:text-lg flex gap-8 py-2">
           <button className="hover:underline">Tracking</button>
           <button className="hover:underline">Planning</button>
           <button className="hover:underline">Collaborating</button>
