@@ -26,7 +26,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 export function NavBarItem() {
   const router = useRouter();
   return (
-    <NavigationMenu className="hidden md:flex">
+    <NavigationMenu className="hidden lg:flex">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
