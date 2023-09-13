@@ -57,7 +57,7 @@ export function NavBarItem() {
               </li>
               <ListItem
                 className="hover:bg-slate-200"
-                href="/docs"
+                href="/auth"
                 title="Start Logging"
               >
                 Utilize our workout log to track your exercise on a daily,
@@ -66,7 +66,7 @@ export function NavBarItem() {
               </ListItem>
               <ListItem
                 className="hover:bg-slate-200"
-                href="/docs/installation"
+                href="/auth"
                 title="Communicate"
               >
                 Leverage our messaging system for private group chats, schedule
@@ -74,7 +74,7 @@ export function NavBarItem() {
               </ListItem>
               <ListItem
                 className="hover:bg-slate-200"
-                href="/docs/primitives/typography"
+                href="/auth"
                 title="Calenders and Workspaces"
               >
                 Use our calenders to track everything related to your sport,
