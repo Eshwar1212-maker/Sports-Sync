@@ -158,7 +158,7 @@ export function NavBarItem() {
                       className="hover:bg-slate-200"
                       key={component.title}
                       title={component.title}
-                      href={component.href}
+                      href="/auth"
                     >
                       {component.description}
                     </ListItem>
@@ -181,7 +181,7 @@ export function NavBarItem() {
                   height={340}
                   className="bg-slate-300 p-2 rounded-md"
                 />
-                <button onClick={() => router.push("/tracking")} className="p-3 text-md w-fit mx-auto bg-blue-100 text-black hover:bg-white transition ease-in-out duration-300 rounded-sm flex items-center">
+                <button onClick={() => router.push("/")} className="p-3 text-md w-fit mx-auto bg-blue-100 text-black hover:bg-white transition ease-in-out duration-300 rounded-sm flex items-center">
                     Read how to start utilizing Synced now
                   <span className="">
                     <AiOutlineArrowRight size={20} />
