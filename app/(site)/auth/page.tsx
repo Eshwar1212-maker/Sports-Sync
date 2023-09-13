@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FC } from "react";
 import AuthForm from "../components/AuthForm";
+import Navbar from "../components/Navbar";
 
 interface pageProps {}
 const page: FC<pageProps> = ({}) => {
@@ -13,7 +14,7 @@ const page: FC<pageProps> = ({}) => {
       <AuthForm />
     </div>
     <div 
-    className="flex h-screen min-h-full flex-col py-[131px] sm:px-6 lg:px-8 bg-gradient-to-t bg-cover bg-no-repeat sm:hidden bg-white">
+    className="flex h-screen min-h-full flex-col py-[131px] sm:px-6 lg:px-8 bg-gradient-to-t bg-cover bg-no-repeat sm:hidden bg-black">
       {/*Auth Form*/}
       <AuthForm />
     </div>

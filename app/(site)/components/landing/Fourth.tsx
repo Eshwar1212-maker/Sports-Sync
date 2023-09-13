@@ -1,4 +1,3 @@
-import { Footer } from "react-day-picker";
 import one from "../../../assets/hey.png";
 import two from "../../../assets/tr.png";
 import Image from "next/image";
