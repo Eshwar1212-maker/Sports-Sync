@@ -14,7 +14,6 @@ const page: FC<pageProps> = ({
 }) => {
   return (
     <div>
-      <Navbar />
       <Hero />
       <Footer />
     </div>
