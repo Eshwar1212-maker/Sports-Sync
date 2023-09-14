@@ -2,30 +2,62 @@
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 interface heroProps {}
 const WorkSpaceHero: FC<heroProps> = ({}) => {
   const router = useRouter();
+
+  const onClickFirst = () => {
+    const scroll = document.getElementById("third");
+    scroll?.scrollIntoView({ behavior: "smooth" });
+  };
+  const onClickSecond = () => {
+    const scroll = document.getElementById("first");
+    scroll?.scrollIntoView({ behavior: "smooth" });
+  };
+  const onClickThird = () => {
+    const scroll = document.getElementById("second");
+    scroll?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="flex flex-col lg:flex-row justify-between] md:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1500px] mx-auto py-[110px] lg:py-[200px] gap-10">
       <div className=" my-auto space-y-3 sm:space-y-4 w-[84%] sm:w-[80%] xl:w-[50%] mx-auto">
-        <h1 className="text-4xl sm:text-5xl lg:text-5xl 2xl:text-7xl">Create your own team and project calenders</h1>
+        <h1 className="text-4xl sm:text-5xl lg:text-5xl 2xl:text-7xl">
+          Create your own team calenders
+        </h1>
         <p className="sm::text-lg xl:text-xl lg:max-w-[600px]">
-          Syned is the easiest way for individual athletes or teams to plan, manage, and visualize their events in a shared team calender. <br />We're here to help you have
-          as strong a season as ever.
+          Syned is the easiest way for individual athletes or teams to plan,
+          manage, and visualize their events in a shared team calender. 
+          <br /><br />
+          We're here to help you have as strong a season as ever.
         </p>
         <div className="text-[13px] sm:text-lg flex gap-6 sm:gap-8 py-2">
-          <button className="hover:underline">Tracking</button>
-          <button className="hover:underline">Planning</button>
-          <button className="hover:underline">Collaborating</button>
-          <button className="text-blue-700 cursor-default">Succeding</button>
+          <button onClick={onClickFirst} className="hover:underline">
+            Collaborative
+          </button>
+          <button onClick={onClickSecond} className="hover:underline">
+            Convenient
+          </button>
+          <button onClick={onClickThird} className="hover:underline">
+            Managed
+          </button>
+          <button
+            onClick={onClickThird}
+            className="text-blue-700 cursor-default"
+          >
+            Succeeded
+          </button>
         </div>
         <div className="hidden md:block mx-auto">
-          <button onClick={() => router.push("/auth")} className="p-5 border-[1px] border-black text-md sm:text-xl hover:bg-blue-300 transition ease-out duration-300">
+          <button
+            onClick={() => router.push("/auth")}
+            className="p-5 border-[1px] border-black text-md sm:text-xl hover:bg-blue-400 hover:text-white transition ease-out duration-300"
+          >
             Lets Get Your Workspace Set Up
           </button>
         </div>
-      </div> 
+      </div>
       <div className="my-auto max-w-[89%] sm:max-w-[80%] lg:max-w-full mx-auto">
         <video
           className=" bg-slate-300"
@@ -41,10 +73,10 @@ const WorkSpaceHero: FC<heroProps> = ({}) => {
         </video>
       </div>
       <div className="md:hidden mx-auto">
-          <button className="p-5 border-[1px] border-black text-md sm:text-xl hover:bg-blue-300 transition ease-out duration-300">
+        <button className="p-5 border-[1px] border-black text-md sm:text-xl hover:bg-blue-400 hover:text-white transition ease-out duration-300">
           Lets Get Your Workspace Set Up
-          </button>
-        </div>
+        </button>
+      </div>
     </div>
   );
 };

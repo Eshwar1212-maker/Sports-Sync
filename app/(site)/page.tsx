@@ -13,9 +13,7 @@ const page: FC<pageProps> = ({
   
 }) => {
   return (
-    <div>
       <Hero />
-    </div>
   )
 }
 
