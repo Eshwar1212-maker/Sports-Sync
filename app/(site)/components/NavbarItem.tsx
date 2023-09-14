@@ -107,7 +107,9 @@ export function NavBarItem() {
                     </ListItem>
                   ))}
                   <Button
-                    onClick={() => router.push("/auth")}
+                    onClick={() => {
+                      router.push("/auth")
+                    }}
                     className="py-8 my-2"
                     variant={"six"}
                   >
@@ -158,7 +160,7 @@ export function NavBarItem() {
                       className="hover:bg-slate-200"
                       key={component.title}
                       title={component.title}
-                      href="/auth"
+                      href="/tracking"
                     >
                       {component.description}
                     </ListItem>

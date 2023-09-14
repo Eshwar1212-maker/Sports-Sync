@@ -52,7 +52,7 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
         data={exercise}
         index="year"
         categories={["weight"]}
-        colors={["sky", "red"]}
+        colors={["red", "red"]}
         valueFormatter={dataFormatter}
         yAxisWidth={40}
       />

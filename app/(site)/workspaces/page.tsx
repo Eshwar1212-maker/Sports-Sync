@@ -3,6 +3,7 @@ import WorkSpaceHero from './components/WorkSpaceHero'
 import WorkSpaceFirst from './components/WorkSpaceFirst'
 import WorkSpaceSecond from './components/WorkSpaceSecond'
 import WorkSpaceThird from './components/WorkSpaceThird'
+import WorkSpaceFourth from './components/WorkSpaceFourth'
 interface pageProps {
   
 }
@@ -12,9 +13,10 @@ const page: FC<pageProps> = ({
   return (
     <div>
       <WorkSpaceHero />
-      <WorkSpaceFirst />
-      <WorkSpaceSecond />
       <WorkSpaceThird />
+      <WorkSpaceSecond />
+      <WorkSpaceFirst />
+      <WorkSpaceFourth />
     </div>
   )
 }
