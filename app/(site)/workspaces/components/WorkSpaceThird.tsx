@@ -6,7 +6,7 @@ import Footer from "../../components/landing/Footer";
 interface WorkSpaceFirstProps {}
 const WorkSpaceThird: FC<WorkSpaceFirstProps> = ({}) => {
   return (
-    <div id="first" className=" bg-blue-50 mb-40 lg:h-[760px] lg:py-11">
+    <div id="first" className=" bg-blue-50 h-[72vh] lg:h-[760px] lg:py-11">
       <div className="flex flex-col lg:flex-row lg:justify-between sm:max-w-[900px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1400px] mx-auto h-[400px] lg:py-11">
         <div className="mx-auto my-auto max-w-[350px] sm:max-w-[500px] pt-[70px] pb-10 lg:py-[120px] text-2xl lg:text-4xl font-thin">
             We'll prefetch at your convenice. Type in a event, and we will prefetch the last events notes with that name, and give you an option to 
