@@ -15,13 +15,24 @@ import {
 } from "@/components/ui/navigation-menu";
 import NavBarItemCarousel from "./NavBarItemCarousel";
 import { Button } from "@/components/ui/button";
-import { navWorkSpaceFeatures, workOutLogFeatures } from "@/app/libs/NavWorkSpaceFeatures";
+import {
+  navWorkSpaceFeatures,
+  workOutLogFeatures,
+} from "@/app/libs/NavWorkSpaceFeatures";
 import Image from "next/image";
 import monthly from "../../assets/Synced/monthly.png";
 import weekly from "../../assets/Synced/weekly.png";
 import daily from "../../assets/Synced/daily.png";
 import { useRouter } from "next/navigation";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@radix-ui/react-dropdown-menu";
 
 export function NavBarItem() {
   const router = useRouter();
@@ -108,7 +119,7 @@ export function NavBarItem() {
                   ))}
                   <Button
                     onClick={() => {
-                      router.push("/auth")
+                      router.push("/auth");
                     }}
                     className="py-8 my-2"
                     variant={"six"}
@@ -150,9 +161,7 @@ export function NavBarItem() {
             <div className="max-w-[1400px] mx-auto pb-3 flex flex-row">
               <div>
                 <div className="px-6 pt-8 pb-8 text-[22px] mx-auto">
-                  <p>
-                    Start working towards your goals today.
-                  </p>
+                  <p>Start working towards your goals today.</p>
                 </div>
                 <ul className="grid gap-3 px-4 mx-auto md:grid-cols-2 pb-10 max-w-[900px]">
                   {workOutLogFeatures.map((component) => (
@@ -183,8 +192,11 @@ export function NavBarItem() {
                   height={340}
                   className="bg-slate-300 p-2 rounded-md"
                 />
-                <button onClick={() => router.push("/")} className="p-3 text-md w-fit mx-auto bg-blue-100 text-black hover:bg-white transition ease-in-out duration-300 rounded-sm flex items-center">
-                    Read how to start utilizing Synced now
+                <button
+                  onClick={() => router.push("/")}
+                  className="p-3 text-md w-fit mx-auto bg-blue-100 text-black hover:bg-white transition ease-in-out duration-300 rounded-sm flex items-center"
+                >
+                  Read how to start utilizing Synced now
                   <span className="">
                     <AiOutlineArrowRight size={20} />
                   </span>
@@ -194,11 +206,25 @@ export function NavBarItem() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              About
-            </NavigationMenuLink>
-          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                About
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className=" w-80 bg-blue-50 mx-auto p-2 font-semibold">
+              <DropdownMenuSeparator />
+              <DropdownMenuCheckboxItem className="text-md hover:bg-slate-200 transition ease-in-out duration-300 cursor-pointer mx-auto px-3 py-2 rounded-lg text-sm">
+                Learn more about Synced
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem
+                onClick={() => router.push("/techstack")}
+                className="text-md hover:bg-slate-200 transition ease-in-out duration-300 cursor-pointer mx-auto px-3 py-2 rounded-lg text-sm"
+              >
+                Our tech stack
+              </DropdownMenuCheckboxItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
