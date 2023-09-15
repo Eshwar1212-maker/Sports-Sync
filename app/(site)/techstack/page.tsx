@@ -2,11 +2,15 @@ import { FC } from "react";
 interface pageProps {}
 const page: FC<pageProps> = ({}) => {
   return (
-    <main className="py-16 max-w-2xl mx-auto my-20">
+    <main className="py-16 max-w-[340px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-2xl mx-auto my-20">
       <div className="space-y-8">
-        <h1 className="text-3xl font-bold leading-relaxed">
+        <h1 className="hidden sm:block text-3xl font-bold leading-relaxed">
           Synced's Tech Stack: How we're
           <br /> helping athletes get to the next level
+        </h1>
+        <h1 className="text-3xl font-bold leading-relaxed sm:hidden">
+          Synced's Tech Stack: How we're
+         helping athletes get to the next level
         </h1>
         <p className="text-lg text-gray-700 leading-relaxed font-light">
           I get a lot of people asking me the specific technologies we used to
