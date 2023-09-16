@@ -4,9 +4,9 @@ interface pageProps {}
 
 const page: FC<pageProps> = ({}) => {
   return (
-    <main className="max-w-[340px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-2xl mx-auto my-[110px] lg:my-j40">
+    <main className=" max-w-[340px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-2xl mx-auto my-[110px] lg:my-40">
             <div className="space-y-8">
-        <h1 className="hidden sm:block text-3xl font-bold leading-relaxed">
+        <h1 className=" text-3xl font-bold leading-relaxed">
           How to start using Synced
         </h1>
         <p className="text-lg text-gray-700 leading-relaxed font-light">
