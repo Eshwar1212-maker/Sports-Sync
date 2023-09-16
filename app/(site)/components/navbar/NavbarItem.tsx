@@ -205,7 +205,7 @@ export function NavBarItem() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>About</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Guide</NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
               <ListItem
