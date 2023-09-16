@@ -27,8 +27,8 @@ const TrackerHero: FC<heroProps> = ({}) => {
   };
 
   return (
-    <div className="flex flex-col mx-auto py-40 sm:py-[190px] lg:py-[170px] space-y-16">
-      <div className=" my-auto space-y-3 sm:space-y-4 w-[70%] lg:w-[60%] xl:w-[50%] mx-auto">
+    <div className="flex flex-col mx-auto py-[120px] sm:py-[190px] lg:py-[170px] space-y-16">
+      <div className=" my-auto space-y-3 sm:space-y-4 w-[76%] lg:w-[60%] xl:w-[50%] mx-auto">
         <h1 className="text-3xl sm:text-5xl lg:text-6xl 2xl:text-7xl">
           Charts tracking every inch of your progress
         </h1>
@@ -37,7 +37,7 @@ const TrackerHero: FC<heroProps> = ({}) => {
           records, and progressions.
         </p>
       </div>
-      <div className="flex gap-8 mx-auto justify-center max-w-[80%]">
+      <div className="flex gap-8 mx-auto justify-center max-w-[85%] sm:max-w-[80%]">
         <div>
           <Image
             className="hidden md:block p-1 bg-slate-100"
