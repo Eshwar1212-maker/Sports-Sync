@@ -7,7 +7,7 @@ const page: FC<pageProps> = ({
   
 }) => {
   return (
-    <div>
+    <div className='bg-white text-black'>
       <TrackerHero />
     </div>
   )
