@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
-interface TRackerSecondProps {}
-const TRackerSecond: FC<TRackerSecondProps> = ({}) => {
+const TrackerSecond = () => {
   const router = useRouter();
   return (
     <div className="mx-auto flex flex-col py-20 bg-slate-100 space-y-20">
@@ -65,4 +64,4 @@ const TRackerSecond: FC<TRackerSecondProps> = ({}) => {
   );
 };
 
-export default TRackerSecond;
+export default TrackerSecond;
