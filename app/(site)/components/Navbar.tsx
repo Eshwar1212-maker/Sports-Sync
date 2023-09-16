@@ -102,7 +102,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
                     },
                   },
                 }}
-                className="h-screen px-4 space-y-4 mt-20 flex flex-col font-light"
+                className="h-screen space-y-4 mt-20 flex flex-col font-light"
               >
                 <motion.li
                   onClick={() => {
@@ -110,7 +110,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
                     setIsOpen(false);
                   }}
                   variants={itemVariants}
-                  className="py-2 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
+                  className="pb-2 cursor-pointer text-[18px] transition duration-300 sm:mr-0 hover:bg-slate-200 border-b-[1px] border-slate-400"
                 >
                   Get Started
                 </motion.li>
@@ -120,7 +120,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
                     setIsOpen(false);
                   }}
                   variants={itemVariants}
-                  className="py-2 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
+                  className="pb-3 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
                 >
                   WorkSpaces
                 </motion.li>
@@ -130,7 +130,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
                     setIsOpen(false);
                   }}
                   variants={itemVariants}
-                  className="py-2 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
+                  className="pb-3 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
                 >
                   Tracking
                 </motion.li>
@@ -140,7 +140,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
                     setIsOpen(false);
                   }}
                   variants={itemVariants}
-                  className="py-2 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
+                  className="pb-3 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
                 >
                   Tech Stack
                 </motion.li>
