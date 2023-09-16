@@ -114,9 +114,9 @@ const page: FC<pageProps> = ({}) => {
           and plans. We are very excited. We plan to add many more features in
           the future; stay up to date with the progress on Github.
         </p>
-        <p className="">
+        <a href="https://github.com/Eshwar1212-maker/Sports-Sync/tree/development" target="_blank">
           https://github.com/Eshwar1212-maker/Sports-Sync/tree/development
-        </p>
+        </a>
       </section>
 
       <section className="py-8 space-y-3"></section>
