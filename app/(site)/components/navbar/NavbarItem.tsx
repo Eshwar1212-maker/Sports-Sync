@@ -24,14 +24,6 @@ import weekly from "../../../assets/Synced/weekly.png";
 import daily from "../../../assets/Synced/daily.png";
 import { useRouter } from "next/navigation";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
 
 export function NavBarItem() {
   const router = useRouter();
@@ -205,7 +197,7 @@ export function NavBarItem() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Guide</NavigationMenuTrigger>
+          <NavigationMenuTrigger>About</NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
               <ListItem
