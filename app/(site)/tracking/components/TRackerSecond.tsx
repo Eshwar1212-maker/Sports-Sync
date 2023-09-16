@@ -1,8 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { FC } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 const TrackerSecond = () => {
   const router = useRouter();
