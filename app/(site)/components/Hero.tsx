@@ -55,7 +55,7 @@ const Hero = () => {
           </div>
         </div>
       
-        <div className=" flex justify-center bg-[#FFFFFF] relative  mx-auto mb-11">
+        <div className=" flex justify-center bg-[#FFFFFF] relative  mx-auto mb-11 sm:max-w-[70%]">
           <div className="px-10 relative my-14 ">
             <Image
               alt="landing page for team"
@@ -70,12 +70,12 @@ const Hero = () => {
               width={400}
               height={500}
               src={soccer}
-              className="max-h-[400px] px-14 sm:px-0 sm:max-h-[800px]"
+              className="max-h-[400px] px-14 sm:px-0 sm:max-h-[400px] md:max-h-[450px] lg:max-h-[700px]"
             />
           </div>
         </div>
       </div>
-      <main className="mt-[120px] my-14=6 py-10 bg-slate-100">
+      <main className="mt-[120px] py-10 bg-slate-100">
         <h2 className="text-lg py-2 sm:py-14 md:py-4 sm:text-[22px] xl:text-2xl text-center font-bold px-4 max-w-[630px] mx-auto">
           Use our calender, workout tracker, messaging system, and
           fitness dashboard to reach your goals.

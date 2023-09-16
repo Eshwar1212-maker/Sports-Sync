@@ -13,18 +13,11 @@ interface heroProps {}
 const TrackerHero: FC<heroProps> = ({}) => {
   const router = useRouter();
 
-  const onClickFirst = () => {
-    const scroll = document.getElementById("third");
-    scroll?.scrollIntoView({ behavior: "smooth" });
-  };
-  const onClickSecond = () => {
-    const scroll = document.getElementById("first");
-    scroll?.scrollIntoView({ behavior: "smooth" });
-  };
-  const onClickThird = () => {
-    const scroll = document.getElementById("second");
-    scroll?.scrollIntoView({ behavior: "smooth" });
-  };
+
+  const scrollToFirst = () => {
+    const element = document.getElementById("first")
+    element?.scrollIntoView({behavior: "smooth"})
+  }
 
   return (
     <div className="flex flex-col mx-auto py-[120px] sm:py-[190px] lg:py-[170px] space-y-16">
@@ -79,7 +72,7 @@ const TrackerHero: FC<heroProps> = ({}) => {
           </button>
         </div>
         <button
-          onClick={() => router.push("/auth")}
+          onClick={scrollToFirst}
           className="px-7 py-3 sm:py-4 bg-black text-white "
         >
           Learn More

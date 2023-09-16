@@ -11,8 +11,7 @@ const page: FC<pageProps> = ({}) => {
           <br /> helping athletes get to the next level
         </h1>
         <h1 className="text-3xl font-bold leading-relaxed sm:hidden">
-          Synced's Tech Stack: How we're
-          helping athletes get to the next level
+          Synced's Tech Stack: How we're helping athletes get to the next level
         </h1>
         <p className="text-lg text-gray-700 leading-relaxed font-light">
           I get a lot of people asking me the specific technologies we used to
@@ -45,17 +44,18 @@ const page: FC<pageProps> = ({}) => {
           <h3 className="text-xl font-semibold">Front End</h3>
           <p className="text-lg text-gray-700 leading-relaxed font-light">
             React's single-page structure, along with Next.js server-side
-            rendering, nested layouts, nested routes, and seamless deployment
-            to Vercel made it an easy decision for what to use for our UI
+            rendering, nested layouts, nested routes, and seamless deployment to
+            Vercel made it an easy decision for what to use for our UI
             framework. To keep endless React components with TypeScript
             organized, we followed a few best practices that worked for us:
             <br />
             <br />
-            - Folder structure: Next.js app router's file-based routing and layout
-            made it easier for us to keep everything organized. We have a
+            - Folder structure: Next.js app router's file-based routing and
+            layout made it easier for us to keep everything organized. We have a
             separate components folder in every route and nested route, for
             example, conversations, and [conversationId] (for rendering dynamic
-            one-on-one chats and group chats). Following this architecture
+            one-on-one chats and group chats). We tried to put as little code as
+            possible in higher level components. .Following this architecture
             throughout the app has helped us stay organized and dial in on
             whatever feature we're working on.
             <br />
@@ -95,8 +95,8 @@ const page: FC<pageProps> = ({}) => {
             Prisma lets you add relations to your models. Our app has many
             connections between models: conversations to users, group chats to
             conversations, teams to their specific calendar. The schema Prisma
-            enforces helps us maintain integrity between all of them, while MongoDB
-            helps us scale to any level we want.
+            enforces helps us maintain integrity between all of them, while
+            MongoDB helps us scale to any level we want.
             <br />
             <br />
             For our real-time messaging, notifications, and events in our
@@ -114,7 +114,10 @@ const page: FC<pageProps> = ({}) => {
           and plans. We are very excited. We plan to add many more features in
           the future; stay up to date with the progress on Github.
         </p>
-        <a href="https://github.com/Eshwar1212-maker/Sports-Sync/tree/development" target="_blank">
+        <a
+          href="https://github.com/Eshwar1212-maker/Sports-Sync/tree/development"
+          target="_blank"
+        >
           https://github.com/Eshwar1212-maker/Sports-Sync/tree/development
         </a>
       </section>

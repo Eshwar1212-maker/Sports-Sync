@@ -6,7 +6,6 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 import { NavBarItem } from "./NavbarItem";
 import { RiMenu3Line } from "react-icons/ri";
 import { motion, AnimatePresence } from "framer-motion";
-import MobileMenu from "./MobileMenu";
 import { AiOutlineClose } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import WorkSpaceAccordians, { TrackingAccordian } from "./Accordians";
@@ -33,7 +32,6 @@ const Navbar: FC<NavbarProps> = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const pathName = usePathname();
-  const params = useParams();
   console.log();
   if (pathName !== "/auth") {
     return (
@@ -117,7 +115,6 @@ const Navbar: FC<NavbarProps> = ({}) => {
                 </motion.li>
                 <motion.li
                   onClick={() => {
-                    router.push("/workspaces");
                   }}
                   variants={itemVariants}
                 >
@@ -125,11 +122,20 @@ const Navbar: FC<NavbarProps> = ({}) => {
                 </motion.li>
                 <motion.li
                   onClick={() => {
-                    router.push("/tracking");
                   }}
                   variants={itemVariants}
                 >
                   <TrackingAccordian onClose={() => setIsOpen(false)}/>
+                </motion.li>
+                <motion.li
+                  onClick={() => {
+                    router.push("/guide")
+                    setIsOpen(false);
+                  }}
+                  variants={itemVariants}
+                  className="pb-3 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
+                >
+                  Guide
                 </motion.li>
                 <motion.li
                   onClick={() => {

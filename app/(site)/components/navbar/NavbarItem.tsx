@@ -192,7 +192,7 @@ export function NavBarItem() {
                   className="bg-slate-300 p-2 rounded-md"
                 />
                 <button
-                  onClick={() => router.push("/")}
+                  onClick={() => router.push("/guide")}
                   className="p-3 text-md w-fit mx-auto bg-blue-100 text-black hover:bg-white transition ease-in-out duration-300 rounded-sm flex items-center"
                 >
                   Read how to start utilizing Synced now
@@ -202,6 +202,28 @@ export function NavBarItem() {
                 </button>
               </div>
             </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>About</NavigationMenuTrigger>
+          <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
+            <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
+              <ListItem
+                className="hover:bg-slate-200"
+                href="/guide"
+                title="About"
+              >
+                If your an athlete, trainer, or coach, this is a great guide on how to start utilizing Synced now.
+              </ListItem>
+              <ListItem
+                className="hover:bg-slate-200"
+                href="/techstack"
+                title="Tech Stack"
+              >
+                See the process we took technically when building Synced, the front end, backend, design 
+                process, and more.
+              </ListItem>
+            </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
