@@ -4,9 +4,12 @@ import { FC } from "react";
 import { Grid, Col, Card, Text, Metric } from "@tremor/react";
 import TrackingCarousel from "./TrackingCarousel";
 import TrackingCarouselTwo, { TrackingCarouselThree } from "./TrackingCarouselTwo";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 interface TrackerFirstProps {}
 const TrackerFirst: FC<TrackerFirstProps> = ({}) => {
+  const router = useRouter()
   return (
     <div id="first" className="bg-white sm:hidden lg:block 2xl:max-w-[74%] mx-auto">
       <Grid
@@ -42,6 +45,7 @@ const TrackerFirst: FC<TrackerFirstProps> = ({}) => {
           </Card>
         </Col>
       </Grid>
+
     </div>
   );
 };
