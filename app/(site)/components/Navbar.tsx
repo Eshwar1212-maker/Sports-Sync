@@ -39,7 +39,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
         <NavBarItem />
         <nav className="my-2 text-sm font-bold flex gap-4">
           {!isOpen && (
-            <button className="mr-4" onClick={() => router.push("/auth")}>SIGN IN</button>
+            <button className="mr-4 hidden sm:block" onClick={() => router.push("/auth")}>SIGN IN</button>
           )}
           <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(!isOpen)} />
         </nav>
