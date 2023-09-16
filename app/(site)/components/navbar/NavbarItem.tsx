@@ -204,27 +204,6 @@ export function NavBarItem() {
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">
-                About
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className=" w-80 bg-blue-50 mx-auto p-2 font-semibold">
-              <DropdownMenuSeparator />
-              <DropdownMenuCheckboxItem className="text-md hover:bg-slate-200 transition ease-in-out duration-300 cursor-pointer mx-auto px-3 py-2 rounded-lg text-sm">
-                Learn more about Synced
-              </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem
-                onClick={() => router.push("/techstack")}
-                className="text-md hover:bg-slate-200 transition ease-in-out duration-300 cursor-pointer mx-auto px-3 py-2 rounded-lg text-sm"
-              >
-                Our tech stack
-              </DropdownMenuCheckboxItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );
