@@ -7,7 +7,7 @@ const TrackerThird: FC<TrackerThirdProps> = ({
 }) => {
   return (
     <div>
-      TrackerThird
+      
     </div>
   )
 }

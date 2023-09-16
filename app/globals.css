@@ -14,14 +14,14 @@ body,
 
 .swiper {
   width: 100%;
-  height: 30%;
+  height: 100%;
 }
 
 
 
 .swiper-container {
   width: 100%;
-  height: 30%;
+  height: 100%;
 }
 
 .x, .y { position: absolute; top: 10px; left: 10px; z-index: 1000; }
@@ -29,15 +29,15 @@ body,
 .swiper-slide img {
   display: block;
   width: 100%;
-  height: 80%;
+  height: 100%;
   object-fit: cover;
   margin: auto;
 }
 @media screen and (min-width: 900px) {
   .swiper-slide img {
     display: block;
-    width: 70%;
-    height: 50vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     margin: auto;
   }

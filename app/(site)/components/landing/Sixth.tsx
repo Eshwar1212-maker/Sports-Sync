@@ -1,7 +1,6 @@
 "use client"
 
 import { FC, useEffect } from "react";
-import background from "../../../assets/back.jpg";
 import { FcGoogle } from "react-icons/fc";
 import { Bonheur_Royale, PT_Sans } from "next/font/google";
 import { useRouter } from "next/navigation";
