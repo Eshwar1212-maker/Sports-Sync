@@ -111,7 +111,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 onClose()
               }}
               variants={itemVariants}
-              className="py-3 cursor-pointer text-[18px] transition duration-300 hover:bg-slate-200 flex flex-col gap-2"
+              className="py-3 cursor-pointer text-[18px] transition duration-300 flex flex-col gap-2"
             >
               <Button
                 variant={"four"}
