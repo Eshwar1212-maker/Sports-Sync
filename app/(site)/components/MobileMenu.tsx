@@ -24,9 +24,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     <div className="md:hidden">
       <button
         onClick={onClose}
-        className={
-          "md:hiddenxw fixed right-4 transition ease-in-out duration-500 hover:tegxt-white cursor-pointer rounded-lg max-h-[49px]"
-        }
+        className={"fixed right-4 transition ease-in-out duration-500 cursor-pointer rounded-lg max-h-[49px]"}
       >
         {!isOpen ? <RiMenu3Line size={24} /> : <AiOutlineClose size={24} />}
       </button>
@@ -63,7 +61,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 },
               },
             }}
-            className="h-screen mx-auto text-center space-y-6 mt-20 flex flex-col mr-[260px] sm:mr-[180px] font-light"
+            className="h-screen mx-auto text-center space-y-6 mt-20 flex flex-col mr-[160px] sm:mr-[180px] font-light"
           >
             <motion.li onClick={() => {router.push("/auth")}} 
             variants={itemVariants} 
