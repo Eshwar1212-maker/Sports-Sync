@@ -68,6 +68,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             <motion.li
               onClick={() => {
                 router.push("/auth");
+                onClose()
               }}
               variants={itemVariants}
               className="py-3 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
@@ -77,6 +78,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             <motion.li
               onClick={() => {
                 router.push("/workspaces");
+                onClose()
               }}
               variants={itemVariants}
               className="py-3 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
@@ -86,6 +88,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             <motion.li
               onClick={() => {
                 router.push("/tracking");
+                onClose()
               }}
               variants={itemVariants}
               className="py-3 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
@@ -95,6 +98,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             <motion.li
               onClick={() => {
                 router.push("/techstack");
+                onClose()
               }}
               variants={itemVariants}
               className="py-3 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
@@ -103,7 +107,8 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             </motion.li>
             <motion.li
               onClick={() => {
-                router.push("/techstack");
+                router.push("/auth");
+                onClose()
               }}
               variants={itemVariants}
               className="py-3 cursor-pointer text-[18px] transition duration-300 hover:bg-slate-200 flex flex-col gap-2"

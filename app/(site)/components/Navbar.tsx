@@ -7,6 +7,16 @@ import { NavBarItem } from "./NavbarItem";
 import { RiMenu3Line } from "react-icons/ri";
 import { motion, AnimatePresence } from "framer-motion";
 import MobileMenu from "./MobileMenu";
+import { AiOutlineClose } from "react-icons/ai";
+import { Button } from "@/components/ui/button";
+const itemVariants: any = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 300, damping: 24 },
+  },
+  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+};
 
 const inter = PT_Sans({
   subsets: ["latin"],
@@ -26,11 +36,13 @@ const Navbar: FC<NavbarProps> = ({}) => {
   console.log();
   if (pathName !== "/auth") {
     return (
-      <header
-
-       className="flex justify-between px-5 sm:px-8 py-4 bg-slate-50 text-black fixed top-0 w-full z-20">
+      <header className="flex flex-col px-5 sm:px-8 py-4 bg-slate-50 text-black fixed top-0 w-full z-20">
+        <div className="flex justify-between">
         <div
-          onClick={() => router.push("/")}
+          onClick={() => {
+            router.push("/");
+            setIsOpen(false);
+          }}
           style={inter.style}
           className="text-2xl text-blue-700 cursor-pointer"
         >
@@ -39,10 +51,121 @@ const Navbar: FC<NavbarProps> = ({}) => {
         <NavBarItem />
         <nav className="my-2 text-sm font-bold flex gap-4">
           {!isOpen && (
-            <button className="mr-4 hidden sm:block" onClick={() => router.push("/auth")}>SIGN IN</button>
+            <button
+              className="mr-4 hidden sm:block"
+              onClick={() => router.push("/auth")}
+            >
+              SIGN IN
+            </button>
           )}
-          <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(!isOpen)} />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className={
+              " right-4 transition ease-in-out duration-500 cursor-pointer rounded-lg max-h-[49px]"
+            }
+          >
+            {!isOpen ? <RiMenu3Line size={24} /> : <AiOutlineClose size={24} />}
+          </button>
         </nav>
+        </div>
+  
+        {isOpen && (
+          <div className="md:hidden">
+            <motion.div
+              variants={{
+                open: { rotate: 180 },
+                closed: { rotate: 0 },
+              }}
+              transition={{ duration: 0.2 }}
+              style={{ originY: 0.55 }}
+            >
+              <motion.ul
+                initial="closed"
+                animate={isOpen ? "open" : "closed"}
+                variants={{
+                  open: {
+                    clipPath: "inset(0% 0% 0% 0% round 10px)",
+                    transition: {
+                      type: "spring",
+                      bounce: 0,
+                      duration: 0.7,
+                      delayChildren: 0.3,
+                      staggerChildren: 0.05,
+                    },
+                  },
+                  closed: {
+                    clipPath: "inset(10% 50% 90% 50% round 10px)",
+                    transition: {
+                      type: "spring",
+                      bounce: 0,
+                      duration: 0.3,
+                    },
+                  },
+                }}
+                className="h-screen px-4 space-y-4 mt-20 flex flex-col font-light"
+              >
+                <motion.li
+                  onClick={() => {
+                    router.push("/auth");
+                    setIsOpen(false);
+                  }}
+                  variants={itemVariants}
+                  className="py-2 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
+                >
+                  Get Started
+                </motion.li>
+                <motion.li
+                  onClick={() => {
+                    router.push("/workspaces");
+                    setIsOpen(false);
+                  }}
+                  variants={itemVariants}
+                  className="py-2 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
+                >
+                  WorkSpaces
+                </motion.li>
+                <motion.li
+                  onClick={() => {
+                    router.push("/tracking");
+                    setIsOpen(false);
+                  }}
+                  variants={itemVariants}
+                  className="py-2 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
+                >
+                  Tracking
+                </motion.li>
+                <motion.li
+                  onClick={() => {
+                    router.push("/techstack");
+                    setIsOpen(false);
+                  }}
+                  variants={itemVariants}
+                  className="py-2 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
+                >
+                  Tech Stack
+                </motion.li>
+                <motion.li
+                  onClick={() => {
+                    router.push("/auth");
+                    setIsOpen(false);
+                  }}
+                  variants={itemVariants}
+                  className="py-3 cursor-pointer text-[18px] transition duration-300 hover:bg-slate-200 flex flex-col gap-2"
+                >
+                  <Button
+                    variant={"four"}
+                    className="w-[240px] mx-auto text-center items-center rounded-lg"
+                  >
+                    Get Started
+                  </Button>
+                  <Button className="w-[240px] mx-auto text-center items-center rounded-lg">
+                    Log In
+                  </Button>
+                </motion.li>
+              </motion.ul>
+            </motion.div>
+          </div>
+        )}
       </header>
     );
   }

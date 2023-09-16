@@ -2,7 +2,7 @@ import { FC } from "react";
 interface pageProps {}
 const page: FC<pageProps> = ({}) => {
   return (
-    <main className="py-16 max-w-[340px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-2xl mx-auto my-20">
+    <main className="max-w-[340px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-2xl mx-auto my-20">
       <div className="space-y-8">
         <h1 className="hidden sm:block text-3xl font-bold leading-relaxed">
           Synced's Tech Stack: How we're
