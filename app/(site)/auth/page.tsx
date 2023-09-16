@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FC } from "react";
 import AuthForm from "../components/AuthForm";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar/Navbar";
 
 interface pageProps {}
 const page: FC<pageProps> = ({}) => {

@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import LoadingModal from "@/app/components/LoadingModal";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
-import Navbar from "./Navbar";
+import Navbar from "./navbar/Navbar";
 
 type Variant = "LOGIN" | "REGISTER";
 interface AuthFormProps {}

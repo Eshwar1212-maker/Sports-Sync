@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 import { AiOutlineClose } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
+import WorkSpaceAccordians, { TrackingAccordian } from "./Accordians";
 const itemVariants: any = {
   open: {
     opacity: 1,
@@ -117,22 +118,18 @@ const Navbar: FC<NavbarProps> = ({}) => {
                 <motion.li
                   onClick={() => {
                     router.push("/workspaces");
-                    setIsOpen(false);
                   }}
                   variants={itemVariants}
-                  className="pb-3 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
                 >
-                  WorkSpaces
+                  <WorkSpaceAccordians onClose={() => setIsOpen(false)}/>
                 </motion.li>
                 <motion.li
                   onClick={() => {
                     router.push("/tracking");
-                    setIsOpen(false);
                   }}
                   variants={itemVariants}
-                  className="pb-3 cursor-pointer text-[18px] border-b-[1px] border-slate-400 transition duration-300 sm:mr-0 hover:bg-slate-200"
                 >
-                  Tracking
+                  <TrackingAccordian onClose={() => setIsOpen(false)}/>
                 </motion.li>
                 <motion.li
                   onClick={() => {
@@ -144,6 +141,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
                 >
                   Tech Stack
                 </motion.li>
+                
                 <motion.li
                   onClick={() => {
                     router.push("/auth");
