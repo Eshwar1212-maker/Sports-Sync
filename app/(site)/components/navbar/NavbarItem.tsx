@@ -127,8 +127,8 @@ export function NavBarItem() {
                   </Button>
                 </ul>
               </div>
-              <div className="h-[440px] mt-3 w-[1px] mr-10 shadow-black bg-slate-300 shadow-lg text-black" />
-              <div className="flex gap-1 flex-col text-[12px] text-center mx-auto pt-4">
+              <div className="h-[440px] mt-3 w-[1px] mr-10 shadow-black bg-slate-300 shadow-lg text-black hidden xl:block" />
+              <div className="gap-1 flex-col text-[12px] text-center mx-auto pt-4 hidden xl:flex">
                 <Image
                   alt="monthly calender"
                   src={monthly}
