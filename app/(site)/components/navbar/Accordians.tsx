@@ -19,8 +19,8 @@ const WorkSpaceAccordians: FC<AccordiansProps> = ({ onClose }) => {
           WorkSpaces
         </AccordionTrigger>
         <AccordionContent className="flex" onClick={onClose}>
-          <div className="flex w-[600px] flex-col space-y-3">
-            <div className="flex flex-row gap-2">
+          <div className="flex w-[600px] flex-col">
+            <div className="flex flex-row gap-2 my-4">
                 <Calendar size={23} color="lightblue"/>
                 <h3 className="text-[16px] font-semibold">Calenders</h3>
             </div>
@@ -31,8 +31,8 @@ const WorkSpaceAccordians: FC<AccordiansProps> = ({ onClose }) => {
 
         </AccordionContent>
         <AccordionContent className="flex flex-row" onClick={onClose}>
-        <div className="flex w-[600px] flex-col space-y-3">
-          <div className="flex flex-row gap-2">
+        <div className="flex w-[600px] flex-col">
+          <div className="flex flex-row gap-2 my-4">
                 <Users size={23} color="red"/>
                 <h3 className="text-[16px] font-semibold">Private Teams</h3>
             </div>
@@ -44,8 +44,8 @@ const WorkSpaceAccordians: FC<AccordiansProps> = ({ onClose }) => {
 
         </AccordionContent>
         <AccordionContent className="flex flex-row" onClick={onClose}>
-        <div className="flex w-[600px] flex-col space-y-3">
-          <div className="flex flex-row gap-2">
+        <div className="flex w-[600px] flex-col">
+          <div className="flex flex-row gap-2 my-4">
           <BellOff size={23} color="darkblue"/>
                 <h3 className="text-[16px] font-semibold">Private Teams</h3>
             </div>
@@ -72,8 +72,8 @@ export const TrackingAccordian = (onClose: {onClose: any}) => {
                 Tracking
           </AccordionTrigger>
           <AccordionContent className="flex">
-            <div className="flex w-[600px] flex-col space-y-3">
-              <div className="flex flex-row gap-2">
+            <div className="flex w-[600px] flex-col">
+              <div className="flex flex-row gap-2 my-4">
                   <Dumbbell size={23} color="lightblue"/>
                   <h3 className="text-[16px] font-semibold">
                     Logging
@@ -86,7 +86,7 @@ export const TrackingAccordian = (onClose: {onClose: any}) => {
   
           </AccordionContent>
           <AccordionContent className="flex flex-row" >
-            <div className="flex flex-row gap-2">
+            <div className="flex flex-row gap-2 my-3">
                   <LineChart  size={23} color="red"/>
                   <h3 className="text-[16px] font-semibold">Progressive Overload</h3>
               </div>
@@ -99,7 +99,7 @@ export const TrackingAccordian = (onClose: {onClose: any}) => {
   
           </AccordionContent>
           <AccordionContent className="flex flex-row" >
-          <div className="flex w-[600px] flex-col space-y-3">
+          <div className="flex w-[600px] flex-col my-3">
             <div className="flex flex-row gap-2">
             <BarChart4 size={23} color="gray"/>
                   <h3 className="text-[16px] font-semibold">Consistency/Intensity Feedback</h3>

@@ -62,7 +62,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={
-              " right-4 transition ease-in-out duration-500 cursor-pointer rounded-lg max-h-[49px]"
+              " right-4 transition ease-in-out duration-500 cursor-pointer rounded-lg max-h-[49px] md:hidden"
             }
           >
             {!isOpen ? <RiMenu3Line size={24} /> : <AiOutlineClose size={24} />}
