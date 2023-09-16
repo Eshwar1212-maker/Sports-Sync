@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import {
@@ -20,9 +19,9 @@ import {
   workOutLogFeatures,
 } from "@/app/libs/NavWorkSpaceFeatures";
 import Image from "next/image";
-import monthly from "../../assets/Synced/monthly.png";
-import weekly from "../../assets/Synced/weekly.png";
-import daily from "../../assets/Synced/daily.png";
+import monthly from "../../../assets/Synced/monthly.png";
+import weekly from "../../../assets/Synced/weekly.png";
+import daily from "../../../assets/Synced/daily.png";
 import { useRouter } from "next/navigation";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import {
