@@ -13,7 +13,7 @@ const Footer: FC<FooterProps> = ({
   
   return (
 <footer className={cn("py-6 sm:px-20 text-sm sm:text-md text-black mx-0 px-0 w-full", pathName === "/workspaces" ? "bg-white my-20 sm:my-40 md:my-20 lg:my-0" : "bg-slate-50")}>
-    <div className="flex flex-wrap justify-between gap-6 px-5">
+    <div className=" px-5">
         <div className=''>
             <h3 className="font-semibold text-lg">Sports Sync</h3>
             <p className="mt-2 text-sm">New York City</p>
