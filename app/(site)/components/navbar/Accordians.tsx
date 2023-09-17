@@ -43,7 +43,7 @@ const WorkSpaceAccordians: FC<AccordiansProps> = ({ onClose }) => {
             </div>
             <div>
               <p>
-                Use our calenders to create a team workspace or private one.
+                Use our calenders to plan all your sport related events.
               </p>
             </div>
           </div>
@@ -61,7 +61,7 @@ const WorkSpaceAccordians: FC<AccordiansProps> = ({ onClose }) => {
               <h3 className="text-[16px] font-semibold">Private Teams</h3>
             </div>
             <div></div>
-            <p>Use our calenders to create a team workspace or private one.</p>
+            <p>Use our calenders to create a private team workspace, alongside a group chat.</p>
           </div>
         </AccordionContent>
         <AccordionContent
@@ -74,11 +74,12 @@ const WorkSpaceAccordians: FC<AccordiansProps> = ({ onClose }) => {
           <div className="flex w-[600px] flex-col hover:bg-slate-200 cursor-pointer">
             <div className="flex flex-row gap-2 my-4">
               <BellOff size={23} color="darkblue" />
-              <h3 className="text-[16px] font-semibold">Private Teams</h3>
+              <h3 className="text-[16px] font-semibold">Notifications</h3>
             </div>
             <div></div>
             <p className="">
-              Use our calenders to create a team workspace or private one.
+              Get notifications every time a new event is added in your team, and when someone invites you 
+              to a group chat.
             </p>
           </div>
         </AccordionContent>
@@ -119,7 +120,7 @@ export const TrackingAccordian = ({ onClose }: { onClose: () => void }) => {
             <div className="pb-2">
               <p>
                 Log your workouts for different calender days, add them to your
-                personal calender
+                personal calender.
               </p>
             </div>
           </div>
@@ -143,8 +144,7 @@ export const TrackingAccordian = ({ onClose }: { onClose: () => void }) => {
 
             <div className="py-3">
               <p>
-                Log your workouts for different calender days, add them to your
-                personal calender
+                Use our charts to track your progressions on every single exercise.
               </p>
             </div>
           </div>
@@ -168,8 +168,8 @@ export const TrackingAccordian = ({ onClose }: { onClose: () => void }) => {
             <div></div>
             <div className="py-3">
               <p>
-                Log your workouts for different calender days, add them to your
-                personal calender
+                Visit your dashboard to track the amount of days you hit the gym each month, alongside 
+                how many exercises you did each month.
               </p>
             </div>
           </div>
