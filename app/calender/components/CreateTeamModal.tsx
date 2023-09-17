@@ -105,7 +105,7 @@ const CreateTeamModal: FC<CreateTeamModalProps> = ({
           onChange={handleUserChange}
         />
         <Button
-          disabled={isLoading}
+          disabled={isLoading || !workSpaceName}
           onClick={() => creatWorkspaceMutation()}
           className=" fixed right-6 bottom-4"
         >
