@@ -23,24 +23,24 @@ const TrackerFirst: FC<TrackerFirstProps> = ({}) => {
             <TrackingCarousel />
           </Card>
         </Col>
-        <Card className="bg-white">
+        <Card className="bg-slate-100">
           <Metric className="font-thin py-8 text-xl md:text-2xl xl:my-20">Synced wants to help you accomplish every goal, reach new milestones, and 
             share that fullfillment from your hard work with your friends. 
           </Metric>
         </Card>
-        <Col>
-        <Card className="2xl:max-h-[400px] bg-slate-200">
+        <Col> 
+        <Card className="2xl:max-h-[400px]">
             <TrackingCarouselTwo />
           </Card>
         </Col>
-        <Card className=" bg-slate-200">
+        <Card className=" bg-slate-100">
           <Metric className="font-thin py-8 text-xl md:text-2xl xl:my-10 max-h-[146px] xl:max-h-auto">
             Athletes who dont lift, train, and get stronger are simply behind,
             were here to help you get started, and never stop.
           </Metric>
         </Card>
         <Col>
-        <Card className="2xl:max-h-[400px] bg-slate-200">
+        <Card className="2xl:max-h-[400px]">
             <TrackingCarouselThree />
           </Card>
         </Col>
