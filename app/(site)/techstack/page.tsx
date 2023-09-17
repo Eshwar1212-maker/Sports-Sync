@@ -4,9 +4,9 @@ interface pageProps {}
 
 const page: FC<pageProps> = ({}) => {
   return (
-    <main className="max-w-[340px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-2xl mx-auto my-[110px] lg:my-j40">
+    <main className="max-w-[340px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-2xl mx-auto my-[70px] lg:my-j40 bg-white text-black">
       <div className="space-y-8">
-        <h1 className="hidden sm:block text-3xl font-bold leading-relaxed">
+        <h1 className="hidden sm:block text-3xl font-bold leading-relaxed text-black">
           Synced's Tech Stack: How we're
           <br /> helping athletes get to the next level
         </h1>

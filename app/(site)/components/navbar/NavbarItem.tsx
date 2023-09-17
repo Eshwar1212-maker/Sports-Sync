@@ -197,13 +197,13 @@ export function NavBarItem() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Guide</NavigationMenuTrigger>
+          <NavigationMenuTrigger>About</NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
               <ListItem
                 className="hover:bg-slate-200"
                 href="/guide"
-                title="About"
+                title="Guide"
               >
                 If your an athlete, trainer, or coach, this is a great guide on how to start utilizing Synced now.
               </ListItem>

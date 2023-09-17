@@ -7,7 +7,7 @@ export default function LandingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section>
+    <section className="bg-white">
       <Navbar />
       {children}
       <Footer />
