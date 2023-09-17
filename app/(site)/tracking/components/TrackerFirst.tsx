@@ -28,7 +28,7 @@ const TrackerFirst: FC<TrackerFirstProps> = ({}) => {
             share that fullfillment from your hard work with your friends. 
           </Metric>
         </Card>
-        <Col>
+        <Col> 
         <Card className="2xl:max-h-[400px]">
             <TrackingCarouselTwo />
           </Card>
