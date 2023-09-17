@@ -63,7 +63,7 @@ export default function CalenderOptions(userTeams: any) {
                         <div className="text-[15px]">
                           <RadioGroup.Label
                             as="p"
-                            className={`font-medium  ${
+                            className={`font-medium min-w-[200px]  ${
                               checked ? "text-white" : "text-gray-900"
                             }`}
                           >
@@ -76,7 +76,7 @@ export default function CalenderOptions(userTeams: any) {
                               checked ? "text-sky-50" : "text-gray-500"
                             }`}
                           >
-                            <span className="">
+                            <span className="hidden md:block">
                               {plan.description}
                             </span>{" "}
                           </RadioGroup.Description>

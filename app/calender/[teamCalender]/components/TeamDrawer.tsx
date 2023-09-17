@@ -1,11 +1,10 @@
+
 import { ActionTooltip } from "@/app/components/ActionToolTip";
 import Avatar from "@/app/components/Avatar";
-import { FullTeamEventType } from "@/app/types";
 import { Button } from "@/components/ui/button";
 
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -14,6 +13,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Team, User } from "@prisma/client";
+import { useTheme } from "next-themes";
 import { HiEllipsisVertical } from "react-icons/hi2";
 
 
@@ -84,7 +84,7 @@ export function TeamDrawer({ team, currentUser }: ProfileDrawerProps) {
               </Button>
       
                 <ActionTooltip label={`Leave ${team?.title}`}>
-                  <Button variant={"destructive"}>
+                  <Button className="rounded-lg" variant={"destructive"}>
                  Sign Out
               </Button>
                   </ActionTooltip>
