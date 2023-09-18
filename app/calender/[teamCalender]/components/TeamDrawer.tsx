@@ -20,6 +20,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { HiEllipsisVertical } from "react-icons/hi2";
 import { RiUserAddLine } from "react-icons/ri";
+import DeleteWorkSpaceModal from "./modals/DeleteWorkSpaceModal";
+import InviteUsersModal from "./modals/InviteUsersModal";
+import LeaveWorkSpaceModal from "./modals/LeaveWorkSpaceModal";
+import ConfirmBootModal from "./modals/ConfirmBootModal";
 
 interface ProfileDrawerProps {
   team: Team & {
@@ -37,19 +41,37 @@ export function TeamDrawer({
   adminPhoto,
 }: ProfileDrawerProps) {
   const [activity, setActivity] = useState<any[]>(team?.events)
+  const [confirmDelete, setconfirmDelete] = useState(false)
+  const [confirmLeave, setConfirmLeave] = useState(false)
+  const [inviteModal, setInviteModal] = useState(false)
+  const [confirmBoot, setConfirmBoot] = useState(false)
 
   useEffect(() => {
-    console.log(team?.events?.length);
     
     const newActivity = team?.events.filter((a) => a?.title !== "")
-    console.log(newActivity);
     setActivity(newActivity.slice(newActivity.length - 8, newActivity.length))
-    console.log(team?.events, "     ", activity);
   }, [team?.events])
   
   
   return (
     <Sheet>
+       <DeleteWorkSpaceModal
+        isOpen={confirmDelete}
+        onClose={() => setconfirmDelete(false)}
+      />
+      <InviteUsersModal
+        isOpen={inviteModal}
+        onClose={() => setInviteModal(false)}
+      />
+      <LeaveWorkSpaceModal
+        isOpen={confirmLeave}
+        onClose={() => setConfirmLeave(false)}
+      />
+      <ConfirmBootModal
+        isOpen={confirmBoot}
+        onClose={() => setConfirmBoot(false)}
+      />
+   
       <SheetTrigger asChild>
         <Button variant="outline">
           <HiEllipsisVertical size={25} />
@@ -75,7 +97,7 @@ export function TeamDrawer({
               </div>
               <div>
                 <ActionTooltip label="Invite more users">
-                  <Button className="mx-3 mb-2" variant={"secondary"}>
+                  <Button onClick={() => setInviteModal(true)} className="mx-3 mb-2" variant={"secondary"}>
                     <RiUserAddLine size={20} />
                   </Button>
                 </ActionTooltip>
@@ -112,11 +134,14 @@ export function TeamDrawer({
                   <Button variant={"five"}>Group Chat</Button>
 
                   {currentUser?.name?.includes(admin as string) ? (
+                    <SheetClose>
                     <ActionTooltip label={`Leave ${team?.title}`}>
-                      <Button className="rounded-lg" variant={"destructive"}>
+                      <Button onClick={() => setconfirmDelete(true)} className="rounded-lg" variant={"destructive"}>
                         Delete
                       </Button>
                     </ActionTooltip>
+                    </SheetClose>
+
                   ) : (
                     <ActionTooltip label={`Leave ${team?.title}`}>
                       <Button className="rounded-lg" variant={"destructive"}>

@@ -4,8 +4,7 @@ import React, { Fragment, useCallback, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { FiAlertTriangle } from 'react-icons/fi'
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
-
+import { useParams, useRouter } from 'next/navigation';
 import useConversation from '@/app/hooks/useConversation';
 import { toast } from 'react-hot-toast';
 import Modal from '@/app/components/Modal';
@@ -28,6 +27,15 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
   const router = useRouter();
   const { conversationId } = useConversation();
   const [isLoading, setIsLoading] = useState(false);
+
+  console.log(conversationId);
+  const params = useParams()
+  console.log(params?.conversationId);
+  
+  
+  
+
+
   
   const onDelete = useCallback(() => {
     setIsLoading(true);
