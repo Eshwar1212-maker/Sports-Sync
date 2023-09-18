@@ -14,9 +14,10 @@ interface ModalProps {
   isImage?: boolean
   isMessage?: boolean
   isImageImage?: boolean
+  showClose?: boolean
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth, isImage, isMessage, isImageImage}) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth, isImage, isMessage, isImageImage, showClose = true}) => {
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
   return (
@@ -94,7 +95,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth, i
 
                   "
                 >
-                  <button
+{  showClose &&   <button
                     type="button"
                     className="
                       rounded-md 
@@ -108,7 +109,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth, i
                   >
                     <span className="sr-only">Close</span>
                     <IoClose className="h-6 w-6" aria-hidden="true" />
-                  </button>
+                  </button>}
                 </div>
                 {children}
               </Dialog.Panel>

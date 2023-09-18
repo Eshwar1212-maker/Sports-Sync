@@ -14,9 +14,14 @@ export const getTeamById = async(
             },
             include: {
                 users: true,
-                events: true
+                events: {
+                    orderBy: {
+                        date: "asc"
+                    }
+                }
             }
         })
+
         return team;
     }catch(error){
         return null

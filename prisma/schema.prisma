@@ -107,6 +107,7 @@ model Event {
   notes  String?
   title  String?
   date   String?
+  priority String?
   teamId String? @db.ObjectId
   poster String ?
   Team   Team?   @relation(fields: [teamId], references: [id], onDelete: Cascade)

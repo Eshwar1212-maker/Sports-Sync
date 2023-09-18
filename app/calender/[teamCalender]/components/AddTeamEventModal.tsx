@@ -12,6 +12,7 @@ import { Indie_Flower, Tulpen_One } from "next/font/google";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { useTheme } from "next-themes";
 import { Team, User } from "@prisma/client";
+import { HiEllipsisVertical } from "react-icons/hi2";
 
 const bon = Indie_Flower({
   subsets: ["latin"],
@@ -194,9 +195,12 @@ function AddTeamEventModal({
     setEventNotes("");
   };
 
+  
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <form className="px-1" onSubmit={handleSubmit}>
+    <Modal showClose={false} isOpen={isOpen} onClose={onClose}>
+      <form className="" onSubmit={handleSubmit}>
+        <div className="flex justify-between">
         <input
           aria-label="Event name"
           className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pl-4 sm:pl-0"
@@ -210,7 +214,12 @@ function AddTeamEventModal({
               : (e) => setEventTitle(e.target.value)
           }
         />
-        <div className="py-4 pl-4 sm:pl-0">
+        <button aria-label="Options" className="" type="button">
+          <HiEllipsisVertical size={34}/>
+        </button>
+        </div>
+
+        <div className="pt-4 sm:pl-0">
           <h3 className="text-base font-semibold leading-7">Date</h3>
           {selectedEvent
             ? selectedDate.split(" ")[0] +
@@ -225,6 +234,10 @@ function AddTeamEventModal({
               date.split("-")[2] +
               "/" +
               date.split("-")[0]}
+        </div>
+        <div className="sm:pl-0 py-2">
+          <h3 className="text-base font-semibold leading-7">Posted by</h3>
+          <p>{selectedEvent?._def?.extendedProps?.poster}</p>
         </div>
         <div className="border-[1px] border-solid border-gray-900 w-full pl-4 sm:pl-0" />
         <div className="py-6  pl-10 sm:pl-0">

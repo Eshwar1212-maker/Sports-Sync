@@ -1,21 +1,28 @@
 "use client";
 import { ActionTooltip } from "@/app/components/ActionToolTip";
-import { Team, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import Image from "next/image";
 import { FC } from "react";
-import { AiOutlineMenu, AiOutlineMenuFold } from "react-icons/ai";
-import { BiMenuAltRight } from "react-icons/bi";
-import { HiChevronLeft } from "react-icons/hi";
-import { HiEllipsisHorizontal, HiEllipsisVertical } from "react-icons/hi2";
-import { RiMenu3Fill } from "react-icons/ri";
+
 import { TeamDrawer } from "./TeamDrawer";
+
+export type TeamAdmin = {
+  id: string | null
+  name: string | null
+  image: string | null
+} | null
+
 interface HeaderProps {
   team: any
   currentUser: any
+  teamAdmin: TeamAdmin
 }
 
-const TeamCalenderHeader: FC<HeaderProps> = ({ team, currentUser }) => {
+const TeamCalenderHeader: FC<HeaderProps> = ({team, currentUser, teamAdmin }) => {
 
+
+  console.log(teamAdmin);
+  
 
   return (
     <div className="border-b-[2px] border-b-slate-400 flex justify-between px-3">
@@ -43,7 +50,7 @@ const TeamCalenderHeader: FC<HeaderProps> = ({ team, currentUser }) => {
 
       </div>
       <ActionTooltip label="Manage Team">
-          <TeamDrawer currentUser={currentUser} team={team}/>
+          <TeamDrawer adminPhoto={teamAdmin?.image} admin={teamAdmin?.name} currentUser={currentUser} team={team}/>
        </ActionTooltip>
       </div>
     </div>

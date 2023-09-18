@@ -24,7 +24,7 @@ const useRoutes = () => {
           href: "/calender",
           icon: SlCalender,
           active: pathName?.includes("calender"),
-          route: "Calender"
+          route: "Calendar"
         },
        {
             label: "Workouts",

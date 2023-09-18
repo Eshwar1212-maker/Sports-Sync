@@ -1,3 +1,4 @@
+"use client"
 
 import { ActionTooltip } from "@/app/components/ActionToolTip";
 import Avatar from "@/app/components/Avatar";
@@ -5,6 +6,7 @@ import { Button } from "@/components/ui/button";
 
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -14,20 +16,38 @@ import {
 } from "@/components/ui/sheet";
 import { Team, User } from "@prisma/client";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { HiEllipsisVertical } from "react-icons/hi2";
+import { RiUserAddLine } from "react-icons/ri";
 
+interface ProfileDrawerProps {
+  team: Team & {
+    users: User[];
+    events: any[];
+  };
+  currentUser: User;
+  admin?: string | null;
+  adminPhoto?: string | null;
+}
+export function TeamDrawer({
+  team,
+  currentUser,
+  admin,
+  adminPhoto,
+}: ProfileDrawerProps) {
+  const [activity, setActivity] = useState<any[]>(team?.events)
 
+  useEffect(() => {
+    console.log(team?.events?.length);
+    
+    const newActivity = team?.events.filter((a) => a?.title !== "")
+    console.log(newActivity);
+    setActivity(newActivity.slice(newActivity.length - 8, newActivity.length))
+    console.log(team?.events, "     ", activity);
+  }, [team?.events])
   
-  interface ProfileDrawerProps {
-    team: Team & {
-      users: User[];
-      events: any[];  
-    };
-    currentUser: User;
-  }
-export function TeamDrawer({ team, currentUser }: ProfileDrawerProps) {
-  console.log(team);
-
+  
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -35,22 +55,37 @@ export function TeamDrawer({ team, currentUser }: ProfileDrawerProps) {
           <HiEllipsisVertical size={25} />
         </Button>
       </SheetTrigger>
-      <SheetContent className="space-y-6">
+      <SheetContent className="space-y-6 bg-white">
         <SheetHeader>
           <SheetTitle>{team?.title}</SheetTitle>
           <SheetDescription className="py-[20px]">
-            <div className="">
-              <h4 className="font-bold pb-1 text-md">Moderator</h4>
-              <div className="flex gap-2 py-2">
-                <Avatar user={currentUser} />
-                <p className="my-auto">{currentUser.name}</p>
+            <div className="flex justify-between">
+              <div>
+                <h4 className="font-bold pb-1 text-md">Moderator</h4>
+                <div className="flex gap-2 py-2">
+                  <Image
+                    className="rounded-full"
+                    src={adminPhoto!}
+                    alt="Admin"
+                    width={40}
+                    height={40}
+                  />
+                  <p className="my-auto">{admin}</p>
+                </div>
+              </div>
+              <div>
+                <ActionTooltip label="Invite more users">
+                  <Button className="mx-3 mb-2" variant={"secondary"}>
+                    <RiUserAddLine size={20} />
+                  </Button>
+                </ActionTooltip>
               </div>
             </div>
             <div className="py-2">
               <h4 className="font-bold pb-1 text-md">
                 {team?.users?.length} Members
               </h4>
-              {team.users.map((user: any) => {
+              {team?.users?.map((user: any) => {
                 return (
                   <div className="flex justify-between gap-2 py-2">
                     <div className="flex gap-2">
@@ -61,46 +96,45 @@ export function TeamDrawer({ team, currentUser }: ProfileDrawerProps) {
                 );
               })}
               <div className="py-2">
-              <h4 className="font-bold pb-1 text-md">
-                Activity
-              </h4>
-               <ul className="py-1">
-                  {
-                    team?.events.map((event) => {
-                      return (
-                            <li className="text-[15px] py-1">
-                                {event?.poster} added {event?.title}
-                            </li>
-                        )
-                    })
-                    
-                  }
-               </ul>
+                <h4 className="font-bold pb-1 text-md">Recent Activity</h4>
+                <ul className="py-1">
+                  {activity.map((event) => {
+                    return (
+                        <li className="text-[15px] py-1">
+                          {event?.poster} added "{event?.title}"
+                        </li>
+                    );
+                  })}
+                </ul>
               </div>
               <div className="fixed bottom-10">
-              <div className="flex gap-2 py-3 justify-center mx-auto">
-                <Button variant={"five"}>
-                  Group Chat
-              </Button>
-      
-                <ActionTooltip label={`Leave ${team?.title}`}>
-                  <Button className="rounded-lg" variant={"destructive"}>
-                 Sign Out
-              </Button>
-                  </ActionTooltip>
+                <div className="flex gap-2 py-3 justify-center mx-auto">
+                  <Button variant={"five"}>Group Chat</Button>
 
-              </div>
-    
+                  {currentUser?.name?.includes(admin as string) ? (
+                    <ActionTooltip label={`Leave ${team?.title}`}>
+                      <Button className="rounded-lg" variant={"destructive"}>
+                        Delete
+                      </Button>
+                    </ActionTooltip>
+                  ) : (
+                    <ActionTooltip label={`Leave ${team?.title}`}>
+                      <Button className="rounded-lg" variant={"destructive"}>
+                        Sign Out
+                      </Button>
+                    </ActionTooltip>
+                  )}
+                </div>
               </div>
             </div>
           </SheetDescription>
         </SheetHeader>
-
+{/* 
         <SheetFooter>
-          {/* <SheetClose asChild>
+          <SheetClose asChild>
             <Button type="submit">Save changes</Button>
-          </SheetClose> */}
-        </SheetFooter>
+          </SheetClose>
+        </SheetFooter> */}
       </SheetContent>
     </Sheet>
   );

@@ -35,7 +35,6 @@ const TeamCalender: FC<TeamCalenderProps> = ({team, currentUser}) => {
   };
 
   const handleEventClick = (info: any) => {
-    console.log("Hi");
     const newObj:any = Object.values(info)[1]
     setIsOpen(true);
     setSelectedDate(newObj._instance.range.end.toString())
