@@ -8,7 +8,7 @@ export async function PATCH(request: Request) {
     try {
       const currentUser = await getCurrentUser();
       const body = await request.json();
-      const { eventId, notes, title, date, teamId } = body;
+      const { eventId, notes, title, date, teamId, priority } = body;
   
       if (!currentUser?.id || !currentUser?.email) {
         return new NextResponse("Unauthorized", { status: 400 });
@@ -24,6 +24,7 @@ export async function PATCH(request: Request) {
           notes,
           title,
           date,
+          priority,
           Team: {
             connect: { id: teamId},
           },

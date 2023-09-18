@@ -3,7 +3,6 @@ import { ActionTooltip } from "@/app/components/ActionToolTip";
 import { User } from "@prisma/client";
 import Image from "next/image";
 import { FC } from "react";
-
 import { TeamDrawer } from "./TeamDrawer";
 
 export type TeamAdmin = {
@@ -20,8 +19,6 @@ interface HeaderProps {
 
 const TeamCalenderHeader: FC<HeaderProps> = ({team, currentUser, teamAdmin }) => {
 
-
-  console.log(teamAdmin);
   
 
   return (

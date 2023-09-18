@@ -13,6 +13,8 @@ import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { useTheme } from "next-themes";
 import { Team, User } from "@prisma/client";
 import { HiEllipsisVertical } from "react-icons/hi2";
+import { cn } from "@/lib/utils";
+import { DropdownMenuRadioGroupDemo } from "../ui/DropDownMenu";
 
 const bon = Indie_Flower({
   subsets: ["latin"],
@@ -215,11 +217,11 @@ function AddTeamEventModal({
           }
         />
         <button aria-label="Options" className="" type="button">
-          <HiEllipsisVertical size={34}/>
+           <DropdownMenuRadioGroupDemo />
         </button>
         </div>
 
-        <div className="pt-4 sm:pl-0">
+        <div className={cn("sm:pl-0", selectedEvent ? "pt-4" : "py-3")}>
           <h3 className="text-base font-semibold leading-7">Date</h3>
           {selectedEvent
             ? selectedDate.split(" ")[0] +
@@ -235,10 +237,10 @@ function AddTeamEventModal({
               "/" +
               date.split("-")[0]}
         </div>
-        <div className="sm:pl-0 py-2">
+{  selectedEvent && <div className="sm:pl-0 py-2">
           <h3 className="text-base font-semibold leading-7">Posted by</h3>
           <p>{selectedEvent?._def?.extendedProps?.poster}</p>
-        </div>
+        </div>}
         <div className="border-[1px] border-solid border-gray-900 w-full pl-4 sm:pl-0" />
         <div className="py-6  pl-10 sm:pl-0">
           <textarea
@@ -336,10 +338,11 @@ function AddTeamEventModal({
           </button>
         )}
         <div className="fixed right-0 flex bottom-2 pr-5 gap-2 pb-2">
-          <Button variant={"secondary"} type="button" onClick={onClose}>
+          <Button className="rounded-md" variant={"secondary"} type="button" onClick={onClose}>
             Cancel
           </Button>
           <Button
+            className="rounded-md"
             type="submit"
             disabled={!selectedEvent ? !eventTitle : !updateTitle}
           >

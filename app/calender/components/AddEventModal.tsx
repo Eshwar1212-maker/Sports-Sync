@@ -279,10 +279,11 @@ function AddEventModal({
           </button>
         )}
         <div className="fixed right-0 flex bottom-2 pr-5 gap-2 pb-2">
-          <Button variant={"secondary"} type="button" onClick={onClose}>
+          <Button className="rounded-md" variant={"secondary"} type="button" onClick={onClose}>
             Cancel
           </Button>
           <Button
+            className="rounded-md"
             type="submit"
             disabled={!selectedEvent ? !eventTitle : !updateTitle}
           >
