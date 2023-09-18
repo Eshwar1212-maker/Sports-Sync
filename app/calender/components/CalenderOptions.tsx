@@ -22,7 +22,6 @@ export default function CalenderOptions(userTeams: any) {
     setCalenders(teams);
   }, []);
 
-  console.log(calenders);
 
   const [selected, setSelected] = useState();
   const [isProModalOpen, setIsProModalOpen] = useState(false);
