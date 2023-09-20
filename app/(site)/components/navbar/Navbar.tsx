@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import WorkSpaceAccordians, { TrackingAccordian } from "./Accordians";
+import { cn } from "@/lib/utils";
 const itemVariants: any = {
   open: {
     opacity: 1,
@@ -43,7 +44,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
             setIsOpen(false);
           }}
           style={inter.style}
-          className="text-2xl text-blue-700 cursor-pointer"
+          className={cn("text-2xl cursor-pointer", pathName === "/tracking" && "text-blue-900", pathName === "/" && "text-blue-700",  pathName === "/workspaces" && "text-blue-500",)}
         >
           Synced
         </div>

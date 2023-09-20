@@ -52,7 +52,7 @@ const WorkSpaceHero: FC<heroProps> = ({}) => {
         <div className="hidden md:block mx-auto">
           <button
             onClick={() => router.push("/auth")}
-            className="p-5 border-[1px] border-black text-md sm:text-xl hover:bg-blue-300 hover:text-white transition ease-out duration-300"
+            className="flex flex-row gap-2 py-6 px-6 text-xl bg-slate-200 hover:bg-blue-200 hoer:text-slate-100 transition border-slate-300 duration-500"
           >
             Lets Get Your Workspace Set Up
           </button>
