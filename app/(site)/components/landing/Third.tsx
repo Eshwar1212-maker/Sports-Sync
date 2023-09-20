@@ -10,10 +10,21 @@ interface SecondProps {}
 const Second: FC<SecondProps> = ({}) => {
   const router = useRouter()
   return (
-    <div>
-    <div className="flex flex-col justify-center items-center lg:flex-row bg-white sm:mb-[-37px] pb-11">
+    <div className="flex flex-col justify-center mx-auto items-center lg:flex-row bg-white sm:mb-[-37px] pb-11 xl:pr-40">
+            <div className="flex flex-col lg:py-10 w-full md:w-1/2 lg:w-2/5 xl:w-1/2 items-center px-2">
+        <div className="max-w-[450px]">
+          <Image
+            width={750}
+            height={300} 
+            src={one}
+            alt="tracker image"
+            priority={true}
+
+          />
+        </div>
+      </div>
       <div className="w-[80%] lg:w-[600px] py-20 items-center text-center">
-        <h3 className="text-gray-800 text-3xl md:text-4xl lg:text-5xl font-thin">
+        <h3 className="text-gray-800 text-3xl md:text-4xl lg:text-5xl">
           It all starts with tracking
         </h3>
         <p className="text-sm md:text-xl py-4 text-gray-500">
@@ -30,26 +41,16 @@ const Second: FC<SecondProps> = ({}) => {
               priority={true}
               />
             </div>
-            <p
-             onClick={() => router.push("/auth")}
-             className="mx-auto text-black text-center font-bold cursor-pointer hover:underline">
-              Start dominating the competition today
-            </p>
-      </div>
-      <div className="flex flex-col lg:py-10 w-full md:w-1/2 lg:w-2/5 xl:w-1/2 items-center px-2">
-        <div className="max-w-[450px]">
-          <Image
-            width={750}
-            height={300} 
-            src={one}
-            alt="tracker image"
-            priority={true}
+            <button
+              aria-label="Get Started, create your account"
+              onClick={() => router.push("/auth")}
+              className="bg-blue-700 hover:bg-blue-600 transition ease-in-out duration-200 text-sm md:text-md lg:text-xl p-3 md:p-5 text-white rounded-sm"
+            >
+              Start dominating
 
-          />
-        </div>
+            </button>
       </div>
     </div>
-        </div>
 
 
   );
