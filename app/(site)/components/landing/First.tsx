@@ -12,7 +12,7 @@ const First: FC<FirstProps> = ({}) => {
         <h3 className="text-gray-800 text-3xl md:text-4xl lg:text-5xl">
           Synced is the <br /> social network for athletes
         </h3>
-        <p className="text-sm sm:text-md md:text-xl py-4 text-gray-500">
+        <p className="text-md md:text-xl py-4 text-gray-500">
           Message your teammates or friends to schedule games, invite users to your private team chat with mod functionalities, and create a
           custom calender for your team so you guys can manage your events, such
           as games, practices, meetings, and more.

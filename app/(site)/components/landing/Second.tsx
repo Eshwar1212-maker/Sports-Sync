@@ -12,7 +12,7 @@ const Second: FC<SecondProps> = ({}) => {
       <h3 className="text-gray-800 text-3xl md:text-4xl lg:text-5xl mx-auto">
           Productivity takes<br /> you to the next level
         </h3>
-        <p className="text-sm md:text-xl py-4 text-gray-500">
+        <p className="text-md md:text-xl py-4 text-gray-500">
           Use our calender to schedule all of your own events, such as practices, games, meetings, 
           or create a workspace with your team so all of you can stay connected. 
         </p>
