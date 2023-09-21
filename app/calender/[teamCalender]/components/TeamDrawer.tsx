@@ -144,9 +144,9 @@ export function TeamDrawer({
 
                   ) : (
                     <ActionTooltip label={`Leave ${team?.title}`}>
-                      <Button className="rounded-lg" variant={"destructive"}>
+                      {/* <Button className="rounded-lg" variant={"destructive"}>
                         Sign Out
-                      </Button>
+                      </Button> */}
                     </ActionTooltip>
                   )}
                 </div>
