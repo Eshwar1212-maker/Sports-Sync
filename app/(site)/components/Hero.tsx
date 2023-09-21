@@ -64,7 +64,7 @@ const Hero = () => {
               src={four}
             />
           </div>
-          <div className="absolute px-5 md:px-0">
+          <div className="absolute px-20">
             <Image
               alt="landing page for team"
               width={400}

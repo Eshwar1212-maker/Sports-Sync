@@ -11,21 +11,21 @@ const Second: FC<SecondProps> = ({}) => {
   const router = useRouter();
   return (
     <div className=" mx-auto items-center bg-white sm:mb-[-37px] pb-11 xl:pr-40">
-      <div className="py-20 items-center text-center flex flex-col justify-center mx-auto max-w-[80%] pr-8 md:pr-10 lg:pr-0 md:pl-10  lg:max-w-[900px] xl:pl-20">
+      <div className="py-10 items-center text-center flex flex-col justify-center mx-auto max-w-[80%] lg:max-w-[900px] xl:max-w-[1200px] xl:pl-40">
         <h3 className="text-gray-800 text-3xl md:text-4xl lg:text-5xl">
           It all starts with tracking
         </h3>
-        <p className="text-sm md:text-xl py-4 text-gray-500">
+        <p className="text-sm md:text-xl py-4 text-gray-500 max-w-[70%]">
           Visit your dashboard regularly to see how consistent and intense you
           have been working out over the course of months, in order for you to
           judge your progress.
         </p>
-        <div className="">
+        <div className="max-w-[90%] xl:max-w-[1200px]">
           <Image
             alt="calender tracker image"
             src={two}
-            width={900}
-            height={900}
+            width={1300}
+            height={1300}
             priority={true}
           />
         </div>
