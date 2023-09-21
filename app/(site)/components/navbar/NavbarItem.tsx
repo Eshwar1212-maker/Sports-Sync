@@ -108,15 +108,14 @@ export function NavBarItem() {
                       {component.description}
                     </ListItem>
                   ))}
-                  <Button
+                  <button
                     onClick={() => {
                       router.push("/auth");
                     }}
-                    className="py-8 my-2"
-                    variant={"six"}
+                    className="bg-white rounded-xl transition ease-in-out hover:bg-blue-100 duration-300 text-lg"
                   >
                     Start Collaborating
-                  </Button>
+                  </button>
                 </ul>
               </div>
               <div className="h-[440px] mt-3 w-[1px] mr-10 shadow-black bg-slate-300 shadow-lg text-black hidden xl:block" />
@@ -165,13 +164,12 @@ export function NavBarItem() {
                       {component.description}
                     </ListItem>
                   ))}
-                  <Button
+                  <button
                     onClick={() => router.push("/auth")}
-                    className="py-8 my-2"
-                    variant={"six"}
+                    className="bg-white rounded-xl transition ease-in-out hover:bg-blue-100 duration-300 px-0 py-0 text-lg"
                   >
                     Lets go
-                  </Button>
+                  </button>
                 </ul>
               </div>
               <div className="h-[440px] mt-3 w-[1px] shadow-black bg-slate-300 shadow-lg text-black ml-10" />
