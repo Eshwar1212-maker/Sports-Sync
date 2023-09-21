@@ -2,10 +2,7 @@ import getSession from "./getSession"
 import prisma from "@/app/libs/prismadb";
 
 
-const getUserById = async (id: string) => {
-
-    console.log("HELLOOO");
-    
+const getUserById = async (id: string) => {    
     const session = await getSession()
     if(!session?.user?.email) return []
     try{
@@ -20,12 +17,9 @@ const getUserById = async (id: string) => {
                 
             }
         })
-
         return user
-
     }catch(error){
         return []
     }
 }
-
 export default getUserById;

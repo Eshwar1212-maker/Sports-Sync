@@ -28,9 +28,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
   const { conversationId } = useConversation();
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(conversationId);
   const params = useParams()
-  console.log(params?.conversationId);
   
   
   

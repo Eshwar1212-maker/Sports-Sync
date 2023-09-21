@@ -77,9 +77,6 @@ const AddUserToGroup: FC<AddUserToGroupProps> = ({
       }, 1000);
     });
 
-  console.log(selectedUsers);
-
-  console.log(data);
 
   //POST REQUEST FOR INVITES
   const {
