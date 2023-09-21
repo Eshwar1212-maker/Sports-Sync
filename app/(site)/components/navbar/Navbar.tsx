@@ -26,17 +26,48 @@ const inter = PT_Sans({
   weight: "400",
 });
 
+
+
 interface NavbarProps {
   isHome?: boolean;
 }
 const Navbar: FC<NavbarProps> = ({}) => {
+
   const [isOpen, setIsOpen] = useState(false);
+
+
+  const [isScrolled, setisScrolled] = useState(false)
+  const [isScrolled2, setisScrolled2] = useState(false)
+
+  const changeColor = () => {
+    if(window.scrollY >= 90 && window.scrollY < 620){
+      setisScrolled(true)
+    }else{
+      setisScrolled(false)
+    }
+    if(window.scrollY > 1150){
+      setisScrolled2(true)
+    }else{
+      setisScrolled2(false)
+      setisScrolled(true)
+    }
+
+  }
+
+  console.log(window.scrollY);
+  
+
+
+  window.addEventListener("scroll", changeColor)
+
   const router = useRouter();
   const pathName = usePathname();
+
+
   console.log();
   if (pathName !== "/auth") {
     return (
-      <header className="flex flex-col px-5 sm:px-8 py-4 bg-slate-50 text-black fixed top-0 w-full z-20">
+      <header className={cn("flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 ", isScrolled ? "bg-blue-50" : "bg-white", isScrolled2 ? "bg-blue-50" : "bg-white")}>
         <div className="flex justify-between">
         <div
           onClick={() => {

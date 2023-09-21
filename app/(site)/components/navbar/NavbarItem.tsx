@@ -31,7 +31,7 @@ export function NavBarItem() {
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-inherit">Getting started</NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
               <li className="row-span-3">
@@ -87,7 +87,7 @@ export function NavBarItem() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="">
-          <NavigationMenuTrigger>Workspaces</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-inherit">Workspaces</NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <div className="max-w-[1400px] mx-auto pb-7 flex flex-row">
               <div>
@@ -146,7 +146,7 @@ export function NavBarItem() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="">
-          <NavigationMenuTrigger>Tracking</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-inherit">Tracking</NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <div className="max-w-[1400px] mx-auto pb-3 flex flex-row">
               <div>
@@ -195,7 +195,7 @@ export function NavBarItem() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>About</NavigationMenuTrigger>
+          <NavigationMenuTrigger className=" bg-inherit">About</NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
               <ListItem
