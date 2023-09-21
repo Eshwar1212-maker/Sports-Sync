@@ -129,7 +129,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
           <div>
             <Popover>
               <PopoverTrigger asChild>
-                <Button>
+                <Button className="rounded-md">
                   <SlCalender size={20} className="" />
                 </Button>
               </PopoverTrigger>
@@ -166,7 +166,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
             </Button>
             <Button
               variant={"default"}
-              className={"hidden md:block text-[11px] md:text-[13px] py-2"}
+              className={"hidden md:block text-[11px] md:text-[13px] py-2 rounded-md"}
               onClick={() => {
                 setSelectedExercise(false);
                 setIsOpen(true);
