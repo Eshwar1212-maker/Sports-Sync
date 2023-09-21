@@ -45,7 +45,7 @@ export function NotificationsSheet({ notifications }: any) {
                 : "mx-auto flex flex-col"
             }
           >
-          {notifications?.length > 0 &&  <span className="mb-7 ml-2 mx-auto pl-1">{notifications?.length}</span>}
+          {notifications?.length > 0 &&  <span className="mb-7 ml-[7px] mx-auto pl-[6px] text-sm">{notifications?.length}</span>}
             <IoIosNotificationsOutline
               className={notifications?.length > 0 ? " my-[-33px]" : ""}
               size={35}
