@@ -26,8 +26,9 @@ export default function CalenderOptions(userTeams: any) {
   const [selected, setSelected] = useState();
   const [isProModalOpen, setIsProModalOpen] = useState(false);
   const router = useRouter();
+  
   return (
-    <div className="w-full px-4 mx-auto items-center flex flex-row justify-center lg:block space-y-3">
+    <div className="w-full px-4 mx-auto items-center block space-y-3">
       {/* <ProModal isOpen={isProModalOpen} onClose={() => setIsProModalOpen(false)} /> */}
       <RadioGroup className="max-w-[447px]" value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
@@ -75,7 +76,7 @@ export default function CalenderOptions(userTeams: any) {
                               checked ? "text-sky-50" : "text-gray-500"
                             }`}
                           >
-                            <span className="hidden md:block">
+                            <span className="">
                               {plan.description}
                             </span>{" "}
                           </RadioGroup.Description>
@@ -93,11 +94,10 @@ export default function CalenderOptions(userTeams: any) {
             ))}
           </div>
         </RadioGroup>
-      <div className=" w-full max-w-md">
-      
+      <div className="w-full max-w-md mr-40">
         <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">Calenders</RadioGroup.Label>
-          <div className="space-y-2">
+          <div className="space-y-2 flex flex-col">
             {calenders?.map((calender: any) => (
               <RadioGroup.Option
                 onClick={() => {
@@ -124,7 +124,7 @@ export default function CalenderOptions(userTeams: any) {
                         <div className="text-[15px]">
                           <RadioGroup.Label
                             as="p"
-                            className={`font-medium  ${
+                            className={` font-medium  ${
                               checked ? "text-white" : "text-gray-900"
                             }`}
                           >

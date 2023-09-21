@@ -6,10 +6,7 @@ export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
     const body = await request.json();
-    const { notes, title, date, teamId, poster} = body;
-
-    console.log("HELLOOOOO");
-    
+    const { notes, title, date, teamId, poster} = body;    
 
     if (!currentUser?.id || !currentUser?.email) {
       return new NextResponse("Unauthorized", { status: 400 });

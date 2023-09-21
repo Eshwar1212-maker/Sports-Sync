@@ -10,22 +10,21 @@ import axios from "axios";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
-import {FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 interface GroupChatModalProps {
   isOpen: boolean;
   onClose: () => void;
   users: User[];
-  currentUser: any
+  currentUser: any;
 }
 export const revalidate = 0;
-
 
 const GroupChatModal: FC<GroupChatModalProps> = ({
   isOpen,
   onClose,
   users,
-  currentUser
+  currentUser,
 }) => {
   const router = useRouter();
   const {
@@ -42,27 +41,21 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
   });
 
   const members = watch("members");
-  
-  const {
-    mutate: createGroupChatMutation,
-    isLoading,
-  } = useMutation(
+
+  const { mutate: createGroupChatMutation, isLoading } = useMutation(
     (data: FieldValues) => {
       return axios.post(`/api/conversations`, {
-
         ...data,
         isGroup: true,
-        admin: `${currentUser.email + " " + currentUser.name}`
+        admin: `${currentUser.email + " " + currentUser.name}`,
       });
     },
     {
       onSuccess: (response) => {
-        console.log(response);
-        
         router.refresh();
         router.push(`/conversations/${response.data.id}`);
-        toast.success(`Succesfully created group`)
-        onClose()
+        toast.success(`Succesfully created group`);
+        onClose();
       },
       onError: () => {
         toast.error(
@@ -88,22 +81,18 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
     });
   };
 
-
-
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     createGroupChatMutation(data);
   };
+  
+  
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-10">
-            <h2
-              className={clsx(
-                `text-base font-semibold leading-7`
-              )}
-            >
+            <h2 className={clsx(`text-base font-semibold leading-7`)}>
               Create a group chat
             </h2>
             <div className="mt-10 flex flex-col gap-y-8"></div>
@@ -137,7 +126,6 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
           <Button disabled={isLoading} type="submit">
             Create
           </Button>
-          
         </div>
       </form>
     </Modal>

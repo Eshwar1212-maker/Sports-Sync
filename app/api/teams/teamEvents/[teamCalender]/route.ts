@@ -14,7 +14,6 @@ export async function DELETE(
   try {
     const currentUser = await getCurrentUser();
     const {teamCalender} = params;
-    console.log("TEAM ID" + teamCalender);
 
     if(!teamCalender) return new NextResponse("No Id", {status: 401})
     

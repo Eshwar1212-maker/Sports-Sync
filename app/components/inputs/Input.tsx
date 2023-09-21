@@ -18,10 +18,8 @@ interface InputProps {
 const Input: FC<InputProps> = ({
     label, id, type, register, required, errors, disabled, placeholder
 }) => {
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
   return (
-    <div className=''>
+    <div>
       <label htmlFor={id} className='block text-sm font-md leading-6'>{label}</label>
       <div className='mt-2'>
             <input

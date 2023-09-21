@@ -10,22 +10,33 @@ import CreateTeamModal from "./CreateTeamModal";
 import { Button } from "@/components/ui/button";
 import { MdGroupAdd } from "react-icons/md";
 import { IoMdAdd, IoMdAddCircleOutline } from "react-icons/io";
+import ProModal from "./ProModal";
 
 interface landingProps {
   users: User[];
   userTeams: { title: string | null }[] | null;
+  currentUser: any
 }
-const Landing: FC<landingProps> = ({ users, userTeams }) => {
+const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
   const { theme } = useTheme();
-  const [isProModalOpen, setIsProModalOpen] = useState(false);
-
+  const [isTeamModal, setIsTeamModal] = useState(false);
+  const [isProModal, setIsProModal] = useState(false)
+  
+  
   return (
     <>
+      
       {/*DESKTOP MENU*/}
+      
       <CreateTeamModal
         users={users!}
-        isOpen={isProModalOpen}
-        onClose={() => setIsProModalOpen(false)}
+        isOpen={isTeamModal}
+        onClose={() => setIsTeamModal(false)}
+      />
+
+      <ProModal
+        isOpen={isProModal}
+        onClose={() => setIsProModal(false)}
       />
       <div className="hidden xl:block py-[100px] sm:px-6 md:pl-60 container">
         <main className="flex flex-col md:flex-row space-x-9 pb-11">
@@ -62,9 +73,16 @@ const Landing: FC<landingProps> = ({ users, userTeams }) => {
               aria-label="fullcalenderjs image"
             />
             <Button
-              onClick={() => setIsProModalOpen(true)}
-              className="my-8 text-xl p-10 "
-              variant={"four"}
+              onClick={() => {
+                if(userTeams?.length! > 1 && currentUser?.email !== "eshwartangirala11@gmail.com"){
+                  setIsProModal(true)
+                }else{
+                  setIsTeamModal(true)
+
+                }
+              }}
+              className="my-8 text-xl p-10 border-[1px] border-black"
+              variant={"six"}
             >
               Create a new workspace <IoMdAddCircleOutline className="pl-2" size={40}/>
             </Button>
@@ -73,19 +91,19 @@ const Landing: FC<landingProps> = ({ users, userTeams }) => {
       </div>
 
       {/*MOBILE MENU*/}
-      <div className="px-4 items-center py-10 xl:hidden">
+      <div className="px-4 items-center py-10 xl:hidden flex flex-col justify-center mx-auto">
         <div className="space-y-7">
           <div className="space-y-7 px-7 md:px-20">
             <h1
               className={clsx(
                 theme == "dark"
-                  ? "text-3xl sm:text-4xl font-bold "
-                  : "text-3xl sm:text-4xl font-bold"
+                  ? "text-4xl sm:text-4xl font-bold "
+                  : "text-4xl sm:text-4xl font-bold"
               )}
             >
               Use our Calenders to visualize your routine
             </h1>
-            <p className={"text-sm sm:text-lg font-ligh"}>
+            <p className={"text-lg sm:text-lg font-ligh"}>
               Use our Calender feature to either schedule your own practices and
               workouts, or collaborate with your team so you guys can schedule
               games, practices, events, etc.
@@ -102,11 +120,9 @@ const Landing: FC<landingProps> = ({ users, userTeams }) => {
             />
           </div>
         </div>
-        <div className="my-5">
-          <div className="pl-10 sm:pl-40 md:pl-60">
-            <CalenderOptions />
+          <div className=" sm:ml-20">
+            <CalenderOptions userTeams={userTeams}/>
           </div>
-        </div>
       </div>
     </>
   );
