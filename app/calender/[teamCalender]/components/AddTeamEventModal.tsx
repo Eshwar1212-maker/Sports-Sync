@@ -197,7 +197,7 @@ function AddTeamEventModal({
   return (
     <Modal showClose={false} isOpen={isOpen} onClose={onClose}>
       <form className="" onSubmit={handleSubmit}>
-        <div className="flex justify-between">
+        <div className="">
         <input
           aria-label="Event name"
           className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pl-4 sm:pl-0"
@@ -211,9 +211,9 @@ function AddTeamEventModal({
               : (e) => setEventTitle(e.target.value)
           }
         />
-        <button aria-label="Options" className="" type="button">
+        {/* <button aria-label="Options" className="" type="button">
            <DropdownMenuRadioGroupDemo />
-        </button>
+        </button> */}
         </div>
 
         <div className={cn("pl-4 sm:pl-0", selectedEvent ? "pt-4" : "py-3")}>
