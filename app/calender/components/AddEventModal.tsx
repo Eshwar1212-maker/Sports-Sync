@@ -201,8 +201,8 @@ function AddEventModal({
               "/" +
               date.split("-")[0]}
         </div>
-        <div className="border-[1px] border-solid border-gray-600 w-[100%] sm:pl-0" />
-        <div className="py-6  pl-4 sm:pl-0">
+        <div className="border-[1px] border-solid border-gray-600 w-[100%]" />
+        <div className="py-6  pl-3 sm:pl-0">
           <textarea
             className={clsx(
               "bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px]",
