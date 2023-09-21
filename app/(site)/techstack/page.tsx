@@ -108,12 +108,13 @@ const page: FC<pageProps> = ({}) => {
         </div>
         <br />
         <h2 className="text-3xl font-semibold">Star us on Github!</h2>
-        <p>
+        <p className="text-lg text-gray-700 leading-relaxed font-light">
           Right now we are working on a feature for different athletes to be
           able to track their skill workouts, and have AI generate them feedback
           and plans. We are very excited. We plan to add many more features in
           the future; stay up to date with the progress on Github.
         </p>
+        <br />
         <a
           href="https://github.com/Eshwar1212-maker/Sports-Sync/tree/development"
           target="_blank"
