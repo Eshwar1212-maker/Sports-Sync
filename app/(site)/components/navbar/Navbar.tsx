@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { PT_Sans } from "next/font/google";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { NavBarItem } from "./NavbarItem";
@@ -54,11 +54,29 @@ const Navbar: FC<NavbarProps> = ({}) => {
 
   }
 
-  console.log(window.scrollY);
+
+  useEffect(() => {
+    const changeColor = () => {
+      if(window.scrollY >= 200 && window.scrollY < 90){
+        setisScrolled(true)
+      }else{
+        setisScrolled(false)
+      }
+      if(window.scrollY > 200 && window.scrollY < 3000){
+        setisScrolled2(true)
+      }else{
+        setisScrolled2(false)
+        setisScrolled(true)
+      }
+    }
   
+    window.addEventListener("scroll", changeColor);
+  
+    return () => {
+      window.removeEventListener("scroll", changeColor);
+    };
+  }, []); 
 
-
-  window.addEventListener("scroll", changeColor)
 
   const router = useRouter();
   const pathName = usePathname();
