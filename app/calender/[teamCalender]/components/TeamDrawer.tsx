@@ -82,8 +82,8 @@ export function TeamDrawer({
           <SheetTitle>{team?.title}</SheetTitle>
           <SheetDescription className="py-[20px]">
             <div className="flex justify-between">
-              <div>
-                <h4 className="font-bold pb-1 text-md">Moderator</h4>
+              <div className="">
+                <h4 className="font-bold pb-1 text-md ml-[90px] sm:ml-0">Moderator</h4>
                 <div className="flex gap-2 py-2">
                   <Image
                     className="rounded-full"

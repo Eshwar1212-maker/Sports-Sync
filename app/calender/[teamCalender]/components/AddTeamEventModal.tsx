@@ -216,7 +216,7 @@ function AddTeamEventModal({
         </button>
         </div>
 
-        <div className={cn("sm:pl-0", selectedEvent ? "pt-4" : "py-3")}>
+        <div className={cn("pl-4 sm:pl-0", selectedEvent ? "pt-4" : "py-3")}>
           <h3 className="text-base font-semibold leading-7">Date</h3>
           {selectedEvent
             ? selectedDate.split(" ")[0] +
@@ -232,12 +232,12 @@ function AddTeamEventModal({
               "/" +
               date.split("-")[0]}
         </div>
-{  selectedEvent && <div className="sm:pl-0 py-2">
+{  selectedEvent && <div className="pl-4 sm:pl-0 py-2">
           <h3 className="text-base font-semibold leading-7">Posted by</h3>
-          <p>{selectedEvent?._def?.extendedProps?.poster}</p>
+          <p className="">{selectedEvent?._def?.extendedProps?.poster}</p>
         </div>}
-        <div className="border-[1px] border-solid border-gray-900 w-full pl-4 sm:pl-0" />
-        <div className="py-6  pl-10 sm:pl-0">
+        <div className="border-[1px] border-solid border-gray-900 w-full pl-6 sm:pl-0" />
+        <div className="py-6  pl-3 sm:pl-0">
           <textarea
             className={clsx(
               "bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 w-full border-[1px] border-s border-black h-[400px]",
