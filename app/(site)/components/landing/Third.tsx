@@ -33,13 +33,13 @@ const Second: FC<SecondProps> = ({}) => {
         <div className="flex gap-2">
           <button
             aria-label="Get Started, create your account"
-            onClick={() => router.push("/auth")}
+            onClick={() => router.push("/tracking")}
             className="hover:bg-blue-200 transition ease-in-out duration-200 text-md lg:text-xl p-4 text-black rounded-sm border-[1px] border-black hover:text-whte"
           >
             Learn More
           </button>
           <button
-          onClick={() => router.push("/tracking")}
+          onClick={() => router.push("/auth")}
           className="bg-blue-800 hover:bg-blue-600 transition ease-in-out duration-200 text-md lg:text-xl p-4 px-7 lg:px-7 text-white rounded-sm">
             Start Now
           </button>
