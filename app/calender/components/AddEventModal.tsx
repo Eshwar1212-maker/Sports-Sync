@@ -89,7 +89,6 @@ function AddEventModal({
         onClose();
       },
       onError: (error) => {
-        console.log("ADD EVENT ERROR: ", error);
       },
     }
   );
@@ -102,8 +101,6 @@ function AddEventModal({
       eventId: string;
       date?: string;
     }) => {
-      console.log(data);
-
       return axios.patch("/api/events/update", data);
     },
     {
@@ -113,7 +110,6 @@ function AddEventModal({
         toast("Event updated");
       },
       onError: (error) => {
-        console.log("UPDATE EVENT ERROR: ", error);
       },
     }
   );
@@ -133,7 +129,6 @@ function AddEventModal({
         toast("Event deleted");
       },
       onError: (error) => {
-        console.log("UPDATE EVENT ERROR: ", error);
       },
     }
   );

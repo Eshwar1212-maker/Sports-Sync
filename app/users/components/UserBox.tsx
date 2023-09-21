@@ -43,7 +43,6 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
         router.push(`/conversations/${data.data.id}`);
       },
       onError: (error) => {
-        console.log(error);
       },
     }
   );

@@ -29,8 +29,7 @@ export async function DELETE(
     
 
   } catch (error) {
-    console.log(error);
     
-    return new NextResponse('Error', { status: 500 });
+return new NextResponse('Error', { status: 500 });
   }
 }

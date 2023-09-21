@@ -25,12 +25,9 @@ const DeleteWorkSpaceModal: React.FC<ConfirmModalProps> = ({
   isOpen, 
   onClose,
 }) => {
+
   const router = useRouter();
-
   const params = useParams()
-  console.log(params?.teamCalender);
-  
-
   
 
   const {mutate: deleteMutation, isLoading, isError} = useMutation({
@@ -39,11 +36,9 @@ const DeleteWorkSpaceModal: React.FC<ConfirmModalProps> = ({
 
     },
     onError: (error: any) => {
-      console.log(error);
 
     },
     onSuccess: (data: any) => {
-      console.log(data);
       onClose
       router.refresh()
       router.push("/calender")

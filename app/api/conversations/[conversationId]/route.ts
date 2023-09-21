@@ -23,9 +23,7 @@ export async function DELETE(
       include: {
         users: true
       }
-    })
-    console.log(conversationId);
-    
+    })    
     if(!existingConversation) return new NextResponse("Invalid Id", {status: 400})
     if(existingConversation.admin?.includes(currentUser?.email!) && existingConversation?.isGroup){
       const deletedConversation = await prisma.conversation.deleteMany({
@@ -58,9 +56,7 @@ export async function DELETE(
       
     }
 
-  } catch (error) {
-    console.log(error);
-    
+  } catch (error) {    
     return new NextResponse('Error', { status: 500 });
   }
 }

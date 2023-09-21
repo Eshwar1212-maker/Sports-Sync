@@ -49,7 +49,6 @@ export async function PATCH(
 
     return NextResponse.json(newConversation);
   } catch (error) {
-    console.log(error);
     
     return new NextResponse('Error', { status: 500 });
   }

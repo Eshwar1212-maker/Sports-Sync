@@ -34,7 +34,6 @@ export async function PATCH(request: Request) {
   
       return NextResponse.json(updatedEvent);
     } catch (error) {
-      console.log(error);
       return new NextResponse("Internal Error", { status: 500 });
     }
   }
