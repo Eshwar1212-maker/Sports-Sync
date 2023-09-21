@@ -29,7 +29,7 @@ const TrackerFirst: FC<TrackerFirstProps> = ({}) => {
           </Metric>
         </Card>
         <Col> 
-        <Card className="2xl:max-h-[400px]">
+        <Card className="2xl:max-h-[400px] bg-white">
             <TrackingCarouselTwo />
           </Card>
         </Col>
@@ -40,7 +40,7 @@ const TrackerFirst: FC<TrackerFirstProps> = ({}) => {
           </Metric>
         </Card>
         <Col>
-        <Card className="2xl:max-h-[400px]">
+        <Card className="2xl:max-h-[400px] bg-white">
             <TrackingCarouselThree />
           </Card>
         </Col>

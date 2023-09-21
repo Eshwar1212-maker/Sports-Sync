@@ -12,7 +12,7 @@ const Footer: FC<FooterProps> = ({
   const pathName = usePathname()
   
   return (
-<footer className={cn("py-6 sm:px-20 text-sm sm:text-md mx-0 px-0 w-full", pathName === "/workspaces" ? "bg-white my-20 sm:my-40 md:my-20 lg:my-0" : "bg-slate-50", pathName === "/auth" && "text-white bg-black")}>
+<footer className={cn("py-6 sm:px-20 text-sm sm:text-md mx-0 px-0 w-full", pathName === "/workspaces" ? "bg-white my-20 sm:my-40 md:my-20 lg:my-0" : "bg-slate-50", pathName === "/auth" ? "text-white bg-black" : "text-black")}>
     <div className=" px-5">
         <div className=''>
             <h3 className="font-semibold text-lg">Sports Sync</h3>
