@@ -111,7 +111,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
         handleCallbackExercises(exerciseData.data)
       },
       onError: (error) => {
-        console.log(error);
       },
     }
   );
@@ -136,7 +135,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
 
       },
       onError: (error) => {
-        console.log("UPDATE EVENT ERROR: ", error);
         toast.error("Issue updating, reload the page if issue persists")
       },
     }
@@ -163,7 +161,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
         handleCallbackExercises({});
       },
       onError: (error) => {
-        console.log("UPDATE EVENT ERROR: ", error);
         toast.error("Issue deleting, reload the page if issue persists")
 
       },

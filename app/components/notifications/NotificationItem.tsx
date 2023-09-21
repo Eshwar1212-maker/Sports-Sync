@@ -51,7 +51,6 @@ const NotificationItem: FC<NotificationItemProps> = ({
       }
     },
     onError: (error) => {
-      console.log(error);
     },
   });
 

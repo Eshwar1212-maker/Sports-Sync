@@ -54,8 +54,6 @@ export async function PATCH(request: Request) {
 
     return NextResponse.json({ notification, newConversation });
   } catch (error) {
-    console.log(error);
-
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

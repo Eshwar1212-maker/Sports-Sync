@@ -63,9 +63,8 @@ export async function POST(
             }
         })
 
-        console.log(bufferSize1);
+        //console.log(bufferSize1);
         
-
         await pusherServer.trigger(conversationId, 'messages:new', newMessage)
         const lastMessage = updatedConversation.messages[updatedConversation.messages.length - 1].body
         updatedConversation.users.map((user) => pusherServer.trigger(user.email!, 'conversatin: update', {
@@ -75,7 +74,6 @@ export async function POST(
 
         return NextResponse.json(newMessage)
     }catch(error){
-        console.log(error);
         return new NextResponse('Internal Error', {status: 500})
     }
 }

@@ -22,7 +22,6 @@ export const getUsersTeams = async() => {
         })
         return team;
     }catch(error){
-        console.log(error);
         return null
     }
 }

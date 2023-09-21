@@ -19,10 +19,8 @@ const TeamId = async ({ params }: TeamIdPageProps) => {
 
   const team: any = await getTeamById(params.teamCalender);
   const currentUser = await getCurrentUser()
-  //console.log(team);
   
   const teamAdmin: any = await getUserById(team?.admin!)
-  console.log(teamAdmin);
 
   if (!team) {
     return (

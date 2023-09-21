@@ -106,7 +106,6 @@ function AddTeamEventModal({
         onClose();
       },
       onError: (error) => {
-        console.log("ADD EVENT ERROR: ", error);
       },
     }
   );
@@ -120,8 +119,6 @@ function AddTeamEventModal({
       date?: string;
       teamId: string;
     }) => {
-      console.log(data);
-
       return axios.patch("/api/teams/teamEvents/update", data);
     },
     {
@@ -131,7 +128,6 @@ function AddTeamEventModal({
         toast("Event updated");
       },
       onError: (error) => {
-        console.log("UPDATE EVENT ERROR: ", error);
       },
     }
   );
@@ -152,7 +148,6 @@ function AddTeamEventModal({
         toast("Event deleted");
       },
       onError: (error) => {
-        console.log("UPDATE EVENT ERROR: ", error);
       },
     }
   );

@@ -50,7 +50,6 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
         );
       },
       onError: (error) => {
-        console.log("ADD EVENT ERROR: ", error);
       }
       ,
     }
