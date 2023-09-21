@@ -3,9 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Image from "next/image";
 import one from "../../../assets/deadliftone.jpg";
-import oneOne from "../../../assets/soccerpractice.jpg";
 import two from "../../../assets/hooptraining.jpg";
-import twoTwo from "../../../assets/deadlifttwo.jpg";
 import three from "../../../assets/deadlifttwo.jpg";
 
 
@@ -18,10 +16,10 @@ const TrackingCarouselTwo= () => {
         disableOnInteraction: false,
       }}
       modules={[Autoplay, Pagination, Navigation]}
-      className=""
+      className="bg-white"
 
     >
-      <SwiperSlide className="">
+      <SwiperSlide className="bg-white">
         <Image
           alt="Training Carousel"
           height={700}
@@ -61,7 +59,7 @@ export const TrackingCarouselThree= () => {
         disableOnInteraction: false,
       }}
       modules={[Autoplay, Pagination, Navigation]}
-      className=""
+      className="bg-white"
 
     >
       <SwiperSlide className="">

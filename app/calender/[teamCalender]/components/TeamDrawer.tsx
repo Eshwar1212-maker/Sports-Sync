@@ -95,13 +95,13 @@ export function TeamDrawer({
                   <p className="my-auto">{admin}</p>
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <ActionTooltip label="Invite more users">
                   <Button onClick={() => setInviteModal(true)} className="mx-3 mb-2" variant={"secondary"}>
                     <RiUserAddLine size={20} />
                   </Button>
                 </ActionTooltip>
-              </div>
+              </div> */}
             </div>
             <div className="py-2">
               <h4 className="font-bold pb-1 text-md">
