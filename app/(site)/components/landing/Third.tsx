@@ -15,12 +15,12 @@ const Second: FC<SecondProps> = ({}) => {
         <h3 className="text-gray-800 text-3xl md:text-4xl lg:text-5xl">
           It all starts with tracking
         </h3>
-        <p className="text-sm md:text-xl py-4 text-gray-500 max-w-[70%]">
+        <p className="text-md md:text-xl py-4 text-gray-500 sm:max-w-[70%]">
           Visit your dashboard regularly to see how consistent and intense you
           have been working out over the course of months, in order for you to
           judge your progress.
         </p>
-        <div className="max-w-[90%] xl:max-w-[1200px]">
+        <div className="max-w-[99%] xl:max-w-[1200px]">
           <Image
             alt="calender tracker image"
             src={two}
