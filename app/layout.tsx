@@ -8,7 +8,7 @@ import ThemeProviders from './context/ThemeProviders'
 
 export const metadata = {
   title: 'Synced',
-  description: 'Workout/productvity app for athletes',
+  description: 'Workout/productvity app for athletes and teams',
 }
 
 export default function RootLayout({
