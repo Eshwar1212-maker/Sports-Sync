@@ -21,7 +21,7 @@ const WorkSpaceHero: FC<heroProps> = ({}) => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between] md:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1500px] mx-auto py-[110px] lg:py-[200px] gap-10">
+    <div className="flex flex-col lg:flex-row justify-between w-full md:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1500px] mx-auto py-[110px] lg:py-[200px] gap-10">
       <div className=" my-auto space-y-3 sm:space-y-4 w-[84%] sm:w-[80%] xl:w-[50%] mx-auto">
         <h1 className="text-4xl sm:text-5xl lg:text-5xl 2xl:text-7xl">
           Create your own team calenders

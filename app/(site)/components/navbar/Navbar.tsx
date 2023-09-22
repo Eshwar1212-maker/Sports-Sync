@@ -84,7 +84,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
 
   if (pathName !== "/auth") {
     return (
-      <header className={cn("flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 ", (isScrolled &&  pathName !== "/techstack") ? "bg-blue-50" : "bg-white", (isScrolled &&  pathName !== "/techstack") ? "bg-blue-50" : "bg-white")}>
+      <header className={cn("flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 ", (isScrolled &&  pathName !== "/techstack" && pathName !== "/guide") ? "bg-blue-50" : "bg-white", (isScrolled &&  pathName !== "/techstack" && pathName !== "/guide") ? "bg-blue-50" : "bg-white")}>
         <div className="flex justify-between">
         <div
           onClick={() => {

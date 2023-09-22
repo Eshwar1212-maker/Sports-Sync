@@ -12,7 +12,8 @@ const WorkSpaceFirst: FC<WorkSpaceFirstProps> = ({}) => {
             Every user will get notified when a new event is added. Coaches, trainers, can choose to be mods, 
             the rest can follow.
         </div>
-        <div className="max-w-[350px] sm:max-w-full mx-auto">
+        <div
+     data-aos-duration="3000" className="max-w-[350px] sm:max-w-full mx-auto">
             <Image src={image} alt="Workspace mod" width={550} height={500}/>
             <p className="hidden lg:block mx-auto text-center text-sm font-semibold">
               Customize your workspace/team.

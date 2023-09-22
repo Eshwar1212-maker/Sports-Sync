@@ -12,6 +12,7 @@ import Third from "./landing/Third";
 import { useRouter } from "next/navigation";
 import Fourth from "./landing/Fourth";
 import Fifth from "./landing/Fifth";
+import Seventh from "./landing/Seventh";
 
 
 const inter = PT_Sans({
@@ -144,7 +145,7 @@ const Hero = () => {
         <Second />
         <Third />
         <Fourth />
-        {/* <Sixth /> */}
+        <Seventh />
       </main>
     </div>
   );
