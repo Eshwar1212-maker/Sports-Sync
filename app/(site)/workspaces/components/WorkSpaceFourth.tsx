@@ -16,9 +16,10 @@ const WorkSpaceFourth: FC<WorkSpaceFourthProps> = ({}) => {
   }, []);
 
   return (
-    <div id="" className=" bg-white h-[72vh] lg:h-[760px] py-20 md:py-11">
+    <div id="" className=" bg-white h-[72vh] lg:h-[760px] py-20 md:py-11 w-full">
       <div
-        data-aos="fade-up"
+          data-aos="fade-up"
+          data-aos-duration="3000"
         className="flex flex-col lg:flex-row lg:justify-between sm:max-w-[900px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1400px] mx-auto h-[400px] lg:py-11"
       >
         <div

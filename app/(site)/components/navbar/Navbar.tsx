@@ -26,97 +26,108 @@ const inter = PT_Sans({
   weight: "400",
 });
 
-
-
 interface NavbarProps {
   isHome?: boolean;
 }
 const Navbar: FC<NavbarProps> = ({}) => {
-
   const [isOpen, setIsOpen] = useState(false);
 
-
-  const [isScrolled, setisScrolled] = useState(false)
-  const [isScrolled2, setisScrolled2] = useState(false)
+  const [isScrolled, setisScrolled] = useState(false);
+  const [isScrolled2, setisScrolled2] = useState(false);
 
   const changeColor = () => {
-    if(window.scrollY >= 90 && window.scrollY < 620){
-      setisScrolled(true)
-    }else{
-      setisScrolled(false)
+    if (window.scrollY >= 90 && window.scrollY < 620) {
+      setisScrolled(true);
+    } else {
+      setisScrolled(false);
     }
-    if(window.scrollY > 1150){
-      setisScrolled2(true)
-    }else{
-      setisScrolled2(false)
-      setisScrolled(true)
+    if (window.scrollY > 1150) {
+      setisScrolled2(true);
+    } else {
+      setisScrolled2(false);
+      setisScrolled(true);
     }
-
-  }
-
+  };
 
   useEffect(() => {
     const changeColor = () => {
-      if(window.scrollY >= 200 && window.scrollY < 90){
-        setisScrolled(true)
-      }else{
-        setisScrolled(false)
+      if (window.scrollY >= 200 && window.scrollY < 90) {
+        setisScrolled(true);
+      } else {
+        setisScrolled(false);
       }
-      if(window.scrollY > 200 && window.scrollY < 3000){
-        setisScrolled2(true)
-      }else{
-        setisScrolled2(false)
-        setisScrolled(true)
+      if (window.scrollY > 200 && window.scrollY < 3000) {
+        setisScrolled2(true);
+      } else {
+        setisScrolled2(false);
+        setisScrolled(true);
       }
-    }
-  
+    };
+
     window.addEventListener("scroll", changeColor);
-  
+
     return () => {
       window.removeEventListener("scroll", changeColor);
     };
-  }, []); 
-
+  }, []);
 
   const router = useRouter();
   const pathName = usePathname();
 
-
   if (pathName !== "/auth") {
     return (
-      <header className={cn("flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 ", (isScrolled &&  pathName !== "/techstack" && pathName !== "/guide") ? "bg-blue-50" : "bg-white", (isScrolled &&  pathName !== "/techstack" && pathName !== "/guide") ? "bg-blue-50" : "bg-white")}>
+      <header
+        className={cn(
+          "flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 ",
+          isScrolled && pathName !== "/techstack" && pathName !== "/guide"
+            ? "bg-blue-50"
+            : "bg-white",
+          isScrolled && pathName !== "/techstack" && pathName !== "/guide"
+            ? "bg-blue-50"
+            : "bg-white"
+        )}
+      >
         <div className="flex justify-between">
-        <div
-          onClick={() => {
-            router.push("/");
-            setIsOpen(false);
-          }}
-          style={inter.style}
-          className={cn("text-2xl cursor-pointer", pathName === "/tracking" && "text-blue-900", pathName === "/" && "text-blue-700",  pathName === "/workspaces" && "text-blue-500",)}
-        >
-          Synced
-        </div>
-        <NavBarItem />
-        <nav className="my-2 text-sm font-bold flex gap-4">
-          {!isOpen && (
-            <button
-              className="mr-4 hidden sm:block"
-              onClick={() => router.push("/auth")}
-            >
-              SIGN IN
-            </button>
-          )}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={
-              " right-4 transition ease-in-out duration-500 cursor-pointer rounded-lg max-h-[49px] md:hidden"
-            }
+          <div
+            onClick={() => {
+              router.push("/");
+              setIsOpen(false);
+            }}
+            style={inter.style}
+            className={cn(
+              "text-2xl cursor-pointer",
+              pathName === "/tracking" && "text-blue-900",
+              pathName === "/" && "text-blue-700",
+              pathName === "/workspaces" && "text-blue-500"
+            )}
           >
-            {!isOpen ? <RiMenu3Line size={24} /> : <AiOutlineClose size={24} />}
-          </button>
-        </nav>
+            Synced
+          </div>
+          <NavBarItem />
+          <nav className="my-2 text-sm font-bold flex gap-4">
+            {!isOpen && (
+              <button
+                className="mr-4 hidden sm:block"
+                onClick={() => router.push("/auth")}
+              >
+                SIGN IN
+              </button>
+            )}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={
+                " right-4 transition ease-in-out duration-500 cursor-pointer rounded-lg max-h-[49px] md:hidden"
+              }
+            >
+              {!isOpen ? (
+                <RiMenu3Line size={24} />
+              ) : (
+                <AiOutlineClose size={24} />
+              )}
+            </button>
+          </nav>
         </div>
-  
+
         {isOpen && (
           <div className="md:hidden">
             <motion.div
@@ -162,23 +173,15 @@ const Navbar: FC<NavbarProps> = ({}) => {
                 >
                   Get Started
                 </motion.li>
-                <motion.li
-                  onClick={() => {
-                  }}
-                  variants={itemVariants}
-                >
-                  <WorkSpaceAccordians onClose={() => setIsOpen(false)}/>
+                <motion.li onClick={() => {}} variants={itemVariants}>
+                  <WorkSpaceAccordians onClose={() => setIsOpen(false)} />
+                </motion.li>
+                <motion.li onClick={() => {}} variants={itemVariants}>
+                  <TrackingAccordian onClose={() => setIsOpen(false)} />
                 </motion.li>
                 <motion.li
                   onClick={() => {
-                  }}
-                  variants={itemVariants}
-                >
-                  <TrackingAccordian onClose={() => setIsOpen(false)}/>
-                </motion.li>
-                <motion.li
-                  onClick={() => {
-                    router.push("/guide")
+                    router.push("/guide");
                     setIsOpen(false);
                   }}
                   variants={itemVariants}
@@ -196,7 +199,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
                 >
                   Tech Stack
                 </motion.li>
-                
+
                 <motion.li
                   onClick={() => {
                     router.push("/auth");
