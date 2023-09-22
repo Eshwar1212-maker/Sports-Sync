@@ -84,7 +84,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
 
   if (pathName !== "/auth") {
     return (
-      <header className={cn("flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 ", isScrolled ? "bg-blue-50" : "bg-white", isScrolled2 ? "bg-blue-50" : "bg-white")}>
+      <header className={cn("flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 ", (isScrolled &&  pathName !== "/techstack") ? "bg-blue-50" : "bg-white", (isScrolled &&  pathName !== "/techstack") ? "bg-blue-50" : "bg-white")}>
         <div className="flex justify-between">
         <div
           onClick={() => {
@@ -203,11 +203,11 @@ const Navbar: FC<NavbarProps> = ({}) => {
                     setIsOpen(false);
                   }}
                   variants={itemVariants}
-                  className="py-3 cursor-pointer text-[18px] transition duration-300 hover:bg-slate-200 flex flex-col gap-2"
+                  className="py-3 cursor-pointer text-[18px] transition duration-300 flex flex-col gap-2"
                 >
                   <Button
                     variant={"four"}
-                    className="w-[240px] mx-auto text-center items-center rounded-lg"
+                    className="w-[240px] mx-auto text-center items-center rounded-lg bg-white"
                   >
                     Get Started
                   </Button>

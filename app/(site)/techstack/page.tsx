@@ -1,10 +1,22 @@
+
+"use client"
+
+import { motion, useScroll, useSpring } from "framer-motion";
 import { FC } from "react";
+
 
 interface pageProps {}
 
 const page: FC<pageProps> = ({}) => {
+  const { scrollYProgress } = useScroll();
+
   return (
     <main className="max-w-[340px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-2xl mx-auto my-[70px] lg:my-j40 bg-white text-black">
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[75px] bg-blue-500 transform-origin-left"
+        style={{ scaleX: scrollYProgress }}
+   />
+      <div>
       <div className="space-y-8">
         <h1 className="hidden sm:block text-3xl font-bold leading-relaxed text-black">
           Synced's Tech Stack: How we're
@@ -122,8 +134,7 @@ const page: FC<pageProps> = ({}) => {
           https://github.com/Eshwar1212-maker/Sports-Sync/tree/development
         </a>
       </section>
-
-      <section className="py-8 space-y-3"></section>
+      </div>
     </main>
   );
 };

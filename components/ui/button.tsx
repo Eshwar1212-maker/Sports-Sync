@@ -24,7 +24,7 @@ const buttonVariants = cva(
         tertiary:
           "bg-slate-200 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
         four:
-          "bg-white border-[1px] border-black rounded-lg text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+          "bg-white border-[1px] border-black rounded-lg text-slate-900 hover:bg-slate-200",
         five:
           "bg-white border-[1px] border-slate-400 rounded-lg text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
         six:
