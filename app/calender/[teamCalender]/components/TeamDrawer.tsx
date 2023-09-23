@@ -71,16 +71,14 @@ export function TeamDrawer({
         isOpen={confirmBoot}
         onClose={() => setConfirmBoot(false)}
       />
-   
       <SheetTrigger asChild>
         <Button variant="outline">
           <HiEllipsisVertical size={25} />
         </Button>
       </SheetTrigger>
-      <SheetContent className="space-y-6 bg-white">
-        <SheetHeader>
+      <SheetContent className="space-y-6 bg-white py-10">
           <SheetTitle>{team?.title}</SheetTitle>
-          <SheetDescription className="py-[20px]">
+          <SheetDescription className="">
             <div className="flex justify-between">
               <div className="">
                 <h4 className="font-bold pb-1 text-md ml-[90px] sm:ml-0">Moderator</h4>
@@ -103,6 +101,7 @@ export function TeamDrawer({
                 </ActionTooltip>
               </div> */}
             </div>
+
             <div className="py-2">
               <h4 className="font-bold pb-1 text-md">
                 {team?.users?.length} Members
@@ -153,7 +152,6 @@ export function TeamDrawer({
               </div>
             </div>
           </SheetDescription>
-        </SheetHeader>
 {/* 
         <SheetFooter>
           <SheetClose asChild>
