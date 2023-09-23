@@ -16,7 +16,7 @@ const TrackerFirst: FC<TrackerFirstProps> = ({}) => {
         numItems={1}
         numItemsSm={2}
         numItemsLg={3}
-        className="gap-2  mx-auto py-10"
+        className="gap-2  mx-auto py-10 bg-white"
       >
         <Col numColSpan={1} numColSpanLg={2}>
           <Card className="bg-white max-h-[500px]">

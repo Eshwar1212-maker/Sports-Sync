@@ -15,7 +15,12 @@ function Calendar({userEvents}: {userEvents: any}) {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [selectedDate, setSelectedDate] = useState("");
 
+
+  //console.log(date);
+  
+
   const handleDateClick = (arg: any) => {
+    console.log(arg);
     setIsOpen(true)
     setDate(arg.dateStr)  
     setSelectedEvent(null)   
@@ -26,7 +31,7 @@ function Calendar({userEvents}: {userEvents: any}) {
   }
   
   const handleEventClick = (info: any) => {
-    const newObj:any = Object.values(info)[1]
+    const newObj:any = Object.values(info)[1]    
     setIsOpen(true);
     setSelectedDate(newObj._instance.range.end.toString())
     setSelectedEvent(info.event); 

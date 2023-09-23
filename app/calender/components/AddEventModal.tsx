@@ -46,7 +46,8 @@ function AddEventModal({
   const [addPrefilledValue, setAddPrefilledValue] = useState(true);
 
   
-
+  console.log(typeof(date));
+  
   useEffect(() => {
     if (eventTitle.length > 2) {
       const newEvents = events
@@ -85,6 +86,8 @@ function AddEventModal({
     },
     {
       onSuccess: (response) => {
+        console.log(response.data);
+        
         onSave(response.data);
         onClose();
       },

@@ -24,7 +24,10 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
   formattedDate,
   date
 }) => {
+
+
   const [workoutTitle, setWorkoutTitle] = useState("");
+
 
 
   
@@ -39,11 +42,11 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
       return axios.post("/api/events", {
         title: workoutTitle,
         notes: workout,
-        date,
+        date: formattedDate
       });
     },
     {
-      onSuccess: () => {
+      onSuccess: (response) => {        
         onClose();
         toast.success(
           `${workoutTitle} added for ${formattedDate}`
