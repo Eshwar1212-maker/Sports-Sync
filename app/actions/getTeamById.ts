@@ -1,5 +1,9 @@
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "./getCurrentUser";
+import { Redis } from '@upstash/redis'
+import { env } from "process";
+import { redis } from "../libs/redis";
+
 
 
 export const getTeamById = async(
@@ -8,6 +12,8 @@ export const getTeamById = async(
     try{
         const currentUser = await getCurrentUser()
         if(!currentUser?.email) return null
+
+        
         const team = await prisma.team.findUnique({
             where: {
                 id: teamId
@@ -21,7 +27,6 @@ export const getTeamById = async(
                 }
             }
         })
-
         return team;
     }catch(error){
         return null

@@ -6,9 +6,8 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { FC } from "react";
 import { DayCell } from "../../components/Calender";
-import ProModal from "../../components/ProModal";
 import AddTeamEventModal from "./AddTeamEventModal";
-import { Team, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import { FullTeamEventType } from "@/app/types";
 
 interface TeamCalenderProps {
@@ -23,23 +22,26 @@ const TeamCalender: FC<TeamCalenderProps> = ({team, currentUser}) => {
   const [selectedDate, setSelectedDate] = useState("");
   const [date, setDate] = useState("");  
   
-
   const updateEvents = (event: any) => {
     setEvents([...events, event]);
   };
 
   const handleDateClick = (arg: any) => {
+    //console.log(arg);
     setIsOpen(true)
     setDate(arg.dateStr)
     setSelectedEvent(null)
   };
 
   const handleEventClick = (info: any) => {
+    //console.log(info);
     const newObj:any = Object.values(info)[1]
     setIsOpen(true);
     setSelectedDate(newObj._instance.range.end.toString())
     setSelectedEvent(info.event);
   };
+
+  
   return (
     <div>
       <AddTeamEventModal
@@ -65,7 +67,6 @@ const TeamCalender: FC<TeamCalenderProps> = ({team, currentUser}) => {
           events={events}
           dayCellContent={({ date, view }) => <DayCell date={date} />}
           dateClick={handleDateClick}
-          eventColor="#00BFFF"
           eventClick={handleEventClick}
           dayCellClassNames="cursor-pointer"
           editable={true}

@@ -46,7 +46,6 @@ function AddEventModal({
   const [addPrefilledValue, setAddPrefilledValue] = useState(true);
 
   
-  console.log(typeof(date));
   
   useEffect(() => {
     if (eventTitle.length > 2) {
@@ -172,6 +171,8 @@ function AddEventModal({
     setEventNotes("");
   };
 
+
+  
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <form className="px-1" onSubmit={handleSubmit}>
@@ -190,19 +191,10 @@ function AddEventModal({
         />
         <div className="py-4 pl-4 sm:pl-0">
           <h3 className="text-base font-semibold leading-7">Date</h3>
-          {selectedEvent
-            ? selectedDate.split(" ")[0] +
-              ", " +
-              selectedDate.split(" ")[1] +
-              " " +
-              selectedDate.split(" ")[2]
-            : date.length > 15
-            ? date.slice(0, date.length - 15)
-            : date.split("-")[1] +
-              "/" +
-              date.split("-")[2] +
-              "/" +
-              date.split("-")[0]}
+          {selectedEvent ? selectedDate.split(" ")[0] + ", " + selectedDate.split(" ")[1] + " " + selectedDate.split(" ")[2]
+            : 
+          date.length > 15 ? date.slice(0, date.length - 15) : date.split("-")[1] + "/" + date.split("-")[2] + "/" + date.split("-")[0]
+          }
         </div>
         <div className="border-[1px] border-solid border-gray-600 w-[100%]" />
         <div className="py-6  pl-3 sm:pl-0">

@@ -1,9 +1,6 @@
 import { getTeamById } from "@/app/actions/getTeamById";
 import EmptyState from "@/app/components/EmptyState";
 import TeamCalender from "./components/TeamCalender";
-import Header, { TeamAdmin } from "./components/TeamCalenderHeader";
-import { FullTeamEventType } from "@/app/types";
-import { Team } from "@prisma/client";
 import TeamCalenderHeader from "./components/TeamCalenderHeader";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getUserById from "@/app/actions/getUserById";

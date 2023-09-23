@@ -79,6 +79,7 @@ function AddTeamEventModal({
   const { toast: toaster } = useToast();
 
   const { theme } = useTheme();
+  
 
   useEffect(() => {
     setUpdateTitle(selectedEvent ? selectedEvent.title : "");
