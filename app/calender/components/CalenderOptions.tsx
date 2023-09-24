@@ -23,6 +23,10 @@ export default function CalenderOptions(userTeams: any) {
   }, []);
 
 
+  console.log(userTeams);
+  
+
+   
   const [selected, setSelected] = useState();
   const [isProModalOpen, setIsProModalOpen] = useState(false);
   const router = useRouter();

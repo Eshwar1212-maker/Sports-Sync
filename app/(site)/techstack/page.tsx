@@ -50,7 +50,7 @@ const page: FC<pageProps> = ({}) => {
         <p className="text-lg text-gray-700 leading-relaxed font-light">
           Our tech stack is modern and robust; we use Next.js 13 (app router),
           React, TypeScript for the front end, MongoDB, Prisma ORM, Next.js API
-          backend, Tailwind CSS, and Pusher's real-time websockets.
+          backend, Tailwind CSS, Redis for caching, and Pusher's real-time websockets.
         </p>
         <div className="space-y-4">
           <h3 className="text-xl font-semibold">Front End</h3>
@@ -101,7 +101,7 @@ const page: FC<pageProps> = ({}) => {
         <div className="space-y-4">
           <h3 className="text-xl font-semibold">Back End</h3>
           <p className="text-lg text-gray-700 leading-relaxed font-light">
-            Our backend consists of Next.js 13 API route handlers, Prisma,
+            Our backend consists of Next.js 13 serverless API route handlers, Prisma,
             Pusher, and MongoDB. Prisma and MongoDB work exceptionally well
             together; while MongoDB traditionally does not support relations,
             Prisma lets you add relations to your models. Our app has many
@@ -111,6 +111,14 @@ const page: FC<pageProps> = ({}) => {
             MongoDB helps us scale to any level we want.
             <br />
             <br />
+            Another important technology we use to improve our app performance 
+            is upstash/redis for caching database calls. We use this extensively 
+            throughout the calender and workout log. We observed using it 
+            decreased the page load of certain things in our databse(like work
+            space names, specific workout logs, etc) by more than 80 percent.
+            <br />
+            <br />
+
             For our real-time messaging, notifications, and events in our
             workspace calendar, we use Pusher for bidirectional data between the
             client and server. With its vast comprehensive documentation, it has

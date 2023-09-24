@@ -4,18 +4,14 @@ import { redis } from "../libs/redis";
 
 export const getUsersTeams = async () => {
   try {
-    const start = Date.now();
-
     const currentUser = await getCurrentUser();
-    const cacheKey = `team-${currentUser?.id}`;
-    const cache = await redis.get(cacheKey);
     if (!currentUser?.email) return null;
-    if (cache) {
-      console.log(cache);
-
-      console.log("WITH REDIS: ", Date.now() - start);
-      return cache;
-    } else {
+    const start = Date.now();
+    const cache = await redis.get(`${currentUser?.name}team`)
+    if(cache){
+      //console.log("HITTING REDIS CACHE ", start - Date.now());
+      return JSON.parse(cache)
+    }else {
       const team = await prisma.team.findMany({
         where: {
           users: {
@@ -30,11 +26,9 @@ export const getUsersTeams = async () => {
           id: true,
         },
       });
-      console.log("NO REDIS: ", Date.now() - start);
-      await redis.set(cacheKey, JSON.stringify(team));
-      const checkCache = await redis.get(cacheKey);
-      console.log("Cache immediately after setting:", checkCache);
-      await redis.expire(cacheKey, 800);
+      //console.log("NOT HITTING REDIS CACHE ", start - Date.now());
+      await redis.set(`${currentUser?.name}team`, JSON.stringify(team));
+      await redis.expire(`${currentUser?.name}team`, 200);
       return team;
     }
   } catch (error) {

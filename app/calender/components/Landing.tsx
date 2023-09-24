@@ -5,11 +5,10 @@ import { FC, useState } from "react";
 import CalenderOptions from "./CalenderOptions";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
-import { Team, User } from "@prisma/client";
+import {User} from "@prisma/client";
 import CreateTeamModal from "./CreateTeamModal";
 import { Button } from "@/components/ui/button";
-import { MdGroupAdd } from "react-icons/md";
-import { IoMdAdd, IoMdAddCircleOutline } from "react-icons/io";
+import {IoMdAddCircleOutline } from "react-icons/io";
 import ProModal from "./ProModal";
 
 interface landingProps {
@@ -25,9 +24,7 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
   
   return (
     <>
-      
       {/*DESKTOP MENU*/}
-      
       <CreateTeamModal
         users={users!}
         isOpen={isTeamModal}
@@ -74,7 +71,7 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
             />
             <Button
               onClick={() => {
-                if(userTeams?.length! > 1 && currentUser?.email !== "eshwartangirala11@gmail.com"){
+                if(userTeams?.length! > 0 && currentUser?.email !== "eshwartangirala11@gmail.com"){
                   setIsProModal(true)
                 }else{
                   setIsTeamModal(true)
