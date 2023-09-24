@@ -8,9 +8,9 @@ export const getUsersTeams = async () => {
     if (!currentUser?.email) return null;
     const start = Date.now();
     const cache = await redis.get(`${currentUser?.name}team`)
-    if(cache && false){
+    if(cache){
       console.log("HITTING REDIS CACHE ", start - Date.now());
-      //return JSON.parse(cache)
+      return JSON.parse(cache)
     }else {
       const team = await prisma.team.findMany({
         where: {
