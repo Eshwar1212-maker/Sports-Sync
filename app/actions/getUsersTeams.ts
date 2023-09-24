@@ -9,7 +9,7 @@ export const getUsersTeams = async () => {
     const start = Date.now();
     const cache = await redis.get(`${currentUser?.name}team`)
     if(cache){
-      //console.log("HITTING REDIS CACHE ", start - Date.now());
+      console.log("HITTING REDIS CACHE ", start - Date.now());
       return JSON.parse(cache)
     }else {
       const team = await prisma.team.findMany({
@@ -26,7 +26,7 @@ export const getUsersTeams = async () => {
           id: true,
         },
       });
-      //console.log("NOT HITTING REDIS CACHE ", start - Date.now());
+      console.log("NOT HITTING REDIS CACHE ", start - Date.now());
       await redis.set(`${currentUser?.name}team`, JSON.stringify(team));
       await redis.expire(`${currentUser?.name}team`, 200);
       return team;
