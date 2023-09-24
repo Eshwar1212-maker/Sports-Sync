@@ -101,7 +101,7 @@ const page: FC<pageProps> = ({}) => {
         <div className="space-y-4">
           <h3 className="text-xl font-semibold">Back End</h3>
           <p className="text-lg text-gray-700 leading-relaxed font-light">
-            Our backend consists of Next.js 13 API route handlers, Prisma,
+            Our backend consists of Next.js 13 serverless API route handlers, Prisma,
             Pusher, and MongoDB. Prisma and MongoDB work exceptionally well
             together; while MongoDB traditionally does not support relations,
             Prisma lets you add relations to your models. Our app has many

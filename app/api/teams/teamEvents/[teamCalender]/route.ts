@@ -16,12 +16,9 @@ export async function DELETE(
     const currentUser = await getCurrentUser();
     const {teamCalender} = params;
 
-    
-
     if(!teamCalender) return new NextResponse("No Id", {status: 401})
     
     if(!currentUser?.id) return new NextResponse("Unauthorized", {status: 401})
-
 
       const deletedTeam = await prisma.team.delete({
         where: {
@@ -29,11 +26,9 @@ export async function DELETE(
         }
       })
 
-
       await redis.del(`${currentUser?.name}team`);
       return NextResponse.json(deletedTeam)
-    
-
+      
   } catch (error) {
     
 return new NextResponse('Error', { status: 500 });
