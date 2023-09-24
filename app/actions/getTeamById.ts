@@ -1,8 +1,6 @@
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "./getCurrentUser";
-import { Redis } from '@upstash/redis'
 import { env } from "process";
-import { redis } from "../libs/redis";
 
 
 

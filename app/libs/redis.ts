@@ -1,7 +1,11 @@
-import { Redis } from '@upstash/redis'
+import { Redis } from "ioredis"
 
-export const redis = new Redis({
-  url: 'https://brave-bunny-41412.upstash.io',
-  token: 'AaHEASQgNWE5MWI3YTgtZWQxNC00OWFjLTk1MjQtYTc1Y2IwYzM2Zjc5OGRjNmZkZDFlZTkxNDE1Mzg3YTgyNTYxZTQ4NzliN2Q=',
-})
-   
+
+const getRedisUrl = () => {
+  if(process.env.REDIS_URL){
+    return process.env.REDIS_URL
+  }
+  throw new Error("NO process.env.UPSTASH_REDIS_REST_UR")
+}
+
+export const redis = new Redis(getRedisUrl())
