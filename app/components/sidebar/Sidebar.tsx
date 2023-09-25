@@ -11,9 +11,7 @@ async function Sidebar({children}: {
     const currentUser = await getCurrentUser()
     const workouts = await getWorkouts()
     const notifications = await getNotifications()
-    const recordWorkouts = workouts?.filter((workout) => {
-        return workout.isPersonalRecord === true
-    })
+
     
     await deleteAcceptedNotifications()
     

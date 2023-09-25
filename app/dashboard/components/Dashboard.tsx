@@ -14,7 +14,7 @@ const Dashboard = ({ workouts }: any) => {
   const getDaysWorkedOutByMonth = (month: string) => {
     return useMemo(() => {
       const unique = new Set();
-      workouts.forEach((workout: any) => {
+      workouts?.forEach((workout: any) => {
         if (workout.date.toString().includes(month) && workout.date.toString().includes(new Date().getFullYear())) {
           unique.add(workout.date.toString().split(" ")[2]);
         }
