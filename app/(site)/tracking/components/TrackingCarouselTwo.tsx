@@ -25,6 +25,7 @@ const TrackingCarouselTwo= () => {
           height={700}
           width={700}
           src={one}
+          priority={true}
         />
       </SwiperSlide>
       <SwiperSlide className="">
@@ -33,6 +34,8 @@ const TrackingCarouselTwo= () => {
           height={600}
           width={600}
           src={two}
+          priority={true}
+
           
         />
       </SwiperSlide>
@@ -42,6 +45,8 @@ const TrackingCarouselTwo= () => {
           height={600}
           width={600}
           src={three}
+          priority={true}
+
         />
       </SwiperSlide>
     </Swiper>
@@ -68,6 +73,7 @@ export const TrackingCarouselThree= () => {
           height={600}
           width={600}
           src={three}
+          priority={true}
         />
       </SwiperSlide>
       <SwiperSlide className="">
@@ -76,7 +82,7 @@ export const TrackingCarouselThree= () => {
           height={600}
           width={600}
           src={one}
-          
+          priority={true}
         />
       </SwiperSlide>
       <SwiperSlide className="">
@@ -85,6 +91,7 @@ export const TrackingCarouselThree= () => {
           height={600}
           width={600}
           src={two}
+          priority={true}
         />
       </SwiperSlide>
     </Swiper>
