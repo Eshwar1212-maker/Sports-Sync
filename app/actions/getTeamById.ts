@@ -15,7 +15,7 @@ export const getTeamById = async(
         const start = Date.now();
         const cache = await redis.get(`${teamId}team`)
         if(cache){
-          console.log("HITTING REDIS CACHE ", start - Date.now());
+         //console.log("HITTING REDIS CACHE ", start - Date.now());
           return JSON.parse(cache)
         }else{
             const team = await prisma.team.findUnique({
@@ -31,7 +31,7 @@ export const getTeamById = async(
                     }
                 }
             })
-            console.log("NOT HITTING REDIS CACHE ", start - Date.now());
+            //console.log("NOT HITTING REDIS CACHE ", start - Date.now());
             await redis.set(`${team?.id}team`, JSON.stringify(team));
             await redis.expire(`${team?.id}team`, 20000);
             return team;
