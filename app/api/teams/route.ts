@@ -34,11 +34,9 @@ export async function POST(request: Request) {
         }
     })
 
-    console.log(users);
     
     users.forEach(async (user: any) => {
       await redis.del(`${user?.label}team`);
-      console.log("WHAT THE FUCK, ",  user?.label);
       
     })
     
