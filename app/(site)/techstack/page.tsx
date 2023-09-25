@@ -114,7 +114,7 @@ const page: FC<pageProps> = ({}) => {
             Another important technology we use to improve our app performance 
             is upstash/redis for caching database calls. We use this extensively 
             throughout the calender and workout log. We observed using it 
-            decreased the page load of certain things in our databse(like work
+            decreased the page load of certain calls to our databse(like work
             space names, specific workout logs, etc) by more than 80 percent.
             <br />
             <br />
