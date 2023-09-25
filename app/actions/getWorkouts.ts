@@ -23,8 +23,8 @@ const getWorkouts = async () => {
       },
     });
     console.log("NOT HITTING REDIS CACHE ", start - Date.now());
-    await redis.set(`${currentUser?.id}workouts`, JSON.stringify(usersWorkouts));
-    await redis.expire(`${currentUser?.id}workouts`, 2000);
+    //await redis.set(`${currentUser?.id}workouts`, JSON.stringify(usersWorkouts));
+    //await redis.expire(`${currentUser?.id}workouts`, 2000);
     
     return usersWorkouts?.workouts;
   } catch (error) {
