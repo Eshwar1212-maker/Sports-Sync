@@ -32,37 +32,25 @@ interface NavbarProps {
 const Navbar: FC<NavbarProps> = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [isScrolled, setisScrolled] = useState(true);
-  const [isScrolled2, setisScrolled2] = useState(true);
+  // const [isScrolled, setisScrolled] = useState(true);
+  // const [isScrolled2, setisScrolled2] = useState(true);
 
-  const changeColor = () => {
-    if (window.scrollY >= 90 && window.scrollY < 620) {
-      setisScrolled(true);
-    } else {
-      setisScrolled(false);
-    }
-    if (window.scrollY > 1150) {
-      setisScrolled2(true);
-    } else {
-      setisScrolled2(false);
-      setisScrolled(true);
-    }
-  };
 
-  useEffect(() => {
-    const changeColor = () => {
+
+  // useEffect(() => {
+  //   const changeColor = () => {
      
      
-    };
+  //   };
 
-    window.addEventListener("scroll", changeColor);
+  //   window.addEventListener("scroll", changeColor);
 
-    return () => {
-      window.removeEventListener("scroll", changeColor);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", changeColor);
+  //   };
+  // }, []);
 
-  console.log(window.scrollY);
+  // console.log(window.scrollY);
   
 
   const router = useRouter();
@@ -70,17 +58,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
 
   if (pathName !== "/auth") {
     return (
-      <header
-        className={cn(
-          "flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 ",
-          isScrolled && pathName !== ("/techstack" || "/tracking") && pathName !== "/guide"
-            ? "bg-blue-50"
-            : "bg-white",
-          isScrolled && pathName !== "/techstack" && pathName !== "/guide"
-            ? "bg-blue-50"
-            : "bg-white"
-        )}
-      >
+      <header className={cn("flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 bg-white")}>
         <div className="flex justify-between">
           <div
             onClick={() => {
