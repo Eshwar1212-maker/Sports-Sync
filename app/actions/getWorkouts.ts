@@ -10,7 +10,7 @@ const getWorkouts = async () => {
   const start = Date.now();
   //const cache = await redis.get(`${currentUser?.id}workouts`);
   //if (cache && false) {
-    console.log("HITTING REDIS CACHE ", start - Date.now());
+    //console.log("HITTING REDIS CACHE ", start - Date.now());
     //return JSON.parse(cache);
   //}
   try {
