@@ -133,16 +133,6 @@ const SettingsModal: React.FC<SettingsModal> = ({
                     </button>
                   </CldUploadButton>
                 </div>
-                <div className="">
-                  <input
-                    className={clsx(
-                      "text-[12px] p-1 my-2 border-[1px] bg-white",
-                      "bg-slate-400 text-black p-1 border-[1px] border-black w-[160px] px-2"
-                    )}
-                    placeholder="Or enter image address"
-                    onChange={(e) => setImageUrl(e.target.value)}
-                  />
-                </div>
                 <div className="mt-2 sm:mt-4">
                   <Button
                     className="lg:hidden"
