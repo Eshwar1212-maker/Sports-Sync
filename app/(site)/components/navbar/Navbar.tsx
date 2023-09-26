@@ -32,8 +32,8 @@ interface NavbarProps {
 const Navbar: FC<NavbarProps> = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [isScrolled, setisScrolled] = useState(false);
-  const [isScrolled2, setisScrolled2] = useState(false);
+  const [isScrolled, setisScrolled] = useState(true);
+  const [isScrolled2, setisScrolled2] = useState(true);
 
   const changeColor = () => {
     if (window.scrollY >= 90 && window.scrollY < 620) {
@@ -51,11 +51,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
 
   useEffect(() => {
     const changeColor = () => {
-      if (window.scrollY >= 1050 && window.scrollY < 2400) {
-        setisScrolled(true);
-      }else{
-        setisScrolled(false)
-      }
+     
      
     };
 
