@@ -51,17 +51,12 @@ const Navbar: FC<NavbarProps> = ({}) => {
 
   useEffect(() => {
     const changeColor = () => {
-      if (window.scrollY >= 200 && window.scrollY < 90) {
+      if (window.scrollY >= 1050 && window.scrollY < 2400) {
         setisScrolled(true);
-      } else {
-        setisScrolled(false);
+      }else{
+        setisScrolled(false)
       }
-      if (window.scrollY > 200 && window.scrollY < 3000) {
-        setisScrolled2(true);
-      } else {
-        setisScrolled2(false);
-        setisScrolled(true);
-      }
+     
     };
 
     window.addEventListener("scroll", changeColor);
@@ -71,6 +66,9 @@ const Navbar: FC<NavbarProps> = ({}) => {
     };
   }, []);
 
+  console.log(window.scrollY);
+  
+
   const router = useRouter();
   const pathName = usePathname();
 
@@ -79,7 +77,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
       <header
         className={cn(
           "flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 ",
-          isScrolled && pathName !== "/techstack" && pathName !== "/guide"
+          isScrolled && pathName !== ("/techstack" || "/tracking") && pathName !== "/guide"
             ? "bg-blue-50"
             : "bg-white",
           isScrolled && pathName !== "/techstack" && pathName !== "/guide"
