@@ -26,12 +26,30 @@ import { useRouter } from "next/navigation";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 export function NavBarItem() {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   const router = useRouter();
+
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-inherit">Getting started</NavigationMenuTrigger>
+          <NavigationMenuTrigger
+            className="bg-inherit"
+            onMouseLeave={handleClose}
+            onMouseEnter={handleOpen}
+            onClick={(e) => e.preventDefault()}
+          >
+            Getting started
+          </NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
               <li className="row-span-3">
@@ -87,7 +105,14 @@ export function NavBarItem() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="">
-          <NavigationMenuTrigger className="bg-inherit">Workspaces</NavigationMenuTrigger>
+          <NavigationMenuTrigger
+            className="bg-inherit"
+            onMouseLeave={handleClose}
+            onMouseEnter={handleOpen}
+            onClick={(e) => e.preventDefault()}
+          >
+            Workspaces
+          </NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <div className="max-w-[1400px] mx-auto pb-7 flex flex-row">
               <div>
@@ -146,7 +171,14 @@ export function NavBarItem() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="">
-          <NavigationMenuTrigger className="bg-inherit">Tracking</NavigationMenuTrigger>
+          <NavigationMenuTrigger
+            className="bg-inherit"
+            onMouseLeave={handleClose}
+            onMouseEnter={handleOpen}
+            onClick={(e) => e.preventDefault()}
+          >
+            Tracking
+          </NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <div className="max-w-[1400px] mx-auto pb-3 flex flex-row">
               <div>
@@ -195,7 +227,14 @@ export function NavBarItem() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className=" bg-inherit">About</NavigationMenuTrigger>
+          <NavigationMenuTrigger
+            className=" bg-inherit"
+            onMouseLeave={handleClose}
+            onMouseEnter={handleOpen}
+            onClick={(e) => e.preventDefault()}
+          >
+            About
+          </NavigationMenuTrigger>
           <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
             <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
               <ListItem
@@ -203,15 +242,16 @@ export function NavBarItem() {
                 href="/guide"
                 title="Guide"
               >
-                If your an athlete, trainer, or coach, this is a great guide on how to start utilizing Synced now.
+                If your an athlete, trainer, or coach, this is a great guide on
+                how to start utilizing Synced now.
               </ListItem>
               <ListItem
                 className="hover:bg-slate-200"
                 href="/techstack"
                 title="Tech Stack"
               >
-                See the process we took technically when building Synced, the front end, backend, design 
-                process, and more.
+                See the process we took technically when building Synced, the
+                front end, backend, design process, and more.
               </ListItem>
             </ul>
           </NavigationMenuContent>
