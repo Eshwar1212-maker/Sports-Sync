@@ -30,29 +30,8 @@ interface NavbarProps {
   isHome?: boolean;
 }
 const Navbar: FC<NavbarProps> = ({}) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  // const [isScrolled, setisScrolled] = useState(true);
-  // const [isScrolled2, setisScrolled2] = useState(true);
-
-
-
-  // useEffect(() => {
-  //   const changeColor = () => {
-     
-     
-  //   };
-
-  //   window.addEventListener("scroll", changeColor);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", changeColor);
-  //   };
-  // }, []);
-
-  // console.log(window.scrollY);
   
-
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const pathName = usePathname();
 
