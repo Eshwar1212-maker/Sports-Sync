@@ -23,7 +23,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [], currentUser }) => {
 
 
   useEffect(() => {
-    pusherClient.subscribe(conversationId)
+    pusherClient.subscribe(conversationId as any)
     bottomRef?.current?.scrollIntoView();
 
     const messageHandler = (message: any) => {
@@ -53,7 +53,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [], currentUser }) => {
     pusherClient.bind('message:update', updateMessageHandler);
 
     return () => {
-      pusherClient.unsubscribe(conversationId)
+      pusherClient.unsubscribe(conversationId as any)
       pusherClient.unbind('messages:new', messageHandler)
       pusherClient.unbind('message:update', updateMessageHandler)
     }
