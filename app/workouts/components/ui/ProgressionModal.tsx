@@ -1,6 +1,6 @@
 import { Workout } from '@prisma/client';
 import { AreaChart, Title } from '@tremor/react';
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import { format } from 'date-fns';
 import clsx from 'clsx';
 import { IoClose } from 'react-icons/io5';
@@ -31,12 +31,16 @@ const ProgressionModal: FC<ProgressionModalProps> = ({ isOpen, onClose, exercise
   }, [exerciseName]);
 
 
-  const exercise = filteredWorkouts.map((workout: any) => {
+  const exercise = useMemo(() => 
+  filteredWorkouts.map((workout: any) => {
     if(workout.date.toString().includes("20")){
       const formattedDate = format(new Date(workout.date), 'MM/dd');
       return { year: formattedDate, weight: workout.weight };
     }
-  });
+  }),
+  [filteredWorkouts]
+);
+
 
 
   return (
