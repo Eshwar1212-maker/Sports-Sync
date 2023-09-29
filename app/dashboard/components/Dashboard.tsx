@@ -3,6 +3,7 @@ import { LineChart, Card, AreaChart, Title } from "@tremor/react";
 
 import DashBoardSelect from "./DashboardSelect";
 import { useMemo } from "react";
+import { months } from "@/app/libs/months";
 
 const dataFormatter = (number: number) => {
   return `${Intl.NumberFormat("us").format(number).toString()}`;
@@ -25,20 +26,7 @@ const Dashboard = ({ workouts }: any) => {
   
   
 
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+ 
   const unique: any = {};
   months.map((month) => {
     unique[month] = getDaysWorkedOutByMonth(month);

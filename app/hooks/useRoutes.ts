@@ -11,7 +11,7 @@ import { SlCalender } from "react-icons/sl";
 const useRoutes = () => {
     const pathName = usePathname();
     const { conversationId } = useConversation()
-    const routes = useMemo(() => [
+    const routes = [
       {
         label: "Dashboard",
         href: "/dashboard",
@@ -47,7 +47,7 @@ const useRoutes = () => {
           active: pathName === '/users',
           route: "People"
         }
-    ], [pathName, conversationId])
+    ]
     return routes;
 }
 
