@@ -25,10 +25,6 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
   date
 }) => {
   const [workoutTitle, setWorkoutTitle] = useState("");
-
-
-  
-  console.log(date);
   
 
   const {

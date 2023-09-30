@@ -28,7 +28,7 @@ const buttonVariants = cva(
         five:
           "bg-white border-[1px] border-slate-400 rounded-lg text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
         six:
-          "bg-white border-[1px] border-slate-200 rounded-lg text-slate-900 hover:bg-blue-50 hover:text-black dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+          "bg-white border-[1px] border-blue-200 rounded-lg text-slate-900 hover:bg-[#4169E1] hover:text-white dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
         ghost: "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
       },

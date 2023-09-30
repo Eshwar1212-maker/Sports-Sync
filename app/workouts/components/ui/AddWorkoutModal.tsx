@@ -12,15 +12,8 @@ import { Workout } from "@prisma/client";
 import { useTheme } from "next-themes";
 import { Button as Button2 } from "../../../../components/ui/button";
 import { BiSolidTrash } from "react-icons/bi";
-
-type exercise = {
-  title: string;
-  reps?: number | null;
-  sets?: number | null;
-  exercise?: string;
-  weight?: number | null;
-  id?: string;
-};
+import usePersonalRecord from "@/app/hooks/useWorkoutlRecord";
+import Program from "./Program";
 
 interface WorkoutModalProps {
   isOpen: boolean;
@@ -63,26 +56,9 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const [sets, setSets] = useState<number | null>(0);
   const [reps, setReps] = useState<number | null>(0);
   const [activeTab, setActiveTab] = useState<string>();
-  const [personalRecord, setPersonalRecord] = useState<boolean>(false);
 
-  //FINDING PERSONAL RECORDD
-  const findWorkoutRecord = () => {
-    
-    const titleRecord = workoutRecord.filter(
-      (workout: Workout) => workout.title === title
-    );
-    const isPersonalRecord = titleRecord.every((workout: Workout) => {
-      return weight > workout?.weight!;
-    });
-    setPersonalRecord(isPersonalRecord);
-  };
 
-  useEffect(() => {
-    findWorkoutRecord();
-    return () => {
-      setPersonalRecord(false);
-    };
-  }, [weight, editedWeight, personalRecord]);
+  const personalRecord = usePersonalRecord(title, weight, workoutRecord)  
 
   const handleExerciseSelected = (selectedExercise: string) => {
     setTitle(selectedExercise);
@@ -107,7 +83,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     },
     {
       onSuccess: (exerciseData) => {
-        findWorkoutRecord();
         handleCallbackExercises(exerciseData.data)
       },
       onError: (error) => {
@@ -157,7 +132,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
         onClose();
         toast("Workout deleted");
         updateWorkoutInState(response.data);
-        findWorkoutRecord();
         handleCallbackExercises({});
       },
       onError: (error) => {
@@ -193,7 +167,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       isPersonalRecord: personalRecord,
     };
     if (selectedExercise) {
-      findWorkoutRecord();
       updateWorkout(updatedExerciseData);
     } else {
       addWorkout(exerciseData);
@@ -218,7 +191,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   return (
     <Modal isFullWidth={true} isImage={true} isOpen={isOpen} onClose={onClose}>
       <Tabs value={activeTab} defaultValue="exercises">
-        <TabsList>
+        <TabsList className="gap-1">
           <TabsTrigger
             onClick={() => setActiveTab("exercises")}
             value="exercises"
@@ -233,12 +206,23 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           >
             Intensity
           </TabsTrigger>
+          {/* <TabsTrigger
+            className={theme === "light" ? "text-black" : "text-white"}
+            onClick={() => setActiveTab("program")}
+            value="program"
+          >
+            Program
+          </TabsTrigger> */}
+
         </TabsList>
         <button onClick={onClose} className="sm:hidden fixed right-3">
           <IoClose size={20} />
         </button>
         <TabsContent value="exercises">
           <Exercises handleCallbackExercises={handleExerciseSelected} />
+        </TabsContent>
+        <TabsContent value="program">
+            <Program />
         </TabsContent>
         <TabsContent
           className="flex flex-col w-fit mx-auto py-[70px] gap-2 justify-center"
