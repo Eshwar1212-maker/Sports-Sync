@@ -118,16 +118,17 @@ const page: FC<pageProps> = ({}) => {
               caches certain databse calls, and invalidates that cache for as
               long as we specify. For example, our team events are cached when a
               user navigates to them, ensuring our databse doesnt unnecessarily
-              refetch that value. This not only provides a faster user
-              experience, but put less strain on our databse. We use this
+              refetch that value unless it changes(when another user adds an
+              event, or deletes an event etc). This not only provides a faster
+              user experience, but put less strain on our databse. We use this
               extensively throughout the calender and workout log, observing
               roughly 60-90 percent faster queries.
               <br />
               <br />
-              For our real-time messaging, notifications, and events, we use Pusher for bidirectional data between
-              the client and server. With its vast comprehensive documentation
-              and managed infrastructure, it has been easier to work with
-              compared to other choices.
+              For our real-time messaging, notifications, and events, we use
+              Pusher for bidirectional data between the client and server. With
+              its vast comprehensive documentation and managed infrastructure,
+              it has been easier to work with compared to other choices.
             </p>
           </div>
           <br />
