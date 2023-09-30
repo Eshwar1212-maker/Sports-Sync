@@ -11,7 +11,7 @@ const page: FC<pageProps> = ({}) => {
   return (
     <main className="max-w-[340px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-2xl mx-auto my-[70px] lg:my-j40 bg-white text-black">
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[75px] bg-blue-500 transform-origin-left"
+        className="fixed top-0 left-0 right-0 h-[74px] bg-blue-900 transform-origin-left"
         style={{ scaleX: scrollYProgress }}
       />
       <div>
