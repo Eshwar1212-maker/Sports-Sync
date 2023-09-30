@@ -17,16 +17,9 @@ import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
 import { BsFillTrophyFill } from "react-icons/bs";
 import { IoAddOutline } from "react-icons/io5";
+import { exercise } from "@/app/types";
 
-type exercise = {
-  title?: string;
-  reps?: number | null;
-  sets?: number | null;
-  exercise?: string;
-  weight?: number | null;
-  id?: string;
-  isPersonalRecord?: boolean
-};
+
 
 interface WorkoutProps {
   workouts: any;
@@ -34,6 +27,7 @@ interface WorkoutProps {
 }
 
 const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
+  
   const [isOpen, setIsOpen] = useState(false);
   const [isSecondOpen, setIsSecondOpen] = useState(false);
   const [date, setDate] = useState<any>(new Date());
@@ -45,6 +39,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [selectedExercise, setSelectedExercise] = useState(false);
   const [selectedExerciseId, setSelectedExerciseId] = useState<string>("");
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
+  
   const [formattedDate, setFormattedDate] = useState(
     format(date!, "yyyy-MM-dd")
   );

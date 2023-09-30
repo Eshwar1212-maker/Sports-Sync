@@ -10,6 +10,10 @@ import CreateTeamModal from "./CreateTeamModal";
 import { Button } from "@/components/ui/button";
 import {IoMdAddCircleOutline } from "react-icons/io";
 import ProModal from "./ProModal";
+import { AiOutlineUsergroupDelete } from "react-icons/ai";
+import { HiOutlineUserGroup, HiUserGroup } from "react-icons/hi";
+import { MdOutlineGroupAdd } from "react-icons/md";
+
 
 interface landingProps {
   users: User[];
@@ -69,7 +73,7 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
               src="https://cdn.hashnode.com/res/hashnode/image/upload/v1612787425944/MMJR2txbo.jpeg"
               aria-label="fullcalenderjs image"
             />
-            <Button
+            <button
               onClick={() => {
                 if(userTeams?.length! > 0 && currentUser?.email !== "eshwartangirala11@gmail.com"){
                   setIsProModal(true)
@@ -78,11 +82,11 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
 
                 }
               }}
-              className="my-8 text-xl p-10 border-[1px] border-black"
-              variant={"six"}
+              className="my-4 text-lg px-8 py-4 border-[1px] transition ease-in-out duration-300 bg-white border-black flex gap-3
+              rounded-sm text-slate-900 hover:bg-blue-300 hover:text-black dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80"
             >
-              Create a new workspace <IoMdAddCircleOutline className="pl-2" size={40}/>
-            </Button>
+              Create a new workspace <MdOutlineGroupAdd className="" size={29}/>
+            </button>
           </div>
         </main>
       </div>

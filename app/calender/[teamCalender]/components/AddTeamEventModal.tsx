@@ -67,7 +67,6 @@ function AddTeamEventModal({
           }
         })
         .sort((a: any, b: any) => b.notes.length - a.notes.length);
-
       setPreFilledTitle(newEvents[0]?.title);
       setSpecificEventNotes(newEvents);
     }
@@ -79,7 +78,6 @@ function AddTeamEventModal({
   const { toast: toaster } = useToast();
 
   const { theme } = useTheme();
-  
 
   useEffect(() => {
     setUpdateTitle(selectedEvent ? selectedEvent.title : "");

@@ -21,9 +21,6 @@ export default function CalenderOptions(userTeams: any) {
     });
     setCalenders(teams);
   }, []);
-
-
-  console.log(userTeams);
   
 
    

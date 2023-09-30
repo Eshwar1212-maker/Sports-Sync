@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { FC } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+
 interface GroupChatModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -123,7 +124,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
           >
             Cancel
           </Button>
-          <Button disabled={isLoading} type="submit">
+          <Button disabled={isLoading || !members} type="submit">
             Create
           </Button>
         </div>
