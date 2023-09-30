@@ -48,9 +48,9 @@ const page: FC<pageProps> = ({}) => {
           <h2 className="text-3xl font-semibold">Tech Stack</h2>
           <p className="text-lg text-gray-700 leading-relaxed font-light">
             Our tech stack is modern and robust; we use Next.js 13 (app router),
-            React, TypeScript from front end to backend, MongoDB, Prisma ORM, Next.js
-            API backend, Tailwind CSS, Redis for caching, and Pusher's real-time
-            websockets.
+            React, TypeScript from front end to backend, MongoDB, Prisma ORM,
+            Next.js API backend, Tailwind CSS, Redis for caching, and Pusher's
+            real-time websockets.
           </p>
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Front End</h3>
@@ -84,9 +84,11 @@ const page: FC<pageProps> = ({}) => {
               <br />
               In terms of data fetching, we use react-query (with axios) to
               efficiently manage our loading states, errors, and callbacks. This
-              has helped us manually write fewer useEffect hooks, and write less
-              code than normally using fetch, useEffect, and writing an extra
-              state variable for a loading state.
+              has helped us manually write less code than normally using fetch,
+              useEffect, and writing an extra state variable for a loading
+              state. Plus React Query is a powerful data fetching library that
+              offers plenty of more benefits, such as caching, and infinite
+              scrolling
               <br />
               <br />
               For styling, we use Tailwind CSS all throughout, along with a few
