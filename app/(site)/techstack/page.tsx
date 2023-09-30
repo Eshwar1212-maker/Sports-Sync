@@ -48,7 +48,7 @@ const page: FC<pageProps> = ({}) => {
           <h2 className="text-3xl font-semibold">Tech Stack</h2>
           <p className="text-lg text-gray-700 leading-relaxed font-light">
             Our tech stack is modern and robust; we use Next.js 13 (app router),
-            React, TypeScript for the front end, MongoDB, Prisma ORM, Next.js
+            React, TypeScript from front end to backend, MongoDB, Prisma ORM, Next.js
             API backend, Tailwind CSS, Redis for caching, and Pusher's real-time
             websockets.
           </p>
