@@ -1,16 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { Notifications, User } from "@prisma/client";
+import {  User } from "@prisma/client";
 import DesktopItem from "./DeskTopItem";
 import useRoutes from "@/app/hooks/useRoutes";
 import SettingsModal from "./SettingsModal";
-import { CiSettings } from "react-icons/ci";
+
 import ThemeButton from "./ThemeButton";
 import { useTheme } from "next-themes";
 import { NotificationsSheet } from "../notifications/NotificationsSheet";
-import Avatar from "../Avatar";
 import Image from "next/image";
+import placeholderImage from "../../assets/randomavatar.jpeg"
+
 
 interface DesktopSidebarProps {
   currentUser: User;
@@ -80,18 +81,13 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
               onClick={() => setIsOpen(true)}
               className="cursor-pointer hover:opacity-75 transition"
             >
-              {" "}
-              {currentUser?.image ? 
                 <Image
                   alt="profile"
                   height={32}
                   width={32}
-                  src={currentUser?.image!}
+                  src={currentUser?.image! || placeholderImage}
                   className="rounded-full"
                 />
-             : (
-                <CiSettings size={35} />
-              )}
             </div>
           </nav>
         </div>

@@ -42,11 +42,6 @@ function AddEventModal({
   const [eventTitle, setEventTitle] = useState("");
   const [eventNotes, setEventNotes] = useState("");
   const [updateTitle, setUpdateTitle] = useState(selectedEvent && selectedEvent.title);
-
-
-  
-
-
   const {specificEventNotes, preFilledTitle, addPrefilledValue, setAddPrefilledValue} = usePreviousNotes(eventTitle, events, setEventTitle)
   
   console.log(updateTitle, "  ", eventTitle);

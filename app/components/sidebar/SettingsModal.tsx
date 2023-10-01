@@ -1,6 +1,5 @@
 "use client";
 
-import { User } from "@prisma/client";
 import axios from "axios";
 import { AiOutlineEdit } from "react-icons/ai";
 import { useRouter } from "next/navigation";
@@ -12,19 +11,12 @@ import Image from "next/image";
 import { CldUploadButton } from "next-cloudinary";
 import Modal from "../Modal";
 import { useTheme } from "next-themes";
-import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
 import { SlLogout } from "react-icons/sl";
 import ThemeButton from "./ThemeButton";
-import { IoClose } from "react-icons/io5";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@radix-ui/react-tooltip";
 import { ActionTooltip } from "../ActionToolTip";
+import placeHolderImage from "../../assets/randomavatar.jpeg"
 
 interface SettingsModal {
   isOpen?: boolean;
@@ -66,7 +58,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
     axios
-      .post("/api/settings", { ...data, imageUrl, bio })
+      .post("/api/settings", { ...data, bio })
       .then(() => {
         router.refresh();
         onClose();
@@ -120,7 +112,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
                     src={
                       image ||
                       currentUser?.image ||
-                      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                      placeHolderImage
                     }
                   />
                   <CldUploadButton
