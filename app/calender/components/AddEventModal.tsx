@@ -78,6 +78,8 @@ function AddEventModal({
         
         onSave(response.data);
         onClose();
+        setAddPrefilledValue(true);
+
       },
       onError: (error) => {
       },
