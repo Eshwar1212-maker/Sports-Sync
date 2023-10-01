@@ -9,17 +9,22 @@ import { CiSettings } from "react-icons/ci";
 import ThemeButton from "./ThemeButton";
 import { useTheme } from "next-themes";
 import { NotificationsSheet } from "../notifications/NotificationsSheet";
+import Avatar from "../Avatar";
+import Image from "next/image";
 
 interface DesktopSidebarProps {
   currentUser: User;
-  notifications: any
+  notifications: any;
 }
 
-const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, notifications}) => {
+const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
+  currentUser,
+  notifications,
+}) => {
   const routes = useRoutes();
-  const [isOpen, setIsOpen] = useState(false); 
-  const {theme} = useTheme() 
-  
+  const [isOpen, setIsOpen] = useState(false);
+  const { theme } = useTheme();
+
   return (
     <>
       <SettingsModal
@@ -59,10 +64,9 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, notificati
                 />
               ))}
 
-              <li
-                className="my-[-20px] h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md leading-6 font-semibold relative mr-2">
+              <li className="my-[-20px] h-6 w-6 shrink-0 cursor-pointer group flex flex-col items-center gap-x-3 rounded-md leading-6 font-semibold relative mr-2">
                 <div>
-                  <NotificationsSheet notifications={notifications}/>
+                  <NotificationsSheet notifications={notifications} />
                 </div>
               </li>
             </ul>
@@ -76,8 +80,18 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, notificati
               onClick={() => setIsOpen(true)}
               className="cursor-pointer hover:opacity-75 transition"
             >
-              <CiSettings size={35} />
-              {/* <Avatar user={currentUser}/> */}
+              {" "}
+              {currentUser?.image ? 
+                <Image
+                  alt="profile"
+                  height={32}
+                  width={32}
+                  src={currentUser?.image!}
+                  className="rounded-full"
+                />
+             : (
+                <CiSettings size={35} />
+              )}
             </div>
           </nav>
         </div>
