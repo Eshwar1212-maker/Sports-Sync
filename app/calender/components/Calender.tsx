@@ -20,7 +20,6 @@ function Calendar({userEvents}: {userEvents: any}) {
   
 
   const handleDateClick = (arg: any) => {
-    console.log(arg);
     setIsOpen(true)
     setDate(arg.dateStr)  
     setSelectedEvent(null)   
