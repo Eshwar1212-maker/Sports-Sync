@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ conversation, currentUser, users }) => 
       currentUser={currentUser}
       users={users}
     />
-    <div className={clsx("w-full flex border-b-[1px] sm:px-4 py-3 px-4 lg:px-6 justify-between items-center shadow-sm", theme == "light" && "bg-white")}>
+    <div className={clsx("w-full flex border-b-[1px] sm:px-4 py-3 px-4 lg:px-6 justify-between items-center shadow-sm", theme == "light" ? "bg-white" : "border-slate-500  ml-4")}>
       <div className="flex gap-3 items-center">
         <Link
           href="/conversations" 

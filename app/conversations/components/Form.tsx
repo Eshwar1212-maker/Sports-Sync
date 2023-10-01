@@ -7,6 +7,8 @@ import axios from "axios";
 import { CldUploadButton } from "next-cloudinary";
 import useConversation from "@/app/hooks/useConversation";
 import { ActionTooltip } from "@/app/components/ActionToolTip";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 const Form = () => {
   const { conversationId } = useConversation();
@@ -38,19 +40,10 @@ const Form = () => {
     });
   };
 
+  const {theme} = useTheme()
+
   return (
-    <div
-      className="
-        py-4 
-        px-4 
-        border-t 
-        flex 
-        items-center 
-        gap-2 
-        lg:gap-4 
-        w-full
-      "
-    >
+    <div className={cn("py-4 px-4 border-t flex items-center gap-2 lg:gap-4 w-full", theme === "dark" && "border-slate-700  ml-2", theme === "dark" && "border-slate-700 ml-2")}>
       <ActionTooltip label="Upload Image">
         <div>
         <CldUploadButton

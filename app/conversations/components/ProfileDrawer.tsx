@@ -278,24 +278,6 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                   </dd>
                                 </div>
                               )}
-                              {!data.isGroup && (
-                                <div>
-                                  <dt
-                                    className={clsx(
-                                      "text-sm font-medium sm:w-40 sm:flex-shrink-0"
-                                    )}
-                                  >
-                                    Email
-                                  </dt>
-                                  <dd
-                                    className={clsx(
-                                      "mt-1 text-sm sm:col-span-2"
-                                    )}
-                                  >
-                                    {otherUser.email}
-                                  </dd>
-                                </div>
-                              )}
                             </dl>
                           </div>
                         </div>
