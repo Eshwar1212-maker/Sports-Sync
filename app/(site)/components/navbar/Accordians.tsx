@@ -7,7 +7,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { SlCalender } from "react-icons/sl";
 import {
   BarChart4,
   BellOff,
@@ -76,7 +75,6 @@ const WorkSpaceAccordians: FC<AccordiansProps> = ({ onClose }) => {
               <BellOff size={23} color="darkblue" />
               <h3 className="text-[16px] font-semibold">Notifications</h3>
             </div>
-            <div></div>
             <p className="">
               Get notifications every time a new event is added in your team, and when someone invites you 
               to a group chat.

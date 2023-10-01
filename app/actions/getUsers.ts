@@ -1,24 +1,33 @@
 import getSession from "./getSession"
 import prisma from "@/app/libs/prismadb";
-
+import { redis } from "../libs/redis";
 
 const getUsers = async () => {
-    const session = await getSession()
-    if(!session?.user?.email) return []
-    try{
-        const users = await prisma.user.findMany({
-            orderBy: {
-                createdAt: "asc"
-            },
-            where: {
-                NOT: {
-                    email: session.user.email
+    const session = await getSession();
+    if (!session?.user?.email) return [];
+    try {
+        const cache = await redis.get(`users`);
+        if (cache) {
+            //console.log("HITTING REDIS CACHE ", start - Date.now()); // Uncomment if you need this log
+            return JSON.parse(cache);
+        } else {
+            const users = await prisma.user.findMany({
+                orderBy: {
+                    createdAt: "asc"
+                },
+                where: {
+                    NOT: {
+                        email: session.user.email
+                    }
                 }
-            }
-        })
-        return users
-    }catch(error){
-        return []
+            });
+            await redis.set(`users`, JSON.stringify(users));
+            await redis.expire(`users`, 20000);
+            return users;
+        }
+    } catch (error) {
+        //console.error("Error retrieving users:", error);
+        return [];
     }
 }
 

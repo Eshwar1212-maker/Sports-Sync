@@ -13,7 +13,6 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import NavBarItemCarousel from "./NavBarItemCarousel";
-import { Button } from "@/components/ui/button";
 import {
   navWorkSpaceFeatures,
   workOutLogFeatures,
