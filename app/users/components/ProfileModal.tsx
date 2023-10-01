@@ -54,7 +54,7 @@ const ProfileModal: FC<ProfileModalProps> = ({
           </Button> */}
         </div>
         <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-          Joined {user?.createdAt.toString().split(" ").slice(0, 4).join(" ")}
+          Joined {user?.createdAt.toString().split("T").slice(0, 1).join(" ")}
         </p>
       </div>
     </Modal>
