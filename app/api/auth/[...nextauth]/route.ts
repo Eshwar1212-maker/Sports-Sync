@@ -7,6 +7,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter"
 
 import prisma from "@/app/libs/prismadb"
 import { redis } from "@/app/libs/redis"
+import getCurrentUser from "@/app/actions/getCurrentUser"
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -29,7 +30,7 @@ export const authOptions: AuthOptions = {
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Invalid credentials');
         }
-
+        const currentUser = await getCurrentUser()
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email
@@ -48,7 +49,7 @@ export const authOptions: AuthOptions = {
         if (!isCorrectPassword) {
           throw new Error('Invalid credentials');
         }
-        await redis.del(`users`);
+        await redis.del(`${currentUser?.name}users`);
         return user;
       }
     })
