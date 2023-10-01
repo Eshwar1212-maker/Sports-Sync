@@ -36,7 +36,8 @@ const DeleteWorkSpaceModal: React.FC<ConfirmModalProps> = ({
 
     },
     onError: (error: any) => {
-
+      console.log(error);
+      
     },
     onSuccess: (data: any) => {
       onClose
