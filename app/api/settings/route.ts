@@ -12,7 +12,6 @@ export async function POST(
     const {
       name,
       image,
-      imageUrl,
       bio
     } = body;
 
@@ -25,7 +24,7 @@ export async function POST(
         id: currentUser.id
       },
       data: {
-        image: image || imageUrl,
+        image: image,
         name: name,
         bio: bio
       },

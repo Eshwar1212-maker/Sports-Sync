@@ -1,7 +1,7 @@
 'use client';
 
 import { User } from "@prisma/client";
-
+import placeholderImage from "../assets/randomavatar.jpeg"
 import Image from "next/image";
 
 interface AvatarProps {
@@ -25,7 +25,7 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
       ">
         <Image
           fill
-          src={user?.image || 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010'}
+          src={user?.image || placeholderImage}
           alt="Avatar"
         />
       </div>

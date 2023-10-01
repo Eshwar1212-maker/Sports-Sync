@@ -62,7 +62,7 @@ export default function DashBoardSelect() {
             >
               <Popover.Panel className="absolute z-10 mt-3 w-[260px] max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div onClick={() => setIsOpen(true)} className="relative flex flex-col bg-blue-100 p-7 gap-10">
+                  <div onClick={() => setIsOpen(true)} className="relative flex flex-col bg-blue-50 p-7 gap-10">
                     {solutions.map((item) => (
                       <a
                         key={item.name}

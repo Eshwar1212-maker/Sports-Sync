@@ -157,7 +157,7 @@ months.forEach((month) => {
   //const { theme } = useTheme();
 
   return (
-    <div className="px-6 mt-8 pb-20 mb-20 sm:pb-0 sm:mb-0">
+    <div className="px-6 mt-8 pb-20 mb-20 sm:pb-0 sm:mb-0 lg:ml-2">
      <div className="hidden sm:block">
      <DashBoardSelect />
 
