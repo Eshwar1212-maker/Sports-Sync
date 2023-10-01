@@ -6,6 +6,7 @@ import GoogleProvider from "next-auth/providers/google"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 
 import prisma from "@/app/libs/prismadb"
+import { redis } from "@/app/libs/redis"
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -47,7 +48,7 @@ export const authOptions: AuthOptions = {
         if (!isCorrectPassword) {
           throw new Error('Invalid credentials');
         }
-
+        await redis.del(`users`);
         return user;
       }
     })
