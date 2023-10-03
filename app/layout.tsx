@@ -5,27 +5,25 @@ import "./globals.css";
 import ThemeProviders from "./context/ThemeProviders";
 
 export const metadata = {
-  title: "Synced",
-  description: "Workout/productvity app for athletes and teams",
-
+    title: "Synced",
+    description: "Workout/productvity app for athletes and teams",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-      <body>
-        <AuthContext>
-          <ThemeProviders>
-            <Providers>{children}</Providers>
-          </ThemeProviders>
-          <ToasterContext />
-        </AuthContext>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body>
+                <AuthContext>
+                    <ThemeProviders>
+                        <Providers>{children}</Providers>
+                    </ThemeProviders>
+                    <ToasterContext />
+                </AuthContext>
+            </body>
+        </html>
+    );
 }
