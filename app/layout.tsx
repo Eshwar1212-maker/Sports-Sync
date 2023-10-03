@@ -17,9 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/icon.jpeg" type="image/jpeg" sizes="any" />
-      </head>
+      <link rel="icon" href="/favicon.ico" sizes="any" />
       <body>
         <AuthContext>
           <ThemeProviders>
