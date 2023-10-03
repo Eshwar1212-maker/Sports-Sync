@@ -3,10 +3,15 @@ import AuthContext from "./context/AuthContext";
 import ToasterContext from "./context/ToasterContext";
 import "./globals.css";
 import ThemeProviders from "./context/ThemeProviders";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Synced",
   description: "Workout/productvity app for athletes and teams",
+  icons: {
+    icon: "/logotwo.jpeg",
+    apple:"/logotwo.jpeg" 
+  }
 
 };
 
