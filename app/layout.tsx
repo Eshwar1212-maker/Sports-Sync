@@ -9,9 +9,8 @@ export const metadata: Metadata = {
   title: "Synced",
   description: "Workout/productvity app for athletes and teams",
   icons: {
-    icon: "/logotwo.jpeg",
-    apple:"/logotwo.jpeg" 
-  }
+    icon: "/logotwo.jpeg" 
+   }
 
 };
 
