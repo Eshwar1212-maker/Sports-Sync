@@ -44,7 +44,6 @@ const Navbar: FC<NavbarProps> = ({}) => {
               router.push("/");
               setIsOpen(false);
             }}
-            style={inter.style}
             className={cn(
               "text-2xl cursor-pointer",
               pathName === "/tracking" && "text-blue-900",
