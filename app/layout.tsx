@@ -9,6 +9,9 @@ import ThemeProviders from './context/ThemeProviders'
 export const metadata = {
   title: 'Synced',
   description: 'Workout/productvity app for athletes and teams',
+  icons: {
+    shortcut: "../app/icon.jpeg",
+  },
 }
 
 export default function RootLayout({
@@ -18,8 +21,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-            <link rel="shortcut icon" href="../app/icon.jpeg" />
-
       <body>
         <AuthContext>
         <ThemeProviders>
