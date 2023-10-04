@@ -38,7 +38,7 @@ export function NavBarItem() {
   const router = useRouter();
 
   return (
-    <NavigationMenu className="hidden md:flex">
+    <NavigationMenu className="hidden md:flex ">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger
@@ -49,7 +49,7 @@ export function NavBarItem() {
           >
             Getting started
           </NavigationMenuTrigger>
-          <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
+          <NavigationMenuContent className=" bg-slate-200 md:w-[100vw]">
             <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
@@ -112,7 +112,7 @@ export function NavBarItem() {
           >
             Workspaces
           </NavigationMenuTrigger>
-          <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
+          <NavigationMenuContent className=" bg-slate-200 md:w-[100vw]">
             <div className="max-w-[1400px] mx-auto pb-7 flex flex-row">
               <div>
                 <div className="px-6 pt-8 pb-8 text-[21px] mx-auto">
@@ -178,7 +178,7 @@ export function NavBarItem() {
           >
             Tracking
           </NavigationMenuTrigger>
-          <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
+          <NavigationMenuContent className=" bg-slate-200 md:w-[100vw]">
             <div className="max-w-[1400px] mx-auto pb-3 flex flex-row">
               <div>
                 <div className="px-6 pt-8 pb-8 text-[22px] mx-auto">
@@ -197,7 +197,7 @@ export function NavBarItem() {
                   ))}
                   <button
                     onClick={() => router.push("/auth")}
-                    className="bg-white rounded-xl transition ease-in-out hover:bg-blue-100 duration-300 px-0 py-0 text-lg"
+                    className="bg-white rounded-xl transition ease-in-out hover:bg-slate-100 duration-300 px-0 py-0 text-lg"
                   >
                     Lets go
                   </button>
@@ -214,7 +214,7 @@ export function NavBarItem() {
                 />
                 <button
                   onClick={() => router.push("/guide")}
-                  className="p-3 text-md w-fit mx-auto bg-blue-100 text-black hover:bg-white transition ease-in-out duration-300 rounded-sm flex items-center"
+                  className="p-3 text-md w-fit mx-auto bg-slate-200 text-black hover:bg-white transition ease-in-out duration-300 rounded-sm flex items-center"
                 >
                   Read how to start utilizing Synced now
                   <span className="">
@@ -234,7 +234,7 @@ export function NavBarItem() {
           >
             About
           </NavigationMenuTrigger>
-          <NavigationMenuContent className=" bg-blue-50 md:w-[100vw]">
+          <NavigationMenuContent className=" bg-slate-200 md:w-[100vw]">
             <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
               <ListItem
                 className="hover:bg-slate-200"
