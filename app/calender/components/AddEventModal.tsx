@@ -95,7 +95,7 @@ function AddEventModal({
       onSuccess: (response) => {
         onClose();
         onSave(response.data);
-        toast("Event updated");
+        toast.success("Event updated");
       },
       onError: (error) => {
       },
@@ -114,7 +114,7 @@ function AddEventModal({
       onSuccess: (response) => {
         onClose();
         onSave(response.data);
-        toast("Event deleted");
+        toast.success("Event deleted");
       },
       onError: (error) => {
       },

@@ -130,7 +130,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     {
       onSuccess: (response) => {
         onClose();
-        toast("Workout deleted");
+        toast.success("Workout deleted");
         updateWorkoutInState(response.data);
         handleCallbackExercises({});
       },
