@@ -88,20 +88,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth, i
 
                   "
                 >
-{  showClose &&   <button
-                    type="button"
-                    className="
-                      rounded-md 
-                      hover:text-gray-500 
-                      focus:outline-none 
-                      focus:ring-2 
-                      focus:ring-indigo-500 
-                      focus:ring-offset-2
-                    "
-                    onClick={onClose}
-                  >
-       
-                  </button>}
+
                 </div>
                 {children}
               </Dialog.Panel>

@@ -13,17 +13,7 @@ const ProModal: FC<ProModalProps> = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="flex flex-col gap-3 pb-10 h-[400px]">
         <div className="flex flex-col space-y-0 gap-1 pb-3">
-          <div className="flex justify-between">
             <h2 className="text-2xl font-semibold">Upgrade to Pro For Full Access!</h2>
-            <button
-              type="button"
-              className="rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:hidden"
-              onClick={onClose}
-            >
-              <span className="sr-only">Close</span>
-              <IoClose className="h-6 w-6" aria-hidden="true" />
-            </button>{" "}
-          </div>
           <div>
             <p className="text-[14px] font-semibold">
               Unlock endless features with pro.

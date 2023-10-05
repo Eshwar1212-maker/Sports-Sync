@@ -118,21 +118,6 @@ const Modall = ({ isOpen, onClose, children}: any) => {
 
                   "
                 >
-                  <button
-                    type="button"
-                    className="
-                      rounded-md 
-                      hover:text-gray-500 
-                      focus:outline-none 
-                      focus:ring-2 
-                      focus:ring-indigo-500 
-                      focus:ring-offset-2
-                    "
-                    onClick={onClose}
-                  >
-                    <span className="sr-only">Close</span>
-                    <IoClose className="h-6 w-6" aria-hidden="true" />
-                  </button>
                 </div>
                 {children}
               </Dialog.Panel>
