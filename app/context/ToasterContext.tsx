@@ -8,7 +8,7 @@ const ToasterContext: FC = () => {
       toastOptions={{
         style: {
           border: '#713200',  // Added "1px solid" as it was missing in your code
-          color: 'dodgerblue',
+          color: 'black',
         },
         success: {
           iconTheme: {
