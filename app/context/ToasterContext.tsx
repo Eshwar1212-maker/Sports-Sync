@@ -7,7 +7,7 @@ const ToasterContext: FC = () => {
     <Toaster
       toastOptions={{
         style: {
-          border: '#713200',  // Added "1px solid" as it was missing in your code
+          border: '#713200',  
           color: 'black',
         },
         success: {
@@ -16,7 +16,7 @@ const ToasterContext: FC = () => {
             secondary: 'black',
           },
           style: {
-            color: '#4D7EB3' // This color is in between lightblue and blue
+            color: '#4D7EB3' 
           }
         },
         

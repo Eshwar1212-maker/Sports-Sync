@@ -5,7 +5,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 const TrackerSecond = () => {
   const router = useRouter();
   return (
-    <div className="mx-auto flex flex-col py-20 bg-slate-100 space-y-20">
+    <div className="mx-auto flex flex-col py-20  space-y-20">
       <div className="text-center">
         <h3 className="text-3xl md:text-4xl 2xl:text-5xl mx-auto">
           How to start tracking with Synced?
@@ -44,16 +44,16 @@ const TrackerSecond = () => {
       <div className="flex gap-4 sm:gap-2 justify-center flex-col md:flex-row max-w-[60%] mx-auto">
         <button
           onClick={() => router.push("/auth")}
-          className="flex h-20 flex-row gap-2 py-4 px-4 bg-slate-200 hover:bg-blue-200 hoer:text-slate-100 transition border-slate-300 duration-500"
+          className="flex h-20 flex-row gap-2 py-4 px-4 bg-slate-200 hover:bg-blue-200 hover:text-slate-100 transition border-slate-300 duration-500"
         >
-          <p className="mx-auto my-auto">Start Tracking</p>
+          <p className="mx-auto my-auto">Start Tring</p>
           <span className="my-auto">
             <AiOutlineArrowRight size={20} />
           </span>
         </button>
         <button
           onClick={() => router.push("/guide")}
-          className="py-2 h-20 md:py-4 px-4 bg-white border-[1px] border-slate-400 hover:bg-slate-100 transition duration-500"
+          className="h-20 gap-2 py-4 px-4 bg-white hover:bg-blue-300 hover:text-blue-100 transition border-slate-300 duration-200"
         >
           Read how to start utilizing Synced now
         </button>

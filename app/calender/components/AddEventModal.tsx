@@ -160,11 +160,11 @@ function AddEventModal({
 
   
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isMessage={false} isImage={true} isFullWidth={true} isOpen={isOpen} onClose={onClose}>
       <form className="px-1" onSubmit={handleSubmit}>
         <input
           aria-label="Event name"
-          className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pl-4 sm:pl-0"
+          className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pl-4 sm:pl-0 w-full"
           placeholder="Untitled"
           value={selectedEvent ? updateTitle : eventTitle}
           onChange={

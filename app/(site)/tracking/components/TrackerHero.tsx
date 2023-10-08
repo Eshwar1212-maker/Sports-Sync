@@ -11,8 +11,8 @@ import { useRouter } from "next/navigation";
 interface heroProps {}
 
 const TrackerHero: FC<heroProps> = ({}) => {
-  const router = useRouter();
 
+  const router = useRouter();
 
   const scrollToFirst = () => {
     const element = document.getElementById("first")

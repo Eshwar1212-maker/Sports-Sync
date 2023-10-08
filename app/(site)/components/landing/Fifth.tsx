@@ -13,7 +13,7 @@ interface SecondProps {}
 
 const Fifth: FC<SecondProps> = ({}) => {
   return (
-    <div className=" bg-gray-100 w-full mx-auto px-4 md:px-20 xl:px-0">
+    <div className=" w-full mx-auto px-4 md:px-20 xl:px-0">
       <div className="flex flex-col justify-center items-center lg:flex-row sm:mb-[-37px] pb-11">
         <SwiperC />
       </div>
