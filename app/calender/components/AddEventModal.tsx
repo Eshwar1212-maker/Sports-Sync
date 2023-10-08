@@ -12,6 +12,8 @@ import { Indie_Flower, Tulpen_One } from "next/font/google";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { useTheme } from "next-themes";
 import usePreviousNotes from "@/app/hooks/usePreviousNotes";
+import { HiEllipsisVertical } from "react-icons/hi2";
+import { EventDropDown } from "./EventDropDown";
 
 const bon = Indie_Flower({
   subsets: ["latin"],
@@ -160,6 +162,7 @@ function AddEventModal({
   return (
     <Modal isMessage={false} isImage={true} isFullWidth={true} isOpen={isOpen} onClose={onClose}>
       <form className="px-1" onSubmit={handleSubmit}>
+        <div className="flex justify-between">
         <input
           aria-label="Event name"
           className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pl-4 sm:pl-0 w-full"
@@ -173,6 +176,9 @@ function AddEventModal({
               : (e) => setEventTitle(e.target.value)
           }
         />
+        {/* {selectedEvent && <EventDropDown />} */}
+        </div>
+
         <div className="pt-4 pb-2 sm:pl-0">
           {selectedEvent ? selectedDate.split(" ")[0] + ", " + selectedDate.split(" ")[1] + " " + selectedDate.split(" ")[2]
             : 
