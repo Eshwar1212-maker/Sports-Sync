@@ -7,7 +7,6 @@ import {
   SheetDescription,
   SheetFooter,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { IoIosNotifications, IoIosNotificationsOutline } from "react-icons/io";
@@ -16,12 +15,6 @@ import NotificationItem from "./NotificationItem";
 import { useState } from "react";
 import clsx from "clsx";
 
-type Notification = {
-  name: string;
-  image: any;
-  body: string;
-  date?: string;
-};
 
 export function NotificationsSheet({ notifications }: any) {
 

@@ -46,7 +46,7 @@ const NotificationItem: FC<NotificationItemProps> = ({
         toast.success(`Succesfully added to group, redirecting`);
         router.push(`/conversations/${notification?.groupId}`);
       } else {
-        toast.success("Invitation rejected");
+        toast.success("Invitation declined");
         handleDelete(notification?.id);
       }
     },
