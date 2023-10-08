@@ -6,7 +6,7 @@ import Footer from "../../components/landing/Footer";
 interface WorkSpaceFirstProps {}
 const WorkSpaceThird: FC<WorkSpaceFirstProps> = ({}) => {
   return (
-    <div id="first" className=" bg-blue-50 h-[72vh] lg:h-[760px] lg:py-11 w-full">
+    <div id="first" className="h-[72vh] lg:h-[760px] lg:py-11 w-full">
       <div className="flex flex-col lg:flex-row lg:justify-between sm:max-w-[900px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1400px] mx-auto h-[400px] lg:py-11">
         <div
           data-aos="fade-up"

@@ -7,7 +7,7 @@ interface SecondProps {}
 
 const Second: FC<SecondProps> = ({}) => {
   return (
-    <div className="flex flex-col justify-center items-center lg:flex-row bg-blue-50 pb-9 xl:pl-40">
+    <div className="flex flex-col justify-center items-center lg:flex-row pb-9 xl:pl-40">
       <div className="w-[80%] lg:w-[600px] py-20 text-center">
       <h3 className="text-gray-800 text-3xl md:text-4xl lg:text-5xl mx-auto">
           Productivity takes<br /> you to the next level
