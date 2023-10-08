@@ -22,7 +22,7 @@ const Second: FC<SecondProps> = ({}) => {
         </p>
         <div className="max-w-[99%] xl:max-w-[1200px]">
           <Image
-            alt="calender tracker image"
+            alt="calendar tracker image"
             src={two}
             width={1300}
             height={1300}

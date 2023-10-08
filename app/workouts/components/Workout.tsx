@@ -250,7 +250,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                 }}
                 className="underline text-center py-3 cursor-pointer"
               >
-                Add todays workout to your calender?
+                Add todays workout to your calendar?
               </p>
             </div>
           )}

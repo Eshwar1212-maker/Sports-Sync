@@ -48,7 +48,7 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
                 theme === "dark" && "text-gray-200"
               )}
             >
-              Use our Calenders to visualize your routine
+              Use our Calendars to visualize your routine
             </h1>
             <p
               className={clsx(
@@ -56,7 +56,7 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
                 theme === "dark" && "text-gray-300"
               )}
             >
-              Use our Calender feature to either schedule your own practices and
+              Use our Calendar feature to either schedule your own practices and
               workouts, or collaborate with your team so you guys can schedule
               games, practices, events, etc.
             </p>
@@ -82,10 +82,10 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
 
                 }
               }}
-              className="my-4 text-lg px-8 py-4 border-[1px] transition ease-in-out duration-300 bg-white border-black flex gap-3
-              rounded-sm text-slate-900 hover:bg-blue-300 hover:text-black dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80"
+              className="my-4 text-lg px-8 py-4 border-[1px] transition ease-in-out duration-300 bg-white  border-black flex gap-3
+              rounded-sm text-slate-900 hover:bg-slate-200 hover:text-black dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80"
             >
-              Create a new workspace <MdOutlineGroupAdd className="" size={29}/>
+              Create a team workspace <MdOutlineGroupAdd className="" size={29}/>
             </button>
           </div>
         </main>
@@ -102,10 +102,10 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
                   : "text-4xl sm:text-4xl font-bold"
               )}
             >
-              Use our Calenders to visualize your routine
+              Use our Calendars to visualize your routine
             </h1>
             <p className={"text-lg sm:text-lg font-ligh"}>
-              Use our Calender feature to either schedule your own practices and
+              Use our Calendar feature to either schedule your own practices and
               workouts, or collaborate with your team so you guys can schedule
               games, practices, events, etc.
             </p>

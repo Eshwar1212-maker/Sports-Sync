@@ -14,7 +14,7 @@ const WorkSpaceSecond: FC<WorkSpaceFirstProps> = ({}) => {
           data-aos-duration="3000"
           className="mx-auto my-auto max-w-[350px] sm:max-w-[500px] pt-[70px] pb-20 lg:py-[60px] text-2xl lg:text-4xl"
         >
-          Have your calender sync up with a private group chat, stay in
+          Have your calendar sync up with a private group chat, stay in
           communication with events you have planned. <br />
           <br />
           You and your team are unstoppable.

@@ -123,7 +123,7 @@ const page: FC<pageProps> = ({}) => {
               refetch that value unless it changes(when another user adds an
               event, or deletes an event etc). This not only provides a faster
               user experience, but put less strain on our databse. We use this
-              extensively throughout the calender and workout log, observing
+              extensively throughout the calendar and workout log, observing
               roughly 60-90 percent faster queries.
               <br />
               <br />
