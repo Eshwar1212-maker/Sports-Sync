@@ -29,7 +29,7 @@ const TeamId = async ({ params }: TeamIdPageProps) => {
   }
 
   return (
-    <div className=" px-10 lg:ml-8 xl:px-0 xl:pr-20 text-[12px]">
+    <div className="lg:ml-8 xl:px-0 xl:pr-10 xl:pl-6 text-[12px] px-4 lg:pr-4">
       <div className="h-full flex flex-col">
         <TeamCalenderHeader teamAdmin={teamAdmin} currentUser={currentUser!} team={team} />
       </div>

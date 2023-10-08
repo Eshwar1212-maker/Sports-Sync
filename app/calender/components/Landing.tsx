@@ -7,11 +7,8 @@ import clsx from "clsx";
 import { useTheme } from "next-themes";
 import {User} from "@prisma/client";
 import CreateTeamModal from "./CreateTeamModal";
-import { Button } from "@/components/ui/button";
-import {IoMdAddCircleOutline } from "react-icons/io";
 import ProModal from "./ProModal";
-import { AiOutlineUsergroupDelete } from "react-icons/ai";
-import { HiOutlineUserGroup, HiUserGroup } from "react-icons/hi";
+import calendar from "../../assets/cal.png"
 import { MdOutlineGroupAdd } from "react-icons/md";
 
 
@@ -64,14 +61,14 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
               <CalenderOptions userTeams={userTeams} />
             </div>
           </div>
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 py-8">
             <Image
               alt="Logo"
               height={1000}
               width={1000}
-              className="mx-auto w-auto"
-              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1612787425944/MMJR2txbo.jpeg"
-              aria-label="fullcalenderjs image"
+              className="mx-auto w-auto border-[1px] border-slate-400"
+              src={calendar}
+              aria-label="calendar image"
             />
             <button
               onClick={() => {
@@ -82,8 +79,8 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
 
                 }
               }}
-              className="my-4 text-lg px-8 py-4 border-[1px] transition ease-in-out duration-300 bg-white  border-black flex gap-3
-              rounded-sm text-slate-900 hover:bg-slate-200 hover:text-black dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80"
+              className="my-4 text-lg px-8 py-4 border-[1px] transition ease-in-out duration-400 bg-white  border-slate-400 flex gap-3
+              rounded-sm text-slate-900 hover:bg-slate-200 hover:text-black dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
             >
               Create a team workspace <MdOutlineGroupAdd className="" size={29}/>
             </button>

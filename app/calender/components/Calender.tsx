@@ -15,8 +15,6 @@ function Calendar({userEvents}: {userEvents: any}) {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [selectedDate, setSelectedDate] = useState("");
 
-
-  //console.log(date);
   
 
   const handleDateClick = (arg: any) => {
