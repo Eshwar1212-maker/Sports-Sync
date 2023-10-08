@@ -54,7 +54,7 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
               )}
             >
               Use our Calendar feature to either schedule your own practices and
-              workouts, or collaborate with your team so you guys can schedule
+              workouts, or collaborate with your team in a shared calendar to schedule
               games, practices, events, etc.
             </p>
             <div className="flex flex-start">
