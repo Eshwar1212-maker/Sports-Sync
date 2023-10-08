@@ -83,7 +83,7 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
                 }
               }}
               className="my-4 text-lg px-8 py-4 border-[1px] transition ease-in-out duration-300 bg-white  border-black flex gap-3
-              rounded-sm text-slate-900 hover:bg-slate-200 hover:text-black dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80"
+              rounded-sm text-slate-900 hover:bg-slate-200 hover:text-black dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
             >
               Create a team workspace <MdOutlineGroupAdd className="" size={29}/>
             </button>

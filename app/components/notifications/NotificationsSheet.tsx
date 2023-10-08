@@ -10,7 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoIosNotifications, IoIosNotificationsOutline } from "react-icons/io";
 import { useTheme } from "next-themes";
 import NotificationItem from "./NotificationItem";
 import { useState } from "react";
@@ -46,11 +46,22 @@ export function NotificationsSheet({ notifications }: any) {
             }
           >
           {notifications?.length > 0 &&  <span className="mb-7 ml-[7px] mx-auto pl-[6px] text-sm">{notifications?.length}</span>}
-            <IoIosNotificationsOutline
-              className={notifications?.length > 0 ? " my-[-33px]" : ""}
-              size={35}
-              color={(notifications?.length > 0 && theme === "light") ? "blue" : ""}
-            />
+          {
+            notifications?.length > 0 ?          <IoIosNotifications
+            className={notifications?.length > 0 ? " my-[-33px]" : ""}
+            size={35}
+            color="#91C0F0"
+            /> : 
+   
+          <IoIosNotificationsOutline
+            className={notifications?.length > 0 ? " my-[-33px]" : ""}
+            size={35}
+            color=""
+          />
+ 
+          }
+
+         
           </div>
         </SheetTrigger>
         <SheetContent
@@ -58,7 +69,7 @@ export function NotificationsSheet({ notifications }: any) {
           side={"left"}
         >
           <SheetHeader>
-            <h2 className="font-bold text-lg boder-b-[2px] border-b-black">
+            <h2 className="font-bold text-lg">
               Notifications
             </h2>
           </SheetHeader>
