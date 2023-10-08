@@ -74,7 +74,10 @@ const WorkSpaceHero: FC<heroProps> = ({}) => {
         </video>
       </div>
       <div className="md:hidden mx-auto">
-        <button className="p-5 border-[1px] border-black text-md sm:text-xl hover:bg-blue-300 hover:text-white transition ease-out duration-300">
+        <button
+          onClick={() => router.push("/auth")}
+          className="p-5 border-[1px] border-black text-md sm:text-xl hover:bg-blue-300 hover:text-white transition ease-out duration-300"
+        >
           Lets Get Your Workspace Set Up
         </button>
       </div>
