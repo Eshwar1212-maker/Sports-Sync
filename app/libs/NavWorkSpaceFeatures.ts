@@ -8,19 +8,19 @@ export const navWorkSpaceFeatures: { title: string; href: string; description: s
     {
       title: "Connect your Workout Log",
       href: "/workspaces",
-      description: "Add a workout from your logs to your calender .",
+      description: "Add a workout from your logs to your calendar .",
     },
     {
       title: "Focused Workspace",
       href: "/workspaces",
       description:
-        "Create as many seperate calenders as you want for your teams, with real time notifications for your upcoming events.",
+        "Create as many seperate calendars as you want for your teams, with real time notifications for your upcoming events.",
     },
     {
       title: "Mange roles",
       href: "/workspaces",
       description:
-        "Calender workspaces have moderator functionality, have your coach or trainer plan while the players follow.",
+        "Calendar workspaces have moderator functionality, have your coach or trainer plan while the players follow.",
     },
     {
       title: "Goals",
@@ -52,7 +52,7 @@ export const workOutLogFeatures: { title: string; href: string; description: str
       title: "We will Prefetch at Your Convenience",
       href: "/workspaces",
       description:
-        "Every time you type a certain event in your calender, we will prefetch the previous event's notes with that same name, and give you the option to work with it.",
+        "Every time you type a certain event in your calendar, we will prefetch the previous event's notes with that same name, and give you the option to work with it.",
     },
     {
       title: "Personal Record Notifications",

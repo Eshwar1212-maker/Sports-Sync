@@ -38,11 +38,11 @@ const WorkSpaceAccordians: FC<AccordiansProps> = ({ onClose }) => {
           <div className="flex w-[600px] flex-col hover:bg-slate-200 cursor-pointer">
             <div className="flex flex-row gap-2 my-4">
               <Calendar size={23} color="lightblue" />
-              <h3 className="text-[16px] font-semibold">Calenders</h3>
+              <h3 className="text-[16px] font-semibold">Calendars</h3>
             </div>
             <div>
               <p>
-                Use our calenders to plan all your sport related events.
+                Use our calendars to plan all your sport related events.
               </p>
             </div>
           </div>
@@ -60,7 +60,7 @@ const WorkSpaceAccordians: FC<AccordiansProps> = ({ onClose }) => {
               <h3 className="text-[16px] font-semibold">Private Teams</h3>
             </div>
             <div></div>
-            <p>Use our calenders to create a private team workspace, alongside a group chat.</p>
+            <p>Use our calendars to create a private team workspace, alongside a group chat.</p>
           </div>
         </AccordionContent>
         <AccordionContent
@@ -117,8 +117,8 @@ export const TrackingAccordian = ({ onClose }: { onClose: () => void }) => {
             </div>
             <div className="pb-2">
               <p>
-                Log your workouts for different calender days, add them to your
-                personal calender.
+                Log your workouts for different calendar days, add them to your
+                personal calendar.
               </p>
             </div>
           </div>

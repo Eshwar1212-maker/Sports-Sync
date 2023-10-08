@@ -65,7 +65,7 @@ export function NavBarItem() {
 
                       <div>
                         <p className="text-sm">
-                          Are you using google calender to track your events,
+                          Are you using google calendar to track your events,
                           whats app to schedule your games? Fitnotes to track
                           your workouts? Why not do all of that in one place?
                         </p>
@@ -94,9 +94,9 @@ export function NavBarItem() {
               <ListItem
                 className="hover:bg-slate-200"
                 href="/workspaces"
-                title="Calenders and Workspaces"
+                title="Calendars and Workspaces"
               >
-                Use our calenders to track everything related to your sport,
+                Use our calendars to track everything related to your sport,
                 with a monthly, weekly, daily view. You are your team have
                 nothing stopping you from reaching your goals.
               </ListItem>
@@ -145,21 +145,21 @@ export function NavBarItem() {
               <div className="h-[440px] mt-3 w-[1px] mr-10 shadow-black bg-slate-300 shadow-lg text-black hidden xl:block" />
               <div className="gap-1 flex-col text-[12px] text-center mx-auto pt-4 hidden xl:flex">
                 <Image
-                  alt="monthly calender"
+                  alt="monthly calendar"
                   src={monthly}
                   width={340}
                   height={340}
                 />
                 <p>Monthly</p>
                 <Image
-                  alt="monthly calender"
+                  alt="monthly calendar"
                   src={weekly}
                   width={340}
                   height={340}
                 />
                 <p>Weekly</p>
                 <Image
-                  alt="daily calender"
+                  alt="daily calendar"
                   src={daily}
                   width={340}
                   height={340}
@@ -206,7 +206,7 @@ export function NavBarItem() {
               <div className="h-[440px] mt-3 w-[1px] shadow-black bg-slate-300 shadow-lg text-black ml-10" />
               <div className="flex flex-col text-[12px] text-center mx-auto mt-[100px] h-fit gap-2 rounded-md">
                 <Image
-                  alt="monthly calender"
+                  alt="monthly calendar"
                   src={monthly}
                   width={340}
                   height={340}

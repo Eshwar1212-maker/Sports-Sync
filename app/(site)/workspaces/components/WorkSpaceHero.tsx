@@ -24,11 +24,11 @@ const WorkSpaceHero: FC<heroProps> = ({}) => {
     <div className="flex flex-col lg:flex-row justify-between w-full md:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1500px] mx-auto py-[110px] lg:py-[200px] gap-10">
       <div className=" my-auto space-y-3 sm:space-y-4 w-[84%] sm:w-[80%] xl:w-[50%] mx-auto">
         <h1 className="text-4xl sm:text-5xl lg:text-5xl 2xl:text-7xl">
-          Create your own team calenders
+          Create your own team calendars
         </h1>
         <p className="sm::text-lg xl:text-xl lg:max-w-[600px]">
           Syned is the easiest way for individual athletes or teams to plan,
-          manage, and visualize their events in a shared team calender.
+          manage, and visualize their events in a shared team calendar.
           <br />
           <br />
           We're here to help you have as strong a season as ever.

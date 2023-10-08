@@ -25,14 +25,14 @@ const ProModal: FC<ProModalProps> = ({ isOpen, onClose }) => {
             <dt className="text-md font-semibold">Unlimted workspaces</dt>
             <dd className="text-sm">
               Get unlimited workspaces, where you and your team can access your
-              private calender.
+              private calendar.
             </dd>
           </dl>
           <dl>
             <dt className="font-semibold text-md">Ai Assistance</dt>
             <dd className="text-sm">
               Get unlimited AI assistance for plans regarding improving on your
-              workouts, and optimizing your calender.
+              workouts, and optimizing your calendar.
             </dd>
           </dl>
         </section>

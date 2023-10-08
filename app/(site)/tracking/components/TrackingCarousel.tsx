@@ -32,7 +32,7 @@ function SwiperC() {
       >
  
         <SwiperSlide className="">
-          <video className=" h-auto mx-auto" aria-label="Calender feature video" autoPlay muted loop>
+          <video className=" h-auto mx-auto" aria-label="Calendar feature video" autoPlay muted loop>
             <source 
             src="/cc.mp4" 
             type="video/mp4" 

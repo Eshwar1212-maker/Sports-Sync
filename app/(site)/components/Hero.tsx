@@ -78,7 +78,7 @@ const Hero = () => {
       </div>
       <main className="mt-[120px] py-10 bg-blue-50">
         <h2 className="text-lg py-2 sm:py-14 md:py-4 sm:text-[22px] xl:text-2xl text-center font-bold px-4 max-w-[630px] mx-auto">
-          Use our calender, workout tracker, messaging system, and
+          Use our calendar, workout tracker, messaging system, and
           fitness dashboard to reach your goals.
         </h2>
         <div className="flex flex-col lg:flex-row justify-center text-center items-center xl:px-[120px] px-10 space-x-5 mx-auto space-y-10 sm:space-y-0 sm:py-10 mr-6 sm:mr-0 pb-10 sm:pb-0">
@@ -103,7 +103,7 @@ const Hero = () => {
           <div className="flex flex-col">
             <div className="bg-blue-900">
               <Image
-                alt="calender image"
+                alt="calendar image"
                 src={calendertwo}
                 width={600}
                 height={440}
@@ -118,7 +118,7 @@ const Hero = () => {
             <p className="text-sm md:text-lg hidden xl:block">
               Your life can be very busy as an athlete,
               <br />
-              use our calender to track everything.
+              use our calendar to track everything.
             </p>
             <p className="text-sm md:text-lg xl:hidden">
               Your life can be very busy as an athlete,

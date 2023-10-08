@@ -82,7 +82,7 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
           onClick={() => addEvent()}
           disabled={isLoading}
         >
-          Add To Calender
+          Add To Calendar
         </Button>
       </div>
     </Modal>

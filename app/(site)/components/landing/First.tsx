@@ -14,7 +14,7 @@ const First: FC<FirstProps> = ({}) => {
         </h3>
         <p className="text-md md:text-xl py-4 text-gray-500">
           Message your teammates or friends to schedule games, invite users to your private team chat with mod functionalities, and create a
-          custom calender for your team so you guys can manage your events, such
+          custom calendar for your team so you guys can manage your events, such
           as games, practices, meetings, and more.
         </p>
         <button
@@ -28,7 +28,7 @@ const First: FC<FirstProps> = ({}) => {
 
       <div className="flex flex-col lg:py-10 w-full md:w-1/2 lg:w-2/5 xl:w-1/2 items-center px-2">
         <Image
-          alt="calender tracker image"
+          alt="calendar tracker image"
           src={image}
           width={450}
           height={100}

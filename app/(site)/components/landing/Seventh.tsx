@@ -27,7 +27,7 @@ const Seventh: FC<SeventhProps> = ({}) => {
           <p className="text-[13px] w-[380px] px-6">
             Me and my friends used Synced throughout the whole summer to train
             for the upcoming track season. It helped us schedule our routine in
-            a shared calender, track our progressions, stay in touch, and more.
+            a shared calendar, track our progressions, stay in touch, and more.
           </p>
           <p className="font-bold text-md text-center">Arana Myles</p>
         </li>
@@ -47,7 +47,7 @@ const Seventh: FC<SeventhProps> = ({}) => {
         <li className="flex flex-col gap-2">
           <Image alt="Testimonial" src={two} width={340} height={340} />
           <p className="text-[13px] w-[380px] px-6">
-            There werent that many apps I found that had a calender along with a
+            There werent that many apps I found that had a calendar along with a
             workout log tracking all of my exercises. Synced keeps me as
             disciplined as possible.
           </p>
@@ -66,7 +66,7 @@ const Seventh: FC<SeventhProps> = ({}) => {
           <Image alt="Testimonial" src={five} width={340} height={340} />
           <p className="text-[13px] w-[380px] px-6">
             Synced gave me no excuses to go to the court and practice. Me and my
-            league share a private calender and group chat to schedule our
+            league share a private calendar and group chat to schedule our
             games, workouts, and more.
           </p>
           <p className="font-bold text-md text-center">Orion Philips</p>

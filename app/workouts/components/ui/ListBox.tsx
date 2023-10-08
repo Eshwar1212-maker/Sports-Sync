@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import { useTheme } from 'next-themes'
 
 const people = [
-  { name: 'Select Workout Name(edit name later in calender)' },
+  { name: 'Select Workout Name(edit name later in calendar)' },
   { name: 'Chest Workout' },
   { name: 'Back Workout' },
   { name: 'Leg Workout' },
