@@ -161,7 +161,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
             </Button>
             <Button
               variant={"default"}
-              className={"hidden md:block text-[11px] md:text-[13px] py-2 rounded-md"}
+              className={"hidden md:block text-[11px] md:text-[13px] py-2 rounded-sm"}
               onClick={() => {
                 setSelectedExercise(false);
                 setIsOpen(true);
