@@ -33,8 +33,9 @@ import {
 import { HiEllipsisVertical } from "react-icons/hi2"
 import { CgNotifications } from "react-icons/cg"
 import { IoMdNotifications } from "react-icons/io"
+import { EventReminderModal } from "./EventReminderModal"
   
-  export function EventDropDown() {
+  export function EventDropDown({title} : any) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -44,20 +45,19 @@ import { IoMdNotifications } from "react-icons/io"
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>Light Workout</DropdownMenuLabel>
+          <DropdownMenuLabel>{title}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <IoMdNotifications className="mr-2 h-4 w-4" />
-              <span>Set reminder notification</span>
-            </DropdownMenuItem>
+            <div className="py-2 hover:bg-slate-200 cursor-pointer">
+             <EventReminderModal title={title}/>
+            </div>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <Users className="mr-2 h-4 w-4" />
-              <span>Share in group chat</span>
-            </DropdownMenuItem>
+            <div className="cursor-pointer flex py-2 hover:bg-slate-200">
+              <Users className="mr-2 h-4 w-4 my-auto" />
+              <span className="text-sm">Share in group chat</span>
+            </div>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>

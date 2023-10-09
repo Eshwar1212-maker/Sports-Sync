@@ -33,7 +33,7 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
   return (
     <Link className="hover:bg-slate-200 dark:hover:bg-slate-800 w-[220%] rounded-sm" href={href}>
     <div className={clsx(`group flex flex-col items-center gap-x-3 rounded-md p-2 leading-6 relative`,
-      (active) && "dark:text-white dark:bg-slate-800 text-gray-600 font-bold bg-slate-300")}
+      (active) && "dark:text-white dark:bg-slate-800 text-gray-600 font-bold bg-slate-200")}
       >
       <div>
         <Icon size={70} className={label === "Notification" ? "h-6 w-6 shrink-0" 

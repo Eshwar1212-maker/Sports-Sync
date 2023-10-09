@@ -32,7 +32,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [isSecondOpen, setIsSecondOpen] = useState(false);
   const [date, setDate] = useState<any>(new Date());
   const [filteredWorkouts, setFilteredWorkouts] = useState<exercise[]>([]);
-  const [edidtedExerciseName, setEditedExerciseName] = useState("");
+  const [editedExerciseName, setEditedExerciseName] = useState("");
   const [editedExerciseWeight, setEditedExerciseWeight] = useState();
   const [editedExerciseSets, setEditedExerciseSets] = useState();
   const [editedExerciseReps, setEditedExerciseReps] = useState();
@@ -107,7 +107,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
           handleCallbackExercises={handleCallbackExercises}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          editedName={edidtedExerciseName}
+          editedName={editedExerciseName}
           editedReps={editedExerciseReps}
           editedSets={editedExerciseSets}
           editedWeight={editedExerciseWeight}
