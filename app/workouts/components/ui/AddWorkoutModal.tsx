@@ -10,7 +10,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { Workout } from "@prisma/client";
 import { useTheme } from "next-themes";
-import { Button as Button2 } from "../../../../components/ui/button";
+import { Button } from "../../../../components/ui/button";
 import { BiSolidTrash } from "react-icons/bi";
 import usePersonalRecord from "@/app/hooks/useWorkoutlRecord";
 import Program from "./Program";
@@ -282,13 +282,13 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       <div className="">
 { selectedExercise &&       <div className="fixed left-8 bottom-6">
           <div className="hidden md:flex gap-2">
-            <Button2
+            <Button
               disabled={isDeleteLoading}
               variant={"destructive"}
               onClick={handleDeleteWorkout}
             >
               Delete
-            </Button2>
+            </Button>
           </div>
           <div className=" flex gap-2 md:hidden pb-2">
             <BiSolidTrash
@@ -299,15 +299,12 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           </div>
         </div>}
         <div className="fixed right-8 bottom-4 flex gap-4 ">
-          <Button2 className="" onClick={onClose} variant={"secondary"}>
+          <Button className="" onClick={onClose} variant={"secondary"}>
             Cancel
-          </Button2>
-          <Button2
-            disabled={!selectedExercise ? !title : isUpdateLoading}
-            onClick={handleWorkoutAddition}
-          >
+          </Button>
+          <Button className="" disabled={!selectedExercise ? !title : isUpdateLoading} onClick={handleWorkoutAddition}>
             {selectedExercise ? "Update" : "Add Workout"}
-          </Button2>
+          </Button>
         </div>
       </div>
     </Modal>
