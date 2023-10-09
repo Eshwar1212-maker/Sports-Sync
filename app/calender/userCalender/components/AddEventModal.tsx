@@ -12,7 +12,6 @@ import { Indie_Flower, Tulpen_One } from "next/font/google";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { useTheme } from "next-themes";
 import usePreviousNotes from "@/app/hooks/usePreviousNotes";
-import { HiEllipsisVertical } from "react-icons/hi2";
 import { EventDropDown } from "./EventDropDown";
 
 const bon = Indie_Flower({
@@ -176,7 +175,7 @@ function AddEventModal({
               : (e) => setEventTitle(e.target.value)
           }
         />
-        {/* {selectedEvent && <EventDropDown />} */}
+        {/* {selectedEvent && <EventDropDown title={updateTitle}/>} */}
         </div>
 
         <div className="pt-4 pb-2 sm:pl-0">
