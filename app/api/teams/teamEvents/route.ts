@@ -30,9 +30,6 @@ export async function POST(request: Request) {
         }
       },
     });
-    const eventNotification = await prisma.notifications.create({
-      dat
-    })
 
 
     await redis.del(`${teamId}team`);
