@@ -9,9 +9,9 @@ const getUsers = async () => {
     if (!session?.user?.email) return [];
     try {
         const cache = await redis.get(`${currentUser?.name}users`);
-        if (cache) {
+        if (cache && false) {
             //console.log("HITTING REDIS CACHE ", start - Date.now()); // Uncomment if you need this log
-            return JSON.parse(cache);
+            //return JSON.parse(cache);
         } else {
             const users = await prisma.user.findMany({
                 orderBy: {

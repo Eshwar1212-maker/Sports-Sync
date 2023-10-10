@@ -14,9 +14,9 @@ export const getTeamById = async(
 
         const start = Date.now();
         const cache = await redis.get(`${teamId}team`)
-        if(cache){
+        if(cache && false){
          //console.log("HITTING REDIS CACHE ", start - Date.now());
-          return JSON.parse(cache)
+          //return JSON.parse(cache)
         }else{
             const team = await prisma.team.findUnique({
                 where: {

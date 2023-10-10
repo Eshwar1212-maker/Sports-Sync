@@ -6,7 +6,7 @@ const getEvents = async () => {
     if(!currentUser?.id){
         return []
     }
-    try{
+    try{ 
         const userWithEvents = await prisma.user.findUnique({
             where: {
               id: currentUser.id,
