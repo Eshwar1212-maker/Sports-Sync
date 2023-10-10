@@ -126,8 +126,6 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     }, 0);
   };
 
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
   
 
   return (

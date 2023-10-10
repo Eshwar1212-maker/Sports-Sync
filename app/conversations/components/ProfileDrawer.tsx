@@ -101,12 +101,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                   leaveTo="translate-x-full"
                 >
                   <Dialog.Panel className="pointer-events-auto w-screen max-w-md ">
-                    <div
-                      className={clsx(
-                        "flex h-full flex-col overflow-y-scrollpy-6 shadow-xl",
-                        theme === "light" ? "bg-white" : "bg-[#1c1c1c]"
-                      )}
-                    >
+                    <div className="flex h-full flex-col overflow-y-scroll py-6 shadow-xl bg-white dark:bg-black">
                       <div className="px-4 sm:px-6">
                         <div className="flex items-start justify-end">
                           <div className="ml-3 flex h-7 items-center py-8">
@@ -123,7 +118,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                           </div>
                         </div>
                       </div>
-                      <div className="relative mt-6 flex-1 px-4 sm:px-6">
+                      <div className="relative flex-1 px-4 sm:px-6">
                         <div className="flex flex-col items-center">
                           <div className="mb-2">
                             {data.isGroup ? (
@@ -190,29 +185,23 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                   <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
                                     <IoExitOutline color="black" size={20} />
                                   </div>
-                                  <div
-                                    className={clsx(
-                                      "text-sm font-light",
-                                      theme === "light" && "text-neutral-600"
-                                    )}
-                                  >
+                                  <div className="text-sm font-light dark:text-neutral-600">
                                     Leave
                                   </div>
                                 </div>
                               </div>
                             )}
-                          <div
-                            className={clsx(
-                              "w-full pb-5 pt-5 sm:px-0 sm:pt-0 flex justify-center",
+                          <div className={clsx(
+                              "w-full pb-5 sm:px-0 sm:pt-0 flex justify-center",
                               !data?.admin?.includes(currentUser.email) && " "
                             )}
                           >
-                            <dl className="space-y-8 px-4 sm:space-y-6 sm:px-6">
+                            <dl className=" px-4 sm:space-y-6 sm:px-6">
                               {data.isGroup && (
                                 <div className="overflow-y-scroll max-h-[600px]">
                                   <dt
                                     className={clsx(
-                                      "text-md sm:w-40 sm:flex-shrink-0 font-semibold my-1"
+                                      "text-sm sm:w-40 sm:flex-shrink-0 font-semibold"
                                     )}
                                   >
                                     Mod
@@ -220,7 +209,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                   <div className="flex justify-between">
                                   <dd
                                     className={clsx(
-                                      "mt-1 text-lg sm:col-span-2 py-2"
+                                      "mt-1 text-sm sm:col-span-2 py-2"
                                     )}
                                   >
                                     {data?.admin?.split(" ")[1] +
@@ -231,7 +220,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                   <div className="flex justify-between border-b-[2px] border-b-black">
                                   <dt
                                     className={clsx(
-                                      "text-md sm:w-40 sm:flex-shrink-0 font-semibold my-2"
+                                      "text-sm sm:w-40 sm:flex-shrink-0 font-semibold my-2"
                                     )}
                                   >
                                    {data.users.length} Members
@@ -254,7 +243,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                         <div className="flex justify-between gap-2 py-3">
                                           <div className="flex gap-2">
                                             <Avatar user={user} />
-                                            <p className="my-auto">
+                                            <p className="my-auto text-[11px]">
                                               {user.name}
                                             </p>
                                           </div>

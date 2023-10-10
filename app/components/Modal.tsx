@@ -32,7 +32,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, isFullWidth, i
             fixed 
             inset-0 
             bg-[#2f2f2f]
-            bg-opacity-80
+            bg-opacity-90
             transition-opacity
             "
           />

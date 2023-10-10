@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import clsx from "clsx";
 import { Indie_Flower, Tulpen_One } from "next/font/google";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
-import { useTheme } from "next-themes";
 import { Team, User } from "@prisma/client";
 import { HiEllipsisVertical } from "react-icons/hi2";
 import { cn } from "@/lib/utils";
@@ -77,7 +76,6 @@ function AddTeamEventModal({
   );
   const { toast: toaster } = useToast();
 
-  const { theme } = useTheme();
 
   useEffect(() => {
     setUpdateTitle(selectedEvent ? selectedEvent.title : "");
@@ -194,12 +192,12 @@ function AddTeamEventModal({
   
 
   return (
-    <Modal showClose={false} isOpen={isOpen} onClose={onClose}>
+    <Modal isMessage={false} isImage={true} isFullWidth={true} isOpen={isOpen} onClose={onClose}>
       <form className="" onSubmit={handleSubmit}>
         <div className="">
         <input
           aria-label="Event name"
-          className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pl-4 sm:pl-0"
+          className="text-[33px] bg-transparent outline-none border-none focus:ring-0 placeholder-gray-500 font-thin pl-4 sm:pl-0 w-full"
           placeholder="Untitled"
           value={selectedEvent ? updateTitle : eventTitle}
           onChange={
@@ -235,7 +233,7 @@ function AddTeamEventModal({
           <h3 className="text-base font-semibold leading-7">Posted by</h3>
           <p className="">{selectedEvent?._def?.extendedProps?.poster}</p>
         </div>}
-        <div className="border-[1px] border-solid border-gray-900 w-full pl-6 sm:pl-0" />
+        <div className="border-[1px] border-solid border-gray-900 dark:border-gray-400 w-full pl-6 sm:pl-0" />
         <div className="py-6  pl-3 sm:pl-0">
           <textarea
             className={clsx(
@@ -271,29 +269,14 @@ function AddTeamEventModal({
           {eventTitle.length > 4 &&
             specificEventNotes.length > 0 &&
             addPrefilledValue && (
-              <div
-                style={bon.style}
-                className={clsx(
-                  "flex flex-row gap-1 w-fit rounded-lg my-auto pl-2",
-                  theme === "light" && "bg-gray-100"
-                )}
-              >
+              <div style={bon.style} className="flex flex-row gap-1 w-fit rounded-lg my-auto pl-2 bg-gray-100">
                 <div className="">
-                  <p
-                    className={clsx(
-                      "text-[18px] my-3",
-                      theme === "light" && "text-gray-600"
-                    )}
-                  >
+                  <p className="text-[18px] my-3 text-gray-600">
                     Work with previous {preFilledTitle}?{" "}
                   </p>
                 </div>
-                <div
-                  className={clsx("flex gap-2 p-2", theme === "light" && "")}
-                >
-                  <button
-                    type="button"
-                    aria-label="Checkmark for notes"
+                <div className={clsx("flex gap-2 p-2")}>
+                  <button type="button" aria-label="Checkmark for notes"
                     onClick={() => {
                       setEventNotes(
                         (prevNotes) => prevNotes + specificEventNotes[0]?.notes!
@@ -303,11 +286,7 @@ function AddTeamEventModal({
                   >
                     <AiOutlineCheck size={24} />
                   </button>
-                  <button
-                    onClick={() => setAddPrefilledValue(false)}
-                    aria-label="Dismiss prev notes"
-                    type="button"
-                  >
+                  <button onClick={() => setAddPrefilledValue(false)} aria-label="Dismiss prev notes" type="button">
                     <AiOutlineClose size={24} />
                   </button>
                 </div>
