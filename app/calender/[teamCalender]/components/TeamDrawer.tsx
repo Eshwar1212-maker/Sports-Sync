@@ -15,11 +15,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Team, User } from "@prisma/client";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { HiEllipsisVertical } from "react-icons/hi2";
-import { RiUserAddLine } from "react-icons/ri";
 import DeleteWorkSpaceModal from "./modals/DeleteWorkSpaceModal";
 import InviteUsersModal from "./modals/InviteUsersModal";
 import LeaveWorkSpaceModal from "./modals/LeaveWorkSpaceModal";
@@ -41,7 +39,7 @@ export function TeamDrawer({
   adminPhoto,
 }: ProfileDrawerProps) {
   const [activity, setActivity] = useState<any[]>(team?.events)
-  const [confirmDelete, setconfirmDelete] = useState(false)
+  const [confirmDelete, setConfirmDelete] = useState(false)
   const [confirmLeave, setConfirmLeave] = useState(false)
   const [inviteModal, setInviteModal] = useState(false)
   const [confirmBoot, setConfirmBoot] = useState(false)
@@ -57,7 +55,7 @@ export function TeamDrawer({
     <Sheet>
        <DeleteWorkSpaceModal
         isOpen={confirmDelete}
-        onClose={() => setconfirmDelete(false)}
+        onClose={() => setConfirmDelete(false)}
       />
       <InviteUsersModal
         isOpen={inviteModal}
@@ -76,12 +74,12 @@ export function TeamDrawer({
           <HiEllipsisVertical size={25} />
         </Button>
       </SheetTrigger>
-      <SheetContent className="space-y-6 bg-white py-10">
+      <SheetContent className="space-y-6 bg-white dark:bg-black text-white py-10">
           <SheetTitle>{team?.title}</SheetTitle>
           <SheetDescription className="">
             <div className="flex justify-between">
               <div className="">
-                <h4 className="font-bold pb-1 text-md ml-[90px] sm:ml-0">Moderator</h4>
+                <h4 className="font-bold pb-1 text-md ml-[90px] sm:ml-0 ">Moderator</h4>
                 <div className="flex gap-2 py-2">
                   <Image
                     className="rounded-full"
@@ -130,15 +128,13 @@ export function TeamDrawer({
               </div>
               <div className="fixed bottom-10">
                 <div className="flex gap-2 py-3 justify-center mx-auto">
-                  <Button variant={"five"}>Group Chat</Button>
+                  <Button className="rounded-md" variant={"five"}>Group Chat</Button>
 
                   {currentUser?.name?.includes(admin as string) ? (
                     <SheetClose>
-                    <ActionTooltip label={`Leave ${team?.title}`}>
-                      <Button onClick={() => setconfirmDelete(true)} className="rounded-lg" variant={"destructive"}>
+                      <Button onClick={() => setConfirmDelete(true)} className="rounded-md" variant={"destructive"}>
                         Delete
                       </Button>
-                    </ActionTooltip>
                     </SheetClose>
 
                   ) : (

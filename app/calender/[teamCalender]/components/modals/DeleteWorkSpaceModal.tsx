@@ -90,11 +90,11 @@ const DeleteWorkSpaceModal: React.FC<ConfirmModalProps> = ({
             as="h3" 
             className="text-base font-semibold leading-6 text-gray-900"
           >
-            Delete conversation
+            Delete team
           </Dialog.Title>
           <div className="mt-2">
           <p className={clsx(`text-sm`, currentTheme == "dark" ? "text-gray-300" : "text-gray-600")}>
-              Are you sure you want to delete this conversation? This action cannot be undone.
+              Are you sure you want to delete this team? This action cannot be undone.
             </p>
           </div>
         </div>
