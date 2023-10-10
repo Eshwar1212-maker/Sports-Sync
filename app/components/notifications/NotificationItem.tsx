@@ -57,12 +57,12 @@ const NotificationItem: FC<NotificationItemProps> = ({
   return (
     <div
       className={clsx(
-        "flex flex-row justify-between gap-6 w-full pt-4 px-2",
+        "flex flex-row justify-between gap-6 w-full pb-2 px-2",
         theme === "light" ? "text-black" : "text-white",
         notification?.accepted === true && "opacity-80 text-gray-700"
       )}
     >
-      <div className="pt-8 w-[156px]">
+      <div className="pt-3 w-[156px]">
         <Image
           className="rounded-[30px] mx-auto"
           alt="recipient image"
@@ -74,7 +74,7 @@ const NotificationItem: FC<NotificationItemProps> = ({
           {formatDistanceToNow(new Date(notification?.createdAt), { addSuffix: true }).replace("about", "")}
         </p>
       </div>
-      <div className="text-sm flex flex-col gap-2 pt-6">
+      <div className="text-sm flex flex-col gap-2 pt-3">
         <div className="">
           <p className="text-[12px]">
             {notification?.title.split(" ")[1] + " " + notification?.title.split(" ")[2] + " "}

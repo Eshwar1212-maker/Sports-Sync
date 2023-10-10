@@ -31,6 +31,9 @@ export async function PATCH(request: Request) {
           },
         },
       });
+
+
+
       await redis.del(`${teamId}team`);
 
       return NextResponse.json(updatedEvent);
