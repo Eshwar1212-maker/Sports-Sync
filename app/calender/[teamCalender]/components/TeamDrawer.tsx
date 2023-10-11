@@ -126,7 +126,7 @@ export function TeamDrawer({
                   })}
                 </ul>
               </div>
-              <div className="fixed bottom-10">
+              <div className="fixed bottom-4">
                 <div className="flex gap-2 py-3 justify-center mx-auto">
                   <Button className="rounded-md hidden" variant={"five"}>Group Chat</Button>
 
