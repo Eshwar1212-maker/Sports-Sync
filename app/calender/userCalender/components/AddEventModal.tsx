@@ -50,23 +50,19 @@ function AddEventModal({
 
 
 
-  console.log(events);
   
   
   const [updateNotes, setUpdateNotes] = useState(
     selectedEvent?._def?.extendedProps?.notes || ""
   );
   const { toast: toaster } = useToast();
-   console.log(isTeamEvent);
    
 
   useEffect(() => {
-    //console.log(selectedEvent?._def?.publicId, "  ");
     const currentEvent = events.filter((event: Event) => {
      return event.id === selectedEvent?._def?.publicId
   
     })
-    console.log(currentEvent);
     
     if(currentEvent[0]?.teamId){
       setIsTeamEvent(true)
@@ -88,9 +84,7 @@ function AddEventModal({
       return axios.post("/api/events", data);
     },
     {
-      onSuccess: (response) => {
-        console.log(response.data);
-        
+      onSuccess: (response) => {        
         onSave(response.data);
         onClose();
         setAddPrefilledValue(true);
