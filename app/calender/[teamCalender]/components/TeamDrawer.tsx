@@ -79,7 +79,7 @@ export function TeamDrawer({
           <SheetDescription className="">
             <div className="flex justify-between">
               <div className="">
-                <h4 className="font-bold pb-1 text-md ml-[90px] sm:ml-0 ">Moderator</h4>
+                <h4 className="font-bold pb-1 text-md sm:ml-0 ">Moderator</h4>
                 <div className="flex gap-2 py-2">
                   <Image
                     className="rounded-full"
@@ -128,7 +128,7 @@ export function TeamDrawer({
               </div>
               <div className="fixed bottom-10">
                 <div className="flex gap-2 py-3 justify-center mx-auto">
-                  <Button className="rounded-md" variant={"five"}>Group Chat</Button>
+                  <Button className="rounded-md hidden" variant={"five"}>Group Chat</Button>
 
                   {currentUser?.name?.includes(admin as string) ? (
                     <SheetClose>
