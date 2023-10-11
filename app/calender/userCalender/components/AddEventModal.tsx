@@ -200,7 +200,7 @@ function AddEventModal({
           date.length > 15 ? date.slice(0, date.length - 15) : date.split("-")[1] + "/" + date.split("-")[2] + "/" + date.split("-")[0]
           }
           </p>
-         {isTeamEvent && <p className="font-light text-[13px]">This is a team event</p>}
+         {isTeamEvent && <p className="font-light text-[13px]">This is a team event part of one of your workspaces</p>}
         </div>
         <div className="border-[1px] border-solid border-gray-600 w-[100%]" />
         <div className="pt-2 pb-1 sm:pl-0">
