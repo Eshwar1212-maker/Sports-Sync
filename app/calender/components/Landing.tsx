@@ -113,7 +113,7 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
               height={400}
               width={400}
               className="mx-auto w-auto"
-              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1612787425944/MMJR2txbo.jpeg"
+              src={calendar}
               aria-label="fullcalenderjs image"
             />
           </div>
