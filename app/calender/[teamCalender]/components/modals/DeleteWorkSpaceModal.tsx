@@ -1,16 +1,12 @@
 'use client';
 
-import React, { Fragment, useCallback, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog } from '@headlessui/react'
 import { FiAlertTriangle } from 'react-icons/fi'
 import axios from 'axios';
 import { useParams, useRouter } from 'next/navigation';
 
 import { toast } from 'react-hot-toast';
-import Modal from '@/app/components/Modal';
 import clsx from 'clsx';
-import { useTheme } from 'next-themes';
-import { IoClose } from 'react-icons/io5';
 import { Button } from '@/components/ui/button';
 import { Modall } from '@/app/conversations/components/ConfirmLeaveModal';
 import { useMutation } from '@tanstack/react-query';
@@ -50,8 +46,6 @@ const DeleteWorkSpaceModal: React.FC<ConfirmModalProps> = ({
 
 
 
-  const { systemTheme, theme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
   
   return (
     <Modall isOpen={isOpen} onClose={onClose}>
@@ -88,12 +82,12 @@ const DeleteWorkSpaceModal: React.FC<ConfirmModalProps> = ({
         >
           <Dialog.Title 
             as="h3" 
-            className="text-base font-semibold leading-6 text-gray-900"
+            className="text-base font-semibold leading-6 text-gray-900 dark:text-white"
           >
             Delete team
           </Dialog.Title>
           <div className="mt-2">
-          <p className={clsx(`text-sm`, currentTheme == "dark" ? "text-gray-300" : "text-gray-600")}>
+          <p className= "text-sm dark:text-gray-300text-gray-600">
               Are you sure you want to delete this team? This action cannot be undone.
             </p>
           </div>
