@@ -1,6 +1,6 @@
 import getEvents from "@/app/actions/getEvents";
 import Sidebar from "@/app/components/sidebar/Sidebar";
-import Calender from "../components/Calender"
+import Calender from "./components/Calender"
 import Link from "next/link";
 import { HiChevronLeft } from "react-icons/hi";
 
@@ -10,8 +10,9 @@ export default async function CalenderLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const userEvents = await getEvents();
+
   
+  const userEvents = await getEvents();
 
   return (
     <Sidebar>

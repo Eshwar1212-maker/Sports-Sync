@@ -5,7 +5,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { FC } from "react";
-import { DayCell } from "../../components/Calender";
+import { DayCell } from "../../userCalender/components/Calender";
 import AddTeamEventModal from "./AddTeamEventModal";
 import { User } from "@prisma/client";
 import { FullTeamEventType } from "@/app/types";

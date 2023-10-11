@@ -4,7 +4,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import AddEventModal from "../userCalender/components/AddEventModal";
+import AddEventModal from "./AddEventModal";
 
 
 
@@ -13,8 +13,7 @@ function Calendar({userEvents}: {userEvents: any}) {
   const [date, setDate] = useState("")
   const [events, setEvents] = useState<any>(userEvents);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [selectedDate, setSelectedDate] = useState("");
-
+  const [selectedDate, setSelectedDate] = useState("");  
   
 
   const handleDateClick = (arg: any) => {

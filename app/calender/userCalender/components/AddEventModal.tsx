@@ -13,6 +13,7 @@ import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { useTheme } from "next-themes";
 import usePreviousNotes from "@/app/hooks/usePreviousNotes";
 import { EventDropDown } from "./EventDropDown";
+import { Event } from "@prisma/client";
 
 const bon = Indie_Flower({
   subsets: ["latin"],
@@ -44,15 +45,35 @@ function AddEventModal({
   const [eventNotes, setEventNotes] = useState("");
   const [updateTitle, setUpdateTitle] = useState(selectedEvent && selectedEvent.title);
   const {specificEventNotes, preFilledTitle, addPrefilledValue, setAddPrefilledValue} = usePreviousNotes(eventTitle, events, setEventTitle)
+  const [isTeamEvent, setIsTeamEvent] = useState(false)
+
+
+
+
+  console.log(events);
+  
   
   const [updateNotes, setUpdateNotes] = useState(
     selectedEvent?._def?.extendedProps?.notes || ""
   );
   const { toast: toaster } = useToast();
-
-  const {theme} = useTheme()
+   console.log(isTeamEvent);
+   
 
   useEffect(() => {
+    //console.log(selectedEvent?._def?.publicId, "  ");
+    const currentEvent = events.filter((event: Event) => {
+     return event.id === selectedEvent?._def?.publicId
+  
+    })
+    console.log(currentEvent);
+    
+    if(currentEvent[0]?.teamId){
+      setIsTeamEvent(true)
+    }else{
+      setIsTeamEvent(false)
+    }
+    
     setUpdateTitle(selectedEvent ? selectedEvent.title : "");
     setUpdateNotes(selectedEvent?._def?.extendedProps?.notes || "");
   }, [selectedEvent]);
@@ -179,10 +200,13 @@ function AddEventModal({
         </div>
 
         <div className="pt-4 pb-2 sm:pl-0">
+          <p>
           {selectedEvent ? selectedDate.split(" ")[0] + ", " + selectedDate.split(" ")[1] + " " + selectedDate.split(" ")[2]
             : 
           date.length > 15 ? date.slice(0, date.length - 15) : date.split("-")[1] + "/" + date.split("-")[2] + "/" + date.split("-")[0]
           }
+          </p>
+         {isTeamEvent && <p className="font-light text-[13px]">This is a team event</p>}
         </div>
         <div className="border-[1px] border-solid border-gray-600 w-[100%]" />
         <div className="pt-2 pb-1 sm:pl-0">
@@ -208,14 +232,14 @@ function AddEventModal({
           {eventTitle?.length > 4 && specificEventNotes.length > 0 && addPrefilledValue && (
             <div
               style={bon.style}
-              className={clsx("flex flex-row gap-1 w-fit rounded-lg my-auto pl-2", theme === "light" && "bg-gray-100")}
+              className="flex flex-row gap-1 w-fit rounded-lg my-auto pl-2 bg-gray-100 dark:bg-inherit"
             >
               <div className="">
-                <p className={clsx("text-[18px] my-3", theme === "light" && "text-gray-600")}>
+                <p className={clsx("text-[18px] my-3 text-gray-600 dark:text-white")}>
                   Work with previous {preFilledTitle}?{" "}
                 </p>
               </div>
-              <div className={clsx("flex gap-2 p-2", theme === "light" && "")}>
+              <div className="flex gap-2 p-2light">
                 <button
                   type="button"
                   aria-label="Checkmark for notes"
