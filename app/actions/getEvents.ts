@@ -12,7 +12,7 @@ const getEvents = async () => {
               id: currentUser.id,
             },
             include: {
-              events: true
+              events: true,
             }
           });
           return userWithEvents?.events 
