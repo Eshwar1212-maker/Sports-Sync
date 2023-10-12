@@ -1,10 +1,10 @@
 import Modal from "@/app/components/Modal";
 import { Button } from "@/components/ui/button";
 import { User } from "@prisma/client";
+import { LucideMessageCircle } from "lucide-react";
 import Image from "next/image";
 import { FC } from "react";
-import toast from "react-hot-toast";
-import { BiMessageSquareAdd } from "react-icons/bi";
+
 interface ProfileModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -42,19 +42,15 @@ const ProfileModal: FC<ProfileModalProps> = ({
             User has not filled out their bio
           </p>
         )}
-        <div className="flex justify-center py-1 gap-4">
-          <Button onClick={() => createConversation()}>Message</Button>
-          {/* <Button
-            onClick={() => {
-              toast.success("Friend request sent!");
-            }}
-            variant="secondary"
-          >
-            Add Friend <BiMessageSquareAdd size={16} className="ml-2" />
-          </Button> */}
+        <div className="flex justify-center py-1 gap-2">
+          <Button className="flex flex-row gap-1" onClick={() => createConversation()}>
+            <p>Message</p>
+            <span><LucideMessageCircle size={18} aria-label="Message" /></span>
+          </Button>
+          
         </div>
         <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-          Joined {user?.createdAt.toString().split("T").slice(0, 1).join(" ")}
+          Joined {user?.createdAt.toString().split(" ")[1] + "/" + user?.createdAt.toString().split(" ")[2] + "/" + user?.createdAt.toString().split(" ")[3]}
         </p>
       </div>
     </Modal>
