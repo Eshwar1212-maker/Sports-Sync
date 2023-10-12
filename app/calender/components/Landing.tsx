@@ -101,7 +101,7 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
             >
               Use our Calendars to visualize your routine
             </h1>
-            <p className={"text-lg sm:text-lg font-ligh"}>
+            <p className={"text-lg sm:text-lg font-light"}>
               Use our Calendar feature to either schedule your own practices and
               workouts, or collaborate with your team so you guys can schedule
               games, practices, events, etc.
@@ -114,7 +114,7 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
               width={400}
               className="mx-auto w-auto"
               src={calendar}
-              aria-label="fullcalenderjs image"
+              aria-label="calendar image"
             />
           </div>
         </div>

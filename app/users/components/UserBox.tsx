@@ -2,12 +2,6 @@
 import Avatar from "@/app/components/Avatar";
 import LoadingModal from "@/app/components/LoadingModal";
 import { User } from "@prisma/client";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@radix-ui/react-tooltip";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import clsx from "clsx";
@@ -15,9 +9,7 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { FiMessageCircle } from "react-icons/fi";
 import ProfileModal from "./ProfileModal";
-import { ActionTooltip } from "@/app/components/ActionToolTip";
 import { cn } from "@/lib/utils";
 
 interface UserBoxProps {
@@ -83,7 +75,7 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
                   </p>
                 </div>
                 <div className="flex gap-2 pl-4">
-                    <button>
+                  <button>
                       <AiOutlineUserAdd
                         className={cn("", theme === "light" && "")}
                         onClick={() => {
@@ -92,17 +84,7 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
                         }}
                         size={24}
                       />
-                    </button>
-                  <ActionTooltip label={`Message ${data.name}`}>
-                    <button>
-                    <FiMessageCircle
-                          className={cn("", theme === "light" && "")}
-                          onClick={() => createConversation()}
-                          size={24}
-                        />
-                    </button>
-                  </ActionTooltip>
-              
+                    </button>              
                 </div>
               </div>
             </div>

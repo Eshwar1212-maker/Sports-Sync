@@ -55,7 +55,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
       onSuccess: (response) => {
         router.refresh();
         router.push(`/conversations/${response.data.id}`);
-        toast.success(`Succesfully created group`);
+        toast.success(`Successfully created group`);
         onClose();
       },
       onError: () => {
@@ -92,11 +92,10 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-12">
-          <div className="border-b border-gray-900/10 pb-10">
+          <div className="border-b border-gray-900/10 pb-10 space-y-5">
             <h2 className={clsx(`text-base font-semibold leading-7`)}>
               Create a group chat
             </h2>
-            <div className="mt-10 flex flex-col gap-y-8"></div>
             <Input
               register={register}
               label="Name"

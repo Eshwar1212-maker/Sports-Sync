@@ -165,7 +165,7 @@ months.forEach((month) => {
       <main>
         <Card className="">
           <Title className="">Days you worked out each month</Title>
-          <AreaChart
+          <LineChart
             className="mt-46"
             data={chartdata}
             index="year"

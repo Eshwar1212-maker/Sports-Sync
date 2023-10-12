@@ -78,10 +78,10 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
         <Dialog as="div" className="relative z-50" onClose={onClose}>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-500"
+            enter="ease-out duration-100"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-500"
+            leave="ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -101,24 +101,19 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                   leaveTo="translate-x-full"
                 >
                   <Dialog.Panel className="pointer-events-auto w-screen max-w-md ">
-                    <div className="flex h-full flex-col overflow-y-scroll py-6 shadow-xl bg-white dark:bg-black">
-                      <div className="px-4 sm:px-6">
-                        <div className="flex items-start justify-end">
-                          <div className="ml-3 flex h-7 items-center py-8">
+                    <div className="flex h-full flex-col py-3 shadow-xl bg-white dark:bg-black">
+                    <div className="flex items-start justify-end pr-4">
+                          <div className=" flex h-7 items-center">
                             <button
                               type="button"
-                              className={clsx(
-                                "rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                              )}
-                              onClick={onClose}
-                            >
+                              className="rounded-md focus:outline-none "
+                              onClick={onClose}>
                               <span className="sr-only">Close panel</span>
                               <IoClose size={24} aria-hidden="true" />
                             </button>
                           </div>
                         </div>
-                      </div>
-                      <div className="relative flex-1 px-4 sm:px-6">
+                      <div className="relative flex-1 px-4 sm:px-6 my-20">
                         <div className="flex flex-col items-center">
                           <div className="mb-2">
                             {data.isGroup ? (
@@ -240,7 +235,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                   >
                                     {data.users.map((user: any) => {
                                       return (
-                                        <div className="flex justify-between gap-2 py-3">
+                                        <div className="flex justify-between gap-2 py-3 overflow-y-scroll">
                                           <div className="flex gap-2">
                                             <Avatar user={user} />
                                             <p className="my-auto text-[11px]">
