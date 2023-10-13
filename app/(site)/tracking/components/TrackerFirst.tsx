@@ -35,7 +35,7 @@ const TrackerFirst: FC<TrackerFirstProps> = ({}) => {
         </Col>
         <Card className=" bg-slate-100">
           <Metric className="font-thin py-8 text-xl md:text-2xl xl:my-10 max-h-[146px] xl:max-h-auto">
-            Athletes who dont lift, train, and get stronger are simply behind,
+            Athletes who don't lift, train, and get stronger are simply behind,
             were here to help you get started, and never stop.
           </Metric>
         </Card>

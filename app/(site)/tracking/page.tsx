@@ -51,7 +51,8 @@ const page = () => {
       <div className="flex gap-4 sm:gap-2 justify-center flex-col md:flex-row max-w-[60%] mx-auto">
         <button
           onClick={() => router.push("/auth")}
-          className="flex h-20 flex-row gap-2 py-4 px-4 bg-slate-200 hover:bg-blue-200 hoer:text-slate-100 transition border-slate-300 duration-500"
+          className="bg-blue-50 w-fit hover:bg-blue-700 flex gap-1
+          border-black border-[1px] duration-300 text-sm transition ease-in-out md:text-md lg:text-lg p-3 md:p-5 hover:text-white rounded-sm"
         >
           <p className="mx-auto my-auto">Start Tracking</p>
           <span className="my-auto">
@@ -60,7 +61,7 @@ const page = () => {
         </button>
         <button
           onClick={() => router.push("/guide")}
-          className="py-2 h-20 md:py-4 px-4 bg-white border-[1px] border-slate-400 hover:bg-slate-100 transition duration-500"
+          className="py-2 h-20 md:py-4 px-4 bg-black border-[1px] text-white hover:opacity-90"
         >
           Read how to start utilizing Synced now
         </button>

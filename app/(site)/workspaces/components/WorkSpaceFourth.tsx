@@ -4,6 +4,7 @@ import Image from "next/image";
 import { FC, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useRouter } from "next/navigation";
 
 interface WorkSpaceFourthProps {}
 const WorkSpaceFourth: FC<WorkSpaceFourthProps> = ({}) => {
@@ -14,19 +15,32 @@ const WorkSpaceFourth: FC<WorkSpaceFourthProps> = ({}) => {
       offset: 50,
     });
   }, []);
+  const router = useRouter();
 
   return (
-    <div id="" className=" bg-white h-[72vh] lg:h-[760px] py-20 md:py-11 w-full">
+    <div
+      id=""
+      className=" bg-white h-[72vh] lg:h-[760px] py-20 md:py-11 w-full"
+    >
       <div
-          data-aos="fade-up"
-          data-aos-duration="3000"
+        data-aos="fade-up"
+        data-aos-duration="3000"
         className="flex flex-col lg:flex-row lg:justify-between sm:max-w-[900px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1400px] mx-auto h-[400px] lg:py-11"
       >
-        <div
-          className="mx-auto my-auto max-w-[350px] sm:max-w-[500px] pt-[70px] pb-10 lg:py-[120px] text-2xl lg:text-4xl"
-        >
-          Customize your program or use out templates. The grind starts when
-          nobody's watching.
+        <div className="mx-auto flex gap-4 flex-col my-auto max-w-[350px] sm:max-w-[500px] pt-[70px] pb-10 lg:py-[120px] text-2xl lg:text-4xl">
+          <p>
+            Customize your program or use out templates. The grind starts when
+            nobody's watching.
+          </p>
+
+          <button
+            aria-label="Get Started, create your account"
+            onClick={() => router.push("/auth")}
+            className="bg-blue-50 w-fit hover:bg-blue-700
+             border-black border-[1px] duration-300 text-sm transition ease-in-out md:text-md lg:text-xl p-3 md:p-5 hover:text-white rounded-sm"
+          >
+            Create your program now
+          </button>
         </div>
         <div
           data-aos="fade-left"
