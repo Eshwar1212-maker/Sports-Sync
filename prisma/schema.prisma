@@ -120,7 +120,7 @@ model Notifications {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   userId    String   @db.ObjectId
-  accepted Boolean @default(false)
+  accepted Boolean? @default(false)
   recipient String[]
   recipientImage String
   groupId   String
