@@ -33,30 +33,31 @@ const WorkSpaceHero: FC<heroProps> = ({}) => {
           <br />
           We're here to help you have as strong a season as ever.
         </p>
-        <div className="text-[13px] sm:text-lg flex gap-6 sm:gap-8 py-2">
+        <div className="text-[13px] sm:text-lg flex gap-6 sm:gap-12 py-2">
           <button onClick={onClickFirst} className="hover:underline">
-            Collaborative
+            Collaborate
           </button>
           <button onClick={onClickSecond} className="hover:underline">
-            Convenient
+            Track
           </button>
           <button onClick={onClickThird} className="hover:underline">
-            Managed
+            Plan
           </button>
           <button
             onClick={onClickThird}
             className="text-blue-700 cursor-default"
           >
-            Succeeded
+            Succeed
           </button>
         </div>
         <div className="hidden md:block mx-auto">
-          <button
-            onClick={() => router.push("/auth")}
-            className="flex flex-row gap-2 py-6 px-6 text-xl bg-slate-200 hover:bg-blue-200 hoer:text-slate-100 transition border-slate-300 duration-500"
-          >
-            Lets Get Your Workspace Set Up
-          </button>
+        <button
+              aria-label="Get Started, create your account"
+              onClick={() => router.push("/auth")}
+              className="bg-blue-600 hover:bg-blue-700 transition ease-in-out duration-200 text-sm md:text-md lg:text-xl p-3 md:p-5 text-white rounded-sm"
+            >
+              Start planning now
+            </button>
         </div>
       </div>
       <div className="my-auto max-w-[89%] sm:max-w-[80%] lg:max-w-full mx-auto">
@@ -76,7 +77,7 @@ const WorkSpaceHero: FC<heroProps> = ({}) => {
       <div className="md:hidden mx-auto">
         <button
           onClick={() => router.push("/auth")}
-          className="p-5 border-[1px] border-black text-md sm:text-xl hover:bg-blue-300 hover:text-white transition ease-out duration-300"
+          className="p-5 border-[1px] border-black text-white text-md sm:text-xl bg-blue-600 hover:bg-blue-700 transition ease-in-out duration-200"
         >
           Lets Get Your Workspace Set Up
         </button>

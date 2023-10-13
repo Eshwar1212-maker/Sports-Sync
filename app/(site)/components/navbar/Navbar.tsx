@@ -10,6 +10,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import WorkSpaceAccordians, { TrackingAccordian } from "./Accordians";
 import { cn } from "@/lib/utils";
+import clsx from "clsx";
 const itemVariants: any = {
   open: {
     opacity: 1,
@@ -44,13 +45,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
               router.push("/");
               setIsOpen(false);
             }}
-            className={cn(
-              "text-2xl cursor-pointer",
-              pathName === "/tracking" && "text-blue-900",
-              pathName === "/" && "text-blue-700",
-              pathName === "/workspaces" && "text-blue-500"
-            )}
-          >
+            className={clsx("text-2xl cursor-pointer font-light", pathName === "/tracking" ? "" : "text-blue-700")}>
             Synced
           </div>
           <NavBarItem />

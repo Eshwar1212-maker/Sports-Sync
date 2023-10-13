@@ -28,6 +28,10 @@ const NotificationItem: FC<NotificationItemProps> = ({
 
   
   const router = useRouter();
+  const pathName = usePathname()
+ 
+  
+
 
   const {
     mutate: invitationResponseMutation,
@@ -35,7 +39,7 @@ const NotificationItem: FC<NotificationItemProps> = ({
     isError,
   } = useMutation({
     mutationFn: () => {
-      return axios.patch("/api/notifications/invitations/response", {
+      return axios.patch("/api/notifications/groupchat/response", {
         response: invitationResponse,
         notificationId: notification?.id,
         groupChatId: notification?.groupId,
@@ -43,8 +47,11 @@ const NotificationItem: FC<NotificationItemProps> = ({
     },
     onSuccess: (response) => {
       if (invitationResponse) {
-        toast.success(`Succesfully added to group, redirecting`);
+        toast.success(`Successfully added to group, redirecting`);
         router.push(`/conversations/${notification?.groupId}`);
+        if(pathName?.includes("conversations")){
+          window.location.reload()
+        }
       } else {
         toast.success("Invitation declined");
         handleDelete(notification?.id);

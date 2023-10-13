@@ -5,6 +5,7 @@
         "daygrid",
         "edidted",
         "fullcalendar",
+        "groupchat",
         "headlessui",
         "lucide",
         "Moda",
@@ -12,6 +13,7 @@
         "noti",
         "personalrecords",
         "tanstack",
-        "timegrid"
+        "timegrid",
+        "undertraining"
     ]
 }

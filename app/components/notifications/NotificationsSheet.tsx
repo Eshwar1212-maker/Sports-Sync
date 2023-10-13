@@ -18,6 +18,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AllNotifications from "./AllNotifications";
 import EventNotifications from "./EventNotifications";
 import PersonalRecordNotifications from "./PersonalRecordNotifications";
+import MessageNotifications from "./MessageNotifications";
 
 export function NotificationsSheet({ notifications }: any) {
   const [currentNotifications, setCurrentNotifications] =
@@ -77,7 +78,7 @@ export function NotificationsSheet({ notifications }: any) {
             <AllNotifications notifications={notifications} currentNotifications={currentNotifications} handleDelete={handleDelete}/>
             </TabsContent>
             <TabsContent value="messages">
-            <AllNotifications notifications={notifications} currentNotifications={currentNotifications} handleDelete={handleDelete}/>
+              <MessageNotifications notifications={notifications} currentNotifications={currentNotifications} handleDelete={handleDelete}/>
             </TabsContent>
             <TabsContent value="events">
               <EventNotifications />

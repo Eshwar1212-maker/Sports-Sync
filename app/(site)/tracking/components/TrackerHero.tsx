@@ -20,7 +20,7 @@ const TrackerHero: FC<heroProps> = ({}) => {
   }
 
   return (
-    <div className="flex flex-col mx-auto py-[120px] sm:py-[190px] lg:py-[170px] space-y-16">
+    <div className="flex flex-col mx-auto py-[120px] sm:py-[190px] lg:py-[121px] space-y-16">
       <div className=" my-auto space-y-3 sm:space-y-4 w-[76%] lg:w-[60%] xl:w-[50%] mx-auto">
         <h1 className="text-3xl sm:text-5xl lg:text-6xl 2xl:text-7xl">
           Charts tracking every inch of your progress
@@ -59,13 +59,14 @@ const TrackerHero: FC<heroProps> = ({}) => {
           />
         </div>
       </div>
-      <div className="mx-auto flex flex-row gap-4">
-        <div className="flex flex-row gap-2">
+      <div className="mx-auto flex flex-row gap-2">
+        <div className="flex flex-row gap-1">
           <button
             onClick={() => router.push("/auth")}
-            className="flex flex-row gap-2 py-4 px-4 bg-slate-200 hover:bg-blue-200 hoer:text-slate-100 transition border-slate-300 duration-500"
+            className="bg-blue-50 hover:bg-blue-700 flex gap-1
+            border-black border-[1px] duration-300 text-sm transition ease-in-out md:text-md lg:text-lg p-3 md:p-5 hover:text-white rounded-sm"
           >
-            <p>Start Tracking</p>
+            <p className="my-auto">Start Tracking</p>
             <span className="my-auto">
               <AiOutlineArrowRight size={20} />
             </span>
@@ -73,7 +74,8 @@ const TrackerHero: FC<heroProps> = ({}) => {
         </div>
         <button
           onClick={scrollToFirst}
-          className="px-7 py-3 sm:py-4 bg-black text-white "
+          className="bg-black text-white hover:opacity-90
+          border-black border-[1px] duration-300 text-sm transition ease-in-out md:text-md lg:text-lg p-3 md:p-5 rounded-sm"
         >
           Learn More
         </button>
