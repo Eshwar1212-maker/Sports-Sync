@@ -9,16 +9,6 @@ export async function PATCH(request: Request) {
     const {notificationId, groupChatId } = body;
 
     //DELETE THE NOTIFICATION, SINCE A USER WILL ACCEPT, OR DELETE
-    const notification = await prisma.notifications.update({
-      where: {
-        id: notificationId,
-      },
-      data: {
-        accepted: false,
-      },
-    });
-
-    let newConversation = null;
 
 
       await prisma.notifications.delete({
@@ -28,8 +18,8 @@ export async function PATCH(request: Request) {
       })
     
 
-    return NextResponse.json({ notification, newConversation });
-  } catch (error) {
+      return new NextResponse("Ok", { status: 200 });
+    } catch (error) {
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
