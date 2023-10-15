@@ -47,7 +47,9 @@ export async function POST(request: Request) {
       },
     });
 
-    return NextResponse.json(notificationRequest);
+    return new NextResponse('Notification Created', { status: 200 });
+
+
   } catch (error) {
     return new NextResponse("Internal Error", { status: 500 });
   }

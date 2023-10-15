@@ -233,9 +233,9 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                       "mt-1 text-sm sm:col-span-2 whitespace-pre-wrap md:w-[269px] max-w-[600px] border-b-2 mx-9"
                                     )}
                                   >
-                                    {data.users.map((user: any) => {
+                                    {data.users.map((user: any, i) => {
                                       return (
-                                        <div className="flex justify-between gap-2 py-3 overflow-y-scroll">
+                                        <div key={i} className="flex justify-between gap-2 py-3 overflow-y-scroll">
                                           <div className="flex gap-2">
                                             <Avatar user={user} />
                                             <p className="my-auto text-[11px]">

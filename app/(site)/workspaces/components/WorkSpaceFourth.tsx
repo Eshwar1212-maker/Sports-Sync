@@ -27,7 +27,7 @@ const WorkSpaceFourth: FC<WorkSpaceFourthProps> = ({}) => {
         data-aos-duration="3000"
         className="flex flex-col lg:flex-row lg:justify-between sm:max-w-[900px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1400px] mx-auto h-[400px] lg:py-11"
       >
-        <div className="mx-auto flex gap-4 flex-col my-auto max-w-[350px] sm:max-w-[500px] pt-[70px] pb-10 lg:py-[120px] text-2xl lg:text-4xl">
+        <div className="mx-auto flex gap-4 flex-col my-auto max-w-[350px] sm:max-w-[500px] pt-[70px] pb-10 lg:py-[70px] text-2xl lg:text-4xl">
           <p>
             Customize your program or use out templates. The grind starts when
             nobody's watching.
@@ -36,10 +36,10 @@ const WorkSpaceFourth: FC<WorkSpaceFourthProps> = ({}) => {
           <button
             aria-label="Get Started, create your account"
             onClick={() => router.push("/auth")}
-            className="bg-blue-50 w-fit hover:bg-blue-700
-             border-black border-[1px] duration-300 text-sm transition ease-in-out md:text-md lg:text-xl p-3 md:p-5 hover:text-white rounded-sm"
+            className="bg-white w-fit hover:bg-blue-700
+             border-black border-[1px] duration-300 text-sm transition ease-in-out md:text-md lg:text-xl p-3 md:p-5 hover:text-white rounded-sm mx-auto lg:mx-0"
           >
-            Create your program now
+            Create your schedule now
           </button>
         </div>
         <div
