@@ -22,18 +22,15 @@ export function NotificationsSheet({ notifications }: any) {
     useState(notifications);
 
   const eventNotifications = currentNotifications.filter((n: any) => {
-    console.log(n.recipientImage);
     return n.recipientImage === null
   })
   const messageNotifications = currentNotifications.filter((n: any) => {
-    console.log(n.recipientImage);
     return n.recipientImage !== null
   })
 
 
 
   const handleDelete = (id: string) => {
-    console.log("Handle delete function ");
     
     const updatedNotifications = currentNotifications.filter(
       (noti: any) => noti.id !== id
