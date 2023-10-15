@@ -18,7 +18,6 @@ const usePreviousNotes = (eventTitle: string, events: any, setEventTitle: any) =
             }
           })
           .sort((a: any, b: any) => b.notes.length - a.notes.length); 
-         console.log(newEvents[0]?.title);
          
         setSpecificEventNotes(newEvents);
         setPreFilledTitle(newEvents[0]?.title)

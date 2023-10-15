@@ -10,10 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { IoIosNotifications, IoIosNotificationsOutline } from "react-icons/io";
-import { useTheme } from "next-themes";
-import NotificationItem from "./NotificationItem";
 import { useState } from "react";
-import clsx from "clsx";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AllNotifications from "./AllNotifications";
 import EventNotifications from "./EventNotifications";
@@ -24,7 +21,20 @@ export function NotificationsSheet({ notifications }: any) {
   const [currentNotifications, setCurrentNotifications] =
     useState(notifications);
 
+  const eventNotifications = currentNotifications.filter((n: any) => {
+    console.log(n.recipientImage);
+    return n.recipientImage === null
+  })
+  const messageNotifications = currentNotifications.filter((n: any) => {
+    console.log(n.recipientImage);
+    return n.recipientImage !== null
+  })
+
+
+
   const handleDelete = (id: string) => {
+    console.log("Handle delete function ");
+    
     const updatedNotifications = currentNotifications.filter(
       (noti: any) => noti.id !== id
     );
@@ -35,13 +45,7 @@ export function NotificationsSheet({ notifications }: any) {
     <div className="grid grid-cols-2 relative">
       <Sheet>
         <SheetTrigger asChild>
-          <div
-            className={
-              notifications?.length > 0
-                ? "mx-auto flex flex-col"
-                : "mx-auto flex flex-col"
-            }
-          >
+          <div className={notifications?.length > 0 ? "mx-auto flex flex-col" : "mx-auto flex flex-col"}>
             {notifications?.length > 0 && (
               <span className="mb-7 ml-[7px] mx-auto pl-[6px] text-sm">
                 {notifications?.length}
@@ -78,10 +82,10 @@ export function NotificationsSheet({ notifications }: any) {
             <AllNotifications notifications={notifications} currentNotifications={currentNotifications} handleDelete={handleDelete}/>
             </TabsContent>
             <TabsContent value="messages">
-              <MessageNotifications notifications={notifications} currentNotifications={currentNotifications} handleDelete={handleDelete}/>
+              <MessageNotifications notifications={notifications} currentNotifications={messageNotifications} handleDelete={handleDelete}/>
             </TabsContent>
             <TabsContent value="events">
-              <EventNotifications />
+              <EventNotifications notifications={notifications} currentNotifications={eventNotifications} handleDelete={handleDelete}/>
             </TabsContent>
             <TabsContent value="personalrecords">
               <PersonalRecordNotifications />

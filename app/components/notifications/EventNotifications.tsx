@@ -1,17 +1,49 @@
+"use client"
+
 import { SheetDescription } from '@/components/ui/sheet'
+import clsx from 'clsx'
 import { FC } from 'react'
-interface EventNotificationsProps {
-  
+import NotificationItem from './NotificationItem'
+interface AllNotificationsProps {
+  notifications: any
+  currentNotifications: any
+  handleDelete: any
 }
-const EventNotifications: FC<EventNotificationsProps> = ({
-  
+const EventNotifications: FC<AllNotificationsProps> = ({
+    notifications, currentNotifications, handleDelete
 }) => {
+
+
+
   return (
-    <SheetDescription className='py-[300px] items-center text-center flex justify-center flex-col overflow-y-scroll max-h-[830px]'>
-    <p className="text-2xl">No new events</p>
-    <p className="py-2 px-3 text-md">
-      You will get notified when a new event is added if you are in a team workspace.
-    </p>
+    <SheetDescription
+    className={clsx(
+      "items-center text-center flex justify-center flex-col overflow-y-scroll max-h-[830px]",
+      notifications?.length === 0 && "my-[0px] py-[300px]"
+    )}
+  >
+    {notifications?.length === 0 && (
+      <div>
+        <p className="text-2xl">No new events</p>
+        <p className="py-2 px-3 text-md">
+          You will get notifications when someone in a workspace adds an event.
+        </p>
+      </div>
+    )}
+
+    {currentNotifications?.map((notification: any) => {
+      return (
+        <div
+          key={notification.id}
+          className="border-b-[3px] border-b-slate-600"
+        >
+          <NotificationItem
+            handleDelete={handleDelete}
+            notification={notification}
+          />
+        </div>
+      );
+    })}
   </SheetDescription>
   )
 }

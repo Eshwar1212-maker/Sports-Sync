@@ -27,7 +27,6 @@ const TeamCalender: FC<TeamCalenderProps> = ({team, currentUser}) => {
   };
 
   const handleDateClick = (arg: any) => {
-    //console.log(arg);
     setIsOpen(true)
     setDate(arg.dateStr)
     setSelectedEvent(null)

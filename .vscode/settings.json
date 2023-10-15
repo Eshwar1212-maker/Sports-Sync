@@ -4,6 +4,7 @@
         "clsx",
         "daygrid",
         "edidted",
+        "eventnotification",
         "fullcalendar",
         "groupchat",
         "headlessui",
@@ -12,6 +13,7 @@
         "Modall",
         "noti",
         "personalrecords",
+        "prismadb",
         "tanstack",
         "timegrid",
         "undertraining"

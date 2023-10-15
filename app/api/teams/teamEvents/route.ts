@@ -40,9 +40,9 @@ export async function POST(request: Request) {
       },
       select: {
         userIds: true,
+        id: true
       },
     });
-    console.log("TEAMS USER ID's: ", team?.userIds);
     const teamMembers = team?.userIds.map(async (member: string) => {
       return await prisma.user.findUnique({
         where: {
@@ -54,8 +54,20 @@ export async function POST(request: Request) {
       });
     });
 
-    const teamMemberEmails = await (await Promise.all(teamMembers!)).map((m) => m?.email)
-    console.log("TEAM MEMBERS: ", teamMemberEmails);
+    const teamMemberEmails = (await Promise.all(teamMembers!)).map((m) => m?.email)
+
+    const eventNotification = await prisma.notifications.create({
+      data: {
+        title: title,
+        groupId: team?.id!,
+        recipient: teamMemberEmails as string[],
+        user: {
+          connect: {
+            id: currentUser.id,
+          },
+        },
+      },
+    });
 
  
 
@@ -64,7 +76,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json(newEvent);
   } catch (error) {
-    console.log(error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
