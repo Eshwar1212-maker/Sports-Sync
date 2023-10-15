@@ -20,6 +20,8 @@ import MessageNotifications from "./MessageNotifications";
 export function NotificationsSheet({ notifications }: any) {
   const [currentNotifications, setCurrentNotifications] =
     useState(notifications);
+  
+  const [notificationLength, setNotificationLength] = useState<number>(notifications?.length)
 
   const eventNotifications = currentNotifications.filter((n: any) => {
     return n.recipientImage === null
@@ -31,24 +33,24 @@ export function NotificationsSheet({ notifications }: any) {
 
 
   const handleDelete = (id: string) => {
-    
     const updatedNotifications = currentNotifications.filter(
       (noti: any) => noti.id !== id
     );
     setCurrentNotifications(updatedNotifications);
+    setNotificationLength(notificationLength - 1)
   };
 
   return (
     <div className="grid grid-cols-2 relative">
       <Sheet>
         <SheetTrigger asChild>
-          <div className={notifications?.length > 0 ? "mx-auto flex flex-col" : "mx-auto flex flex-col"}>
-            {notifications?.length > 0 && (
+          <div className={notificationLength > 0 ? "mx-auto flex flex-col" : "mx-auto flex flex-col"}>
+            {notificationLength > 0 && (
               <span className="mb-7 ml-[7px] mx-auto pl-[6px] text-sm">
-                {notifications?.length}
+                {notificationLength}
               </span>
             )}
-            {notifications?.length > 0 ? (
+            {notificationLength > 0 ? (
               <IoIosNotifications
                 className={notifications?.length > 0 ? " my-[-33px]" : ""}
                 size={35}
@@ -56,7 +58,7 @@ export function NotificationsSheet({ notifications }: any) {
               />
             ) : (
               <IoIosNotificationsOutline
-                className={notifications?.length > 0 ? " my-[-33px]" : ""}
+                className={notificationLength > 0 ? " my-[-33px]" : ""}
                 size={35}
                 color=""
               />
