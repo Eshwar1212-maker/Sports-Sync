@@ -76,7 +76,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <main className="mt-[120px] py-10 bg-blue-50">
+      <main className="mt-[120px] py-10">
         <h2 className="text-lg py-2 sm:py-14 md:py-4 sm:text-[22px] xl:text-2xl text-center font-bold px-4 max-w-[630px] mx-auto">
           Use our calendar, workout tracker, messaging system, and
           fitness dashboard to reach your goals.
