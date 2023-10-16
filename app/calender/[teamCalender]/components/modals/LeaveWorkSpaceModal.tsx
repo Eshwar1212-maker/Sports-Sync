@@ -1,17 +1,14 @@
 'use client';
 
-import React, { Fragment, useCallback, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import React, { useCallback, useState } from 'react'
+import { Dialog } from '@headlessui/react'
 import { FiAlertTriangle } from 'react-icons/fi'
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 import useConversation from '@/app/hooks/useConversation';
 import { toast } from 'react-hot-toast';
-import Modal from '@/app/components/Modal';
 import clsx from 'clsx';
-import { useTheme } from 'next-themes';
-import { IoClose } from 'react-icons/io5';
 import { Button } from '@/components/ui/button';
 import { Modall } from '@/app/conversations/components/ConfirmLeaveModal';
 
@@ -47,8 +44,7 @@ const LeaveWorkSpaceModal: React.FC<ConfirmModalProps> = ({
       )
   }, [router, conversationId, onClose]);
 
-  const { systemTheme, theme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
+
   
   return (
     <Modall isOpen={isOpen} onClose={onClose}>
@@ -90,7 +86,7 @@ const LeaveWorkSpaceModal: React.FC<ConfirmModalProps> = ({
             Delete conversation
           </Dialog.Title>
           <div className="mt-2">
-          <p className={clsx(`text-sm`, currentTheme == "dark" ? "text-gray-300" : "text-gray-600")}>
+          <p className="text-sm dark:text-gray-300 text-gray-600">
               Are you sure you want to delete this conversation? This action cannot be undone.
             </p>
           </div>
