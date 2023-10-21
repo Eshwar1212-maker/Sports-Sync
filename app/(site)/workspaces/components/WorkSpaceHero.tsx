@@ -54,7 +54,7 @@ const WorkSpaceHero: FC<heroProps> = ({}) => {
         <button
               aria-label="Get Started, create your account"
               onClick={() => router.push("/auth")}
-              className="bg-white hover:bg-blue-700 border-black border-[1px] transition ease-in-out duration-200 text-sm md:text-md lg:text-xl p-3 md:p-5 text-black rounded-sm"
+              className="bg-white hover:bg-blue-700 border-black border-[1px] hover:text-white transition ease-in-out duration-200 text-sm md:text-md lg:text-xl p-3 md:p-5 text-black rounded-sm"
             >
               Start planning now
             </button>
