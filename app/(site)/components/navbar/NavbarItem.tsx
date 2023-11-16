@@ -46,8 +46,9 @@ export function NavBarItem() {
             onMouseLeave={handleClose}
             onMouseEnter={handleOpen}
             onClick={(e) => e.preventDefault()}
+            data-test="getting-started-NavItem"
           >
-            Getting started
+            Getting Started
           </NavigationMenuTrigger>
           <NavigationMenuContent className="  md:w-[100vw]">
             <ul className="grid gap-3 p-6 max-w-[800px] lg:grid-cols-[.75fr_1fr] mx-auto">
@@ -109,6 +110,7 @@ export function NavBarItem() {
             onMouseLeave={handleClose}
             onMouseEnter={handleOpen}
             onClick={(e) => e.preventDefault()}
+            data-test="Workspaces-NavItem"
           >
             Workspaces
           </NavigationMenuTrigger>
@@ -175,6 +177,7 @@ export function NavBarItem() {
             onMouseLeave={handleClose}
             onMouseEnter={handleOpen}
             onClick={(e) => e.preventDefault()}
+            data-test="Tracking-NavItem"
           >
             Tracking
           </NavigationMenuTrigger>
@@ -231,6 +234,7 @@ export function NavBarItem() {
             onMouseLeave={handleClose}
             onMouseEnter={handleOpen}
             onClick={(e) => e.preventDefault()}
+            data-test="About-NavItem"
           >
             About
           </NavigationMenuTrigger>

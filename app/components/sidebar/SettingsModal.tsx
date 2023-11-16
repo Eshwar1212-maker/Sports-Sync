@@ -86,9 +86,11 @@ const SettingsModal: React.FC<SettingsModal> = ({
                 errors={errors}
                 required
                 register={register}
+                data-testid="user-name"
               />
               <label className="block text-sm font-md leading-6">Bio</label>
               <input
+                data-testid="user-bio"
                 placeholder={
                   currentUser?.bio
                     ? undefined
@@ -114,6 +116,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
                       currentUser?.image ||
                       placeHolderImage
                     }
+                    data-testid="user-image"
                   />
                   <CldUploadButton
                     options={{ maxFiles: 1 }}

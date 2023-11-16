@@ -74,7 +74,6 @@ export async function POST(
 
         return NextResponse.json(newMessage)
     }catch(error){
-        
         return new NextResponse('Internal Error', {status: 500})
     }
 }
