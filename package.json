@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run test && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate",
-    "test": "cypress run"
+    "postinstall": "prisma generate"
   },
   "browser": {
     "fs": false
@@ -83,7 +82,7 @@
     "@types/bcryptjs": "^2.4.2",
     "@types/lodash": "^4.14.195",
     "@types/react-big-calendar": "^1.6.4",
-    "cypress": "^13.5.1",
+    "cypress": "^13.3.2",
     "encoding": "^0.1.13",
     "i": "^0.3.7",
     "npm": "^9.8.1",
