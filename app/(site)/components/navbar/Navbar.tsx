@@ -1,11 +1,10 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
-import { PT_Sans } from "next/font/google";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { FC, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { NavBarItem } from "./NavbarItem";
 import { RiMenu3Line } from "react-icons/ri";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import WorkSpaceAccordians, { TrackingAccordian } from "./Accordians";
@@ -20,12 +19,6 @@ const itemVariants: any = {
   closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
 };
 
-const inter = PT_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-sans",
-  weight: "400",
-});
 
 interface NavbarProps {
   isHome?: boolean;
@@ -41,6 +34,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
       <header className={cn("flex flex-col px-5 sm:px-8 py-4 text-black fixed top-0 w-full z-20 bg-white")}>
         <div className="flex justify-between">
           <div
+            data-test="navbar-logo"
             onClick={() => {
               router.push("/");
               setIsOpen(false);
@@ -54,6 +48,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
               <button
                 className="mr-4 hidden sm:block"
                 onClick={() => router.push("/auth")}
+                data-test="sign-in-button"
               >
                 SIGN IN
               </button>

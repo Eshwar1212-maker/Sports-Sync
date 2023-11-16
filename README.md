@@ -20,6 +20,8 @@ Synced is an all in one sports/productivity application for athletes and teams. 
 - Integrated Pusher for real-time web socket communication, allowing teams to create group chats and get instant updates from everyone, fostering great communication. 
 - Utilized  prisma and mongodb for a highly scalable database allowing users to seamlessly post workout logs, calendar events, and messages, along with being able to add a certain workout to their calendar.
 - Employed tremor for beautiful charts tracking user progress, such as consistency, intensity, and progressive overload for every exercise logged.
+- Used Cypress for end to end tests and unit tests to further development experience and safety. 
+
 
 
 ## Prerequisites
