@@ -8,4 +8,4 @@ describe('unauthenticated-nav', () => {
     cy.get('[data-test="Tracking-NavItem"]').contains("Tracking")
     cy.get('[data-test="About-NavItem"]').contains("Abut")
   })
-})
+}) 
