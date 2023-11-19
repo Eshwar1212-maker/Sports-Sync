@@ -1,12 +1,33 @@
 name: End-to-end tests
+
 on: push
+
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # Use the Node.js version that matches your project
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build and Start Server
+      run: |
+        npm run build
+        npm run start &
+      env:
+        # Set environment variables needed for your server if any
+        NEXT_PUBLIC_API_URL: 'http://localhost:3000'
+
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        start: npm run dev
+        wait-on: 'http://localhost:3000'
+        wait-on-timeout: 60 # Increase this if your server takes longer to start
