@@ -49,7 +49,8 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
       return axios.post("/api/register", data);
     },
     {
-      onError: () => {
+      onError: (error) => {
+        console.log(error);
         toast.error("Registration failed");
       },
       onSuccess: () => {
@@ -67,7 +68,8 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
       });
     },
     {
-      onError: () => {
+      onError: (error) => {
+        console.log(error);
         toast.error(
           "Login failed, please make sure you are using the right email and password."
         );
@@ -97,7 +99,9 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
       return signIn(provider, { redirect: false });
     },
     {
-      onError: () => {
+      onError: (error) => {
+        console.log(error);
+        
         toast.error("Social login failed. Please try again.");
       },
       onSuccess: (callback) => {
