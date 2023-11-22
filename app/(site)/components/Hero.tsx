@@ -35,11 +35,13 @@ const Hero = () => {
       <div className="flex flex-col justify-between pb-11 py-20 sm:py-20 sm:my-6 lg:py-20 lg:my-10 h-[65vh] mb-40 md:h-[70vh] lg:flex-row lg:h-[59vh] lg:px-11 xl:px-[100px] 2xl:px-[90px] ">
         <div className="sm:w-full lg:w-1/2 p-4 flex flex-col lg:items-start lg:space-y-6 2xl:pl-40">
           <div className="space-y-5 text-center lg:text-left">
-            <h1 className="text-4xl lg:text-5xl 2xl:text-6xl my-4">
+            <h1 
+            className="text-4xl lg:text-5xl 2xl:text-6xl my-4"
+            data-test="hero-title"
+            >
               The world's best platform for athletes
             </h1>
             <p
-              
               className="text-lg md:text-2xl 2xl:text-4xl font-light"
             >
               Manage everything with Synced to dominate your competition.
@@ -47,6 +49,7 @@ const Hero = () => {
           </div>
           <div className="text-xl my-4 flex justify-center lg:justify-start">
             <button
+              data-test="hero-get-started"
               aria-label="Get Started, create your account"
               onClick={() => router.push("/auth")}
               className="bg-blue-700 hover:bg-blue-600 transition ease-in-out duration-200 text-sm md:text-md lg:text-xl p-3 md:p-5 text-white rounded-sm"

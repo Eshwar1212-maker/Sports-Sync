@@ -22,7 +22,10 @@ const TrackerHero: FC<heroProps> = ({}) => {
   return (
     <div className="flex flex-col mx-auto py-[120px] sm:py-[190px] lg:py-[121px] space-y-16">
       <div className=" my-auto space-y-3 sm:space-y-4 w-[76%] lg:w-[60%] xl:w-[50%] mx-auto">
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl 2xl:text-7xl">
+        <h1 
+        className="text-3xl sm:text-5xl lg:text-6xl 2xl:text-7xl"
+        data-test="tracker-hero-title"
+        >
           Charts tracking every inch of your progress
         </h1>
         <p className="lg:max-w-[900px] text-xl">

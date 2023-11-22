@@ -2,6 +2,7 @@
     "cSpell.words": [
         "Accordians",
         "chartdata",
+        "cloudinary",
         "clsx",
         "conversatin",
         "daygrid",
@@ -17,9 +18,12 @@
         "noti",
         "personalrecords",
         "prismadb",
+        "randomavatar",
         "tanstack",
         "techstack",
+        "testid",
         "timegrid",
-        "undertraining"
+        "undertraining",
+        "Workoutl"
     ]
 }

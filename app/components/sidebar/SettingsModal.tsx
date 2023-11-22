@@ -98,9 +98,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
                 }
                 value={bio || ""}
                 onChange={(e) => setBio(e.target.value)}
-                className={
-                  "form-input block w-full ronded-md border-0 py-1.5 shadow-sm ring-1 px-2 bg-white text-black ring-inset ring-gray-300focus:ring-sky-600 sm:text-sm sm:leading-6"
-                }
+                className="form-input block w-full border-0 py-1.5 shadow-sm ring-1 px-2 bg-white text-black ring-inset ring-gray-300focus:ring-sky-600 sm:text-sm sm:leading-6"
               />
 
               <div className="">
@@ -168,7 +166,6 @@ const SettingsModal: React.FC<SettingsModal> = ({
               />
             </Button>
           </ActionTooltip>
-
           <div className="gap-4 flex">
             <Button
               variant={"secondary"}
@@ -178,7 +175,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
             >
               Cancel
             </Button>
-            <Button className="" disabled={isLoading} type="submit">
+            <Button className="rounded-md" disabled={isLoading} type="submit">
               Save
             </Button>
           </div>

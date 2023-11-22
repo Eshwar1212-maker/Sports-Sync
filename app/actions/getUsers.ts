@@ -23,6 +23,7 @@ const getUsers = async () => {
                     }
                 }
             });
+            
             await redis.set(`${currentUser?.name}users`, JSON.stringify(users));
             await redis.expire(`${currentUser?.name}users`, 20000);
             return users;

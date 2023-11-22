@@ -3,29 +3,18 @@ import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Workout } from "@prisma/client"
 import { useTheme } from "next-themes"
-import { AiOutlineAreaChart, AiOutlineDelete, AiOutlineEdit, AiOutlineLineChart } from "react-icons/ai"
-import { FcAreaChart, FcComboChart } from "react-icons/fc"
+import {AiOutlineEdit } from "react-icons/ai"
+import { FcAreaChart } from "react-icons/fc"
 import { HiEllipsisVertical } from "react-icons/hi2"
 import ProgressionModal from "./ui/ProgressionModal"
 import { useState } from "react"
-import { BiLineChart } from "react-icons/bi"
-import { SlChart } from "react-icons/sl"
-import axios from "axios"
-import { useMutation } from "@tanstack/react-query"
-import { toast } from "react-hot-toast"
 import { useRouter } from "next/navigation"
 
 interface WorkoutDrawerProps{
@@ -41,7 +30,6 @@ export function WorkoutDrawer({exerciseData, onEdit, exerciseName, workouts, wor
   const {theme} = useTheme()
   const [isOpen, setIsOpen] = useState(false)
 
-  const router = useRouter()
 
   
   return (

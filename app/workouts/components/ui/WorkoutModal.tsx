@@ -8,7 +8,6 @@ import { IoClose } from "react-icons/io5";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { Workout } from "@prisma/client";
 import { useTheme } from "next-themes";
 import { Button } from "../../../../components/ui/button";
 import { BiSolidTrash } from "react-icons/bi";
@@ -55,14 +54,17 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const [weight, setWeight] = useState<number>(0);
   const [sets, setSets] = useState<number | null>(0);
   const [reps, setReps] = useState<number | null>(0);
-  const [activeTab, setActiveTab] = useState<string>();
+  const [activeTab, setActiveTab] = useState<string>();  
 
+
+  console.log(editedName, "  ", workoutId);
+  
 
   const personalRecord = usePersonalRecord(title, weight, workoutRecord)  
 
   const handleExerciseSelected = (selectedExercise: string) => {
     setTitle(selectedExercise);
-    setActiveTab("weight");
+    setActiveTab("intensity");
   };
 
   //POST REQUEST, ADDING WORKOUT
@@ -72,6 +74,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     isError,
   } = useMutation(
     (data: {
+      workoutId: string
       title: string;
       weight: number | null;
       sets: number | null;
@@ -82,8 +85,9 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
       return axios.post("/api/workouts", data);
     },
     {
-      onSuccess: (exerciseData) => {
-        handleCallbackExercises(exerciseData.data)
+      onSuccess: (response) => {
+        console.log(response.data);
+        handleCallbackExercises(response.data)
       },
       onError: (error) => {
       },
@@ -135,8 +139,8 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
         handleCallbackExercises({});
       },
       onError: (error) => {
+        console.log(error);
         toast.error("Issue deleting, reload the page if issue persists")
-
       },
     }
   );
@@ -152,6 +156,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
 
   const handleWorkoutAddition = () => {
     const exerciseData = {
+      workoutId,
       title,
       weight,
       sets,
@@ -181,7 +186,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
 
   useEffect(() => {
     if (selectedExercise) {
-      setActiveTab("weight");
+      setActiveTab("intensity");
     } else {
       setActiveTab("exercises");
     }
@@ -201,8 +206,8 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
           </TabsTrigger>
           <TabsTrigger
             className={theme === "light" ? "text-black" : "text-white"}
-            onClick={() => setActiveTab("weight")}
-            value="weight"
+            onClick={() => setActiveTab("intensity")}
+            value="intensity"
           >
             Intensity
           </TabsTrigger>
@@ -226,7 +231,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
         </TabsContent>
         <TabsContent
           className="flex flex-col w-fit mx-auto py-[70px] gap-2 justify-center"
-          value="weight"
+          value="intensity"
         >
           <h3 className="text-2xl mb-3 font-semibold">
             {!selectedExercise ? title : editedName}
