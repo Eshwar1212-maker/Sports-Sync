@@ -22,4 +22,5 @@ export type exercise = {
   weight?: number | null;
   id?: string;
   isPersonalRecord?: boolean
+  workoutId: string
 };

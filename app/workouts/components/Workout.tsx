@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import WorkoutModal from "./ui/AddWorkoutModal";
+import WorkoutModal from "./ui/WorkoutModal";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,15 +11,14 @@ import {
 } from "@/components/ui/popover";
 import { SlCalender } from "react-icons/sl";
 import clsx from "clsx";
-import { useTheme } from "next-themes";
 import { WorkoutDrawer } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
 import { BsFillTrophyFill } from "react-icons/bs";
 import { IoAddOutline } from "react-icons/io5";
 import { exercise } from "@/app/types";
-
-
+import {FaRegCopy } from "react-icons/fa";
+import CopyWorkoutModal from "./ui/CopyWorkoutModal";
 
 interface WorkoutProps {
   workouts: any;
@@ -27,9 +26,9 @@ interface WorkoutProps {
 }
 
 const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
-  
   const [isOpen, setIsOpen] = useState(false);
   const [isSecondOpen, setIsSecondOpen] = useState(false);
+  const [isCopyOpen, setIsCopyOpen] = useState(false)
   const [date, setDate] = useState<any>(new Date());
   const [filteredWorkouts, setFilteredWorkouts] = useState<exercise[]>([]);
   const [editedExerciseName, setEditedExerciseName] = useState("");
@@ -39,18 +38,26 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [selectedExercise, setSelectedExercise] = useState(false);
   const [selectedExerciseId, setSelectedExerciseId] = useState<string>("");
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
-  
+
   const [formattedDate, setFormattedDate] = useState(
     format(date!, "yyyy-MM-dd")
   );
 
   const [workout, setWorkout] = useState("");
 
-  const { theme } = useTheme();
-  
 
-  const handleCallbackExercises = ({ title, weight, reps, sets, isPersonalRecord}: exercise) => {
-    setFilteredWorkouts([...filteredWorkouts, { title, weight, reps, sets, isPersonalRecord}]);
+  const handleCallbackExercises = ({
+    workoutId,
+    title,
+    weight,
+    reps,
+    sets,
+    isPersonalRecord,
+  }: exercise) => {
+    setFilteredWorkouts([
+      ...filteredWorkouts,
+      {workoutId, title, weight, reps, sets, isPersonalRecord },
+    ]);
     setWorkout(
       workout +
         `\n\n - ${title}    \n         ${weight} lbs | ${sets} sets | ${reps} reps`
@@ -75,12 +82,9 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   };
 
   useEffect(() => {
-    const workoutsForSelectedDate = allWorkouts.filter(
-      (workout: any) => {
-        return format(new Date(workout.date), "PPP") === format(date, "PPP")
-
-      }
-    );
+    const workoutsForSelectedDate = allWorkouts.filter((workout: any) => {
+      return format(new Date(workout.date), "PPP") === format(date, "PPP");
+    });
     const workoutsToNotes = workoutsForSelectedDate
       .map((workout) => {
         return `- ${workout.title}    \n         ${workout.weight} lbs | ${workout.sets} sets | ${workout.reps} reps`;
@@ -91,9 +95,11 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
     setFilteredWorkouts(workoutsForSelectedDate);
   }, [date, allWorkouts]);
 
+  console.log(filteredWorkouts);
+  
+
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
-
       <div className="">
         <AddWorkoutToCalenderModal
           isOpen={isSecondOpen}
@@ -139,13 +145,12 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
             </Popover>
           </div>
           <div>
-            <h1
-              className={clsx(
-                "text-lg font-semibold py-1 md:py-3",
-                theme === "light" && "text-gray-800"
-              )}
-            >
-              {date.toString().split(" ")[0] + ", " + date.toString().split(" ")[1] + " " + date.toString().split(" ")[2]}
+            <h1 className="text-lg font-semibold py-1 md:py-3dark:text-gray-800">
+              {date.toString().split(" ")[0] +
+                ", " +
+                date.toString().split(" ")[1] +
+                " " +
+                date.toString().split(" ")[2]}
             </h1>
           </div>
           <div className="">
@@ -161,7 +166,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
             </Button>
             <Button
               variant={"default"}
-              className={"hidden md:block text-[11px] md:text-[13px] py-2 rounded-sm"}
+              className="hidden md:block text-[11px] md:text-[13px] py-2 rounded-md"
               onClick={() => {
                 setSelectedExercise(false);
                 setIsOpen(true);
@@ -177,32 +182,50 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
             <p className="text-2xl text-gray-300 py-[270px] pl-10 pr-3 md:pr-14">
               Workout log empty
             </p>
-          ) : ( 
+          ) : (
             <div className="flex flex-col md:pl-16">
               <ul className="overflow-y-auto flex flex-col gap-3 sm:gap-1 sm:border-b-[2px] border-b-black ">
                 {filteredWorkouts.length > 0 &&
                   filteredWorkouts.map((exerciseData: any) => (
                     <li
                       className="p-3 text-lg flex flex-col gap-4 rounded-sm border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0 relative"
-                      onClick={() => {    
+                      onClick={() => {
+                        console.log(exerciseData);
+                        
                         setSelectedExerciseId(exerciseData.id);
-                   }}
+                      }}
                     >
                       <div className="flex justify-between relative top-0">
                         <div>
-                        <div className="flex flex-row absolute gap-6">
-                          <div>
-                          <h3 className="font-semibold text-lg">
-                            {exerciseData.title} 
-                          </h3>
-                          </div>
+                          <div className="flex flex-row absolute gap-6">
+                            <div>
+                              <h3 className="font-semibold text-lg">
+                                {exerciseData.title}
+                              </h3>
+                            </div>
 
-                          <div>{(exerciseData.isPersonalRecord && exerciseData.weight > 0) ? <BsFillTrophyFill className="mb-4" size={29} color="lightblue" /> : ""}</div>
-                        </div>
+                            <div>
+                              {exerciseData.isPersonalRecord &&
+                              exerciseData.weight > 0 ? (
+                                <BsFillTrophyFill
+                                  className="mb-4"
+                                  size={29}
+                                  color="lightblue"
+                                />
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          </div>
                         </div>
                         <div className="flex flex-col py-0 my-0 top-0">
                           <div
-                           className="pr-1">
+                            onClick={() => {
+                              console.log(selectedExerciseId);
+                              setSelectedExerciseId(exerciseData.id);
+                            }}
+                            className="pr-1"
+                          >
                             <WorkoutDrawer
                               workouts={workouts}
                               exerciseName={exerciseData.title}
@@ -255,6 +278,24 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
             </div>
           )}
         </main>
+        <CopyWorkoutModal 
+        workouts={workouts}
+        isOpen={isCopyOpen}
+        onClose={() => setIsCopyOpen(false)}
+        dateValue={date}
+        handleCallback={(exercises: any) => {
+          setFilteredWorkouts([...filteredWorkouts, ...exercises])
+        }}
+        />
+        {filteredWorkouts.length === 0 && (
+          <div 
+          className="flex sm:hidden lg:flex gap-3 mr-14 lg:mr-20 hover:bg-gray-200 transition ease-in-out duration-200 w-fit cursor-pointer p-3 rounded-lg mx-auto justify-center items-center text-center"
+          onClick={() => setIsCopyOpen(true)}
+          >
+            <FaRegCopy className="" size={30} />
+            <p className="text-lg">Copy previous workout</p>
+          </div>
+        )}
       </div>
     </div>
   );
