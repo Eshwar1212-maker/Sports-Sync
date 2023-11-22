@@ -111,7 +111,7 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
           <div className="max-h-[240px] overflow-y-auto">
             {currentWorkouts.map((w) => {
               return (
-                <div className="flex bg-gray-100 justify-between gap-4 m-2 p-2 rounded-lg">
+                <div className="flex bg-gray-100 dark:bg-inherit justify-between gap-4 m-2 p-2 rounded-lg">
                   <p className="w-[180px] md:w-[300px]">{w.title}</p>
                   <p>{w.reps ? w.reps : 0} reps</p>
                   <p>{w.sets ? w.sets : 0} sets</p>
