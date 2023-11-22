@@ -289,7 +289,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
         />
         {filteredWorkouts.length === 0 && (
           <div 
-          className="flex sm:hidden lg:flex gap-3 mr-14 lg:mr-20 hover:bg-gray-200 transition ease-in-out duration-200 w-fit cursor-pointer p-3 rounded-lg mx-auto justify-center items-center text-center"
+          className="flex sm:hidden lg:flex gap-3 mr-14 lg:mr-20 hover:bg-gray-200 dark:hover:bg-gray-900 transition ease-in-out duration-200 w-fit cursor-pointer p-3 rounded-lg mx-auto justify-center items-center text-center"
           onClick={() => setIsCopyOpen(true)}
           >
             <FaRegCopy className="" size={30} />
