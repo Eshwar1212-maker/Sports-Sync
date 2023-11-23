@@ -54,11 +54,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
   const [weight, setWeight] = useState<number>(0);
   const [sets, setSets] = useState<number | null>(0);
   const [reps, setReps] = useState<number | null>(0);
-  const [activeTab, setActiveTab] = useState<string>();  
-
-
-  console.log(editedName, "  ", workoutId);
-  
+  const [activeTab, setActiveTab] = useState<string>();    
 
   const personalRecord = usePersonalRecord(title, weight, workoutRecord)  
 
@@ -136,7 +132,7 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
         onClose();
         toast.success("Workout deleted");
         updateWorkoutInState(response.data);
-        handleCallbackExercises({});
+        handleCallbackExercises(response.data);
       },
       onError: (error) => {
         console.log(error);
