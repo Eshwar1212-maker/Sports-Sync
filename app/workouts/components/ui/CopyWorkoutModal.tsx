@@ -35,9 +35,6 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
 
 
   console.log(dateValue, "  ", date);
-  
-
-
   useEffect(() => {
     const workoutsForSelectedDate = workouts.filter((workout: any) => {
       return format(new Date(workout.date), "PPP") === format(date, "PPP");
@@ -49,20 +46,17 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
   
 
   const addWorkoutsFunction = async (workouts: exercise[]) => {
-
-    setCurrentWorkouts((prev: any) => {
-      return prev.map((p: any) => {
-        return p.date = dateValue
-      })
-    })
-
     const result = await Promise.allSettled(
       currentWorkouts.map(async(workout) => {
         try{
           const response = await axios.post("api/workouts", {...workout, date: dateValue})
-          return response.data
+          // setCurrentWorkouts((prev: any) => {
+          //   return prev.map((p: any) => {
+          //     return p.date = dateValue
+          //   })
+          // })
+          // return response.data
         }catch(error){
-
         }
       })
     )
@@ -73,8 +67,8 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
        addWorkoutsFunction,
     {
       onSuccess: (response) => {
+        window.location.reload()
         console.log(response);
-        //window.location.reload()
         toast.success("Workout copied!")
       },
       onError: (error) => {
@@ -85,14 +79,11 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
   );
 
 
-  
-
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="h-[40vh]">
-        <h2 className="text-center font-semibold text-lg">Select a date</h2>
-        <div className="flex flex-row">
-          <div>
+        <div className=" mb-5">
+        <div className="fixed left-8 top-5">
             <Popover>
               <PopoverTrigger asChild>
                 <Button className="rounded-md">
@@ -109,16 +100,16 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
               </PopoverContent>
             </Popover>
           </div>
-        </div>
-
-        <div className="flex justify-center flex-col">
-          <h3 className="text-center text-sm font-semibold">
+          <h2 className="font-semibold text-lg my-auto text-center">
             {date.toString().split(" ")[0] +
               "/" +
               date.toString().split(" ")[1] +
               "/" +
               date.toString().split(" ")[2]}
-          </h3>
+          </h2>
+        </div>
+
+        <div className="flex justify-center flex-col">
           <div className="max-h-[240px] overflow-y-auto">
             {currentWorkouts.map((w) => {
               return (
@@ -130,10 +121,9 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
               );
             })}
           </div>
-          {workouts.length === 0 && (
-          <p className="px-10 text-sm my-20">
-            You have no workouts! Use our log more, add in workouts for different days, 
-            than you can copy and paste workouts.
+          {currentWorkouts.length === 0 && (
+          <p className="px-10 text-[11px] my-20 text-center ml-4">
+            No workouts for this day.
           </p>
         )}
           <div>
@@ -142,11 +132,9 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
               disabled={currentWorkouts.length === 0!! || isLoading}
               onClick={() => {
                 addWorkout(currentWorkouts)
-                handleCallback(currentWorkouts)
+                //handleCallback(currentWorkouts)
                 onClose()
               }}
-              
-             
             >
               Copy
             </Button>
