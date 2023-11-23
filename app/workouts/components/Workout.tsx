@@ -37,18 +37,9 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [selectedExercise, setSelectedExercise] = useState(false);
   const [selectedExerciseId, setSelectedExerciseId] = useState<string>("");
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
-
-
-
-  console.log(date);
-  
-
-  const [formattedDate, setFormattedDate] = useState(
-    format(date!, "yyyy-MM-dd")
-  );
-
+  const [formattedDate, setFormattedDate] = useState(format(date!, "yyyy-MM-dd"));
   const [workout, setWorkout] = useState("");
-
+  
 
   const handleCallbackExercises = ({
     workoutId,
@@ -94,12 +85,10 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
         return `- ${workout.title}    \n         ${workout.weight} lbs | ${workout.sets} sets | ${workout.reps} reps`;
       })
       .join(`\n\n`);
-
     setWorkout(workoutsToNotes);
     setFilteredWorkouts(workoutsForSelectedDate);
   }, [date, allWorkouts]);
 
-  console.log(filteredWorkouts);
   
 
   return (
