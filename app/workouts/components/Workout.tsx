@@ -10,7 +10,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { SlCalender } from "react-icons/sl";
-import clsx from "clsx";
 import { WorkoutDrawer } from "./WorkoutDrawer";
 import { Calendar } from "@/components/ui/calendar";
 import AddWorkoutToCalenderModal from "./ui/AddWorkoutToCalenderModal";
@@ -38,6 +37,11 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [selectedExercise, setSelectedExercise] = useState(false);
   const [selectedExerciseId, setSelectedExerciseId] = useState<string>("");
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
+
+
+
+  console.log(date);
+  
 
   const [formattedDate, setFormattedDate] = useState(
     format(date!, "yyyy-MM-dd")
@@ -191,7 +195,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                       className="p-3 text-lg flex flex-col gap-4 rounded-sm border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0 relative"
                       onClick={() => {
                         console.log(exerciseData);
-                        
                         setSelectedExerciseId(exerciseData.id);
                       }}
                     >

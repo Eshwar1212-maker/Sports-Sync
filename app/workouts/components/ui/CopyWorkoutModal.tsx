@@ -31,10 +31,12 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
   dateValue
 }) => {
   const [date, setDate] = useState<any>(new Date());
-  const [currentDate, setCurrentDate] = useState<any>(new Date());
   const [currentWorkouts, setCurrentWorkouts] = useState<exercise[]>([]);
 
-  console.log(currentWorkouts, "  ", date);
+
+  console.log(dateValue, "  ", date);
+  
+
 
   useEffect(() => {
     const workoutsForSelectedDate = workouts.filter((workout: any) => {
@@ -43,11 +45,19 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
 
     setCurrentWorkouts(workoutsForSelectedDate);
   }, [date]);
-
+  
+  
 
   const addWorkoutsFunction = async (workouts: exercise[]) => {
+
+    setCurrentWorkouts((prev: any) => {
+      return prev.map((p: any) => {
+        return p.date = dateValue
+      })
+    })
+
     const result = await Promise.allSettled(
-      workouts.map(async(workout) => {
+      currentWorkouts.map(async(workout) => {
         try{
           const response = await axios.post("api/workouts", {...workout, date: dateValue})
           return response.data
@@ -64,6 +74,7 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
     {
       onSuccess: (response) => {
         console.log(response);
+        //window.location.reload()
         toast.success("Workout copied!")
       },
       onError: (error) => {
