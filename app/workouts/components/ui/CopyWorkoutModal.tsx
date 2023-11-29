@@ -14,6 +14,8 @@ import { format } from "date-fns";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Image from "next/image";
+import { noWorkouts } from "@/lib/NoWorkoutsImage";
 
 interface CopyWorkoutModalProps {
   isOpen: boolean;
@@ -50,12 +52,12 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
       currentWorkouts.map(async(workout) => {
         try{
           const response = await axios.post("api/workouts", {...workout, date: dateValue})
-          // setCurrentWorkouts((prev: any) => {
-          //   return prev.map((p: any) => {
-          //     return p.date = dateValue
-          //   })
-          // })
-          // return response.data
+          setCurrentWorkouts((prev: any) => {
+            return prev.map((p: any) => {
+              return p.date = dateValue
+            })
+          })
+          return response.data
         }catch(error){
         }
       })
@@ -67,7 +69,7 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
        addWorkoutsFunction,
     {
       onSuccess: (response) => {
-        window.location.reload()
+        //window.location.reload()
         console.log(response);
         toast.success("Workout copied!")
       },
@@ -122,9 +124,20 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
             })}
           </div>
           {currentWorkouts.length === 0 && (
-          <p className="px-10 text-[11px] my-20 text-center ml-4">
+          <div className="flex flex-col">          
+          <div>
+             <Image
+             alt="No workouts"
+             width={300}
+             height={400}
+             className="mx-auto my-4 sm:my-8"
+             src={noWorkouts}
+            />
+          </div>
+          <p className="px-10 text-[16px] md:text-[19px] text-center ml-4">
             No workouts for this day.
           </p>
+          </div>
         )}
           <div>
             <Button
@@ -132,7 +145,7 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
               disabled={currentWorkouts.length === 0!! || isLoading}
               onClick={() => {
                 addWorkout(currentWorkouts)
-                //handleCallback(currentWorkouts)
+                handleCallback(currentWorkouts)
                 onClose()
               }}
             >
