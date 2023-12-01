@@ -1,0 +1,1 @@
+export const noWorkouts = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyJeW6KrAxBZP9TuHVrnV6BYKiNR9c8WUELSKqszhcYMzoDdd8IK2MnBQNleypqdk8jdM&usqp=CAU"
