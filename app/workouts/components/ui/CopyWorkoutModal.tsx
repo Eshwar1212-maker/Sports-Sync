@@ -119,7 +119,7 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
                   <p className="w-[180px] md:w-[300px]">{w.title}</p>
                   <p>{w.reps ? w.reps : 0} reps</p>
                   <p>{w.sets ? w.sets : 0} sets</p>
-                </div>
+                </div> 
               );
             })}
           </div>
