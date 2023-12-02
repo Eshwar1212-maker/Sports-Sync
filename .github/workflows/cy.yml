@@ -24,6 +24,17 @@ jobs:
       env:
         # Set environment variables needed for your server if any
         NEXT_PUBLIC_API_URL: 'http://localhost:3000'
+        DATABASE_URL: ${{secrets.env.DATABASE_URL}}
+        GOOGLE_CLIENT_ID: ${{secrets.env.GOOGLE_CLIENT_ID}}
+        GOOGLE_CLIENT_SECRET: ${{secrets.env.GOOGLE_CLIENT_SECRET}}
+        NEXTAUTH_SECRET: ${{secrets.env.NEXTAUTH_SECRET}} 
+        NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{secrets.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}}
+        PUSHER_APP_ID: ${{secrets.env.PUSHER_APP_ID}} 
+        NEXT_PUBLIC_PUSHER_APP_KEY: ${{secrets.env.NEXT_PUBLIC_PUSHER_APP_KEY}} 
+        PUSHER_SECRET: ${{secrets.env.PUSHER_SECRET}}
+        cluster: ${{secrets.env.cluster}} 
+        REDIS_URL: ${{secrets.env.REDIS_URL}}
+
 
     - name: Cypress run
       uses: cypress-io/github-action@v6
