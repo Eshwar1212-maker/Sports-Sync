@@ -128,13 +128,13 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
           <div>
              <Image
              alt="No workouts"
-             width={300}
+             width={330}
              height={400}
-             className="mx-auto my-4 sm:my-8"
+             className="mx-auto rounded-lg"
              src={noWorkouts}
             />
           </div>
-          <p className="px-10 text-[16px] md:text-[19px] text-center ml-4">
+          <p className="px-10 text-center ml-4">
             No workouts for this day.
           </p>
           </div>

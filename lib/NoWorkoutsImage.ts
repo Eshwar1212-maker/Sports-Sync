@@ -1,1 +1,1 @@
-export const noWorkouts = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyJeW6KrAxBZP9TuHVrnV6BYKiNR9c8WUELSKqszhcYMzoDdd8IK2MnBQNleypqdk8jdM&usqp=CAU"
+export const noWorkouts = "https://t3.ftcdn.net/jpg/01/84/33/16/360_F_184331618_ffR0YZObGvFeFSH6zaehDw31J6NfOpou.jpg"

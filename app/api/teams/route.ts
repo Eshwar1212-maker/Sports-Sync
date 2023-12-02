@@ -1,7 +1,6 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
-import { redis } from "@/app/libs/redis";
 
 
 export async function POST(request: Request) {
@@ -35,13 +34,7 @@ export async function POST(request: Request) {
     })
 
     
-    users.forEach(async (user: any) => {
-      await redis.del(`${user?.label}team`);
-      
-    })
-    
-
-    await redis.del(`${currentUser?.name}team`);
+ 
    
     return NextResponse.json(team);
   } catch (error) {

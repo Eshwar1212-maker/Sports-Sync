@@ -1,6 +1,6 @@
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "./getCurrentUser";
-import { redis } from "../libs/redis";
+// import { redis } from "../libs/redis";
 
 const getWorkouts = async () => {
   const currentUser = await getCurrentUser();

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
-import { redis } from "@/app/libs/redis";
+// import { redis } from "@/app/libs/redis";
 
 
 interface IParams {
@@ -26,7 +26,7 @@ export async function DELETE(
         }
       })
 
-      await redis.del(`${currentUser?.name}team`);
+      // await redis.del(`${currentUser?.name}team`);
       return NextResponse.json(deletedTeam)
       
   } catch (error) {
