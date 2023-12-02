@@ -68,7 +68,6 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
     {
       onSuccess: (response) => {
         window.location.reload()
-        console.log(response);
         toast.success("Workout copied!")
       },
       onError: (error) => {

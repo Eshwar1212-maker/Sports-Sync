@@ -79,8 +79,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
 
 
   const newDate = new Date()
-  //console.log(newDate.toString().includes(date), "  NEW DATE:", newDate.toString(), " DATE:", date.toString());
-  console.log(newDate.toString().split(" ").slice(0, 3).toString() === date.toString().split(" ").slice(0, 3).toString())
   
   
 
@@ -191,7 +189,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                     <li
                       className="p-3 text-lg flex flex-col gap-4 rounded-sm border-[1px] border-gray-500 w-[340px] md:w-[600px] ml-8 sm:ml-0 relative"
                       onClick={() => {
-                        console.log(exerciseData);
                         setSelectedExerciseId(exerciseData.id);
                       }}
                     >
@@ -221,7 +218,6 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
                         <div className="flex flex-col py-0 my-0 top-0">
                           <div
                             onClick={() => {
-                              console.log(selectedExerciseId);
                               setSelectedExerciseId(exerciseData.id);
                             }}
                             className="pr-1"
