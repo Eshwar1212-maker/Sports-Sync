@@ -82,7 +82,6 @@ const WorkoutModal: FC<WorkoutModalProps> = ({
     },
     {
       onSuccess: (response) => {
-        console.log(response.data);
         handleCallbackExercises(response.data)
       },
       onError: (error) => {
