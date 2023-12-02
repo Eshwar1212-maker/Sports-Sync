@@ -37,6 +37,7 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
   const [currentWorkouts, setCurrentWorkouts] = useState<exercise[]>([]);
   useEffect(() => {
     const workoutsForSelectedDate = workouts.filter((workout: any) => {
+      if(!date) return
       return format(new Date(workout.date), "PPP") === format(date, "PPP");
     });
 
@@ -100,11 +101,16 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
             </Popover>
           </div>
           <h2 className="font-semibold text-lg my-auto text-center">
-            {date.toString().split(" ")[0] +
+            {
+             date ?
+             date?.toString().split(" ")[0] +
               "/" +
-              date.toString().split(" ")[1] +
+              date?.toString().split(" ")[1] +
               "/" +
-              date.toString().split(" ")[2]}
+              date?.toString().split(" ")[2]
+              :
+              "Please select a date"
+              }
           </h2>
         </div>
 
