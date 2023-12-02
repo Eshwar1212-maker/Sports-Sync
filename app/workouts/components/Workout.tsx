@@ -161,6 +161,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
               <IoAddOutline className="" color="white" size={30} />
             </Button>
             <Button
+              disabled={!date}
               variant={"default"}
               className="hidden md:block text-[11px] md:text-[13px] py-2 rounded-md"
               onClick={() => {
