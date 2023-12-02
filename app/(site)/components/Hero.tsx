@@ -39,7 +39,7 @@ const Hero = () => {
             className="text-4xl lg:text-5xl 2xl:text-6xl my-4"
             data-test="hero-title"
             >
-              The world's best platform for athletes
+              The world's st platform for athletes
             </h1>
             <p
               className="text-lg md:text-2xl 2xl:text-4xl font-light"
