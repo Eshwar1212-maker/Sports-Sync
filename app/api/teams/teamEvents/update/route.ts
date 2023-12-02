@@ -1,9 +1,7 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
-import { redis } from "@/app/libs/redis";
-
-
+// import { redis } from "@/app/libs/redis";
 
 export async function PATCH(request: Request) {
     try {
@@ -32,9 +30,7 @@ export async function PATCH(request: Request) {
         },
       });
 
-
-
-      await redis.del(`${teamId}team`);
+      // await redis.del(`${teamId}team`);
 
       return NextResponse.json(updatedEvent);
     } catch (error) {
