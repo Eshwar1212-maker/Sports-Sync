@@ -32,11 +32,9 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
   handleCallback,
   dateValue
 }) => {
+
   const [date, setDate] = useState<any>(new Date());
   const [currentWorkouts, setCurrentWorkouts] = useState<exercise[]>([]);
-
-
-  console.log(dateValue, "  ", date);
   useEffect(() => {
     const workoutsForSelectedDate = workouts.filter((workout: any) => {
       return format(new Date(workout.date), "PPP") === format(date, "PPP");
@@ -69,7 +67,7 @@ const CopyWorkoutModal: FC<CopyWorkoutModalProps> = ({
        addWorkoutsFunction,
     {
       onSuccess: (response) => {
-        //window.location.reload()
+        window.location.reload()
         console.log(response);
         toast.success("Workout copied!")
       },
