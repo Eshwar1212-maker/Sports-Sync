@@ -59,11 +59,11 @@ const AddWorkoutToCalenderModal: FC<WorkoutModalProps> = ({
   return (
     <Modal isFullWidth={true} isImage={true} isOpen={isOpen} onClose={onClose}>
       <h1 className="text-center pb-2">
-        {date.toString().split(" ")[0] +
+        {date?.toString().split(" ")[0] +
           "        " +
-          date.toString().split(" ")[1] +
+          date?.toString().split(" ")[1] +
           "      " +
-          date.toString().split(" ")[2]}
+          date?.toString().split(" ")[2]}
       </h1>
       <button aria-label="close modal button" onClick={onClose} className="sm:hidden fixed right-3 top-3">
             <IoClose size={20} />
