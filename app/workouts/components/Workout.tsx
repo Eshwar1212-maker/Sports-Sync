@@ -76,6 +76,14 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
     });
   };
 
+
+
+  const newDate = new Date()
+  //console.log(newDate.toString().includes(date), "  NEW DATE:", newDate.toString(), " DATE:", date.toString());
+  console.log(newDate.toString().split(" ").slice(0, 3).toString() === date.toString().split(" ").slice(0, 3).toString())
+  
+  
+
   useEffect(() => {
     const workoutsForSelectedDate = allWorkouts.filter((workout: any) => {
       return format(new Date(workout.date), "PPP") === format(date, "PPP");
@@ -279,15 +287,16 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
           setFilteredWorkouts([...filteredWorkouts, ...exercises])
         }}
         />
-        {filteredWorkouts.length === 0 && (
+        {(filteredWorkouts.length === 0 && newDate.toString().split(" ").slice(0, 3).toString() === date.toString().split(" ").slice(0, 3).toString()) ? (
           <div 
-          className="flex sm:hidden lg:flex gap-3 mr-14 lg:mr-20 hover:bg-gray-200 dark:hover:bg-gray-900 transition ease-in-out duration-200 w-fit cursor-pointer p-3 rounded-lg mx-auto justify-center items-center text-center"
+          className="flex sm:hidden lg:flex gap-3 mr-14 lg:mr-20 hover:bg-gray-200 dark:hover:bg-gray-900 transition
+           ease-in-out duration-200 w-fit cursor-pointer p-3 rounded-lg mx-auto justify-center items-center text-center"
           onClick={() => setIsCopyOpen(true)}
           >
             <FaRegCopy className="" size={30} />
             <p className="text-lg">Copy previous workout</p>
           </div>
-        )}
+        ): <></>}
       </div>
     </div>
   );
