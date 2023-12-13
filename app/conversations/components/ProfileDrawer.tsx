@@ -207,9 +207,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                       "mt-1 text-sm sm:col-span-2 py-2"
                                     )}
                                   >
-                                    {data?.admin?.split(" ")[1] +
-                                      " " +
-                                      data?.admin?.split(" ")[2]}
+                                    {data?.admin?.split(" ")[1]}
                                   </dd>
                                   </div>
                                   <div className="flex justify-between border-b-[2px] border-b-black">
