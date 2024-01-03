@@ -117,12 +117,12 @@ const page: FC<pageProps> = ({}) => {
               <br />
               Another important technology we use to improve our app performance
               is upstash/redis for caching database calls. Redis essentially
-              caches certain databse calls, and invalidates that cache for as
+              caches certain database calls, and invalidates that cache for as
               long as we specify. For example, our team events are cached when a
-              user navigates to them, ensuring our databse doesnt unnecessarily
+              user navigates to them, ensuring our database doesn't unnecessarily
               refetch that value unless it changes(when another user adds an
               event, or deletes an event etc). This not only provides a faster
-              user experience, but put less strain on our databse. We use this
+              user experience, but put less strain on our database. We use this
               extensively throughout the calendar and workout log, observing
               roughly 60-90 percent faster queries.
               <br />
