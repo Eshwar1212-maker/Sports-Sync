@@ -3,6 +3,7 @@ import Input from "@/app/components/inputs/Input";
 import { FC, useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "./Button";
+import { Button as ButtonTwo } from "../../../components/ui/button";
 import AuthSocialButton from "./AuthSocialButton";
 import { BsGoogle } from "react-icons/bs";
 import axios from "axios";
@@ -55,7 +56,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
       },
       onSuccess: () => {
         toast.success("Created account succesfully!");
-        setVariant("LOGIN")
+        setVariant("LOGIN");
       },
     }
   );
@@ -79,8 +80,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
           toast.error(
             "Login failed, please make sure you are using the right email and password."
           );
-          router.push("/workouts");
-
+        router.push("/workouts");
       },
     }
   );
@@ -90,7 +90,6 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
       registerMutation.mutate(data);
     }
     if (variant === "LOGIN") {
-
       loginMutation.mutate(data);
     }
   };
@@ -101,7 +100,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     {
       onError: (error) => {
         console.log(error);
-        
+
         toast.error("Social login failed. Please try again.");
       },
       onSuccess: (callback) => {
@@ -128,15 +127,12 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     }, 0);
   };
 
-  
-
   return (
-    <div 
-    className="mt-8 sm:mx-auto sm:w-full sm:max-w-md bg-center bg-cover rounded-md bg-black opacity-90 sm:border-[3px] sm:border-black mx-1 text-lg text-white">
+    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md bg-center bg-cover rounded-md bg-black opacity-90 sm:border-[3px] sm:border-black mx-1 text-lg text-white">
       <div className="px-4 py-8 shadow sm:rounded-lg sm:px-10">
         <h2
           className={clsx(
-            "mb-4 text-center text-2xl font-bold tracking-tight sm:text-gray-200",
+            "mb-4 text-center text-2xl font-bold tracking-tight sm:text-gray-200"
           )}
         >
           Sign in to your account
@@ -153,22 +149,28 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             />
           )}
           <Input
-            label={variant === 'LOGIN' ? "Email address (Demo email: test@gmail.com)" : "Email"}
+            label={
+              variant === "LOGIN"
+                ? "Email address (Demo email: test@gmail.com)"
+                : "Email"
+            }
             register={register}
             id="email"
             errors={errors}
             disabled={registerMutation.isLoading || loginMutation.isLoading}
             placeholder="Enter Email..."
-
           />
           <Input
-            label={variant === 'LOGIN' ? "Password (Demo password: test)" : "Password"}
+            label={
+              variant === "LOGIN"
+                ? "Password (Demo password: test)"
+                : "Password"
+            }
             register={register}
             id="password"
             errors={errors}
             disabled={registerMutation.isLoading || loginMutation.isLoading}
             placeholder="Enter Password..."
-
           />
           <div>
             <Button
@@ -181,14 +183,8 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
         </form>
         <div className="mt-6">
           <div className="relative">
-
             <div className="relative flex justify-center text-sm">
-              <span
-                className={clsx(
-                  `px-2 sm:text-gray-200`,
-               
-                )}
-              >
+              <span className={clsx(`px-2 sm:text-gray-200`)}>
                 Or continue with
               </span>
             </div>
@@ -198,6 +194,13 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
               icon={BsGoogle}
               onClick={() => socialAction("google")}
             />
+          </div>
+          <div className="mt-6 flex gap-2">
+            <ButtonTwo
+              className="inline-flex w-full justify-center rounded-md px-x text-gray-200 shadow-sm ring-1 ring-inset ring-gray-500 hover:bg-gray-800 focus:outline-offset-0"
+            >
+              View Demo
+            </ButtonTwo>
           </div>
         </div>
         <div className="flex gap-2 justify-center text-sm mt-6 px-2 sm:text-gray-200">
@@ -211,8 +214,10 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
           </div>
         </div>
       </div>
-      <p className="text-gray-100 m-auto font-semibold max-w-[455px] pl-5 text-sm hidden md:block pb-9 mx-auto px-9 text-center">Passion brings communities together, communities foster growth, growth gets us to the end result.</p>
-
+      <p className="text-gray-100 m-auto font-semibold max-w-[455px] pl-5 text-sm hidden md:block pb-9 mx-auto px-9 text-center">
+        Passion brings communities together, communities foster growth, growth
+        gets us to the end result.
+      </p>
     </div>
   );
 };
