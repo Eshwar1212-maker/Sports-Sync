@@ -195,13 +195,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
               onClick={() => socialAction("google")}
             />
           </div>
-          <div className="mt-6 flex gap-2">
-            <ButtonTwo
-              className="inline-flex w-full justify-center rounded-md px-x text-gray-200 shadow-sm ring-1 ring-inset ring-gray-500 hover:bg-gray-800 focus:outline-offset-0"
-            >
-              View Demo
-            </ButtonTwo>
-          </div>
+
         </div>
         <div className="flex gap-2 justify-center text-sm mt-6 px-2 sm:text-gray-200">
           <div>
