@@ -38,6 +38,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const [selectedExerciseId, setSelectedExerciseId] = useState<string>("");
   const [allWorkouts, setAllWorkouts] = useState<exercise[]>(workouts);
   const [workout, setWorkout] = useState("");
+  
 
   const handleCallbackExercises = ({
     workoutId,
@@ -77,8 +78,8 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
   const newDate = new Date();
 
   useEffect(() => {
-    const workoutsForSelectedDate = allWorkouts.filter((workout: any) => {
-      return format(new Date(workout.date), "PPP") === format(date, "PPP");
+    const workoutsForSelectedDate = allWorkouts.filter((workout: any) => {      
+      if(date)return format(new Date(workout.date), "PPP") === format(date, "PPP");
     });
     const workoutsToNotes = workoutsForSelectedDate
       .map((workout) => {
@@ -87,7 +88,7 @@ const Workout: FC<WorkoutProps> = ({ workouts, workoutRecord }) => {
       .join(`\n\n`);
     setWorkout(workoutsToNotes);
     setFilteredWorkouts(workoutsForSelectedDate);
-  }, [allWorkouts]);
+  }, [allWorkouts, date]);
 
   return (
     <div className="flex flex-col py-0 md:py-7 px-5 h-[100vh]">
