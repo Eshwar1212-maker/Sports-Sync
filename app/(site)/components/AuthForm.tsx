@@ -3,7 +3,6 @@ import Input from "@/app/components/inputs/Input";
 import { FC, useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "./Button";
-import { Button as ButtonTwo } from "../../../components/ui/button";
 import AuthSocialButton from "./AuthSocialButton";
 import { BsGoogle } from "react-icons/bs";
 import axios from "axios";
@@ -55,7 +54,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
         toast.error("Registration failed");
       },
       onSuccess: () => {
-        toast.success("Created account succesfully!");
+        toast.success("Created account successfully!");
         setVariant("LOGIN");
       },
     }
@@ -91,6 +90,8 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     }
     if (variant === "LOGIN") {
       loginMutation.mutate(data);
+      console.log(data);
+      
     }
   };
   const socialLoginMutation = useMutation(
