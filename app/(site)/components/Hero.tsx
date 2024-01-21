@@ -13,6 +13,9 @@ import { useRouter } from "next/navigation";
 import Fourth from "./landing/Fourth";
 import Fifth from "./landing/Fifth";
 import Seventh from "./landing/Seventh";
+import { useMutation } from "@tanstack/react-query";
+import { signIn } from "next-auth/react";
+import toast from "react-hot-toast";
 
 
 const inter = PT_Sans({
@@ -28,8 +31,34 @@ const bon = Bonheur_Royale({
   weight: "400",
 });
 
+
+
 const Hero = () => {
   const router = useRouter();
+
+  const loginMutation = useMutation(
+    (data: any) => {
+      return signIn("credentials", {
+        ...data,
+        redirect: false,
+      });
+    },
+    {
+      onError: (error) => {
+        console.log(error);
+        toast.error(
+          "Login failed, please make sure you are using the right email and password."
+        );
+      },
+      onSuccess: (callback) => {
+        if (callback?.error)
+          toast.error(
+            "Login failed, please make sure you are using the right email and password."
+          );
+        router.push("/workouts");
+      },
+    }
+  );
   return (
     <div className="text-black bg-white">
       <div className="flex flex-col justify-between pb-11 py-20 sm:py-20 sm:my-6 lg:py-20 lg:my-10 h-[65vh] mb-40 md:h-[70vh] lg:flex-row lg:h-[59vh] lg:px-11 xl:px-[100px] 2xl:px-[90px] ">
@@ -42,19 +71,22 @@ const Hero = () => {
               The world's best platform for athletes
             </h1>
             <p
-              className="text-lg md:text-2xl 2xl:text-4xl font-light"
+              className="md:text-lg lg:text-2xl font-light max-w-[80%] mx-auto lg:max-w-none"
             >
-              Manage everything with Synced to dominate your competition.
+              Manage everything with Synced to dominate your competition. Try our demo now, you don't need to sign in!
             </p>
           </div>
           <div className="text-xl my-4 flex justify-center lg:justify-start">
             <button
               data-test="hero-get-started"
               aria-label="Get Started, create your account"
-              onClick={() => router.push("/auth")}
+              onClick={() => {
+                loginMutation.mutate({name: '', email: 'test@gmail.com', password: 'test'})
+                toast.success("You are logging in with our test account!")
+              }}
               className="bg-blue-700 hover:bg-blue-600 transition ease-in-out duration-200 text-sm md:text-md lg:text-xl p-3 md:p-5 text-white rounded-sm"
             >
-              Get Started
+              View Demo
             </button>
           </div>
         </div>
