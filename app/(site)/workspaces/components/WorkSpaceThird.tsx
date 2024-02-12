@@ -13,7 +13,7 @@ const WorkSpaceThird: FC<WorkSpaceFirstProps> = ({}) => {
           data-aos-duration="3000"
           className="mx-auto my-auto max-w-[350px] sm:max-w-[500px] pt-[70px] pb-10 lg:py-[120px] text-2xl lg:text-4xl"
         >
-          We'll prefetch at your convenice. Type in a event, and we will
+          We'll prefetch at your convenience. Type in a event, and we will
           prefetch the last events notes with that name, and give you an option
           to copy it.
         </div>
