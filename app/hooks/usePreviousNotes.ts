@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 
 const usePreviousNotes = (eventTitle: string, events: any, setEventTitle: any) => {
-
+    const currentYear = new Date().getFullYear().toString();
 
     const [specificEventNotes, setSpecificEventNotes] = useState<any>([]);
     const [preFilledTitle, setPreFilledTitle] = useState();
@@ -13,7 +13,7 @@ const usePreviousNotes = (eventTitle: string, events: any, setEventTitle: any) =
       if (eventTitle?.length > 2) {
         const newEvents = events
           .filter((event: any) => {
-            if (event.date.toString().includes("2023") && event.notes.length > 10) {
+            if (event.date.toString().includes(currentYear) && event.notes.length > 10) {
               return event.title.includes(eventTitle);
             }
           })
