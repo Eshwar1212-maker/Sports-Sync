@@ -15,12 +15,6 @@ const getNotifications = async () => {
             },
         });
 
-        const sender = await prisma.user.findUnique({
-            where: {
-                email: userWithNotifications[0].title.split(" ")[0]
-            }
-        })
-
         
           return userWithNotifications
     }
