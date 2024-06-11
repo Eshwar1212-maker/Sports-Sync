@@ -12,8 +12,6 @@ interface TeamIdPageProps {
 }
 const TeamId = async ({ params }: TeamIdPageProps) => {
 
-  
-
   const team: any = await getTeamById(params.teamCalender);
   const currentUser = await getCurrentUser()
   const teamAdmin: any = await getUserById(team?.admin!)
