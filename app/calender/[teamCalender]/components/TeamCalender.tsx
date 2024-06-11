@@ -15,7 +15,7 @@ interface TeamCalenderProps {
   currentUser: User
 }
 
-const TeamCalender: FC<TeamCalenderProps> = ({team, currentUser}) => {
+const TeamCalendar: FC<TeamCalenderProps> = ({team, currentUser}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [events, setEvents] = useState<Event[]>(team?.events);
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -75,4 +75,4 @@ const TeamCalender: FC<TeamCalenderProps> = ({team, currentUser}) => {
   );
 };
 
-export default TeamCalender;
+export default TeamCalendar;
