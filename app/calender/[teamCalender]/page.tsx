@@ -1,9 +1,9 @@
 import { getTeamById } from "@/app/actions/getTeamById";
 import EmptyState from "@/app/components/EmptyState";
-import TeamCalender from "./components/TeamCalender";
 import TeamCalenderHeader from "./components/TeamCalenderHeader";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getUserById from "@/app/actions/getUserById";
+import TeamCalendar from "./components/TeamCalender";
 
 interface TeamIdPageProps {
   params: {
@@ -34,7 +34,7 @@ const TeamId = async ({ params }: TeamIdPageProps) => {
         <TeamCalenderHeader teamAdmin={teamAdmin} currentUser={currentUser!} team={team} />
       </div>
       <div className="py-4">
-        <TeamCalender currentUser={currentUser!} team={team}/>
+        <TeamCalendar currentUser={currentUser!} team={team}/>
       </div>
     </div>
   );
