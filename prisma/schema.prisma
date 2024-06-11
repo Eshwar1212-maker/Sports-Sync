@@ -34,6 +34,10 @@ model User {
   notifications   Notifications[]
   notificationIds String[]       @db.ObjectId
   exercises       String[]
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  apiUsage             Int            @default(0)
+  dataUsage            Int            @default(0)
 }
 
 model Account {
@@ -127,3 +131,4 @@ model Notifications {
   createdAt DateTime  @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
