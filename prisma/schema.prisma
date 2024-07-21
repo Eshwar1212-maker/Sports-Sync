@@ -31,7 +31,6 @@ model User {
   notifications   Notifications[]
   notificationIds String[]           @db.ObjectId
   exercises       String[]
-  
   // New relation field
   subscriptions   UserSubscription[] @relation("UserSubscriptions")
 }

@@ -1,18 +1,20 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
-
+import prisma from "@/app/libs/prismadb"
 import { absoluteUrl } from "@/lib/utils";
 import { NextResponse } from "next/server";
 
 
-const settingsUrl = absoluteUrl("/dashboard")
+const settingsUrl = absoluteUrl("/workouts")
 
 export async function GET(){
     try{
         const user = await getCurrentUser()
-        if(user?.id) return new NextResponse("Unauthorized", {status: 401})
+        if(!user?.id) {
+            return new NextResponse("Unauthorized", {status: 401})
+        }
         const userSubscription = await prisma?.userSubscription.findUnique({
             where: {
-                userId
+                userId: user.id
             }
     })
 
