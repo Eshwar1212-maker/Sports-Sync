@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,33 +8,31 @@ datasource db {
 }
 
 model User {
-  id              String         @id @default(auto()) @map("_id") @db.ObjectId
+  id              String             @id @default(auto()) @map("_id") @db.ObjectId
   name            String?
   bio             String?
-  email           String?        @unique
+  email           String?            @unique
   emailVerified   DateTime?
   image           String?
   hashedPassword  String?
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  conversationIds String[]       @db.ObjectId
-  conversations   Conversation[] @relation(fields: [conversationIds], references: [id])
-  seenMessageIds  String[]       @db.ObjectId
-  seenMessages    Message[]      @relation("Seen", fields: [seenMessageIds], references: [id])
-  exerciseId      String[]       @db.ObjectId
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  conversationIds String[]           @db.ObjectId
+  conversations   Conversation[]     @relation(fields: [conversationIds], references: [id])
+  seenMessageIds  String[]           @db.ObjectId
+  seenMessages    Message[]          @relation("Seen", fields: [seenMessageIds], references: [id])
+  exerciseId      String[]           @db.ObjectId
   accounts        Account[]
   messages        Message[]
-  teams           Team[]         @relation(fields: [conversationIds], references: [id])
-  teamIds         String[]       @db.ObjectId
+  teams           Team[]             @relation(fields: [conversationIds], references: [id])
+  teamIds         String[]           @db.ObjectId
   events          Event[]
   workouts        Workout[]
   notifications   Notifications[]
-  notificationIds String[]       @db.ObjectId
+  notificationIds String[]           @db.ObjectId
   exercises       String[]
-  stripeCustomerId     String?
-  stripeSubscriptionId String?
-  apiUsage             Int            @default(0)
-  dataUsage            Int            @default(0)
+  // New relation field
+  subscriptions   UserSubscription[] @relation("UserSubscriptions")
 }
 
 model Account {
@@ -88,9 +83,9 @@ model Conversation {
 model Team {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
   title   String?
-  admin String?
+  admin   String?
   userIds String[] @db.ObjectId
-  users User[]   @relation(fields: [userIds], references: [id])
+  users   User[]   @relation(fields: [userIds], references: [id])
   events  Event[]
 }
 
@@ -107,28 +102,36 @@ model Workout {
 }
 
 model Event {
-  id     String  @id @default(auto()) @map("_id") @db.ObjectId
-  notes  String?
-  title  String?
-  date   String?
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  notes    String?
+  title    String?
+  date     String?
   priority String?
-  teamId String? @db.ObjectId
-  poster String ?
-  Team   Team?   @relation(fields: [teamId], references: [id], onDelete: Cascade)
-  userId String  @db.ObjectId
-  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
+  teamId   String?  @db.ObjectId
+  poster   String?
+  Team     Team?    @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  userId   String   @db.ObjectId
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Notifications {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  userId    String   @db.ObjectId
-  accepted Boolean? @default(false)
-  recipient String[]
-  recipientImage String?
-  groupId   String
-  createdAt DateTime  @default(now())
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  userId          String   @db.ObjectId
+  accepted        Boolean? @default(false)
+  recipient       String[]
+  recipientImage  String?
+  groupId         String
+  createdAt       DateTime  @default(now())
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model UserSubscription {
+  id                     String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId                 String   @db.ObjectId @unique
+  stripeCustomerId       String?  @unique @map(name: "stripe_customer_id")
+  stripeSubscriptionId   String?  @unique @map(name: "stripe_subscription_id")
+  stripePriceId          String?  @unique @map(name: "stripe_price_id")
+  stripeCurrentPeriodEnd DateTime? @unique @map(name: "stripe_current_period_end")
+  user                   User     @relation("UserSubscriptions", fields: [userId], references: [id], onDelete: Cascade)
+}
