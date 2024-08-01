@@ -17,6 +17,7 @@ import { SlLogout } from "react-icons/sl";
 import ThemeButton from "./ThemeButton";
 import { ActionTooltip } from "../ActionToolTip";
 import placeHolderImage from "../../assets/randomavatar.jpeg"
+import { MembershipDropDown } from "../stripe/MembershipDropDown";
 
 interface SettingsModal {
   isOpen?: boolean;
@@ -78,7 +79,7 @@ const SettingsModal: React.FC<SettingsModal> = ({
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base font-semibold leading-7">Settings</h2>
-            <div className="mt-10 flex flex-col gap-y-4">
+            <div className="mt-4 flex flex-col gap-y-4">
               <Input
                 disabled={isLoading}
                 label="Name"
@@ -100,6 +101,8 @@ const SettingsModal: React.FC<SettingsModal> = ({
                 onChange={(e) => setBio(e.target.value)}
                 className="form-input block w-full border-0 py-1.5 shadow-sm ring-1 px-2 bg-white text-black ring-inset ring-gray-300focus:ring-sky-600 sm:text-sm sm:leading-6"
               />
+              <label className="block text-sm font-md leading-6">Membership</label>
+                <MembershipDropDown />
 
               <div className="">
                 <label className="block text-sm font-md leading-6">Photo</label>
