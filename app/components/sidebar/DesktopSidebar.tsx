@@ -97,7 +97,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
                 />
             </div>
             <p 
-            className="font-thin text-blue-300 py-2 cursor-pointer"
+            className="font-thin text-blue-200 py-2 cursor-pointer"
             style={pacifico.style}
             >
               Pro
