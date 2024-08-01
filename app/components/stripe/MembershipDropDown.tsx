@@ -13,17 +13,13 @@ import {
 export function MembershipDropDown() {
   return (
     <Select >
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a fruit" />
+      <SelectTrigger className="w-[480px]">
+        <SelectValue className="" placeholder="Free Plan" />
       </SelectTrigger>
-      <SelectContent className="form-input block w-full border-0 py-1.5 shadow-sm ring-1 px-2 bg-white text-black ring-inset ring-gray-300focus:ring-sky-600 sm:text-sm sm:leading-6">
+      <SelectContent className="">
         <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
+          <SelectItem value="apple">Free Plan</SelectItem>
+          <SelectItem value="banana">Upgrade to Synced Pro!</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

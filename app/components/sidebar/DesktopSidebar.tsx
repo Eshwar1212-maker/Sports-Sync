@@ -5,7 +5,7 @@ import {  User } from "@prisma/client";
 import DesktopItem from "./DeskTopItem";
 import useRoutes from "@/app/hooks/useRoutes";
 import SettingsModal from "./SettingsModal";
-
+import { PT_Sans, Bonheur_Royale, Dancing_Script, Pacifico } from "next/font/google";
 import ThemeButton from "./ThemeButton";
 import { useTheme } from "next-themes";
 import { NotificationsSheet } from "../notifications/NotificationsSheet";
@@ -17,6 +17,13 @@ interface DesktopSidebarProps {
   currentUser: User;
   notifications: any;
 }
+
+const pacifico = Pacifico({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-cursive",
+  weight: "400",
+});
 
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   currentUser,
@@ -89,6 +96,12 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
                   className="rounded-full"
                 />
             </div>
+            <p 
+            className="font-thin text-blue-300 py-2 cursor-pointer"
+            style={pacifico.style}
+            >
+              Pro
+            </p>
           </nav>
         </div>
       </div>

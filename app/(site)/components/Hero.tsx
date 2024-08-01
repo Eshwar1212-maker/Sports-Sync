@@ -5,7 +5,6 @@ import calendertwo from "../../assets/cal.png";
 import dashboard from "../../assets/das.png";
 import message from "../../assets/m.png";
 import Image from "next/image";
-import { PT_Sans, Bonheur_Royale } from "next/font/google";
 import First from "./landing/First";
 import Second from "./landing/Second";
 import Third from "./landing/Third";
@@ -17,18 +16,6 @@ import { useMutation } from "@tanstack/react-query";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 
-const inter = PT_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-sans",
-  weight: "400",
-});
-const bon = Bonheur_Royale({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-sans",
-  weight: "400",
-});
 
 const Hero = () => {
   const router = useRouter();
