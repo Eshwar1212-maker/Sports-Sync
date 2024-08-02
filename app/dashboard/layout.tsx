@@ -9,7 +9,6 @@ export default async function UsersLayout({
   children: React.ReactNode;
 }) {
   const workouts = await getWorkouts();
-  console.log("hello");
   checkSubscription()
   return (
     <Sidebar>

@@ -90,7 +90,6 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     }
     if (variant === "LOGIN") {
       loginMutation.mutate(data);
-      console.log(data);
       
     }
   };
