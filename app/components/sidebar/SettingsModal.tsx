@@ -17,7 +17,6 @@ import { SlLogout } from "react-icons/sl";
 import ThemeButton from "./ThemeButton";
 import { ActionTooltip } from "../ActionToolTip";
 import placeHolderImage from "../../assets/randomavatar.jpeg"
-import { MembershipDropDown } from "../stripe/MembershipDropDown";
 
 interface SettingsModal {
   isOpen?: boolean;
@@ -101,9 +100,6 @@ const SettingsModal: React.FC<SettingsModal> = ({
                 onChange={(e) => setBio(e.target.value)}
                 className="form-input block w-full border-0 py-1.5 shadow-sm ring-1 px-2 bg-white text-black ring-inset ring-gray-300focus:ring-sky-600 sm:text-sm sm:leading-6"
               />
-              <label className="block text-sm font-md leading-6">Membership</label>
-                <MembershipDropDown />
-
               <div className="">
                 <label className="block text-sm font-md leading-6">Photo</label>
                 <div className="mt-2 flex items-center">
