@@ -1,4 +1,5 @@
-import * as React from "react"
+import * as React from "react";
+import { FaArrowRight } from "react-icons/fa6";
 
 import {
   Select,
@@ -8,24 +9,27 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
 export function MembershipDropDown() {
   return (
-    <Select >
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a fruit" />
+    <Select>
+      <SelectTrigger className="w-[480px]">
+        <SelectValue className="" placeholder="Free Plan" />
       </SelectTrigger>
-      <SelectContent className="form-input block w-full border-0 py-1.5 shadow-sm ring-1 px-2 bg-white text-black ring-inset ring-gray-300focus:ring-sky-600 sm:text-sm sm:leading-6">
+      <SelectContent className="">
         <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
+          <SelectItem className=" pointer-events-none bg-slate-500" value="apple">Free Plan</SelectItem>
+          <SelectItem className=" pointer-events-none" value="banana">Synced Pro</SelectItem>
+          <span className="flex">
+            <SelectLabel className="flex gap-2">
+              Change Membership
+            <FaArrowRight className="m-auto" />
+            </SelectLabel>
+
+          </span>
         </SelectGroup>
       </SelectContent>
     </Select>
-  )
+  );
 }

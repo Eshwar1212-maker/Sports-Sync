@@ -1,22 +1,30 @@
 "use client";
 
-import { useState } from "react";
-import {  User } from "@prisma/client";
+import { useState, useEffect } from "react";
+import { User } from "@prisma/client";
 import DesktopItem from "./DeskTopItem";
 import useRoutes from "@/app/hooks/useRoutes";
 import SettingsModal from "./SettingsModal";
+import { Pacifico } from "next/font/google";
+import { motion } from "framer-motion";
 
 import ThemeButton from "./ThemeButton";
 import { useTheme } from "next-themes";
 import { NotificationsSheet } from "../notifications/NotificationsSheet";
 import Image from "next/image";
-import placeholderImage from "../../assets/randomavatar.jpeg"
-
+import placeholderImage from "../../assets/randomavatar.jpeg";
 
 interface DesktopSidebarProps {
   currentUser: User;
   notifications: any;
 }
+
+const pacifico = Pacifico({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-cursive",
+  weight: "400",
+});
 
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   currentUser,
@@ -25,6 +33,21 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
   const { theme } = useTheme();
+
+  useEffect(() => {
+    const proElement = document.getElementById("pro-text");
+    if (proElement) {
+      proElement.classList.add(
+        "transition",
+        "transform",
+        "scale-110",
+        "opacity-100"
+      );
+      setTimeout(() => {
+        proElement.classList.remove("scale-110");
+      }, 2000); // Animation duration
+    }
+  }, []);
 
   return (
     <>
@@ -72,8 +95,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
               </li>
             </ul>
           </nav>
-          <nav className="mt-4 flex flex-col justify-between items-center">
-            <div className="mb-3">
+          <nav className="mt-4 flex flex-col justify-between items-center space-y-2">
+            <div className=" mb-1">
               <ThemeButton isSettings={false} />
             </div>
 
@@ -81,14 +104,36 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
               onClick={() => setIsOpen(true)}
               className="cursor-pointer hover:opacity-75 transition"
             >
-                <Image
-                  alt="profile"
-                  height={32}
-                  width={32}
-                  src={currentUser?.image! || placeholderImage}
-                  className="rounded-full"
-                />
+              <Image
+                alt="profile"
+                height={32}
+                width={32}
+                src={currentUser?.image! || placeholderImage}
+                className="rounded-full"
+              />
             </div>
+            <motion.div
+              animate={{
+                scale: [1, 2, 2, 1, 1],
+                rotate: [0, 0, 180, 180, 0],
+                borderRadius: ["0%", "0%", "50%", "50%", "0%"],
+              }}
+              transition={{
+                duration: 3,
+                ease: "easeInOut",
+                times: [0, 0.2, 0.5, 0.8, 1],
+                repeat: 2,
+                repeatDelay: 1,
+              }}
+            >
+              <p
+                id="pro-text"
+                className="font-bold text-blue-200 cursor-pointer"
+                style={pacifico.style}
+              >
+                Pro
+              </p>
+            </motion.div>
           </nav>
         </div>
       </div>

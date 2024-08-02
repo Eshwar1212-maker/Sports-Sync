@@ -10,12 +10,7 @@ const inter = PT_Sans({
   variable: "--font-sans",
   weight: "400",
 });
-const bon = Bonheur_Royale({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-sans",
-  weight: "400",
-});
+
 const EmptyState: FC<EmptyStateProps> = ({ children }) => {
 
   return (
