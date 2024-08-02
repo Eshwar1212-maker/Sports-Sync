@@ -5,7 +5,6 @@ const DAY_IN_MS = 86_400_000;
 
 export const checkSubscription = async () => {
     const user = await getCurrentUser()
-    console.log(user?.id);
     if(!user?.id){
         return false
     }
