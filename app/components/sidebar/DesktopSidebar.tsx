@@ -7,12 +7,12 @@ import useRoutes from "@/app/hooks/useRoutes";
 import SettingsModal from "./SettingsModal";
 import { Pacifico } from "next/font/google";
 import { motion } from "framer-motion";
-
 import ThemeButton from "./ThemeButton";
 import { useTheme } from "next-themes";
 import { NotificationsSheet } from "../notifications/NotificationsSheet";
 import Image from "next/image";
 import placeholderImage from "../../assets/randomavatar.jpeg";
+import { useParams, usePathname } from "next/navigation";
 
 interface DesktopSidebarProps {
   currentUser: User;
@@ -32,22 +32,27 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
 }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
-  const { theme } = useTheme();
+  const [isAnimated, setIsAnimated] = useState(false);
+
+  const pathname = usePathname()
+
+  console.log(pathname);
+  
 
   useEffect(() => {
-    const proElement = document.getElementById("pro-text");
-    if (proElement) {
-      proElement.classList.add(
-        "transition",
-        "transform",
-        "scale-110",
-        "opacity-100"
-      );
-      setTimeout(() => {
-        proElement.classList.remove("scale-110");
-      }, 2000); // Animation duration
+    if (sessionStorage.getItem("proAnimationPlayed")?.includes("tru")) {
+      setIsAnimated(true);
+      sessionStorage.setItem("proAnimationPlayed", "true");
+    }else{
+      setIsAnimated(false);
     }
-  }, []);
+  }, [pathname]);
+
+  console.log("IS ANIMATED: ", isAnimated);
+
+  console.log("session storage: ", sessionStorage.getItem("proAnimationPlayed"))
+  
+  
 
   return (
     <>
@@ -112,28 +117,40 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
                 className="rounded-full"
               />
             </div>
-            <motion.div
-              animate={{
-                scale: [1, 2, 2, 1, 1],
-                rotate: [0, 0, 180, 180, 0],
-                borderRadius: ["0%", "0%", "50%", "50%", "0%"],
-              }}
-              transition={{
-                duration: 3,
-                ease: "easeInOut",
-                times: [0, 0.2, 0.5, 0.8, 1],
-                repeat: 2,
-                repeatDelay: 1,
-              }}
-            >
+            {isAnimated && (
+              <motion.div
+                animate={{
+                  scale: [1, 1, 1, 1, 1],
+                  rotate: [0, 0, 360, 360, 0],
+                  borderRadius: ["0%", "0%", "50%", "50%", "0%"],
+                }}
+                transition={{
+                  duration: 2,
+                  ease: "easeInOut",
+                  times: [0, 0.2, 0.5, 0.8, 1],
+                  repeat: 1,
+                  repeatDelay: 1,
+                }}
+                onAnimationComplete={() => setIsAnimated(false)}
+              >
+                <p
+                  id="pro-text"
+                  className="font-bold text-blue-300 cursor-pointer"
+                  style={pacifico.style}
+                >
+                  Pro
+                </p>
+              </motion.div>
+            )}
+            {!isAnimated && (
               <p
                 id="pro-text"
-                className="font-bold text-blue-200 cursor-pointer"
+                className="font-bold text-blue-300 cursor-pointer"
                 style={pacifico.style}
               >
                 Pro
               </p>
-            </motion.div>
+            )}
           </nav>
         </div>
       </div>
