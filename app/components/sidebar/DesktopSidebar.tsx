@@ -33,26 +33,21 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
-
   const pathname = usePathname()
-
   console.log(pathname);
   
-
   useEffect(() => {
     if (sessionStorage.getItem("proAnimationPlayed")?.includes("tru")) {
-      setIsAnimated(true);
+      console.log(true)
+      setIsAnimated(!isAnimated);
       sessionStorage.setItem("proAnimationPlayed", "true");
     }else{
+      console.log(false);
+      sessionStorage.setItem("proAnimationPlayed", "true");
       setIsAnimated(false);
+
     }
-  }, [pathname]);
-
-  console.log("IS ANIMATED: ", isAnimated);
-
-  console.log("session storage: ", sessionStorage.getItem("proAnimationPlayed"))
-  
-  
+  }, []);
 
   return (
     <>
