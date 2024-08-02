@@ -7,7 +7,7 @@ const MembershipModal: FC<MembershipModalProps> = ({
 }) => {
   return (
     <div>
-      MembershipModal
+      
     </div>
   )
 }
