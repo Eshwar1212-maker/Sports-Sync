@@ -65,7 +65,7 @@ const UserBox: FC<UserBoxProps> = ({ data, input }) => {
               <div className="flex justify-between items-center mb-1">
                 <div>
                   <p className="text-sm font-md">
-                    {data?.name!.split(" ").length > 1
+                    {data?.name?.split(" ").length! > 1
                       ? (
                           data.name?.split(" ")[0] +
                           " " +
