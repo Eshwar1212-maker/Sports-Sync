@@ -32,20 +32,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
 }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
-  const [isAnimated, setIsAnimated] = useState(false);
-  const pathname = usePathname()
   
-  useEffect(() => {
-    if (sessionStorage.getItem("proAnimationPlayed")?.includes("tru")) {
-      setIsAnimated(!isAnimated);
-      sessionStorage.setItem("proAnimationPlayed", "true");
-    }else{
-      sessionStorage.setItem("proAnimationPlayed", "true");
-      setIsAnimated(false);
-
-    }
-  }, []);
-
   return (
     <>
       <SettingsModal
@@ -109,32 +96,6 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
                 className="rounded-full"
               />
             </div>
-            {isAnimated && (
-              <motion.div
-                animate={{
-                  scale: [1, 1, 1, 1, 1],
-                  rotate: [0, 0, 360, 360, 0],
-                  borderRadius: ["0%", "0%", "50%", "50%", "0%"],
-                }}
-                transition={{
-                  duration: 2,
-                  ease: "easeInOut",
-                  times: [0, 0.2, 0.5, 0.8, 1],
-                  repeat: 1,
-                  repeatDelay: 1,
-                }}
-                onAnimationComplete={() => setIsAnimated(false)}
-              >
-                <p
-                  id="pro-text"
-                  className="font-bold text-blue-300 cursor-pointer"
-                  style={pacifico.style}
-                >
-                  Pro
-                </p>
-              </motion.div>
-            )}
-            {!isAnimated && (
               <p
                 id="pro-text"
                 className="font-bold text-blue-300 cursor-pointer"
@@ -142,7 +103,6 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
               >
                 Pro
               </p>
-            )}
           </nav>
         </div>
       </div>
