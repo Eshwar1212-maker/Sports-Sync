@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { User } from "@prisma/client";
 import DesktopItem from "./DeskTopItem";
 import useRoutes from "@/app/hooks/useRoutes";
-import SettingsModal from "./SettingsModal";
+import SettingsModal from "./settingsmodal/SettingsModal";
 import { Pacifico } from "next/font/google";
 import { motion } from "framer-motion";
 import ThemeButton from "./ThemeButton";

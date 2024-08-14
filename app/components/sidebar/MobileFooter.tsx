@@ -6,7 +6,7 @@ import MobileItem from "./MobileItem";
 import clsx from "clsx";
 import { CiSettings } from "react-icons/ci";
 import { useState } from "react";
-import SettingsModal from "./SettingsModal";
+import SettingsModal from "./settingsmodal/SettingsModal";
 
 const MobileFooter = ({user}: any) => {
   const routes = useRoutes();
