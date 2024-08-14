@@ -16,9 +16,9 @@ import { signOut } from "next-auth/react";
 import { SlLogout } from "react-icons/sl";
 import ThemeButton from "../ThemeButton";
 import { ActionTooltip } from "../../ActionToolTip";
-import placeHolderImage from "../../assets/randomavatar.jpeg"
+import placeHolderImage from "../../assets/randomavatar.jpeg";
 import Profile from "./Profile";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface SettingsModal {
   isOpen?: boolean;
@@ -75,15 +75,19 @@ const SettingsModal: React.FC<SettingsModal> = ({
   };
 
   return (
-
     <Modal isOpen={isOpen} onClose={onClose}>
-        <Tabs defaultValue="profile">
+      <Tabs className="h-[567px]" defaultValue="profile">
         <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="profile">Profile</TabsTrigger>
-        <TabsTrigger value="subscription">Subscription</TabsTrigger>
-      </TabsList>
-        </Tabs>
-        <Profile currentUser={currentUser} onClose={onClose} isOpen/>
+          <TabsTrigger value="profile">Profile</TabsTrigger>
+          <TabsTrigger value="subscription">Subscription</TabsTrigger>
+        </TabsList>
+        <TabsContent value="profile">
+          <Profile currentUser={currentUser} onClose={onClose} isOpen />
+        </TabsContent>
+        <TabsContent value="subscription">
+          
+        </TabsContent>
+      </Tabs>
     </Modal>
   );
 };
