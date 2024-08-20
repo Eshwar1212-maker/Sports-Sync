@@ -165,7 +165,6 @@ const NotificationItem: FC<NotificationItemProps> = ({
                   }
                 }}
                 className="px-3"
-                variant={"tertiary"}
                 type="button"
               >
                 <BsSendCheck size={25} />

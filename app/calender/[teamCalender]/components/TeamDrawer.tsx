@@ -128,8 +128,6 @@ export function TeamDrawer({
               </div>
               <div className="fixed bottom-4">
                 <div className="flex gap-2 py-3 justify-center mx-auto">
-                  <Button className="rounded-md hidden" variant={"five"}>Group Chat</Button>
-
                   {currentUser?.name?.includes(admin as string) ? (
                     <SheetClose>
                       <Button onClick={() => setConfirmDelete(true)} className="rounded-md" variant={"destructive"}>
@@ -139,9 +137,9 @@ export function TeamDrawer({
 
                   ) : (
                     <ActionTooltip label={`Leave ${team?.title}`}>
-                      {/* <Button className="rounded-lg" variant={"destructive"}>
+                      <Button className="rounded-lg" variant={"destructive"}>
                         Sign Out
-                      </Button> */}
+                      </Button>
                     </ActionTooltip>
                   )}
                 </div>
