@@ -149,7 +149,6 @@ const Navbar: FC<NavbarProps> = ({}) => {
                   className="py-3 cursor-pointer text-[18px] transition duration-300 flex flex-col gap-2"
                 >
                   <Button
-                    variant={"four"}
                     className="w-[240px] mx-auto text-center items-center rounded-lg bg-white"
                   >
                     Get Started
