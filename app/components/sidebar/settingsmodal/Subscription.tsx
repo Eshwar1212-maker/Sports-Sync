@@ -10,7 +10,7 @@ const Subscription: FC<SubscriptionProps> = ({}) => {
         <p className="">Free</p>
         <p className="text-[10px]">Great for athletes that want to manage their routine, but limited in data storage.</p>
       </div>
-      <h3>Change Plan</h3>
+      <h3>All Plans</h3>
       <SubscriptionOptions />
     </div>
   );
