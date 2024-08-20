@@ -46,7 +46,7 @@ export function EventReminderModal({title}: any) {
 
         <Popover>
               <PopoverTrigger className="flex gap-3" asChild>
-                <Button className="rounded-md w-fit" variant={"tertiary"}>
+                <Button className="rounded-md w-fit">
                   <SlCalender size={20} className="" />
 
                 </Button>
