@@ -1,7 +1,11 @@
+"use client"
+import {loadStripe} from "@stripe/stripe-js"
 import { Button } from "@/components/ui/button";
-import { FC } from "react";
-interface SubscriptionOptionsProps {}
-const SubscriptionOptions: FC<SubscriptionOptionsProps> = ({}) => {
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!)
+
+const SubscriptionOptions = ({}) => {
+
   return (
     <div className="space-y-4">
       <div className="border-s border-white border-[1px] rounded-md pt-2 px-3 m-2 h-[115px]">
