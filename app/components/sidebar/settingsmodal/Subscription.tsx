@@ -1,8 +1,10 @@
+
 import { FC } from "react";
 import SubscriptionOptions from "./SubscriptionOptions";
 import { Button } from "@/components/ui/button";
 interface SubscriptionProps {}
 const Subscription: FC<SubscriptionProps> = ({}) => {
+
   return (
     <div className="max-w-[100%]">
       <h3>Current Plan</h3>
