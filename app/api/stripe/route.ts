@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 const settingsUrl = absoluteUrl("/workouts");
 
-export async function POST(req: Request) {
+export async function GET() {
   try {
     const user = await getCurrentUser();
 
@@ -64,7 +64,6 @@ export async function POST(req: Request) {
         stripeCustomerId: customer.id,
       },
     });
-
     return new NextResponse(JSON.stringify({ url: stripeSession.url }), { status: 200 });
 
   } catch (error) {
