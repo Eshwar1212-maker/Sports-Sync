@@ -2,9 +2,6 @@ import { Workout } from "@prisma/client";
 import { useEffect, useState } from "react";
 
 
-
-
-
 function usePersonalRecord(title: string, weight: number, workoutRecord: Workout[]) {
   const [personalRecord, setPersonalRecord] = useState<boolean>(false);
 

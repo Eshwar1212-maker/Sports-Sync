@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 const settingsUrl = absoluteUrl("/workouts");
 
-export async function POST(req: Request) {
+export async function GET() {
   try {
     const user = await getCurrentUser();
 
