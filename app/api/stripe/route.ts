@@ -64,7 +64,6 @@ export async function GET() {
         stripeCustomerId: customer.id,
       },
     });
-
     return new NextResponse(JSON.stringify({ url: stripeSession.url }), { status: 200 });
 
   } catch (error) {
