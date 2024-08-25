@@ -1,10 +1,20 @@
 "use client"
 import {loadStripe} from "@stripe/stripe-js"
 import { Button } from "@/components/ui/button";
+import toast from "react-hot-toast";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!)
 
 const SubscriptionOptions = ({}) => {
+
+  const onSubscribe = async () => {
+    try{
+
+
+    }catch(error){
+      toast.error("Payment failed")
+    }
+  }
 
   return (
     <div className="space-y-4">
