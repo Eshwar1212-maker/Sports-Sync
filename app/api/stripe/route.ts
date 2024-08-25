@@ -36,7 +36,6 @@ export async function GET() {
       mode: "subscription",
       billing_address_collection: "auto",
       customer_email: user.email,
-      customer: customer.id,
       line_items: [
         {
           price_data: {

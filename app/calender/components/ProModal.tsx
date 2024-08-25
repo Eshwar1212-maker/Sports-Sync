@@ -1,7 +1,6 @@
 import Modal from "@/app/components/Modal";
 import { Button } from "@/components/ui/button";
 import { FC } from "react";
-import { IoClose } from "react-icons/io5";
 
 interface ProModalProps {
   isOpen: boolean;

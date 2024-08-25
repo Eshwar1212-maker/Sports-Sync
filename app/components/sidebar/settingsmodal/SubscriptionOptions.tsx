@@ -1,10 +1,22 @@
 "use client"
 import {loadStripe} from "@stripe/stripe-js"
 import { Button } from "@/components/ui/button";
+import toast from "react-hot-toast";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!)
 
 const SubscriptionOptions = ({}) => {
+
+  const mutation = useMutation(() => axios.get('/api/stripe'), {
+    onSuccess: (response) => {
+      window.location.href = response.data.url
+    },
+    onError: (error) => {
+      toast.error('Payment failed');
+    },
+  });
 
   return (
     <div className="space-y-4">
@@ -22,7 +34,10 @@ const SubscriptionOptions = ({}) => {
             Plus
             <span className="text-[10px]"> (3.99/month)</span>
           </h3>
-          <Button className="bg-blue-500 rounded-md hover:bg-blue-600 text-[12px] px-4 h-8">
+          <Button 
+          className="bg-blue-500 rounded-md hover:bg-blue-600 text-[12px] px-4 h-8"
+          onClick={() => mutation.mutate()}
+          >
             Upgrade
           </Button>
         </div>
