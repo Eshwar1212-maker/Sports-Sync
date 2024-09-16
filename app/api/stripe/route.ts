@@ -24,10 +24,6 @@ export async function GET() {
       return new NextResponse("User already has an active subscription", { status: 400 });
     }
 
-    const customer = await stripe.customers.create({
-      email: user.email,
-      metadata: { userId: user.id },
-    });
 
     const stripeSession = await stripe.checkout.sessions.create({
       success_url: settingsUrl,
@@ -57,12 +53,6 @@ export async function GET() {
       },
     });
 
-    await prisma.userSubscription.create({
-      data: {
-        userId: user.id,
-        stripeCustomerId: customer.id,
-      },
-    });
     return new NextResponse(JSON.stringify({ url: stripeSession.url }), { status: 200 });
 
   } catch (error) {

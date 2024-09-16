@@ -31,7 +31,10 @@ const TeamCalenderHeader: FC<HeaderProps> = ({team, currentUser, teamAdmin }) =>
       <div className="hidden md:flex gap-1 pl-1">
         {team.users.map((user: any) => {
           return (
-            <ActionTooltip  label={user?.name as string}>
+            <ActionTooltip  
+            label={user?.name as string}
+            >
+
               {user?.image && (
                 <Image
                   src={user?.image as string}
