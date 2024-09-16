@@ -7,13 +7,21 @@ import axios from "axios";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!)
 
-const SubscriptionOptions = ({}) => {
+interface SubscriptionOptionsProps{
+  currentUser: any
+}
+
+const SubscriptionOptions = ({currentUser}: SubscriptionOptionsProps) => {
+
+  console.log(currentUser);
+  
 
   const mutation = useMutation(() => axios.get('/api/stripe'), {
     onSuccess: (response) => {
       window.location.href = response.data.url
     },
     onError: (error) => {
+      console.log(error);
       toast.error('Payment failed');
     },
   });

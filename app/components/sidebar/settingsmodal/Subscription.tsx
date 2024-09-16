@@ -2,8 +2,12 @@
 import { FC } from "react";
 import SubscriptionOptions from "./SubscriptionOptions";
 import { Button } from "@/components/ui/button";
-interface SubscriptionProps {}
-const Subscription: FC<SubscriptionProps> = ({}) => {
+interface SubscriptionProps {
+  currentUser: any
+}
+const Subscription: FC<SubscriptionProps> = ({
+  currentUser
+}) => {
 
   return (
     <div className="max-w-[100%]">
@@ -13,7 +17,9 @@ const Subscription: FC<SubscriptionProps> = ({}) => {
         <p className="text-[10px]">Great for athletes that want to manage their routine, but limited in data storage.</p>
       </div>
       <h3>All Plans</h3>
-      <SubscriptionOptions />
+      <SubscriptionOptions 
+      currentUser={currentUser}
+      />
     </div>
   );
 };

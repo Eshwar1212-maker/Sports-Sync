@@ -28,7 +28,9 @@ const SettingsModal: React.FC<SettingsModal> = ({
           <Profile currentUser={currentUser} onClose={onClose} isOpen />
         </TabsContent>
         <TabsContent value="subscription">
-          <Subscription />
+          <Subscription 
+          currentUser={currentUser}
+          />
         </TabsContent>
       </Tabs>
     </Modal>
