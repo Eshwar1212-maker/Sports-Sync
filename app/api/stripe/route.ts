@@ -51,7 +51,7 @@ export async function GET() {
       metadata: {
         userId: user.id,
       },
-    });
+    });    
 
     return new NextResponse(JSON.stringify({ url: stripeSession.url }), { status: 200 });
 
