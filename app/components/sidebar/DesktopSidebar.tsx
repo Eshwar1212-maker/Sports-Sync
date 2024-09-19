@@ -30,6 +30,7 @@ const pacifico = Pacifico({
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   currentUser,
   notifications,
+  isPro
 }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +41,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
         currentUser={currentUser}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
+        isPro={isPro}
       />
       <div>
         <div

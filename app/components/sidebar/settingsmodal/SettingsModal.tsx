@@ -9,12 +9,14 @@ interface SettingsModal {
   isOpen?: boolean;
   onClose: () => void;
   currentUser: any;
+  isPro: Promise<boolean>
 }
 
 const SettingsModal: React.FC<SettingsModal> = ({
   isOpen,
   onClose,
   currentUser,
+  isPro
 }) => {
 
   return (
