@@ -6,7 +6,6 @@ import CalenderOptions from "./CalenderOptions";
 import clsx from "clsx";
 import {User} from "@prisma/client";
 import CreateTeamModal from "./CreateTeamModal";
-import ProModal from "./ProModal";
 import calendar from "../../assets/cal.png"
 import { MdOutlineGroupAdd } from "react-icons/md";
 
@@ -17,9 +16,7 @@ interface landingProps {
   currentUser: any
 }
 const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
-  const [isTeamModal, setIsTeamModal] = useState(false);
-  const [isProModal, setIsProModal] = useState(false)
-  
+  const [isTeamModal, setIsTeamModal] = useState(false);  
   
   return (
     <>
@@ -30,10 +27,6 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
         onClose={() => setIsTeamModal(false)}
       />
 
-      <ProModal
-        isOpen={isProModal}
-        onClose={() => setIsProModal(false)}
-      />
       <div className="hidden xl:block py-[100px] sm:px-6 md:pl-60 container">
         <main className="flex flex-col md:flex-row space-x-9 pb-11">
           <div className="space-y-4 w-[90vw] md:w-1/2">
@@ -59,14 +52,6 @@ const Landing: FC<landingProps> = ({ users, userTeams, currentUser }) => {
               aria-label="calendar image"
             />
             <button
-              onClick={() => {
-                if(userTeams?.length! > 0 && currentUser?.email !== "eshwartangirala11@gmail.com"){
-                  setIsProModal(true)
-                }else{
-                  setIsTeamModal(true)
-
-                }
-              }}
               className="my-4 text-lg px-8 py-4 border-[1px] transition ease-in-out duration-400 bg-white  border-slate-400 flex gap-3
               rounded-sm text-slate-900 hover:bg-slate-200 hover:text-black dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
             >
