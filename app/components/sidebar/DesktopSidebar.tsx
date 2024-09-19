@@ -17,6 +17,7 @@ import { useParams, usePathname } from "next/navigation";
 interface DesktopSidebarProps {
   currentUser: User;
   notifications: any;
+  isPro: Promise<boolean>
 }
 
 const pacifico = Pacifico({
