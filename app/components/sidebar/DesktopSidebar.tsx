@@ -17,6 +17,7 @@ import { useParams, usePathname } from "next/navigation";
 interface DesktopSidebarProps {
   currentUser: User;
   notifications: any;
+  isPro: Promise<boolean>
 }
 
 const pacifico = Pacifico({
@@ -29,6 +30,7 @@ const pacifico = Pacifico({
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   currentUser,
   notifications,
+  isPro
 }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +41,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
         currentUser={currentUser}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
+        isPro={isPro}
       />
       <div>
         <div
