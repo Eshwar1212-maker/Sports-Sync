@@ -25,12 +25,10 @@ export default function CalenderOptions(userTeams: any) {
 
    
   const [selected, setSelected] = useState();
-  const [isProModalOpen, setIsProModalOpen] = useState(false);
   const router = useRouter();
   
   return (
     <div className="w-full px-4 mx-auto items-center block space-y-3">
-      {/* <ProModal isOpen={isProModalOpen} onClose={() => setIsProModalOpen(false)} /> */}
       <RadioGroup className="max-w-[447px]" value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
           <div className="space-y-2">
@@ -40,7 +38,6 @@ export default function CalenderOptions(userTeams: any) {
                   if (plan.name === "My Calender") {
                     router.push(`/calender/${plan.href}`);
                   }else{
-                    setIsProModalOpen(true)
                   }
                 }}
                 key={plan.name}

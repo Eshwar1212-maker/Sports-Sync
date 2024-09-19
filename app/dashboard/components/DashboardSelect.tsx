@@ -5,7 +5,6 @@ import { CgSelect } from 'react-icons/cg'
 import { Fragment, useState } from 'react'
 import { useTheme } from 'next-themes'
 import clsx from 'clsx'
-import ProModal from '@/app/calender/components/ProModal'
 
 const solutions = [
   {
@@ -33,7 +32,6 @@ export default function DashBoardSelect() {
   const {theme} = useTheme()
   return (
     <div className="z-40 flex justify-end mb-1">
-      <ProModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <Popover className="relative">
         {({ open }) => (
           <>
