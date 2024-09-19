@@ -27,18 +27,16 @@ export async function POST(req: Request) {
       const subscription = await stripe.subscriptions.retrieve(
         session.subscription as string
       );
-
       if (!session.metadata?.userId) {
         return new NextResponse("User ID is required", { status: 400 });
       }
-
       await prisma.userSubscription.create({
         data: {
           userId: session.metadata.userId,
           stripeSubscriptionId: subscription.id,
           stripeCustomerId: subscription.customer as string,
           stripePriceId: subscription.items.data[0].price.id,
-          stripeCurrentPeriodEnd: new Date(subscription.current_period_end * 1000), // Corrected timestamp
+          stripeCurrentPeriodEnd: new Date(subscription.current_period_end * 1000),
         },
       });
 
